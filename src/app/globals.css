@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #224D0F;
+  --color-primary-dark: #1a3d0c;
+  --color-accent: #E2FCCA;
+  --color-accent-dark: #c5f5a0;
+  --color-bg: #F5F5F2;
+  --color-bg-alt: #FFFFFF;
+  --color-text-primary: #5E6673;
+  --color-text-heading: #060F15;
+  --color-card: #FFFFFF;
+  --color-card-hover: #f0f0ee;
+  --color-border: #e5e5e2;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Averia Serif Libre", serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(150, 150, 150, 0.15) 1px, transparent 1px),
+      linear-gradient(rgba(150, 150, 150, 0.15) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+.animate-grid-move {
+  animation: gridMove 3s linear infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
