@@ -284,7 +284,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                     return (
                       <div
                         key={iIdx}
-                        className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6"
+                        className="flex flex-col gap-8 md:gap-10 my-8 md:my-12"
                       >
                         {item.images.map((img, imgIdx) => (
                           <figure key={imgIdx}>
@@ -292,13 +292,13 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                               <Image
                                 src={img.src}
                                 alt={img.alt}
-                                width={400}
-                                height={300}
-                                className="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.02]"
+                                width={1200}
+                                height={900}
+                                className="w-full h-auto object-cover"
                               />
                             </div>
                             {img.caption && (
-                              <figcaption className="text-xs text-[#5E6673] mt-1.5 text-center">
+                              <figcaption className="text-xs text-[#5E6673] mt-2 text-center">
                                 {img.caption}
                               </figcaption>
                             )}
