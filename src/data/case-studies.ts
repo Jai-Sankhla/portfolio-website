@@ -796,42 +796,97 @@ export const caseStudies: CaseStudy[] = [
     title: "Redesigning Cart & Checkout, Reducing Abandonment by 26% Across 480k User Sessions",
     description:
       "Focused on optimizing checkout flows to boost conversions and decrease abandonment for Sierra Living Concepts, a brand of luxury furniture shoppers in U.S.",
-    coverImage: "/images/project-4.jpeg",
+    coverImage: "/images/case-studies/slc-checkout/cover.jpg",
     client: "Sierra Living Concepts (SLC)",
-    role: "Product Designer",
-    industry: "E-commerce",
-    platform: "Web",
+    role: "Lead UI/UX Designer",
+    industry: "E-Commerce",
+    platform: "Cross-Platform (Web + Mobile Web)",
     timeline: "8 weeks",
-    tags: ["E-commerce", "Checkout"],
+    tags: ["E-Commerce", "UX Strategy", "Checkout"],
     metric: { value: "26%", label: "Cart abandonment reduction" },
     sections: [
       {
-        heading: "Overview",
+        heading: "Introduction",
         items: [
           {
             type: "text",
             content:
-              "Sierra Living Concepts is a U.S.-based luxury furniture retailer with a significant online presence. Despite strong traffic from paid campaigns and organic search, the checkout funnel was losing 71% of users who added items to their cart. With an average order value of $1,200+, each abandonment represented substantial revenue loss.",
+              "Sierra Living Concepts (SLC) is a U.S.-based luxury furniture retailer with a significant online presence. SLC had a requirement to increase online sales and meet customer expectations through a seamless checkout experience.",
           },
           {
             type: "text",
             content:
-              "I led a comprehensive redesign of the cart and checkout experience, analyzing 480k user sessions to identify friction points and optimize the path to purchase.",
+              "As the Lead UI/UX Designer, I was the sole designer on the project, collaborating closely with Saswata S. SenGupta (Sr. Product Manager) to tackle conversion challenges on the cart and checkout pages.",
           },
         ],
       },
       {
-        heading: "The Problem",
+        heading: "Problem Statement",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Problem statement.webp",
+              alt: "Problem statement overview",
+            },
+          },
+        ],
+      },
+      {
+        heading: "Problems & Insights",
         items: [
           {
             type: "text",
             content:
-              "The checkout flow was a 5-step linear process with no progress indicator, requiring users to create an account before they could purchase. Form fields were dense, error messages were generic, and mobile checkout was nearly unusable with tiny tap targets and horizontal scrolling tables.",
+              "Problem 1: Distractions and Overload on Cart Page — SLC's Cart Page suffered from its own success. It was so feature-rich that it overwhelmed shoppers. With too many distractions like excessive product recommendations and prominent marketing banners, customers frequently lost focus and abandoned their carts.",
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Problem 1.jpg",
+              alt: "Problem 1: Distractions and Overload on Cart Page",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "Problem 2: High Checkout Abandonment Rate — The checkout process was a 5-step linear flow with no progress indicator. Users had to create an account before completing a purchase, creating an unnecessary barrier. Form fields were dense, error messages were generic, and the mobile checkout was nearly unusable with tiny tap targets and horizontal scrolling tables.",
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Problem 2.webp",
+              alt: "Problem 2: High Checkout Abandonment Rate",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "Problem 3: Navigation and Form Field Issues — The checkout flow suffered from inconsistent navigation across mobile and desktop. On mobile, the 'Continue' button was hidden below the fold, causing users to think the page wasn't loading. On desktop, the multi-column layout created confusion about the natural reading order.",
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Problem 3.jpg",
+              alt: "Problem 3: Navigation and Form Field Issues",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "Problem 4: Complex Delivery Options and Confusion — Delivery options were complex and unclear. Users couldn't see estimated delivery dates before checkout and were frustrated by unexpected shipping costs appearing late in the flow.",
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Problem 4.webp",
+              alt: "Problem 4: Complex Delivery Options",
+            },
           },
           {
             type: "quote",
             quote:
-              "I was ready to buy a $2,000 sofa but the checkout asked me to create an account first. I didn't want another account and a password to remember, so I just left.",
+              "I was ready to buy a sofa for $2,000, but the checkout asked me to create an account first. I didn't want another account and a password to remember, so I just left.",
             author: "Abandoned user, exit survey",
           },
           {
@@ -845,42 +900,207 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        heading: "Analysis & Discovery",
+        heading: "Shopping Journey Of A User",
         items: [
           {
-            type: "text",
-            content:
-              "I conducted a deep quantitative analysis of 480k user sessions using Hotjar recordings, Google Analytics funnel analysis, and custom event tracking. Key findings: 34% of abandonment happened at the account creation step, 22% at shipping details, and 19% during payment.",
-          },
-          {
-            type: "text",
-            content:
-              "Session recordings revealed specific pain points: users struggled with the ZIP code field (no formatting), the coupon code section was confusingly placed, and there was no way to edit quantities from the cart without navigating away.",
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Shopping Journey Of A User.webp",
+              alt: "Shopping journey of a user",
+            },
           },
         ],
       },
       {
-        heading: "Redesign Strategy",
+        heading: "Business Goals",
         items: [
           {
             type: "text",
             content:
-              "I collapsed the 5-step flow into a single-page checkout with clear sections and inline validation. Guest checkout became the default option with account creation offered as an optional post-purchase step. The progress indicator showed exactly how many fields remained.",
+              "Increase Conversion Rates — Streamline the checkout flow to reduce friction and drop-offs, converting more visitors into customers.",
           },
           {
             type: "text",
             content:
-              "I introduced smart defaults: saved addresses for returning users, automatic tax calculation display, and estimated delivery dates shown before checkout. Trust signals (security badges, return policy, customer service chat) were placed at decision points.",
+              "Decrease Cart Abandonment — Identify and eliminate pain points in the cart and checkout experience that cause users to leave before completing a purchase.",
+          },
+          {
+            type: "text",
+            content:
+              "Boost Customer Confidence — Build trust and reassurance throughout the checkout process with clear communication about shipping, returns, and payment security.",
           },
         ],
       },
       {
-        heading: "Visual & Interaction Design",
+        heading: "User Goals",
         items: [
           {
             type: "text",
             content:
-              "The cart page was redesigned with inline quantity editing, real-time totals, and a persistent sticky summary sidebar. Product thumbnails remained visible throughout checkout for reassurance. Error messages were rewritten in plain language with specific instructions for resolution.",
+              "Quick & Easy Checkout — Users want to complete their purchase in as few steps as possible, without unnecessary obstacles or information requests.",
+          },
+          {
+            type: "text",
+            content:
+              "Clear Pricing & Delivery Info — Users need transparency about total costs, taxes, shipping fees, and delivery timelines before committing to purchase.",
+          },
+          {
+            type: "text",
+            content:
+              "Flexible Shopping Experience — Users want the ability to review, modify, and confirm their cart contents easily without losing progress.",
+          },
+        ],
+      },
+      {
+        heading: "New Cart Checkout User Flow",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/New Proposed USer Flow.webp",
+              alt: "New proposed cart and checkout user flow",
+            },
+          },
+        ],
+      },
+      {
+        heading: "Solution 1: Distraction-Free Cart Page",
+        items: [
+          {
+            type: "image-grid",
+            images: [
+              {
+                src: "/images/case-studies/slc-checkout/Solution 1 Desktop.jpg",
+                alt: "Solution 1 Desktop view",
+                caption: "Desktop: Before vs After Cart Page Side By Side Comparison",
+              },
+              {
+                src: "/images/case-studies/slc-checkout/Solution 1 Mobile.jpg",
+                alt: "Solution 1 Mobile view",
+                caption: "Mobile: Before vs After Cart Page Comparison",
+              },
+            ],
+          },
+          {
+            type: "embed",
+            embed: {
+              url: "https://marvelapp.com/prototype/9576bah?emb=1&iosapp=false&frameless=false",
+              title: "Distraction-Free Cart Page Prototype",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "• Inline Cart Editing — Users can update quantities, remove items, or save for later directly in the cart without navigating away.\n\n• Persistent Order Summary — A sticky sidebar that shows real-time totals, estimated shipping, and tax calculations as users make changes.\n\n• Trust Signals — Security badges, return policy highlights, and customer service access placed at strategic decision points.\n\n• Clear CTA Hierarchy — Primary 'Proceed to Checkout' button is visually dominant, with secondary actions like 'Continue Shopping' clearly de-emphasized.",
+          },
+        ],
+      },
+      {
+        heading: "Solution 2: Streamlined Address Entry & Inline Validation",
+        items: [
+          {
+            type: "image-grid",
+            images: [
+              {
+                src: "/images/case-studies/slc-checkout/Solution 2- Streamlined Address Entry & Inline Validation.webp",
+                alt: "Streamlined checkout flow transformation",
+                caption: "The 5-step flow collapsed into a streamlined 3-page checkout",
+              },
+              {
+                src: "/images/case-studies/slc-checkout/Solution 3 Desktop.jpg",
+                alt: "Address entry desktop view",
+                caption: "Desktop: Inline validation and address entry redesign",
+              },
+              {
+                src: "/images/case-studies/slc-checkout/Solution 3 Mobile.jpg",
+                alt: "Address entry mobile view",
+                caption: "Mobile: Streamlined address entry with inline validation",
+              },
+            ],
+          },
+          {
+            type: "embed",
+            embed: {
+              url: "https://marvelapp.com/prototype/11ca8f04?emb=1&iosapp=false&frameless=false",
+              title: "Streamlined Address Entry Prototype",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "• Progressive Disclosure — Information is requested in logical stages, reducing cognitive load and making the form feel less intimidating.\n\n• Guest Checkout Default — No account required to purchase. Account creation is offered as an optional post-purchase step.\n\n• Smart Defaults — Saved addresses for returning users, automatic tax calculation display, and estimated delivery dates shown before checkout.\n\n• Inline Validation — Real-time field validation with clear error messages that tell users exactly how to fix the issue.",
+          },
+        ],
+      },
+      {
+        heading: "Solution 3: Simplified Delivery Method Selector",
+        items: [
+          {
+            type: "image-grid",
+            images: [
+              {
+                src: "/images/case-studies/slc-checkout/Solution 4 Desktop.jpg",
+                alt: "Delivery method desktop view",
+                caption: "Desktop: Simplified delivery method selector with estimated dates",
+              },
+              {
+                src: "/images/case-studies/slc-checkout/Solution 4 Mobile.jpg",
+                alt: "Delivery method mobile view",
+                caption: "Mobile: Clear delivery options with cost transparency",
+              },
+            ],
+          },
+          {
+            type: "embed",
+            embed: {
+              url: "https://marvelapp.com/prototype/1c8fdaj4?emb=1&iosapp=false&frameless=false",
+              title: "Delivery Method Selector Prototype",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "• Simplified Selector — Delivery options are presented in a clear, visual card layout showing price, speed, and estimated delivery date at a glance.\n\n• Estimated Delivery Dates — Real-time delivery date calculations based on ZIP code and product availability, shown before the user commits to purchase.\n\n• Cost Transparency — Shipping costs, taxes, and total are displayed upfront with no surprise fees at the final step.",
+          },
+        ],
+      },
+      {
+        heading: "Challenges & Solutions",
+        items: [
+          {
+            type: "text",
+            content:
+              "Handling the complexity of multi-page checkout flow while maintaining a seamless experience across devices was one of the biggest challenges. The solution required careful information architecture decisions — what information to show on each page, how to handle form state across pages, and how to provide clear feedback without overwhelming the user.",
+          },
+          {
+            type: "text",
+            content:
+              "Balancing business requirements (account creation for marketing) with user needs (guest checkout) led to a compromise: guest checkout with optional post-purchase account creation. This single change removed the biggest barrier to purchase while still allowing SLC to capture user data after the transaction.",
+          },
+          {
+            type: "text",
+            content:
+              "Ensuring responsive design consistency across devices meant designing mobile-first and progressively enhancing for desktop. Every component was tested at multiple breakpoints to guarantee a consistent experience.",
+          },
+        ],
+      },
+      {
+        heading: "What I Would Have Done Next",
+        items: [
+          {
+            type: "text",
+            content:
+              "Saved Payment Methods — Implement stored payment methods for returning customers, reducing checkout friction even further with one-tap purchases.",
+          },
+          {
+            type: "text",
+            content:
+              "One-Click Checkout — Integrate digital wallet options like Apple Pay, Google Pay, and Shop Pay to enable express checkout for returning and new users alike.",
+          },
+          {
+            type: "text",
+            content:
+              "Abandonment Recovery — Introduce cart abandonment email sequences with saved carts, limited-time offers, and direct links to resume checkout where they left off.",
           },
         ],
       },
@@ -899,6 +1119,21 @@ export const caseStudies: CaseStudy[] = [
               { value: "68%", label: "Guest checkout adoption" },
               { value: "+34%", label: "Mobile conversion increase" },
             ],
+          },
+        ],
+      },
+      {
+        heading: "Signing Off",
+        items: [
+          {
+            type: "text",
+            content:
+              "This project taught me the power of removing friction. Every field removed, every step collapsed, every error message rewritten — each small change compounded into a dramatically better experience. I'm grateful to Saswata and the SLC team for trusting me to redesign such a critical part of their business.",
+          },
+          {
+            type: "text",
+            content:
+              "Thank you for reading about my journey in redesigning the cart and checkout experience for Sierra Living Concepts. If you'd like to discuss e-commerce UX or checkout optimization, I'd love to connect.",
           },
         ],
       },
