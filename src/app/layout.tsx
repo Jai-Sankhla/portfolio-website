@@ -37,9 +37,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${inter.variable} ${averiaSerif.variable} ${inriaSerif.variable}`}
     >
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen" suppressHydrationWarning>{children}</body>
     </html>
   );
 }
