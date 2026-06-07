@@ -584,101 +584,160 @@ export const caseStudies: CaseStudy[] = [
     title: "Built Gamification System That Turned Drop-offs Into 2x Daily Engagement",
     description:
       "Created gamification features at Nirva Health that boosted retention and doubled daily engagement through rewards, coins, and streak tracking.",
-    coverImage: "/images/project-3.jpeg",
+    coverImage: "/images/case-studies/nirva-gamification/cover.jpg",
     client: "Nirva Health",
     role: "Product Designer",
-    industry: "Health & Wellness",
-    platform: "iOS & Android",
+    industry: "Hospitals & Health Care",
+    platform: "Mobile App",
     timeline: "10 weeks",
     tags: ["Gamification", "Health"],
     metric: { value: "2x", label: "Daily engagement" },
     sections: [
       {
-        heading: "Overview",
+        heading: "Introduction",
         items: [
           {
             type: "text",
             content:
-              "Nirva Health's mobile app faced a classic retention challenge: users would sign up, complete their initial health assessment, and then drop off within the first week. The core wellness activities (logging meals, tracking workouts, completing plans) felt like chores rather than rewarding habits.",
+              "Nirva Health is a Y Combinator-backed startup that combines Ayurveda and Yoga to help users achieve their wellness goals. However, the app faced three critical problems:",
           },
           {
             type: "text",
             content:
-              "I designed a comprehensive gamification system that transformed the user experience from obligation-based to motivation-based, resulting in a 2x increase in daily active engagement.",
+              "• Users lacked motivation to complete daily health tasks\n• Engagement dropped significantly after the first week\n• Retention suffered without a sense of progress or reward",
           },
-        ],
-      },
-      {
-        heading: "The Problem",
-        items: [
           {
             type: "text",
             content:
-              "Retention data showed a sharp drop-off after day 3. Users completed the initial onboarding but didn't return because there was no immediate reward or sense of progress. The app provided long-term health benefits but lacked short-term motivation loops.",
+              "The challenge? Design a gamification system that turns everyday wellness activities into an engaging, habit-building experience — without making it feel like a game.",
           },
           {
             type: "quote",
             quote:
-              "I did the assessment and planned my meals for the week, but by day 4 I just forgot about it. There was nothing pulling me back in.",
-            author: "Churned user, interview",
-          },
-          {
-            type: "metrics",
-            metrics: [
-              { value: "73%", label: "Drop-off by day 7" },
-              { value: "4.2", label: "Avg sessions in week 1" },
-              { value: "1.1", label: "Avg sessions in week 2" },
-            ],
+              "I didn't just add coins and badges to the app. I designed a behavioral model that tapped into users' intrinsic motivation — making health tracking feel rewarding, not like a chore.",
+            author: "Jai Sankhla, Product Designer",
           },
         ],
       },
       {
-        heading: "Research & Behavioral Design",
+        heading: "Problem?",
         items: [
           {
-            type: "text",
-            content:
-              "I studied behavioral psychology frameworks including BJ Fogg's Behavior Model (Motivation + Ability + Trigger) and Octalysis gamification framework. I identified that users had the ability (the app was easy to use) but lacked both motivation and triggers.",
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-gamification/problem-1.jpg",
+              alt: "User research findings showing motivation drop-off",
+            },
           },
           {
-            type: "text",
-            content:
-              "I mapped user journeys to identify 'moment of truth' points where gamification elements could have the highest impact — morning (planning), post-workout (achievement), and evening (reflection).",
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-gamification/problem-2.webp",
+              alt: "Engagement data showing retention challenges",
+            },
           },
         ],
       },
       {
-        heading: "Gamification System Design",
+        heading: "Research",
         items: [
           {
             type: "text",
             content:
-              "The system had four interconnected mechanics: Streaks (consecutive day tracking with visual flame icons), Coins (earned for every logged activity), Levels (unlocking new features and badges), and Challenges (weekly goals with social competition).",
+              "To understand what truly motivates users to build healthy habits, we conducted 25+ user interviews with active and churned users. Here's what we uncovered:",
           },
           {
             type: "text",
             content:
-              "Each mechanic fed into the next — completing daily streaks earned bonus coins, reaching coin milestones unlocked new levels, and levels gave access to exclusive challenges. This created a compounding motivation loop.",
-          },
-        ],
-      },
-      {
-        heading: "Visual & Interaction Design",
-        items: [
-          {
-            type: "text",
-            content:
-              "I designed celebratory micro-interactions for every achievement — animations, haptic feedback, and confetti effects. The streak counter was placed prominently on the dashboard as a persistent visual anchor. Progress bars and milestone markers provided clear visibility into future rewards.",
+              "• \"I want to feel like I'm making progress, even on days when I do something small.\"\n\n• \"If I miss a day, I feel like I've lost everything — there's no incentive to come back.\"\n\n• \"I wish the app celebrated my wins the way my fitness tracker does.\"\n\n• \"I compare my progress with friends in other apps — I'd love that here too.\"\n\n• \"I need a reason to open the app every day, something that pulls me in.\"",
           },
         ],
       },
       {
-        heading: "Results",
+        heading: "Business Goals",
         items: [
           {
             type: "text",
             content:
-              "Within 4 weeks of launch, daily active users doubled. The streak mechanic proved most effective — users who maintained a 7+ day streak had a 94% retention rate at 30 days. Average session duration increased by 40% as users engaged with gamification features.",
+              "Increase Daily Active Users — Drive habitual daily app usage by creating compelling motivation loops that make wellness tracking a rewarding daily ritual.",
+          },
+          {
+            type: "text",
+            content:
+              "Boost Retention Rates — Reduce early-stage churn by giving users a reason to return beyond the first week of onboarding and initial assessment.",
+          },
+          {
+            type: "text",
+            content:
+              "Drive Feature Adoption — Encourage users to explore and engage with underutilized features like meal planning, yoga sessions, and community challenges.",
+          },
+          {
+            type: "text",
+            content:
+              "Differentiate from Competitors — Stand out in the crowded health & wellness market by offering a uniquely engaging, game-like experience that competitors lack.",
+          },
+        ],
+      },
+      {
+        heading: "User Goals",
+        items: [
+          {
+            type: "text",
+            content:
+              "Stay Motivated — Users want to feel a sense of accomplishment and progress, even from small daily actions, to maintain their wellness journey.",
+          },
+          {
+            type: "text",
+            content:
+              "Track Progress Visibly — Users need clear, visual indicators of their streaks, achievements, and milestones to feel their efforts are recognized.",
+          },
+          {
+            type: "text",
+            content:
+              "Be Rewarded Consistently — Users want tangible rewards and recognition for their consistency, making the habit of returning to the app feel valuable.",
+          },
+        ],
+      },
+      {
+        heading: "Solution: Habit-Building Through Gamification",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-gamification/solution-1.jpg",
+              alt: "Gamification dashboard with streak tracking and rewards",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-gamification/solution-2.jpg",
+              alt: "Coin and rewards system design",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-gamification/solution-3.jpg",
+              alt: "Level progression and badge system",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-gamification/solution-4.jpg",
+              alt: "Challenge and social competition features",
+            },
+          },
+        ],
+      },
+      {
+        heading: "Final Outcome",
+        items: [
+          {
+            type: "text",
+            content:
+              "The gamification system launched and within weeks transformed user behavior. Daily active users doubled as the streak mechanic created a powerful pulling effect — users who maintained a 7+ day streak showed 94% retention at 30 days. Average session duration increased by 40% as users engaged with coins, levels, and challenges. The app evolved from a health tracker into a daily wellness companion that users genuinely looked forward to opening.",
           },
           {
             type: "metrics",
@@ -687,6 +746,46 @@ export const caseStudies: CaseStudy[] = [
               { value: "94%", label: "30-day retention (7+ day streak)" },
               { value: "+40%", label: "Average session duration" },
             ],
+          },
+        ],
+      },
+      {
+        heading: "What I Would Have Done Next",
+        items: [
+          {
+            type: "text",
+            content:
+              "Personalized Streak Goals — Tailor streak targets and rewards based on individual user behavior and preferences, making the system adaptable to different motivation levels.",
+          },
+          {
+            type: "text",
+            content:
+              "Social Accountability Circles — Introduce friend-based challenges and team streaks where users can motivate each other and share achievements within the app.",
+          },
+          {
+            type: "text",
+            content:
+              "Deeper Behavioral Analytics — Implement machine learning to predict user churn risk and trigger personalized gamification interventions before users disengage.",
+          },
+          {
+            type: "text",
+            content:
+              "Iterative Feature Expansion — Continuously A/B test new reward mechanics, limited-time events, and seasonal challenges to keep the gamification system fresh and engaging.",
+          },
+        ],
+      },
+      {
+        heading: "Peace",
+        items: [
+          {
+            type: "text",
+            content:
+              "This project taught me that great design isn't just about usability — it's about behavior. By understanding what drives human motivation, I was able to transform a functional health app into an experience users looked forward to every day. I'm grateful to the Nirva team for trusting me with this vision and to my mentor Archi Kashmiriya for pushing me to think deeper about behavioral design.",
+          },
+          {
+            type: "text",
+            content:
+              "Thank you for reading about my journey in designing this gamification system. If you'd like to discuss behavioral design or gamification strategies, I'd love to connect.",
           },
         ],
       },
