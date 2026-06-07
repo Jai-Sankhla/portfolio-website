@@ -383,109 +383,197 @@ export const caseStudies: CaseStudy[] = [
     title: "Homepage Redesign That Increased First Task Completion by 40%",
     description:
       "Created a structured homepage with clear hierarchy, reducing confusion and driving higher engagement for Nirva Health.",
-    coverImage: "/images/project-2.jpeg",
+    coverImage: "/images/case-studies/nirva-homepage/cover.png",
     client: "Nirva Health",
     role: "Product Designer",
-    industry: "Health & Wellness",
-    platform: "Web",
+    industry: "Hospitals & Health Care",
+    platform: "Mobile App",
     timeline: "6 weeks",
-    tags: ["UX Redesign", "Web"],
+    tags: ["UX Redesign", "Health", "Mobile"],
     metric: { value: "40%", label: "First task completion increase" },
     sections: [
       {
-        heading: "Overview",
+        heading: "Introduction",
         items: [
           {
             type: "text",
             content:
-              "Nirva Health is a digital wellness platform offering personalised health plans, expert consultations, and community support. The existing homepage had high bounce rates and users struggled to find key features — only 32% could complete their primary task within the first 30 seconds.",
+              "Gamification gave users motivation, but the homepage still failed to guide them. Many described it as \"a maze with no clear starting point.\" Without a sense of direction, users lost momentum, even if they were excited after onboarding.",
           },
           {
             type: "text",
             content:
-              "I led a complete homepage redesign focused on clarity, hierarchy, and guiding users toward meaningful actions within seconds of landing.",
+              "My task was to transform confusion into clarity \u2014 redesigning the homepage as a daily wellness dashboard that simplified choices, highlighted progress, and encouraged consistent action.",
           },
         ],
       },
       {
-        heading: "The Problem",
+        heading: "Problem?",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-homepage/problem-1.png",
+              alt: "Problem screenshot showing cluttered homepage",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-homepage/problem-2.png",
+              alt: "Problem screenshot showing confusing navigation",
+            },
+          },
+        ],
+      },
+      {
+        heading: "Research",
         items: [
           {
             type: "text",
             content:
-              "The original homepage tried to showcase everything at once — 7 different CTAs above the fold, carousel sliders that hid critical information, and inconsistent visual hierarchy. Analytics showed 58% of users never scrolled past the first screen.",
+              "To uncover why users were disengaging after onboarding, we conducted 25+ user interviews and usability reviews focused on Nirva\u2019s homepage experience. Here\u2019s what we learned:",
           },
           {
-            type: "quote",
-            quote:
-              "I landed on the page and didn't know where to click. There were buttons everywhere but I couldn't tell which one would actually help me start a plan.",
-            author: "User testing participant",
+            type: "text",
+            content:
+              "\u2022 \"I don\u2019t know where to start\" when I open the app \u2014 the screen feels cluttered and overwhelming.\n\n\u2022 Important tasks like yoga or diet logs are buried. \"I just scroll and give up sometimes.\"\n\n\u2022 The homepage doesn\u2019t guide me. \"It feels random,\" like a feed, not a plan for my day.\n\n\u2022 I want to see my upcoming sessions or progress, but \"I can\u2019t find it easily.\"\n\n\u2022 Without a clear order, I \"end up skipping things\" and closing the app.",
+          },
+          {
+            type: "text",
+            content:
+              "These insights revealed the core issue: the homepage failed to provide clarity, prioritization, and direction \u2014 leaving users lost, unmotivated, and more likely to drop off.",
+          },
+        ],
+      },
+      {
+        heading: "Business Goals",
+        items: [
+          {
+            type: "text",
+            content:
+              "Improve User Retention \u2014 Redesign the homepage to guide users clearly, reducing drop-offs and increasing daily engagement.",
+          },
+          {
+            type: "text",
+            content:
+              "Boost Task Completion \u2014 Surface the most important actions upfront to ensure higher completion of diet logs, yoga, and wellness tasks.",
+          },
+          {
+            type: "text",
+            content:
+              "Strengthen Product Value \u2014 Position Nirva as a daily companion for wellness by making the homepage a central, engaging hub.",
+          },
+        ],
+      },
+      {
+        heading: "User Goals",
+        items: [
+          {
+            type: "text",
+            content:
+              "Clarity & Direction \u2014 Help users know exactly where to start by providing a structured, prioritized daily plan.",
+          },
+          {
+            type: "text",
+            content:
+              "Easy Access to Key Tasks \u2014 Simplify navigation so that core actions like yoga practice and diet logging are always within reach.",
+          },
+          {
+            type: "text",
+            content:
+              "Confidence in Progress \u2014 Show clear progress and upcoming sessions, empowering users to track their journey and stay motivated.",
+          },
+        ],
+      },
+      {
+        heading: "Solution: An Action-Oriented Dashboard",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-homepage/solution-1.png",
+              alt: "I was responsible for the entire end-to-end design process, from initial research to a final, polished user interface",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-homepage/solution-2.png",
+              alt: "Design solution screenshot 2",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-homepage/solution-3.png",
+              alt: "Design solution screenshot 3",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/nirva-homepage/solution-4.png",
+              alt: "Design solution screenshot 4",
+            },
+          },
+        ],
+      },
+      {
+        heading: "Final Outcome",
+        items: [
+          {
+            type: "text",
+            content:
+              "Revamping Nirva Health\u2019s homepage brought clarity to the user journey and created a stronger sense of direction. First task completion rose by 40%, while user confusion dropped by 65%. By surfacing key actions and progress at the start, the homepage transformed from a cluttered screen into a daily wellness dashboard \u2014 guiding users with confidence and improving overall retention.",
           },
           {
             type: "metrics",
             metrics: [
-              { value: "58%", label: "Users never scrolled past fold" },
-              { value: "32%", label: "First-task completion rate" },
-              { value: "68%", label: "Bounce rate on homepage" },
+              { value: "40%", label: "First task completion increase" },
+              { value: "65%", label: "User confusion reduction" },
+              { value: "+", label: "Overall retention improved" },
             ],
           },
         ],
       },
       {
-        heading: "Research & Analysis",
+        heading: "What I Would Have Done Next",
         items: [
           {
             type: "text",
             content:
-              "I conducted a comprehensive audit including heatmap analysis, session recordings, and 15 user interviews. The heatmaps revealed users consistently clicked on non-interactive elements, indicating a mismatch between visual affordances and actual functionality.",
+              "Refining the Information Hierarchy \u2014 Continue testing different layouts and priorities to ensure that the most critical tasks always remain visible without overwhelming users.",
           },
           {
             type: "text",
             content:
-              "A competitive analysis of 8 health & wellness platforms identified patterns in information hierarchy and content density that leading sites used to drive engagement.",
+              "Personalization at Scale \u2014 Introduce dynamic homepage cards that adapt to each user\u2019s goals \u2014 whether focused on yoga, diet, or workshops \u2014 to make the experience feel more personal.",
+          },
+          {
+            type: "text",
+            content:
+              "Deeper Data Tracking \u2014 Work with analytics teams to measure how each homepage element influences engagement and retention, then fine-tune based on user behavior.",
+          },
+          {
+            type: "text",
+            content:
+              "Iterative Improvements \u2014 Treat the homepage as a living system \u2014 continuously learning from user feedback, A/B testing components, and evolving it into a central hub for growth.",
           },
         ],
       },
       {
-        heading: "Design Approach",
+        heading: "Peace",
         items: [
           {
             type: "text",
             content:
-              "I simplified the above-the-fold area to a single primary CTA with one supporting secondary action. The value proposition was rewritten to be actionable and user-centric: 'Start Your Wellness Journey' replaced 'Learn More About Our Platform'.",
+              "This project taught me the importance of clarity as a design principle. By redefining the homepage, I was able to turn confusion into confidence and give users a reason to return daily. I\u2019m thankful to my mentor Archi Kashmiriya, and stakeholders for trusting me with this responsibility, and I\u2019m proud of how the design created measurable impact.",
           },
           {
             type: "text",
             content:
-              "I introduced a clear visual narrative — guiding users from awareness (testimonials/social proof) to consideration (feature highlights) to conversion (plan selection). Each section had one clear purpose, with consistent card-based layouts throughout.",
-          },
-        ],
-      },
-      {
-        heading: "Visual Design",
-        items: [
-          {
-            type: "text",
-            content:
-              "I established a calm, trustworthy visual system using warm neutrals and accent greens. Photography was used intentionally to evoke emotional connection rather than as decorative filler. Typography was refined to a clear 3-level hierarchy.",
-          },
-        ],
-      },
-      {
-        heading: "Results",
-        items: [
-          {
-            type: "text",
-            content:
-              "The redesigned homepage launched with A/B testing against the original. The new design won in every metric, with first-task completion improving by 40% and bounce rate dropping by 25 percentage points.",
-          },
-          {
-            type: "metrics",
-            metrics: [
-              { value: "40%", label: "First-task completion increase" },
-              { value: "-25pp", label: "Bounce rate reduction" },
-              { value: "2.3x", label: "CTA click-through rate" },
-            ],
+              "Thank you for taking the time to read about my work \u2014 I hope this gave you insight into my process and approach to solving complex design problems.",
           },
         ],
       },
