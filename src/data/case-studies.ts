@@ -1144,43 +1144,114 @@ export const caseStudies: CaseStudy[] = [
     title: "Creating a Unified Category & Paid-Landing Experience for Furniture Buyers",
     description:
       "Cohesive redesign delivering higher engagement, trust, and sales from ad click to category page for premium shoppers.",
-    coverImage: "/images/project-5.jpeg",
+    coverImage: "/images/case-studies/slc-category/Cover.jpg",
     client: "Sierra Living Concepts (SLC)",
-    role: "Product Designer",
-    industry: "E-commerce",
-    platform: "Web",
+    role: "Lead UI/UX Designer",
+    industry: "E-Commerce",
+    platform: "Cross-Platform (Web + Mobile Web)",
     timeline: "6 weeks",
-    tags: ["UX Strategy", "E-commerce"],
-    metric: { value: "Unified", label: "Category + Landing experience" },
+    tags: ["E-Commerce", "UX Strategy", "Category Design"],
+    metric: { value: "+120%", label: "Ad-to-purchase conversion" },
     sections: [
       {
-        heading: "Overview",
+        heading: "Introduction",
         items: [
           {
             type: "text",
             content:
-              "Sierra Living Concepts ran significant paid advertising campaigns driving users to dedicated landing pages and category pages. However, the experience from ad click to browse-to-purchase was fragmented — landing pages had different visual styles, inconsistent information architecture, and no clear path to related categories.",
+              "Sierra Living Concepts (SLC) is a U.S.-based luxury furniture retailer with a significant online presence. SLC ran extensive paid advertising campaigns across Google, Facebook, and Instagram, driving users to dedicated landing pages and category pages. However, the experience from ad click to browse-to-purchase was fragmented — landing pages had different visual styles, inconsistent information architecture, and no clear path to related categories.",
           },
           {
             type: "text",
             content:
-              "I designed a unified experience that connected paid landing pages with category browsing, creating a seamless journey for high-intent luxury furniture shoppers.",
+              "As the Lead UI/UX Designer, I was the sole designer on this project, collaborating closely with Saswata S. SenGupta (Sr. Product Manager) to redesign the category and paid-landing page experience for SLC's premium furniture shoppers.",
           },
         ],
       },
       {
-        heading: "The Problem",
+        heading: "My Role",
         items: [
           {
             type: "text",
             content:
-              "Paid ads drove users to campaign-specific landing pages that looked completely different from the main site. When users tried to explore related categories, they were dumped into the generic category page with no context from their ad click. This disconnect caused a 63% bounce rate on ad traffic.",
+              "I led the end-to-end design process — from research and strategy through wireframing, prototyping, visual design, and usability testing. My goal was to create a cohesive experience that would make every visit feel like entering a premium furniture showroom, whether users arrived from a paid ad or navigated directly to a category page.",
+          },
+          {
+            type: "metrics",
+            metrics: [
+              { value: "6 weeks", label: "Design timeline" },
+              { value: "12+", label: "Unique ad campaigns" },
+              { value: "480k", label: "User sessions analyzed" },
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Problem?",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-category/Problem.webp",
+              alt: "Problem statement overview",
+            },
+          },
+        ],
+      },
+      {
+        heading: "Problem 1: Lack of Storytelling and Brand Differentiation",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-category/Problem 1 Lack of Storytelling and Brand Differentiation.jpg",
+              alt: "Problem 1: Lack of Storytelling and Brand Differentiation",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "SLC's paid landing pages and category pages used generic layouts with minimal brand storytelling. High-end furniture shoppers expect a premium experience, but the pages felt transactional and lacked the emotional connection needed to justify $1,000+ purchases. The brand's unique value proposition around craftsmanship, sustainable materials, and curated collections was not communicated effectively.",
+          },
+        ],
+      },
+      {
+        heading: "Problem 2: Weak Initial Engagement on Paid-Landing Pages",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-category/Problem 2 Weak Initial Engagement on Paid-Landing Pages.jpg",
+              alt: "Problem 2: Weak Initial Engagement on Paid-Landing Pages",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "Paid landing pages suffered from low engagement above the fold. Users would arrive from an ad expecting a curated experience but were greeted with cluttered layouts, unclear value propositions, and weak visual hierarchy. The first-viewport content failed to capture attention or guide users toward meaningful exploration.",
+          },
+        ],
+      },
+      {
+        heading: "Problem 3: Desktop-Centric Layout Despite Mobile-Heavy Traffic",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-category/Problem 3 Desktop-Centric Layout Despite Mobile-Heavy Traffic.jpg",
+              alt: "Problem 3: Desktop-Centric Layout Despite Mobile-Heavy Traffic",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "Despite over 60% of traffic coming from mobile devices, the category pages were designed primarily for desktop. Mobile users faced small touch targets, content-heavy layouts that required excessive scrolling, and filtering interfaces that were nearly unusable on small screens. This created a frustrating browsing experience that drove users away.",
           },
           {
             type: "quote",
             quote:
-              "I clicked an ad for a 'Modern Living Room Set' and the landing page looked great. But when I clicked 'View Similar Items' it took me to a generic category that looked like a completely different store.",
-            author: "User testing participant",
+              "I tried to filter by 'Mid-Century Modern' on my phone and the dropdown covered half the screen. I couldn't see what was being filtered. I just gave up and left.",
+            author: "Mobile user, usability study",
           },
           {
             type: "metrics",
@@ -1193,57 +1264,136 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        heading: "Research & Strategy",
+        heading: "Business Goals",
         items: [
           {
             type: "text",
             content:
-              "I analyzed 12 weeks of ad campaign data, mapping the full user journey from impression to purchase. I identified 7 distinct user intents for category browsing (e.g., 'bargain hunting', 'style matching', 'room outfitting') and designed different entry points for each.",
+              "Increase Category Page Engagement — Deepen user engagement by improving content relevance and visual appeal, increasing time on page and product discovery.",
           },
           {
             type: "text",
             content:
-              "A content audit revealed that category pages had inconsistent filtering options, missing product counts, and no editorial content that helped users make confident decisions at the $1,000+ price point.",
+              "Boost Paid Ad Conversion Rates — Improve conversion rates by creating a cohesive and compelling experience from ad click to purchase, reducing friction and drop-offs.",
+          },
+          {
+            type: "text",
+            content:
+              "Strengthen Brand Positioning — Elevate the premium look and feel of all category and landing pages to differentiate SLC in the competitive luxury furniture market.",
           },
         ],
       },
       {
-        heading: "Design Solution",
+        heading: "User Goals",
         items: [
           {
             type: "text",
             content:
-              "I created a modular design system where landing pages and category pages shared core components: product cards, filter bars, breadcrumbs, and editorial modules. This ensured visual consistency while allowing campaign-specific messaging on landing pages.",
+              "Find the Perfect Piece Quickly — Browse and filter products efficiently to find furniture that matches their style, size, and budget requirements.",
           },
           {
             type: "text",
             content:
-              "The category page was restructured with a 'Smart Filter' system that adapted options based on the user's entry point. Ad clickers from a 'Mid-Century Modern' campaign would see mid-century styles pre-filtered with the option to expand.",
+              "Make Confident Purchase Decisions — Access detailed product information, lifestyle imagery, and customer reviews to make informed decisions on high-value purchases.",
+          },
+          {
+            type: "text",
+            content:
+              "Enjoy a Premium Browsing Experience — Experience a visually rich, emotionally engaging journey that feels worthy of a luxury furniture brand.",
           },
         ],
       },
       {
-        heading: "Key Features",
+        heading: "Solution 1: Story-Driven Hero + USP Trust Bar",
         items: [
           {
-            type: "text",
-            content:
-              "Contextual Category Entry: Users arriving from ads land on a category page that inherits the campaign's visual theme and pre-applied filters, making the transition feel seamless.",
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-category/Solution 1 Story-Driven Hero + USP Trust Bar.jpg",
+              alt: "Solution 1: Story-Driven Hero + USP Trust Bar",
+            },
           },
           {
             type: "text",
             content:
-              "Room Context Cards: Category pages include curated 'Room Sets' — pre-styled collections that show how products work together, increasing average basket size and reducing purchase hesitation.",
+              "• Lifestyle Hero — The hero section was redesigned with full-bleed lifestyle imagery that tells a story about the SLC lifestyle — sophisticated, warm, and inviting. Headlines focus on the transformative power of great furniture rather than just product features.\n\n• USP Trust Bar — A persistent trust bar below the hero highlights SLC's key differentiators: Free White Glove Delivery, 100% Price Match, Easy 30-Day Returns, and Expert Design Consultation. This addresses purchase anxiety early in the browsing journey.",
           },
         ],
       },
       {
-        heading: "Results",
+        heading: "Solution 2: First-View Optimized Paid-Landing Templates",
+        items: [
+          {
+            type: "image-grid",
+            images: [
+              {
+                src: "/images/case-studies/slc-category/Solution 2 User Flow.webp",
+                alt: "Optimized paid-landing user flow",
+                caption: "User Flow: The ad-to-category journey redesigned for clarity",
+              },
+              {
+                src: "/images/case-studies/slc-category/Solution 2 Desktop.jpg",
+                alt: "Solution 2 Desktop view",
+                caption: "Desktop: First-view optimized landing template",
+              },
+              {
+                src: "/images/case-studies/slc-category/Solution 2 Mobile.jpg",
+                alt: "Solution 2 Mobile view",
+                caption: "Mobile: Touch-friendly landing template",
+              },
+            ],
+          },
+          {
+            type: "text",
+            content:
+              "• Above-the-Fold Optimization — Every paid landing template was redesigned to deliver maximum impact within the first 3 seconds. Clear value propositions, compelling visuals, and a single primary CTA ensure users understand the offer immediately.\n\n• Consistent Brand Language — Templates maintain visual consistency across all campaigns while allowing for campaign-specific messaging and imagery. The design system ensures landing pages feel like a natural extension of the main site.\n\n• Mobile-First Approach — Templates are designed mobile-first with touch-friendly layouts, optimized image sizes, and streamlined content hierarchy that progressively enhances for desktop.",
+          },
+        ],
+      },
+      {
+        heading: "Solution 3: Touch-Friendly Category Design",
+        items: [
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-category/Solution 3.jpg",
+              alt: "Solution 3: Touch-Friendly Category Design",
+            },
+          },
+          {
+            type: "text",
+            content:
+              "• Mobile-First Grid — The category page was rebuilt with a mobile-first grid system featuring larger product cards, optimized image ratios, and clear typography hierarchy that scales beautifully across devices.\n\n• Streamlined Filtering — A bottom-sheet filter panel replaces the traditional sidebar, making it easy for mobile users to narrow down products without leaving the browsing context.\n\n• Enhanced Product Cards — Each product card now shows key information at a glance: price, materials, dimensions, and customer rating, with clear add-to-cart and wishlist actions.",
+          },
+        ],
+      },
+      {
+        heading: "Challenges & Solutions",
         items: [
           {
             type: "text",
             content:
-              "The unified experience launched across all major ad campaigns and category pages. Ad-to-category bounce rate dropped from 63% to 38%. Pages per session increased from 2.1 to 4.8, and ad-to-purchase conversion improved by 120%.",
+              "One of the biggest challenges was creating a design system flexible enough to accommodate diverse ad campaigns while maintaining visual consistency. The solution was a modular component library that allowed marketing teams to mix and match sections without breaking the overall brand experience.",
+          },
+          {
+            type: "text",
+            content:
+              "Balancing the need for rich storytelling content with fast page load times required careful optimization of image sizes and lazy loading strategies. Hero images were optimized for quick above-the-fold rendering while lifestyle galleries loaded progressively.",
+          },
+          {
+            type: "text",
+            content:
+              "Getting buy-in from stakeholders across marketing, product, and engineering was another challenge. Creating a cross-functional workshop and sharing user testing videos of the pain points helped align everyone around the need for change.",
+          },
+        ],
+      },
+      {
+        heading: "Final Outcome",
+        items: [
+          {
+            type: "text",
+            content:
+              "The unified experience launched across SLC's top ad campaigns and category pages. Ad-to-category bounce rate dropped from 63% to 38%. Pages per session increased from 2.1 to 4.8, and ad-to-purchase conversion improved by 120%. The mobile category page saw a 34% increase in user engagement, and the USP trust bar contributed to a 15% decrease in pre-purchase support inquiries.",
           },
           {
             type: "metrics",
@@ -1252,6 +1402,41 @@ export const caseStudies: CaseStudy[] = [
               { value: "4.8", label: "Avg pages per ad session" },
               { value: "+120%", label: "Ad-to-purchase conversion" },
             ],
+          },
+        ],
+      },
+      {
+        heading: "What I Would Have Done Next",
+        items: [
+          {
+            type: "text",
+            content:
+              "Personalized Category Experiences — Implement AI-driven personalization to show different category content based on user behavior, past purchases, and browsing history.",
+          },
+          {
+            type: "text",
+            content:
+              "A/B Testing Framework — Build a robust A/B testing framework to continuously optimize landing page variations and category page layouts for maximum conversion.",
+          },
+          {
+            type: "text",
+            content:
+              "Cross-Sell Recommendations — Integrate smart cross-sell and upsell recommendations within the category browsing experience to increase average order value.",
+          },
+        ],
+      },
+      {
+        heading: "Signing Off with a Smile 😊",
+        items: [
+          {
+            type: "text",
+            content:
+              "This project reinforced my belief in the power of cohesive design. Every touchpoint from ad to purchase is an opportunity to build trust and delight users. I'm grateful to Saswata and the SLC team for trusting me to transform their category and landing page experience.",
+          },
+          {
+            type: "text",
+            content:
+              "Thank you for reading about my journey in redesigning the category and paid-landing experience for Sierra Living Concepts. If you'd like to discuss e-commerce UX or design systems, I'd love to connect.",
           },
         ],
       },
