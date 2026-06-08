@@ -10,10 +10,12 @@ import Experience from "@/components/Experience";
 import Recommendations from "@/components/Recommendations";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />

@@ -16,18 +16,29 @@ export default function Story() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-3xl mx-auto px-6">
+    <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#E5E5E5] to-transparent" />
+      <div className="relative max-w-3xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-2xl md:text-3xl text-black mb-8 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
+          <span className="inline-block px-4 py-1.5 bg-[#F5F5F5] border border-[#E5E5E5] text-xs font-medium rounded-full text-[#6366F1] mb-6">
             My Story
-          </h2>
+          </span>
         </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-3xl md:text-4xl text-[#0A0A0A] mb-10 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight"
+        >
+          From curiosity to craft
+        </motion.h2>
 
         <div className="relative h-56 md:h-64 mb-8 flex items-center justify-center">
           {photos.map((photo, i) => (
@@ -44,7 +55,7 @@ export default function Story() {
               }}
               whileHover={{ scale: 1.08, rotate: 0, zIndex: 10 }}
             >
-              <div className="w-28 h-36 md:w-36 md:h-44 rounded-xl overflow-hidden border-4 border-white shadow-multi">
+              <div className="w-28 h-36 md:w-36 md:h-44 rounded-xl overflow-hidden border-4 border-white shadow-elevated">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -62,7 +73,7 @@ export default function Story() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center text-[10px] font-medium tracking-widest uppercase text-[#828282] mb-8"
+          className="text-center text-[10px] font-medium tracking-widest uppercase text-[#A3A3A3] mb-8"
         >
           Try hovering over the photos :)
         </motion.p>
@@ -72,7 +83,7 @@ export default function Story() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[#545454] text-base leading-relaxed"
+          className="text-[#404040] text-base leading-relaxed"
         >
           <div className="relative">
             <p className="break-words">
@@ -114,7 +125,7 @@ export default function Story() {
 
           <button
             onClick={() => setExpanded(!expanded)}
-            className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium text-black hover:opacity-70 transition-opacity"
+            className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium text-[#6366F1] hover:opacity-70 transition-opacity"
           >
             {expanded ? "View less" : "View more"}
             <motion.span
