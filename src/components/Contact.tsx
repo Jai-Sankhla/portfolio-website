@@ -77,9 +77,9 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-serif text-2xl md:text-3xl text-[#060F15] mb-8">
+          <h2 className="text-2xl md:text-3xl text-black mb-8 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
             Contact
           </h2>
         </motion.div>
@@ -99,14 +99,14 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.06 }}
               onClick={() => handleClick(contact)}
-              className="flex items-center justify-between gap-2 px-4 py-3.5 bg-white rounded-xl border border-[#e5e5e2] hover:bg-[#f0f0ee] hover:border-[#224D0F]/20 transition-all group text-left"
+              className="flex items-center justify-between gap-2 px-4 py-3.5 bg-white rounded-xl border border-[#DEDEDE] hover:bg-[#F5F5F5] hover:border-black/20 transition-all group text-left shadow-multi"
             >
-              <span className="text-sm font-medium text-[#060F15] truncate">
+              <span className="text-sm font-medium text-black truncate">
                 {contact.label}
               </span>
               <contact.icon
                 size={16}
-                className="text-[#5E6673] group-hover:text-[#224D0F] shrink-0 transition-colors"
+                className="text-[#545454] group-hover:text-black shrink-0 transition-colors"
               />
             </motion.button>
           ))}
@@ -117,12 +117,12 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center text-xs text-[#5E6673]/50 mt-8"
+          className="text-center text-xs text-[#828282] mt-8"
         >
           Or email me directly at{" "}
           <a
             href="mailto:jaisankhla0771@gmail.com"
-            className="text-[#224D0F] hover:underline"
+            className="text-black hover:underline"
           >
             jaisankhla0771@gmail.com
           </a>

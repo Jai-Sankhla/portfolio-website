@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #224D0F;
-  --color-primary-dark: #1a3d0c;
-  --color-accent: #E2FCCA;
-  --color-accent-dark: #c5f5a0;
-  --color-bg: #F5F5F2;
+  --color-primary: #000000;
+  --color-primary-dark: #000000;
+  --color-accent: #FFFFFF;
+  --color-accent-dark: #FAFAFA;
+  --color-bg: #FAFAFA;
   --color-bg-alt: #FFFFFF;
-  --color-text-primary: #5E6673;
-  --color-text-heading: #060F15;
+  --color-text-primary: #545454;
+  --color-text-heading: #000000;
+  --color-text-secondary: #828282;
   --color-card: #FFFFFF;
-  --color-card-hover: #f0f0ee;
-  --color-border: #e5e5e2;
+  --color-card-hover: #F5F5F5;
+  --color-border: #DEDEDE;
+  --color-border-light: #F0F0F0;
   --font-sans: "Inter", sans-serif;
-  --font-serif: "Averia Serif Libre", serif;
+  --font-display: "DM Sans", sans-serif;
 }
 
 @layer base {
@@ -33,28 +35,38 @@
 }
 
 @layer utilities {
-  .grid-bg {
-    background-image:
-      linear-gradient(to right, rgba(150, 150, 150, 0.15) 1px, transparent 1px),
-      linear-gradient(rgba(150, 150, 150, 0.15) 1px, transparent 1px);
-    background-size: 60px 60px;
+  .frosted-glass {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.5);
   }
-}
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
+  .shadow-multi {
+    box-shadow:
+      inset 0px 2px 4px 0px rgba(255, 255, 255, 0.4),
+      0px 0.74px 0.74px -0.75px rgba(0, 0, 0, 0.07),
+      0px 2.02px 2.02px -1.5px rgba(0, 0, 0, 0.07),
+      0px 4.43px 4.43px -2.25px rgba(0, 0, 0, 0.07),
+      0px 9.83px 9.83px -3px rgba(0, 0, 0, 0.06),
+      0px 25px 25px -3.75px rgba(0, 0, 0, 0.03);
+  }
 
-@keyframes gridMove {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(60px, 60px); }
-}
+  .shadow-multi-dark {
+    box-shadow:
+      inset 0px 2px 4px 0px rgba(255, 255, 255, 0.4),
+      0px 0.74px 0.74px -0.75px rgba(0, 0, 0, 0.15),
+      0px 2.02px 2.02px -1.5px rgba(0, 0, 0, 0.14),
+      0px 4.43px 4.43px -2.25px rgba(0, 0, 0, 0.13),
+      0px 9.83px 9.83px -3px rgba(0, 0, 0, 0.11),
+      0px 25px 25px -3.75px rgba(0, 0, 0, 0.05),
+      0px 0px 0px 1px rgba(130, 130, 130);
+  }
 
-.animate-grid-move {
-  animation: gridMove 3s linear infinite;
-}
+  .pill {
+    border-radius: 24px;
+  }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+  .pill-lg {
+    border-radius: 48px;
+  }
 }

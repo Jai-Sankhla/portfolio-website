@@ -64,15 +64,15 @@ const cardVariants = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 md:py-28 bg-[#FFFFFF]">
+    <section id="projects" className="py-20 md:py-28 bg-white">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-serif text-2xl md:text-3xl text-[#060F15] mb-10">
+          <h2 className="text-2xl md:text-3xl text-black mb-10 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
             Projects
           </h2>
         </motion.div>
@@ -86,9 +86,9 @@ export default function Projects() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={cardVariants}
-                className="group cursor-pointer flex flex-col p-4 rounded-2xl hover:bg-[#f0f0ee] transition-all duration-300"
+                className="group cursor-pointer flex flex-col p-4 rounded-2xl hover:bg-[#F5F5F5] transition-all duration-300"
               >
-                <div className="rounded-xl overflow-hidden mb-4 aspect-[16/9] bg-white drop-shadow-sm border border-[#e5e5e2] group-hover:border-[#224D0F]/20 transition-colors relative">
+                <div className="rounded-xl overflow-hidden mb-4 aspect-[16/9] bg-white shadow-multi group-hover:border-black/20 transition-colors relative">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -102,31 +102,31 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] font-semibold uppercase tracking-wider text-[#5E6673] bg-[#e5e5e2]/50 px-2 py-0.5 rounded-full"
+                      className="text-[10px] font-semibold uppercase tracking-wider text-[#545454] bg-[#DEDEDE]/50 px-2 py-0.5 rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="font-serif text-lg md:text-xl text-[#060F15] mb-2 leading-snug">
+                <h3 className="text-lg md:text-xl text-black mb-2 leading-snug font-[family-name:var(--font-dm-sans)] font-medium">
                   {project.title}
                 </h3>
 
-                <p className="text-sm text-[#5E6673] leading-relaxed mb-4 flex-1">
+                <p className="text-sm text-[#545454] leading-relaxed mb-4 flex-1">
                   {project.description}
                 </p>
 
-                <div className="flex items-center justify-between mt-auto pt-2 border-t border-[#e5e5e2]/50">
+                <div className="flex items-center justify-between mt-auto pt-2 border-t border-[#DEDEDE]/50">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-lg text-[#224D0F]">
+                    <span className="font-bold text-lg text-black">
                       {project.metric.value}
                     </span>
-                    <span className="text-[11px] text-[#5E6673]">
+                    <span className="text-[11px] text-[#545454]">
                       {project.metric.label}
                     </span>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-xs font-medium text-[#224D0F] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-black opacity-0 group-hover:opacity-100 transition-opacity">
                     View case study <ArrowUpRight size={14} />
                   </span>
                 </div>

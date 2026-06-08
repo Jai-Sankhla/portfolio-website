@@ -16,15 +16,15 @@ export default function Story() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="py-20 md:py-28 bg-[#FFFFFF]">
+    <section className="py-20 md:py-28 bg-white">
       <div className="max-w-3xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-serif text-2xl md:text-3xl text-[#060F15] mb-8">
+          <h2 className="text-2xl md:text-3xl text-black mb-8 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
             My Story
           </h2>
         </motion.div>
@@ -44,7 +44,7 @@ export default function Story() {
               }}
               whileHover={{ scale: 1.08, rotate: 0, zIndex: 10 }}
             >
-              <div className="w-28 h-36 md:w-36 md:h-44 rounded-xl overflow-hidden border-4 border-white shadow-lg">
+              <div className="w-28 h-36 md:w-36 md:h-44 rounded-xl overflow-hidden border-4 border-white shadow-multi">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -62,7 +62,7 @@ export default function Story() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center text-[10px] font-medium tracking-widest uppercase text-[#5E6673]/50 mb-8"
+          className="text-center text-[10px] font-medium tracking-widest uppercase text-[#828282] mb-8"
         >
           Try hovering over the photos :)
         </motion.p>
@@ -71,8 +71,8 @@ export default function Story() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-[#5E6673] text-base leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[#545454] text-base leading-relaxed"
         >
           <div className="relative">
             <p className="break-words">
@@ -114,7 +114,7 @@ export default function Story() {
 
           <button
             onClick={() => setExpanded(!expanded)}
-            className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium text-[#224D0F] hover:opacity-70 transition-opacity"
+            className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium text-black hover:opacity-70 transition-opacity"
           >
             {expanded ? "View less" : "View more"}
             <motion.span

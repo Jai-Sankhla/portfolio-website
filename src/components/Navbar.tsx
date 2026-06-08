@@ -23,42 +23,46 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#F5F5F2]/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.05)]"
-          : "bg-transparent"
-      }`}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
     >
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a
-          href="#home"
-          className="font-serif text-lg font-bold text-[#224D0F] tracking-tight"
-        >
-          JS
-        </a>
+      <div
+        className={`transition-all duration-300 ${
+          scrolled
+            ? "frosted-glass border border-[#DEDEDE]"
+            : "bg-transparent"
+        } pill-lg px-2`}
+      >
+        <div className="flex items-center justify-between gap-8 h-12 px-4">
+          <a
+            href="#home"
+            className="text-sm font-semibold text-black tracking-tight"
+          >
+            JS
+          </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-[#5E6673] hover:text-[#224D0F] transition-colors duration-200"
-            >
-              {link.label}
-            </a>
-          ))}
+          <div className="hidden md:flex items-center gap-6">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-[#545454] hover:text-black transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden text-[#545454] hover:text-black transition-colors"
+            aria-label="Menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
-
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-[#5E6673] hover:text-[#224D0F] transition-colors"
-          aria-label="Menu"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
 
       <AnimatePresence>
@@ -67,7 +71,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#F5F5F2]/95 backdrop-blur-xl border-t border-[#e5e5e2] overflow-hidden"
+            className="md:hidden frosted-glass border border-[#DEDEDE] pill-lg mt-2 overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-3">
               {links.map((link) => (
@@ -75,7 +79,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-sm text-[#5E6673] hover:text-[#224D0F] transition-colors py-2"
+                  className="text-sm text-[#545454] hover:text-black transition-colors py-2"
                 >
                   {link.label}
                 </a>

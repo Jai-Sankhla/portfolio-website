@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Copy, Phone, Download, Check } from "lucide-react";
+import { ArrowLeft, Copy, Phone, Download, Check, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import type { CaseStudy } from "@/data/case-studies";
 
@@ -82,7 +82,7 @@ function ContactSection() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[#F5F5F2] border-t border-[#e5e5e2]">
+    <section className="py-20 md:py-28 bg-black border-t border-[#DEDEDE]">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -90,10 +90,10 @@ function ContactSection() {
           viewport={{ once: true, margin: "-80px" }}
           variants={sectionVariants}
         >
-          <h2 className="font-serif text-2xl md:text-3xl text-[#060F15] mb-2">
+          <h2 className="text-2xl md:text-3xl text-white mb-2 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
             Let&apos;s work together
           </h2>
-          <p className="text-sm md:text-base text-[#5E6673] mb-8 max-w-md">
+          <p className="text-sm md:text-base text-[#828282] mb-8 max-w-md">
             Have a project in mind or just want to say hi? Reach out — I&apos;m always open to interesting conversations.
           </p>
           <div className="flex flex-wrap gap-3">
@@ -107,7 +107,7 @@ function ContactSection() {
                     target={action.download ? undefined : "_blank"}
                     rel={action.download ? undefined : "noopener noreferrer"}
                     download={action.download || undefined}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#FFFFFF] border border-[#e5e5e2] text-sm font-medium text-[#060F15] hover:border-[#224D0F]/30 hover:shadow-sm transition-all duration-200"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-[#DEDEDE] text-sm font-medium text-black hover:border-black/30 hover:shadow-multi transition-all duration-200"
                   >
                     <Icon size={16} />
                     {action.label}
@@ -120,8 +120,8 @@ function ContactSection() {
                   onClick={action.onClick}
                   className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl border text-sm font-medium transition-all duration-200 ${
                     action.highlight
-                      ? "bg-[#224D0F] text-white border-[#224D0F] hover:bg-[#1a3d0c]"
-                      : "bg-[#FFFFFF] border-[#e5e5e2] text-[#060F15] hover:border-[#224D0F]/30 hover:shadow-sm"
+                      ? "bg-white text-black border-white hover:bg-white/90"
+                      : "bg-white border-[#DEDEDE] text-black hover:border-black/30 hover:shadow-multi"
                   }`}
                 >
                   <Icon size={16} />
@@ -138,9 +138,9 @@ function ContactSection() {
 
 function MetricBadge({ value, label }: { value: string; label: string }) {
   return (
-    <div className="text-center p-5 rounded-2xl bg-[#F5F5F2] border border-[#e5e5e2]">
-      <div className="font-bold text-2xl md:text-3xl text-[#224D0F] mb-1">{value}</div>
-      <div className="text-xs text-[#5E6673] leading-snug">{label}</div>
+    <div className="text-center p-5 rounded-2xl bg-[#FAFAFA] border border-[#DEDEDE]">
+      <div className="font-bold text-2xl md:text-3xl text-black mb-1">{value}</div>
+      <div className="text-xs text-[#545454] leading-snug">{label}</div>
     </div>
   );
 }
@@ -148,11 +148,11 @@ function MetricBadge({ value, label }: { value: string; label: string }) {
 export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy }) {
   return (
     <>
-      <nav className="bg-[#F5F5F2]/80 backdrop-blur-xl border-b border-[#e5e5e2] sticky top-0 z-50">
+      <nav className="bg-white/80 backdrop-blur-xl border-b border-[#DEDEDE] sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-1.5 text-sm text-[#5E6673] hover:text-[#224D0F] transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm text-[#545454] hover:text-black transition-colors"
           >
             <ArrowLeft size={16} />
             Back to projects
@@ -167,7 +167,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="rounded-2xl overflow-hidden mb-8 aspect-[21/9] bg-white drop-shadow-sm border border-[#e5e5e2] relative">
+            <div className="rounded-2xl overflow-hidden mb-8 aspect-[21/9] bg-white shadow-multi border border-[#DEDEDE] relative">
               <Image
                 src={caseStudy.coverImage}
                 alt={caseStudy.title}
@@ -181,22 +181,22 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
               {caseStudy.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] font-semibold uppercase tracking-wider text-[#5E6673] bg-[#e5e5e2]/50 px-2 py-0.5 rounded-full"
+                  className="text-[10px] font-semibold uppercase tracking-wider text-[#545454] bg-[#DEDEDE]/50 px-2 py-0.5 rounded-full"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            <h1 className="font-serif text-2xl md:text-4xl text-[#060F15] mb-4 leading-snug">
+            <h1 className="text-2xl md:text-4xl text-black mb-4 leading-snug font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
               {caseStudy.title}
             </h1>
 
-            <p className="text-sm md:text-base text-[#5E6673] leading-relaxed mb-8 max-w-3xl">
+            <p className="text-sm md:text-base text-[#545454] leading-relaxed mb-8 max-w-3xl">
               {caseStudy.description}
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12 p-5 rounded-2xl bg-[#F5F5F2] border border-[#e5e5e2]">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12 p-5 rounded-2xl bg-[#FAFAFA] border border-[#DEDEDE]">
               <DetailItem label="Client" value={caseStudy.client} />
               <DetailItem label="My Role" value={caseStudy.role} />
               <DetailItem label="Industry" value={caseStudy.industry} />
@@ -214,7 +214,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
               variants={sectionVariants}
               className="mb-12 last:mb-0"
             >
-              <h2 className="font-serif text-xl md:text-2xl text-[#060F15] mb-6">
+              <h2 className="text-xl md:text-2xl text-black mb-6 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
                 {section.heading}
               </h2>
 
@@ -222,7 +222,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                 {section.items.map((item, iIdx) => {
                   if (item.type === "text" && item.content) {
                     return (
-                      <p key={iIdx} className="text-sm md:text-base text-[#5E6673] leading-relaxed">
+                      <p key={iIdx} className="text-sm md:text-base text-[#545454] leading-relaxed">
                         {item.content}
                       </p>
                     );
@@ -232,13 +232,13 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                     return (
                       <blockquote
                         key={iIdx}
-                        className="border-l-2 border-[#224D0F] pl-5 py-2 my-6"
+                        className="border-l-2 border-black pl-5 py-2 my-6"
                       >
-                        <p className="text-sm md:text-base text-[#060F15] italic leading-relaxed">
+                        <p className="text-sm md:text-base text-black italic leading-relaxed">
                           &ldquo;{item.quote}&rdquo;
                         </p>
                         {item.author && (
-                          <cite className="text-xs text-[#5E6673] not-italic mt-2 block">
+                          <cite className="text-xs text-[#545454] not-italic mt-2 block">
                             — {item.author}
                           </cite>
                         )}
@@ -262,7 +262,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                   if (item.type === "image" && item.image) {
                     return (
                       <figure key={iIdx} className="my-6">
-                        <div className="rounded-xl overflow-hidden border border-[#e5e5e2]">
+                        <div className="rounded-xl overflow-hidden border border-[#DEDEDE] shadow-multi">
                           <Image
                             src={item.image.src}
                             alt={item.image.alt}
@@ -272,7 +272,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                           />
                         </div>
                         {item.image.caption && (
-                          <figcaption className="text-xs text-[#5E6673] mt-2 text-center">
+                          <figcaption className="text-xs text-[#545454] mt-2 text-center">
                             {item.image.caption}
                           </figcaption>
                         )}
@@ -288,7 +288,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                       >
                         {item.images.map((img, imgIdx) => (
                           <figure key={imgIdx}>
-                            <div className="rounded-xl overflow-hidden border border-[#e5e5e2]">
+                            <div className="rounded-xl overflow-hidden border border-[#DEDEDE] shadow-multi">
                               <Image
                                 src={img.src}
                                 alt={img.alt}
@@ -298,7 +298,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                               />
                             </div>
                             {img.caption && (
-                              <figcaption className="text-xs text-[#5E6673] mt-2 text-center">
+                              <figcaption className="text-xs text-[#545454] mt-2 text-center">
                                 {img.caption}
                               </figcaption>
                             )}
@@ -311,7 +311,7 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
                   if (item.type === "embed" && item.embed) {
                     return (
                       <div key={iIdx} className="my-6">
-                        <div className="rounded-xl overflow-hidden border border-[#e5e5e2] aspect-video">
+                        <div className="rounded-xl overflow-hidden border border-[#DEDEDE] shadow-multi aspect-video">
                           <iframe
                             src={item.embed.url}
                             title={item.embed.title}
@@ -339,10 +339,10 @@ export default function CaseStudyLayout({ caseStudy }: { caseStudy: CaseStudy })
 function DetailItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10px] font-semibold uppercase tracking-wider text-[#5E6673] mb-0.5">
+      <div className="text-[10px] font-semibold uppercase tracking-wider text-[#545454] mb-0.5">
         {label}
       </div>
-      <div className="text-sm text-[#060F15]">{value}</div>
+      <div className="text-sm text-black">{value}</div>
     </div>
   );
 }

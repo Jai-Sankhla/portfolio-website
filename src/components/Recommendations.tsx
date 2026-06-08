@@ -46,15 +46,15 @@ export default function Recommendations() {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section className="py-20 md:py-28 bg-[#FFFFFF]">
+    <section className="py-20 md:py-28 bg-white">
       <div className="max-w-3xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-serif text-2xl md:text-3xl text-[#060F15] mb-8">
+          <h2 className="text-2xl md:text-3xl text-black mb-8 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
             Recommendations
           </h2>
         </motion.div>
@@ -66,17 +66,17 @@ export default function Recommendations() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-[#FFFFFF] rounded-2xl border border-[#e5e5e2] overflow-hidden hover:shadow-sm transition-shadow"
+              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-2xl border border-[#DEDEDE] overflow-hidden hover:shadow-multi transition-shadow"
             >
               <div className="flex justify-between items-center px-6 py-4">
                 <div className="flex flex-col">
-                  <h3 className="font-serif text-lg text-[#060F15] mb-1">
+                  <h3 className="text-lg text-black mb-1 font-[family-name:var(--font-dm-sans)] font-medium">
                     {rec.name}
                   </h3>
                   <div className="flex items-center gap-2">
                     <LinkedinIcon size={14} />
-                    <span className="text-xs text-[#5E6673]">{rec.company}</span>
+                    <span className="text-xs text-[#545454]">{rec.company}</span>
                   </div>
                 </div>
                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm -mr-2 shrink-0">
@@ -92,7 +92,7 @@ export default function Recommendations() {
 
               <div className="px-6 pb-4">
                 <div
-                  className={`text-sm text-[#5E6673] leading-relaxed whitespace-pre-line ${
+                  className={`text-sm text-[#545454] leading-relaxed whitespace-pre-line ${
                     expanded !== i ? "line-clamp-3" : ""
                   }`}
                 >
@@ -103,7 +103,7 @@ export default function Recommendations() {
                   onClick={() =>
                     setExpanded(expanded === i ? null : i)
                   }
-                  className="inline-flex items-center gap-1 text-xs font-medium text-[#224D0F] mt-2 hover:opacity-70 transition-opacity"
+                  className="inline-flex items-center gap-1 text-xs font-medium text-black mt-2 hover:opacity-70 transition-opacity"
                 >
                   {expanded === i ? "View less" : "View more"}
                   <motion.span

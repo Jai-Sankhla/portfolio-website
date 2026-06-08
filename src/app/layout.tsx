@@ -1,24 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Averia_Serif_Libre, Inria_Serif } from "next/font/google";
+import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-const averiaSerif = Averia_Serif_Libre({
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
-  variable: "--font-averia",
-  display: "swap",
-});
-
-const inriaSerif = Inria_Serif({
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
-  variable: "--font-inria",
   display: "swap",
 });
 
@@ -38,7 +32,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${averiaSerif.variable} ${inriaSerif.variable}`}
+      className={`${dmSans.variable} ${inter.variable}`}
     >
       <body className="min-h-screen" suppressHydrationWarning>{children}</body>
     </html>

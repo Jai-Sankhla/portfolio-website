@@ -24,9 +24,9 @@ export default function Stack() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-serif text-2xl md:text-3xl text-[#060F15] mb-8">
+          <h2 className="text-2xl md:text-3xl text-black mb-8 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
             Stack
           </h2>
         </motion.div>
@@ -56,7 +56,7 @@ export default function Stack() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-[#5E6673]/60 opacity-0 group-hover/tool:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-[#828282] opacity-0 group-hover/tool:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                 {toolLabels[tool]}
               </span>
             </motion.div>

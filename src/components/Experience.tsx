@@ -44,9 +44,9 @@ export default function Experience() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-serif text-2xl md:text-3xl text-[#060F15] mb-8">
+          <h2 className="text-2xl md:text-3xl text-black mb-8 font-[family-name:var(--font-dm-sans)] font-medium tracking-tight">
             Experience
           </h2>
         </motion.div>
@@ -59,7 +59,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group border-b border-[#e5e5e2] last:border-0 hover:bg-[#f0f0ee]/50 transition-colors -mx-3 px-3 rounded-lg"
+              className="group border-b border-[#DEDEDE] last:border-0 hover:bg-[#F5F5F5]/50 transition-colors -mx-3 px-3 rounded-lg"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -69,18 +69,18 @@ export default function Experience() {
                   <motion.span
                     animate={{ rotate: openIndex === i ? 45 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="text-[#224D0F] font-light text-lg leading-none w-4 h-4 flex items-center justify-center shrink-0"
+                    className="text-black font-light text-lg leading-none w-4 h-4 flex items-center justify-center shrink-0"
                   >
                     +
                   </motion.span>
-                  <span className="text-[#060F15] text-sm font-medium tracking-wide uppercase">
-                    <span className="text-[#5E6673] mr-2 font-sans">
+                  <span className="text-black text-sm font-medium tracking-wide uppercase">
+                    <span className="text-[#545454] mr-2 font-sans">
                       {exp.year} /
                     </span>
                     {exp.company}
                   </span>
                 </div>
-                <span className="text-[#5E6673] text-sm uppercase tracking-wider group-hover:text-[#224D0F] transition-colors ml-7 sm:ml-0 font-sans">
+                <span className="text-[#545454] text-sm uppercase tracking-wider group-hover:text-black transition-colors ml-7 sm:ml-0 font-sans">
                   {exp.role}
                 </span>
               </button>
@@ -94,7 +94,7 @@ export default function Experience() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="text-[#5E6673] text-sm leading-relaxed pb-4 pl-10 pr-4">
+                    <p className="text-[#545454] text-sm leading-relaxed pb-4 pl-10 pr-4">
                       {exp.details}
                     </p>
                   </motion.div>
