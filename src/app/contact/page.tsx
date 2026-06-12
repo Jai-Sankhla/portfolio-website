@@ -17,7 +17,7 @@ export default function Contact() {
     <div className="pt-28 pb-20">
       <div className="max-w-3xl mx-auto px-6">
         <ScrollReveal>
-          <span className="text-sm text-[#F4A259] font-medium">
+          <span className="text-sm text-[#1151ff] font-medium">
             Get in touch
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-display)] font-semibold tracking-tight mt-4 mb-8 leading-tight">
@@ -28,14 +28,14 @@ export default function Contact() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12 p-6 rounded-xl bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12 p-6 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50">
             <div className="flex-1">
-              <p className="text-sm text-[#8A8680] mb-1">Email me at</p>
+              <p className="text-sm text-[#707072] mb-1">Email me at</p>
               <p className="text-base font-medium">{site.email}</p>
             </div>
             <button
               onClick={copyEmail}
-              className="px-5 py-2.5 bg-[#2D2D2D] dark:bg-[#F0EDE8] text-[#FAF8F5] dark:text-[#1A1A1A] text-sm font-medium rounded-full hover:bg-[#F4A259] dark:hover:bg-[#F4A259] transition-colors shrink-0"
+              className="px-5 py-2.5 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors shrink-0"
             >
               {copied ? "Copied!" : "Copy email"}
             </button>
@@ -72,10 +72,10 @@ export default function Contact() {
               <a
                 href={link.href}
                 {...(link.download ? { download: true } : { target: "_blank", rel: "noopener noreferrer" })}
-                className="group flex items-center justify-between p-4 rounded-xl border border-[#D4D0CA] dark:border-[#3A3836] hover:border-[#F4A259] dark:hover:border-[#F4A259] transition-colors"
+                className="group flex items-center justify-between p-4 rounded-xl border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors"
               >
                 <span className="text-sm font-medium">{link.label}</span>
-                <span className="text-sm text-[#8A8680] group-hover:text-[#F4A259] transition-colors">
+                <span className="text-sm text-[#707072] group-hover:text-[#1151ff] transition-colors">
                   &rarr;
                 </span>
               </a>
@@ -84,8 +84,8 @@ export default function Contact() {
         </div>
 
         <ScrollReveal delay={0.4}>
-          <div className="mt-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826] text-center">
-            <p className="text-sm text-[#8A8680]">
+          <div className="mt-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a] text-center">
+            <p className="text-sm text-[#707072]">
               Based in India &middot; Available for remote work
             </p>
           </div>

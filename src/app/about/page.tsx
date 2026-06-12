@@ -38,7 +38,7 @@ export default function About() {
 
         <div className="grid md:grid-cols-[240px_1fr] gap-8 mb-12">
           <ScrollReveal delay={0.1}>
-            <div className="relative aspect-square w-full max-w-[240px] rounded-xl overflow-hidden bg-[#E8E4DE] dark:bg-[#2A2826]">
+            <div className="relative aspect-square w-full max-w-[240px] rounded-xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515]">
               <Image
                 src="/images/avatar.jpg"
                 alt={site.name}
@@ -51,7 +51,7 @@ export default function About() {
 
           <div>
             <ScrollReveal delay={0.15}>
-              <p className="text-[#8A8680] leading-relaxed mb-4">
+              <p className="text-[#707072] leading-relaxed mb-4">
                 I&apos;m a Product Designer based in India, specializing in
                 creating impactful, user-centered experiences. With a background
                 in interior design and digital design, I balance form and
@@ -59,7 +59,7 @@ export default function About() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <p className="text-[#8A8680] leading-relaxed mb-4">
+              <p className="text-[#707072] leading-relaxed mb-4">
                 Though UX is my primary focus, my practice goes beyond the
                 screens — exploring strategy, systems thinking, and physical
                 spaces.
@@ -68,7 +68,7 @@ export default function About() {
             <ScrollReveal delay={0.25}>
               <a
                 href={`mailto:${site.email}`}
-                className="text-sm text-[#2D2D2D] dark:text-[#F0EDE8] underline underline-offset-4 decoration-[#D4D0CA] dark:decoration-[#3A3836] hover:decoration-[#F4A259] transition-all"
+                className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all"
               >
                 {site.email}
               </a>
@@ -85,7 +85,7 @@ export default function About() {
           <Timeline />
         </section>
 
-        <section className="mb-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826]">
+        <section className="mb-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
           <ScrollReveal>
             <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
               Tools &amp; toolkit
@@ -94,7 +94,7 @@ export default function About() {
           <div className="flex flex-wrap gap-3">
             {tools.map((tool, i) => (
               <ScrollReveal key={tool} delay={i * 0.03}>
-                <span className="text-sm px-4 py-2 rounded-full bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50 border border-[#D4D0CA] dark:border-[#3A3836]">
+                <span className="text-sm px-4 py-2 rounded-full bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333]">
                   {tool}
                 </span>
               </ScrollReveal>
@@ -102,7 +102,7 @@ export default function About() {
           </div>
         </section>
 
-        <section className="mb-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826]">
+        <section className="mb-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
           <ScrollReveal>
             <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
               Capabilities
@@ -111,9 +111,9 @@ export default function About() {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {capabilities.map((cap, i) => (
               <ScrollReveal key={cap} delay={i * 0.05}>
-                <div className="p-4 rounded-xl bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50">
+                <div className="p-4 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50">
                   <p className="text-sm font-medium mb-1">{cap}</p>
-                  <p className="text-xs text-[#8A8680]">
+                  <p className="text-xs text-[#707072]">
                     {cap === "User Research" && "Uncover user needs to shape better decisions."}
                     {cap === "Wireframing" && "Visualize structure and key interactions."}
                     {cap === "Prototyping" && "Test ideas with realistic, interactive experiences."}
@@ -130,7 +130,7 @@ export default function About() {
           </div>
         </section>
 
-        <section className="pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826]">
+        <section className="pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
           <ScrollReveal>
             <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
               Recommendations
@@ -144,14 +144,14 @@ export default function About() {
           </div>
         </section>
 
-        <div className="mt-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826] text-center">
+        <div className="mt-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a] text-center">
           <ScrollReveal>
-            <p className="text-[#8A8680] mb-2">
+            <p className="text-[#707072] mb-2">
               Things I do beyond work
             </p>
             <Link
               href="/beyond"
-              className="text-sm text-[#2D2D2D] dark:text-[#F0EDE8] underline underline-offset-4 decoration-[#D4D0CA] dark:decoration-[#3A3836] hover:decoration-[#F4A259] transition-all"
+              className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all"
             >
               Explore &rarr;
             </Link>
@@ -173,9 +173,9 @@ function RecommendationCard({
 
   return (
     <ScrollReveal delay={index * 0.1}>
-      <div className="p-6 rounded-xl bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50">
+      <div className="p-6 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50">
         <div className="flex items-start gap-4 mb-4">
-          <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-[#D4D0CA] dark:bg-[#3A3836]">
+          <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-[#cacacb] dark:bg-[#333333]">
             <Image
               src={rec.avatar}
               alt={rec.name}
@@ -186,13 +186,13 @@ function RecommendationCard({
           </div>
           <div>
             <h3 className="text-sm font-semibold">{rec.name}</h3>
-            <p className="text-xs text-[#8A8680]">
+            <p className="text-xs text-[#707072]">
               {rec.role} &middot; {rec.company}
             </p>
           </div>
         </div>
         <div
-          className={`text-sm text-[#8A8680] leading-relaxed whitespace-pre-line ${
+          className={`text-sm text-[#707072] leading-relaxed whitespace-pre-line ${
             expanded ? "" : "line-clamp-3"
           }`}
         >
@@ -200,7 +200,7 @@ function RecommendationCard({
         </div>
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-xs text-[#F4A259] font-medium mt-2 hover:opacity-70 transition-opacity"
+          className="text-xs text-[#1151ff] font-medium mt-2 hover:opacity-70 transition-opacity"
         >
           {expanded ? "View less" : "View more"}
         </button>

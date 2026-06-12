@@ -9,7 +9,7 @@ export default function Work() {
     <div className="pt-28 pb-20">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
-          <span className="text-sm text-[#F4A259] font-medium">Portfolio</span>
+          <span className="text-sm text-[#1151ff] font-medium">Portfolio</span>
           <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mt-3 mb-12">
             Selected projects
           </h1>

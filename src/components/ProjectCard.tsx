@@ -19,7 +19,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
       <Link href={`/work/${project.slug}`} className="group block">
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#E8E4DE] dark:bg-[#2A2826] mb-4">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -33,32 +33,32 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2D2D2D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-            <span className="inline-block text-xs text-white bg-[#F4A259] px-3 py-1 rounded-full">
+            <span className="inline-block text-xs text-white bg-[#1151ff] px-3 py-1 rounded-full">
               View case study
             </span>
           </div>
         </div>
 
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-xs text-[#F4A259] font-medium uppercase tracking-wider">
+          <span className="text-xs text-[#1151ff] font-medium uppercase tracking-wider">
             {project.client}
           </span>
-          <span className="text-[#D4D0CA] dark:text-[#3A3836]">/</span>
-          <span className="text-xs text-[#8A8680]">{project.industry}</span>
+          <span className="text-[#cacacb] dark:text-[#333333]">/</span>
+          <span className="text-xs text-[#707072]">{project.industry}</span>
         </div>
 
         <h3 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-1.5">
           {project.title}
         </h3>
 
-        <p className="text-sm text-[#8A8680] leading-relaxed line-clamp-2">
+        <p className="text-sm text-[#707072] leading-relaxed line-clamp-2">
           {project.description}
         </p>
 
         {project.metric && (
-          <div className="mt-3 inline-block text-xs font-medium text-[#2D2D2D] dark:text-[#F0EDE8] bg-[#E8E4DE] dark:bg-[#2A2826] px-3 py-1 rounded-full">
+          <div className="mt-3 inline-block text-xs font-medium text-[#111111] dark:text-[#f5f5f5] bg-[#f5f5f5] dark:bg-[#151515] px-3 py-1 rounded-full">
             {project.metric.value} &mdash; {project.metric.label}
           </div>
         )}

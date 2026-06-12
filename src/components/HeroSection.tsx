@@ -34,7 +34,7 @@ export default function HeroSection() {
           >
             <motion.p
               variants={wordReveal}
-              className="text-sm text-[#F4A259] font-medium mb-4"
+              className="text-sm text-[#1151ff] font-medium mb-4"
             >
               {site.name} &mdash; {site.role}
             </motion.p>
@@ -53,7 +53,7 @@ export default function HeroSection() {
 
             <motion.p
               variants={wordReveal}
-              className="text-[#8A8680] dark:text-[#8A8680] mt-6 leading-relaxed max-w-md"
+              className="text-[#707072] dark:text-[#707072] mt-6 leading-relaxed max-w-md"
             >
               I help teams simplify workflows, scale products, and deliver
               real-world solutions through thoughtful, user-centered design.
@@ -65,21 +65,21 @@ export default function HeroSection() {
             >
               <a
                 href="/work"
-                className="inline-flex px-6 py-3 bg-[#2D2D2D] dark:bg-[#F0EDE8] text-[#FAF8F5] dark:text-[#1A1A1A] text-sm font-medium rounded-full hover:bg-[#F4A259] dark:hover:bg-[#F4A259] transition-colors"
+                className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors"
               >
                 View my work
               </a>
               <a
                 href={site.resume}
                 download
-                className="inline-flex px-6 py-3 text-sm font-medium rounded-full border border-[#D4D0CA] dark:border-[#3A3836] hover:border-[#2D2D2D] dark:hover:border-[#F0EDE8] transition-colors"
+                className="inline-flex px-6 py-3 text-sm font-medium rounded-full border border-[#cacacb] dark:border-[#333333] hover:border-[#111111] dark:hover:border-[#f5f5f5] transition-colors"
               >
                 Download resume
               </a>
             </motion.div>
           </motion.div>
 
-          <div className="relative aspect-square md:aspect-auto md:h-[500px] rounded-2xl overflow-hidden bg-[#E8E4DE] dark:bg-[#2A2826]">
+          <div className="relative aspect-square md:aspect-auto md:h-[500px] rounded-2xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515]">
             <ParticleCanvas />
           </div>
         </div>

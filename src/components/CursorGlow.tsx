@@ -17,7 +17,7 @@ export default function CursorGlow() {
         y: springY,
       }}
     >
-      <div className="w-[300px] h-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F4A259] opacity-[0.04] dark:opacity-[0.06]" />
+      <div className="w-[300px] h-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#1151ff] opacity-[0.04] dark:opacity-[0.06]" />
     </motion.div>
   );
 }

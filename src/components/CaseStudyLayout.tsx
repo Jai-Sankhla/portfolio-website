@@ -28,13 +28,13 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
       <div className="max-w-3xl mx-auto px-6">
         <Link
           href="/work"
-          className="text-sm text-[#8A8680] hover:text-[#2D2D2D] dark:hover:text-[#F0EDE8] transition-colors inline-flex items-center gap-1 mb-8"
+          className="text-sm text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors inline-flex items-center gap-1 mb-8"
         >
           &larr; Back to work
         </Link>
 
         <ScrollReveal>
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl bg-[#E8E4DE] dark:bg-[#2A2826] mb-8">
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-8">
             <Image
               src={caseStudy.coverImage}
               alt={caseStudy.title}
@@ -51,7 +51,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
             {caseStudy.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs text-[#8A8680] border border-[#D4D0CA] dark:border-[#3A3836] px-2.5 py-0.5 rounded-full"
+                className="text-xs text-[#707072] border border-[#cacacb] dark:border-[#333333] px-2.5 py-0.5 rounded-full"
               >
                 {tag}
               </span>
@@ -66,39 +66,39 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="text-[#8A8680] leading-relaxed mb-8">
+          <p className="text-[#707072] leading-relaxed mb-8">
             {caseStudy.description}
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.25}>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10 p-6 rounded-xl bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10 p-6 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50">
             <div>
-              <span className="text-xs text-[#8A8680] block mb-0.5">
+              <span className="text-xs text-[#707072] block mb-0.5">
                 Client
               </span>
               <span className="text-sm font-medium">{caseStudy.client}</span>
             </div>
             <div>
-              <span className="text-xs text-[#8A8680] block mb-0.5">
+              <span className="text-xs text-[#707072] block mb-0.5">
                 My Role
               </span>
               <span className="text-sm font-medium">{caseStudy.role}</span>
             </div>
             <div>
-              <span className="text-xs text-[#8A8680] block mb-0.5">
+              <span className="text-xs text-[#707072] block mb-0.5">
                 Industry
               </span>
               <span className="text-sm font-medium">{caseStudy.industry}</span>
             </div>
             <div>
-              <span className="text-xs text-[#8A8680] block mb-0.5">
+              <span className="text-xs text-[#707072] block mb-0.5">
                 Platform
               </span>
               <span className="text-sm font-medium">{caseStudy.platform}</span>
             </div>
             <div>
-              <span className="text-xs text-[#8A8680] block mb-0.5">
+              <span className="text-xs text-[#707072] block mb-0.5">
                 Timeline
               </span>
               <span className="text-sm font-medium">{caseStudy.timeline}</span>
@@ -108,11 +108,11 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
 
         {caseStudy.metric && (
           <ScrollReveal delay={0.3}>
-            <div className="mb-10 p-8 rounded-xl bg-[#F4A259]/10 dark:bg-[#F4A259]/5 border border-[#F4A259]/20">
-              <p className="text-xs text-[#8A8680] mb-2">
+            <div className="mb-10 p-8 rounded-xl bg-[#1151ff]/10 dark:bg-[#1151ff]/5 border border-[#1151ff]/20">
+              <p className="text-xs text-[#707072] mb-2">
                 Key Impact
               </p>
-              <p className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-bold text-[#F4A259]">
+              <p className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-bold text-[#1151ff]">
                 {isNumericMetric ? (
                   <>
                     <AnimatedCounter to={metricValue} />
@@ -122,7 +122,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
                   caseStudy.metric.value
                 )}
               </p>
-              <p className="text-sm text-[#8A8680] mt-1">
+              <p className="text-sm text-[#707072] mt-1">
                 {caseStudy.metric.label}
               </p>
             </div>
@@ -148,7 +148,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           ))}
         </div>
 
-        <div className="mt-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826]">
+        <div className="mt-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
           <div className="flex justify-between items-center">
             <div>
               {prev && (
@@ -156,10 +156,10 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
                   href={`/work/${prev.slug}`}
                   className="group text-left"
                 >
-                  <span className="text-xs text-[#8A8680]">
+                  <span className="text-xs text-[#707072]">
                     Previous project
                   </span>
-                  <p className="text-sm font-medium group-hover:text-[#F4A259] transition-colors">
+                  <p className="text-sm font-medium group-hover:text-[#1151ff] transition-colors">
                     {prev.title}
                   </p>
                 </Link>
@@ -171,10 +171,10 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
                   href={`/work/${next.slug}`}
                   className="group text-right"
                 >
-                  <span className="text-xs text-[#8A8680]">
+                  <span className="text-xs text-[#707072]">
                     Next project
                   </span>
-                  <p className="text-sm font-medium group-hover:text-[#F4A259] transition-colors">
+                  <p className="text-sm font-medium group-hover:text-[#1151ff] transition-colors">
                     {next.title}
                   </p>
                 </Link>
@@ -183,13 +183,13 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           </div>
         </div>
 
-        <div className="mt-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826] text-center">
-          <p className="text-[#8A8680] mb-4">
+        <div className="mt-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a] text-center">
+          <p className="text-[#707072] mb-4">
             Interested in working together?
           </p>
           <a
             href={`mailto:${site.email}`}
-            className="inline-flex px-6 py-3 bg-[#2D2D2D] dark:bg-[#F0EDE8] text-[#FAF8F5] dark:text-[#1A1A1A] text-sm font-medium rounded-full hover:bg-[#F4A259] dark:hover:bg-[#F4A259] transition-colors"
+            className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors"
           >
             Get in touch
           </a>
@@ -202,12 +202,12 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
 function SectionRenderer({ item }: { item: CaseStudySection }) {
   switch (item.type) {
     case "text":
-      return <p className="text-[#8A8680] leading-relaxed">{item.content}</p>;
+      return <p className="text-[#707072] leading-relaxed">{item.content}</p>;
 
     case "image":
       return (
         <div>
-          <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#E8E4DE] dark:bg-[#2A2826]">
+          <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
             <Image
               src={item.image!.src}
               alt={item.image!.alt}
@@ -217,7 +217,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
             />
           </div>
           {item.image?.caption && (
-            <p className="text-xs text-[#8A8680] mt-2 leading-relaxed">
+            <p className="text-xs text-[#707072] mt-2 leading-relaxed">
               {item.image.caption}
             </p>
           )}
@@ -229,7 +229,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
         <div className="space-y-4">
           {item.images?.map((img, k) => (
             <div key={k}>
-              <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#E8E4DE] dark:bg-[#2A2826]">
+              <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -239,7 +239,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
                 />
               </div>
               {img.caption && (
-                <p className="text-xs text-[#8A8680] mt-2 leading-relaxed">
+                <p className="text-xs text-[#707072] mt-2 leading-relaxed">
                   {img.caption}
                 </p>
               )}
@@ -250,12 +250,12 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
 
     case "quote":
       return (
-        <blockquote className="border-l-2 border-[#F4A259] pl-5">
-          <p className="text-[#2D2D2D] dark:text-[#F0EDE8] italic leading-relaxed">
+        <blockquote className="border-l-2 border-[#1151ff] pl-5">
+          <p className="text-[#111111] dark:text-[#f5f5f5] italic leading-relaxed">
             {item.quote}
           </p>
           {item.author && (
-            <footer className="text-sm text-[#8A8680] mt-2">
+            <footer className="text-sm text-[#707072] mt-2">
               &mdash; {item.author}
             </footer>
           )}
@@ -268,12 +268,12 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
           {item.metrics?.map((m, k) => (
             <div
               key={k}
-              className="p-5 rounded-xl bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50"
+              className="p-5 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50"
             >
               <p className="text-xl md:text-2xl font-[family-name:var(--font-display)] font-bold">
                 {m.value}
               </p>
-              <p className="text-xs text-[#8A8680] mt-1">{m.label}</p>
+              <p className="text-xs text-[#707072] mt-1">{m.label}</p>
             </div>
           ))}
         </div>
@@ -281,7 +281,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
 
     case "embed":
       return (
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#E8E4DE] dark:bg-[#2A2826]">
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
           <iframe
             src={item.embed!.url}
             title={item.embed!.title}

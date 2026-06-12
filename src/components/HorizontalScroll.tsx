@@ -23,7 +23,7 @@ export default function HorizontalScroll() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm text-[#8A8680] mb-8"
+            className="text-sm text-[#707072] mb-8"
           >
             Selected work
           </motion.p>

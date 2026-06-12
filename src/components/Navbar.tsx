@@ -30,7 +30,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#FAF8F5]/80 dark:bg-[#1A1A1A]/80 backdrop-blur-md shadow-sm"
+          ? "bg-[#ffffff]/80 dark:bg-[#000000]/80 backdrop-blur-md shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -49,8 +49,8 @@ export default function Navbar() {
               href={link.href}
               className={`text-sm transition-colors ${
                 pathname === link.href
-                  ? "text-[#2D2D2D] dark:text-[#F0EDE8] font-medium"
-                  : "text-[#8A8680] dark:text-[#8A8680] hover:text-[#2D2D2D] dark:hover:text-[#F0EDE8]"
+                  ? "text-[#111111] dark:text-[#f5f5f5] font-medium"
+                  : "text-[#707072] dark:text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
               }`}
             >
               {link.label}
@@ -61,7 +61,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-[#2D2D2D] dark:text-[#F0EDE8] transition-colors"
+          className="md:hidden text-[#111111] dark:text-[#f5f5f5] transition-colors"
           aria-label="Menu"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -75,7 +75,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-[#FAF8F5] dark:bg-[#1A1A1A] border-t border-[#E8E4DE] dark:border-[#2A2826]"
+            className="md:hidden bg-[#ffffff] dark:bg-[#000000] border-t border-[#f5f5f5] dark:border-[#2a2a2a]"
           >
             <div className="px-6 py-4 flex flex-col gap-2">
               {site.nav.map((link) => (
@@ -84,8 +84,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`px-4 py-3 text-sm rounded-lg transition-colors ${
                     pathname === link.href
-                      ? "bg-[#E8E4DE] dark:bg-[#2A2826] text-[#2D2D2D] dark:text-[#F0EDE8] font-medium"
-                      : "text-[#8A8680] hover:text-[#2D2D2D] dark:hover:text-[#F0EDE8]"
+                      ? "bg-[#f5f5f5] dark:bg-[#151515] text-[#111111] dark:text-[#f5f5f5] font-medium"
+                      : "text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
                   }`}
                 >
                   {link.label}

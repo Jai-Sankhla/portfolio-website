@@ -5,9 +5,9 @@ import { site } from "@/data/site";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#E8E4DE] dark:border-[#2A2826] py-8">
+    <footer className="border-t border-[#f5f5f5] dark:border-[#2a2a2a] py-8">
       <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-[#8A8680]">
+        <p className="text-sm text-[#707072]">
           &copy; {new Date().getFullYear()} {site.name}
         </p>
         <div className="flex items-center gap-6">
@@ -15,7 +15,7 @@ export default function Footer() {
             href={site.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-[#8A8680] hover:text-[#2D2D2D] dark:hover:text-[#F0EDE8] transition-colors"
+            className="text-sm text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors"
           >
             LinkedIn
           </a>
@@ -23,13 +23,13 @@ export default function Footer() {
             href={site.social.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-[#8A8680] hover:text-[#2D2D2D] dark:hover:text-[#F0EDE8] transition-colors"
+            className="text-sm text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors"
           >
             X / Twitter
           </a>
           <Link
             href="/contact"
-            className="text-sm text-[#2D2D2D] dark:text-[#F0EDE8] underline underline-offset-4 decoration-[#D4D0CA] dark:decoration-[#3A3836] hover:decoration-[#F4A259] transition-all"
+            className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all"
           >
             Get in touch
           </Link>
