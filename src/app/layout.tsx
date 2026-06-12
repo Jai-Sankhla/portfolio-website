@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter } from "next/font/google";
+import { DM_Sans, Inter, Fragment_Mono } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -16,31 +16,31 @@ const inter = Inter({
   display: "swap",
 });
 
+const fragmentMono = Fragment_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-fragment-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://jaisankhla.dev"),
-  title: "Jai Sankhla — Product Designer & UI/UX Specialist",
+  title: "Jai Sankhla — Product Designer",
   description:
-    "University Gold Medalist Product Designer crafting enterprise-grade digital experiences. Expert in UX strategy, design systems, and conversion optimization.",
-  keywords: [
-    "Product Designer", "UI/UX Designer", "Jai Sankhla",
-    "Portfolio", "Design System", "UX Strategy",
-    "Fintech Design", "E-commerce Design", "Indian Designer",
-  ],
-  authors: [{ name: "Jai Sankhla" }],
-  creator: "Jai Sankhla",
+    "UX/Product Designer specializing in building complex products.",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://jaisankhla.dev",
     siteName: "Jai Sankhla",
-    title: "Jai Sankhla — Product Designer & UI/UX Specialist",
+    title: "Jai Sankhla — Product Designer",
     description:
-      "University Gold Medalist Product Designer crafting enterprise-grade digital experiences.",
+      "UX/Product Designer specializing in building complex products.",
     images: [
       {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/images/avatar.jpg",
+        width: 800,
+        height: 800,
         alt: "Jai Sankhla — Product Designer",
       },
     ],
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jai Sankhla — Product Designer",
     description:
-      "University Gold Medalist Product Designer crafting enterprise-grade digital experiences.",
-    images: ["/images/og-image.jpg"],
+      "UX/Product Designer specializing in building complex products.",
+    images: ["/images/avatar.jpg"],
   },
   robots: {
     index: true,
@@ -68,7 +68,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${dmSans.variable} ${inter.variable}`}
+      className={`${dmSans.variable} ${inter.variable} ${fragmentMono.variable}`}
     >
       <body className="min-h-screen antialiased" suppressHydrationWarning>
         {children}

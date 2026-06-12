@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies, getCaseStudy } from "@/data/case-studies";
-import CaseStudyLayout from "@/components/CaseStudyLayout";
+import ProjectLayout from "@/components/ProjectLayout";
 
 export async function generateStaticParams() {
   return caseStudies.map((cs) => ({ slug: cs.slug }));
@@ -42,5 +42,5 @@ export default async function Page({
     notFound();
   }
 
-  return <CaseStudyLayout caseStudy={caseStudy} />;
+  return <ProjectLayout caseStudy={caseStudy} />;
 }
