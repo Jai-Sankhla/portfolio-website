@@ -207,13 +207,14 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
     case "image":
       return (
         <div>
-          <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+          <div className="w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
             <Image
               src={item.image!.src}
               alt={item.image!.alt}
-              fill
-              className="object-cover"
+              width={0}
+              height={0}
               sizes="(max-width: 768px) 100vw, 768px"
+              className="w-full h-auto rounded-lg"
             />
           </div>
           {item.image?.caption && (
@@ -229,13 +230,14 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
         <div className="space-y-4">
           {item.images?.map((img, k) => (
             <div key={k}>
-              <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+              <div className="w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
                 <Image
                   src={img.src}
                   alt={img.alt}
-                  fill
-                  className="object-cover"
+                  width={0}
+                  height={0}
                   sizes="(max-width: 768px) 100vw, 768px"
+                  className="w-full h-auto rounded-lg"
                 />
               </div>
               {img.caption && (
