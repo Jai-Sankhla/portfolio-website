@@ -34,13 +34,14 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
         </Link>
 
         <ScrollReveal>
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-8">
+          <div className="w-full overflow-hidden rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-8">
             <Image
               src={caseStudy.coverImage}
               alt={caseStudy.title}
-              fill
-              className="object-cover"
+              width={0}
+              height={0}
               sizes="(max-width: 768px) 100vw, 768px"
+              className="w-full h-auto rounded-xl"
               priority
             />
           </div>

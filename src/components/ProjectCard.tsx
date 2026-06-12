@@ -19,22 +19,22 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
       <Link href={`/work/${project.slug}`} className="group block">
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-4">
+        <div className="relative w-full overflow-hidden rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full h-full"
           >
             <Image
               src={project.coverImage}
               alt={project.title}
-              fill
-              className="object-cover brightness-[0.95] group-hover:brightness-100 transition-all duration-500"
+              width={0}
+              height={0}
+              className="w-full h-auto brightness-[0.95] group-hover:brightness-100 transition-all duration-500"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
             <span className="inline-block text-xs text-white bg-[#1151ff] px-3 py-1 rounded-full">
               View case study
             </span>
