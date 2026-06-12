@@ -3,172 +3,162 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
+import Timeline from "@/components/Timeline";
 import { recommendations } from "@/data/recommendations";
+import { site } from "@/data/site";
 
-const timeline = [
-  {
-    period: "2024",
-    items: [
-      "Lead UI/UX Designer at Sierra Living Concepts",
-      "Redesigned e-commerce platform achieving +120% ad-to-purchase conversion",
-    ],
-  },
-  {
-    period: "2023",
-    items: [
-      "Product Designer Intern at Nirva Health",
-      "Built gamification system driving 2x daily engagement",
-    ],
-  },
-  {
-    period: "2022",
-    items: [
-      "Product Designer (Cohort 6) at 10kdesigners",
-      "Designed Budgify end-to-end for expense tracking",
-    ],
-  },
-  {
-    period: "2021 - 2020",
-    items: [
-      "Graphic Designer at Caffena Coffee & Saimex Group",
-      "Gold Medalist in Interior Design — graduated top of class",
-    ],
-  },
-];
-
-const toolkit = [
+const tools = [
   "Figma", "Miro", "Photoshop", "Notion", "Framer",
   "Marvel", "Lovable", "Jitter", "Whimsical", "Uizard",
   "Maze", "Hotjar", "FigJam", "Replit",
 ];
 
 const capabilities = [
-  "User Research", "Wireframing", "Prototyping", "Design System",
-  "Information Architecture", "Responsive Design", "UX Strategy",
-  "Conversion Optimization", "Visual Design",
+  "User Research",
+  "Wireframing",
+  "Prototyping",
+  "Design System",
+  "Information Architecture",
+  "Responsive Design",
+  "UX Strategy",
+  "Conversion Optimization",
+  "Visual Design",
 ];
 
 export default function About() {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText("jaisankhla0771@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
-    <>
-      <Navbar />
-      <main className="pt-28 pb-20">
-        <div className="max-w-[640px] mx-auto px-6">
-          <h1 className="text-xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-black mb-6">
-            Jai Sankhla
+    <div className="pt-28 pb-20">
+      <div className="max-w-3xl mx-auto px-6">
+        <ScrollReveal>
+          <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
+            About me
           </h1>
+        </ScrollReveal>
 
-          <p className="text-sm text-[#888] leading-relaxed mb-6">
-            I&apos;m a multidisciplinary Product Designer based in India, specializing in UX and creating impactful, user-centered experiences. With a background in interior design and digital design, I balance form and function while bringing a unique perspective to every project.
-          </p>
+        <div className="grid md:grid-cols-[240px_1fr] gap-8 mb-12">
+          <ScrollReveal delay={0.1}>
+            <div className="relative aspect-square w-full max-w-[240px] rounded-xl overflow-hidden bg-[#E8E4DE] dark:bg-[#2A2826]">
+              <Image
+                src="/images/avatar.jpg"
+                alt={site.name}
+                fill
+                className="object-cover"
+                sizes="240px"
+              />
+            </div>
+          </ScrollReveal>
 
-          <p className="text-sm text-[#888] leading-relaxed mb-6">
-            Though UX is my primary focus, my practice goes <Link href="/beyond" className="underline underline-offset-4 decoration-[#dcdcdc] hover:decoration-black transition-all">beyond</Link> the screens to working with strategy and systems thinking.
-          </p>
-
-          <div className="mb-12">
-            <p className="text-sm text-[#888] mb-2">
-              Feel free to email me @, jaisankhla0771@gmail.com
-            </p>
-            <button
-              onClick={copyEmail}
-              className="text-sm text-black underline underline-offset-4 decoration-[#dcdcdc] hover:decoration-black transition-all"
-            >
-              {copied ? "Copied to Clipboard" : "Copy to Clipboard"}
-            </button>
-            <span className="text-[#dcdcdc] mx-3">|</span>
-            <a
-              href="https://www.linkedin.com/in/jaisankhla"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-black underline underline-offset-4 decoration-[#dcdcdc] hover:decoration-black transition-all"
-            >
-              LinkedIn
-            </a>
+          <div>
+            <ScrollReveal delay={0.15}>
+              <p className="text-[#8A8680] leading-relaxed mb-4">
+                I&apos;m a Product Designer based in India, specializing in
+                creating impactful, user-centered experiences. With a background
+                in interior design and digital design, I balance form and
+                function while bringing a unique perspective to every project.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <p className="text-[#8A8680] leading-relaxed mb-4">
+                Though UX is my primary focus, my practice goes beyond the
+                screens — exploring strategy, systems thinking, and physical
+                spaces.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.25}>
+              <a
+                href={`mailto:${site.email}`}
+                className="text-sm text-[#2D2D2D] dark:text-[#F0EDE8] underline underline-offset-4 decoration-[#D4D0CA] dark:decoration-[#3A3836] hover:decoration-[#F4A259] transition-all"
+              >
+                {site.email}
+              </a>
+            </ScrollReveal>
           </div>
+        </div>
 
-          <section className="mb-12 pt-12 border-t border-[#f0f0f0]">
-            <h2 className="text-sm text-[#888] mb-8">my journey</h2>
-            {timeline.map((entry) => (
-              <div key={entry.period} className="mb-8 last:mb-0">
-                <p className="text-sm text-black font-semibold mb-3">
-                  {entry.period}
-                </p>
-                <ul className="space-y-1.5">
-                  {entry.items.map((item, i) => (
-                    <li key={i} className="text-sm text-[#888]">
-                      {i === 0 ? (
-                        <span className="text-black font-medium">{item}</span>
-                      ) : (
-                        item
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </section>
+        <section className="mb-16">
+          <ScrollReveal>
+            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
+              Experience
+            </h2>
+          </ScrollReveal>
+          <Timeline />
+        </section>
 
-          <section className="mb-12 pt-12 border-t border-[#f0f0f0]">
-            <h2 className="text-sm text-[#888] mb-6">my design toolkit</h2>
-            <div className="flex flex-wrap gap-3">
-              {toolkit.map((tool) => (
-                <span
-                  key={tool}
-                  className="text-sm text-black bg-[#fafafa] border border-[#f0f0f0] px-3 py-1.5 rounded-sm"
-                >
+        <section className="mb-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826]">
+          <ScrollReveal>
+            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
+              Tools &amp; toolkit
+            </h2>
+          </ScrollReveal>
+          <div className="flex flex-wrap gap-3">
+            {tools.map((tool, i) => (
+              <ScrollReveal key={tool} delay={i * 0.03}>
+                <span className="text-sm px-4 py-2 rounded-full bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50 border border-[#D4D0CA] dark:border-[#3A3836]">
                   {tool}
                 </span>
-              ))}
-            </div>
-          </section>
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
 
-          <section className="mb-12 pt-12 border-t border-[#f0f0f0]">
-            <h2 className="text-sm text-[#888] mb-6">capabilities</h2>
-            <div className="space-y-6">
-              {capabilities.map((cap) => (
-                <div key={cap}>
-                  <h3 className="text-sm text-black font-medium mb-1">
-                    {cap}
-                  </h3>
-                  <p className="text-sm text-[#888]">
-                    {cap === "User Research" && "Discover what your users need to shape better design decisions."}
-                    {cap === "Wireframing" && "Visualize the product's structure & key interactions before handoff."}
-                    {cap === "Prototyping" && "Test ideas for real & live experience with actual interactions."}
-                    {cap === "Design System" && "Build a unified design language for consistency and efficiency."}
-                    {cap === "Information Architecture" && "Organize content so users can find what they need effortlessly."}
-                    {cap === "Responsive Design" && "Ensure your product looks and works great on any device."}
-                    {cap === "UX Strategy" && "Align design decisions with business goals and user needs."}
-                    {cap === "Conversion Optimization" && "Design data-driven interfaces that improve key metrics."}
-                    {cap === "Visual Design" && "Create polished, engaging interfaces with strong visual hierarchy."}
+        <section className="mb-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826]">
+          <ScrollReveal>
+            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
+              Capabilities
+            </h2>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {capabilities.map((cap, i) => (
+              <ScrollReveal key={cap} delay={i * 0.05}>
+                <div className="p-4 rounded-xl bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50">
+                  <p className="text-sm font-medium mb-1">{cap}</p>
+                  <p className="text-xs text-[#8A8680]">
+                    {cap === "User Research" && "Uncover user needs to shape better decisions."}
+                    {cap === "Wireframing" && "Visualize structure and key interactions."}
+                    {cap === "Prototyping" && "Test ideas with realistic, interactive experiences."}
+                    {cap === "Design System" && "Build unified languages for consistency."}
+                    {cap === "Information Architecture" && "Organize content for effortless findability."}
+                    {cap === "Responsive Design" && "Ensure quality across every device."}
+                    {cap === "UX Strategy" && "Align design with business goals and user needs."}
+                    {cap === "Conversion Optimization" && "Design data-driven interfaces that perform."}
+                    {cap === "Visual Design" && "Create polished, engaging interfaces."}
                   </p>
                 </div>
-              ))}
-            </div>
-          </section>
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
 
-          <section className="pt-12 border-t border-[#f0f0f0]">
-            <h2 className="text-sm text-[#888] mb-8">recommendations</h2>
-            <div className="space-y-8">
-              {recommendations.map((rec, i) => (
-                <RecommendationCard key={rec.name} rec={rec} index={i} />
-              ))}
-            </div>
-          </section>
+        <section className="pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826]">
+          <ScrollReveal>
+            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
+              Recommendations
+            </h2>
+          </ScrollReveal>
+
+          <div className="space-y-8">
+            {recommendations.map((rec, i) => (
+              <RecommendationCard key={rec.name} rec={rec} index={i} />
+            ))}
+          </div>
+        </section>
+
+        <div className="mt-16 pt-12 border-t border-[#E8E4DE] dark:border-[#2A2826] text-center">
+          <ScrollReveal>
+            <p className="text-[#8A8680] mb-2">
+              Things I do beyond work
+            </p>
+            <Link
+              href="/beyond"
+              className="text-sm text-[#2D2D2D] dark:text-[#F0EDE8] underline underline-offset-4 decoration-[#D4D0CA] dark:decoration-[#3A3836] hover:decoration-[#F4A259] transition-all"
+            >
+              Explore &rarr;
+            </Link>
+          </ScrollReveal>
         </div>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </div>
   );
 }
 
@@ -176,43 +166,45 @@ function RecommendationCard({
   rec,
   index,
 }: {
-  rec: (typeof recommendations)[0];
+  rec: { name: string; company: string; role: string; avatar: string; text: string };
   index: number;
 }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div>
-      <div className="flex items-start gap-3 mb-3">
-        <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-[#fafafa]">
-          <Image
-            src={rec.avatar}
-            alt={rec.name}
-            width={40}
-            height={40}
-            className="w-full h-full object-cover"
-          />
+    <ScrollReveal delay={index * 0.1}>
+      <div className="p-6 rounded-xl bg-[#E8E4DE]/50 dark:bg-[#2A2826]/50">
+        <div className="flex items-start gap-4 mb-4">
+          <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-[#D4D0CA] dark:bg-[#3A3836]">
+            <Image
+              src={rec.avatar}
+              alt={rec.name}
+              width={48}
+              height={48}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">{rec.name}</h3>
+            <p className="text-xs text-[#8A8680]">
+              {rec.role} &middot; {rec.company}
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 className="text-sm text-black font-semibold">{rec.name}</h3>
-          <p className="text-xs text-[#888]">
-            {rec.role} &middot; {rec.company}
-          </p>
+        <div
+          className={`text-sm text-[#8A8680] leading-relaxed whitespace-pre-line ${
+            expanded ? "" : "line-clamp-3"
+          }`}
+        >
+          {rec.text}
         </div>
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-xs text-[#F4A259] font-medium mt-2 hover:opacity-70 transition-opacity"
+        >
+          {expanded ? "View less" : "View more"}
+        </button>
       </div>
-      <div
-        className={`text-sm text-[#888] leading-relaxed whitespace-pre-line ${
-          expanded ? "" : "line-clamp-3"
-        }`}
-      >
-        {rec.text}
-      </div>
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="text-xs text-black underline underline-offset-4 decoration-[#dcdcdc] hover:decoration-black transition-all mt-1.5"
-      >
-        {expanded ? "View less" : "View more"}
-      </button>
-    </div>
+    </ScrollReveal>
   );
 }

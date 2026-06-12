@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-black: #000000;
-  --color-dark: #2f2f2f;
-  --color-gray: #888888;
-  --color-gray-light: #dcdcdc;
-  --color-gray-lighter: #f0f0f0;
-  --color-off-white: #fafafa;
-  --color-white: #ffffff;
-  --color-green: #7CC362;
-  --color-warm-50: #f8f6f2;
-  --color-warm-100: #f0ece4;
-  --color-warm-200: #e1d8c7;
-  --color-warm-300: #cdbea4;
+  --color-charcoal: #2D2D2D;
+  --color-charcoal-dark: #1A1A1A;
+  --color-saffron: #F4A259;
+  --color-saffron-light: #F7B87A;
+  --color-saffron-dark: #E08A3A;
+  --color-off-white: #FAF8F5;
+  --color-warm-white: #F0EDE8;
+  --color-stone: #E8E4DE;
+  --color-stone-dark: #2A2826;
+  --color-gray-light: #D4D0CA;
+  --color-gray-mid: #8A8680;
+  --color-gray-dark: #5A5650;
   --font-sans: "Inter", sans-serif;
   --font-display: "DM Sans", sans-serif;
-  --font-mono: "Fragment Mono", monospace;
 }
 
 @layer base {
@@ -24,31 +23,31 @@
   }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
+    scroll-padding-top: 80px;
   }
   ::selection {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--color-saffron);
+    color: var(--color-charcoal-dark);
   }
   body {
-    background-color: var(--color-white);
-    color: var(--color-dark);
+    background-color: var(--color-off-white);
+    color: var(--color-charcoal);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 15px;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .dark body,
+  body.dark {
+    background-color: var(--color-charcoal-dark);
+    color: var(--color-warm-white);
   }
 }
 
 @layer utilities {
-  .link-underline {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: var(--color-gray-light);
-    transition: text-decoration-color 0.2s;
-  }
-  .link-underline:hover {
-    text-decoration-color: var(--color-dark);
+  .text-balance {
+    text-wrap: balance;
   }
 }
