@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import ProjectCard from "@/components/ProjectCard";
 import { caseStudies } from "@/data/case-studies";
 
@@ -18,15 +19,21 @@ export default function HorizontalScroll() {
     <section ref={containerRef} className="relative h-[300vh]">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 w-full">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm text-[#707072] mb-8"
+            className="flex justify-end mb-8"
           >
-            Selected work
-          </motion.p>
+            <motion.span
+              animate={{ x: [0, 6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="text-[#9e9ea0]"
+            >
+              <ArrowRight size={20} />
+            </motion.span>
+          </motion.div>
         </div>
 
         <motion.div
