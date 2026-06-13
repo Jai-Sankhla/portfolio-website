@@ -13,27 +13,10 @@ export default function HorizontalScroll() {
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
-  const dotX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section ref={containerRef} className="relative h-[300vh]">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 w-full">
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex justify-end mb-8"
-          >
-            <div className="relative w-14 h-px bg-[#cacacb] dark:bg-[#333333]">
-              <motion.div
-                className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 w-2 h-2 rounded-full bg-[#111111] dark:bg-[#f5f5f5]"
-                style={{ left: dotX }}
-              />
-            </div>
-          </motion.div>
-        </div>
 
         <motion.div
           style={{ x }}
