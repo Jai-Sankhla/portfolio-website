@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
+import GhostMonogram from "@/components/GhostMonogram";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           <CursorGlow />
+          <GhostMonogram />
           <main>{children}</main>
           <Footer />
         </ThemeProvider>
