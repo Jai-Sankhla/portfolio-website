@@ -5,7 +5,8 @@ import { motion, useScroll, useSpring, useMotionValue } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
 
 export default function GhostMonogram() {
-  const mousePosRef = useRef({ x: 0, y: 0 });
+  const mousePosRef = useRef({ x: -1000, y: -1000 });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
@@ -19,17 +20,32 @@ export default function GhostMonogram() {
   const springSX = useSpring(sMX, { stiffness: 60, damping: 15 });
   const springSY = useSpring(sMY, { stiffness: 60, damping: 15 });
 
-  const spotX = useMotionValue(-500);
-  const spotY = useMotionValue(-500);
-  const springSpotX = useSpring(spotX, { stiffness: 120, damping: 18 });
-  const springSpotY = useSpring(spotY, { stiffness: 120, damping: 18 });
-
   useEffect(() => {
     const onMouse = (e: MouseEvent) => {
       mousePosRef.current = { x: e.clientX, y: e.clientY };
     };
     window.addEventListener("mousemove", onMouse, { passive: true });
     return () => window.removeEventListener("mousemove", onMouse);
+  }, []);
+
+  // Canvas resize for DPR
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const resize = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      const ctx = canvas.getContext("2d");
+      if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, []);
 
   useEffect(() => {
@@ -79,47 +95,77 @@ export default function GhostMonogram() {
       sMX.set(sFinal.x);
       sMY.set(sFinal.y);
 
-      spotX.set(mx);
-      spotY.set(my);
+      // Canvas grid drawing
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          const cellSize = 80;
+          const currentIsDark = theme === "dark";
+          const lineColor = currentIsDark ? "rgba(51, 51, 51, 0.25)" : "rgba(202, 202, 203, 0.35)";
+
+          ctx.clearRect(0, 0, w, h);
+
+          // Draw cell highlights under cursor
+          if (mx >= 0 && my >= 0) {
+            const col = Math.floor(mx / cellSize);
+            const row = Math.floor(my / cellSize);
+            const glowRadius = 2;
+
+            for (let r = row - glowRadius; r <= row + glowRadius; r++) {
+              for (let c = col - glowRadius; c <= col + glowRadius; c++) {
+                const cx = c * cellSize;
+                const cy = r * cellSize;
+                const dist = Math.sqrt((c - col) ** 2 + (r - row) ** 2);
+                if (dist > glowRadius) continue;
+                const opacity = (1 - dist / glowRadius);
+                ctx.fillStyle = `rgba(17, 81, 255, ${opacity * 0.15})`;
+                ctx.fillRect(cx, cy, cellSize, cellSize);
+              }
+            }
+          }
+
+          // Draw grid lines
+          ctx.strokeStyle = lineColor;
+          ctx.lineWidth = 1;
+
+          for (let x = 0; x <= w; x += cellSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, h);
+            ctx.stroke();
+          }
+
+          for (let y = 0; y <= h; y += cellSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(w, y);
+            ctx.stroke();
+          }
+        }
+      }
 
       rafId = requestAnimationFrame(tick);
     };
 
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, []);
+  }, [theme]);
 
   const isDark = theme === "dark";
   const textColor = isDark ? "rgba(245, 245, 245, 0.055)" : "rgba(17, 17, 17, 0.02)";
-  const gridColor = isDark ? "rgba(51, 51, 51, 0.20)" : "rgba(202, 202, 203, 0.30)";
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1] hidden md:block overflow-hidden">
-      <div
-        className="absolute top-0 left-0 right-0"
+      <canvas
+        ref={canvasRef}
+        className="absolute top-0 left-0 w-full"
         style={{
           height: "100vh",
-          backgroundImage: `
-            repeating-linear-gradient(0deg, transparent, transparent 79px, ${gridColor} 79px, ${gridColor} 80px),
-            repeating-linear-gradient(90deg, transparent, transparent 79px, ${gridColor} 79px, ${gridColor} 80px)
-          `,
-          backgroundSize: "80px 80px",
           WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent)",
           maskImage: "linear-gradient(to bottom, black 60%, transparent)",
-        }}
-      />
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          width: 300,
-          height: 300,
-          borderRadius: "50%",
-          left: springSpotX,
-          top: springSpotY,
-          transform: "translate(-50%, -50%)",
-          background: `radial-gradient(circle, ${
-            isDark ? "rgba(17, 81, 255, 0.12)" : "rgba(17, 81, 255, 0.08)"
-          } 0%, transparent 70%)`,
         }}
       />
       <motion.div
