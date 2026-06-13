@@ -88,13 +88,16 @@ export default function GhostMonogram() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1] hidden md:block overflow-hidden">
       <div
-        className="absolute inset-0"
+        className="absolute top-0 left-0 right-0"
         style={{
+          height: "100vh",
           backgroundImage: `
-            repeating-linear-gradient(0deg, transparent, transparent 39px, ${gridColor} 39px, ${gridColor} 40px),
-            repeating-linear-gradient(90deg, transparent, transparent 39px, ${gridColor} 39px, ${gridColor} 40px)
+            repeating-linear-gradient(0deg, transparent, transparent 79px, ${gridColor} 79px, ${gridColor} 80px),
+            repeating-linear-gradient(90deg, transparent, transparent 79px, ${gridColor} 79px, ${gridColor} 80px)
           `,
-          backgroundSize: "40px 40px",
+          backgroundSize: "80px 80px",
+          WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent)",
+          maskImage: "linear-gradient(to bottom, black 60%, transparent)",
         }}
       />
       <motion.div
