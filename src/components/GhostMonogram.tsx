@@ -82,7 +82,7 @@ export default function GhostMonogram() {
   }, []);
 
   const isDark = theme === "dark";
-  const textColor = isDark ? "rgba(17, 81, 255, 0.06)" : "rgba(17, 17, 17, 0.02)";
+  const textColor = isDark ? "rgba(245, 245, 245, 0.65)" : "rgba(17, 17, 17, 0.02)";
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1] hidden md:block overflow-hidden">
