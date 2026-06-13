@@ -13,6 +13,7 @@ export default function HorizontalScroll() {
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
+  const dotX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section ref={containerRef} className="relative h-[300vh]">
@@ -25,16 +26,11 @@ export default function HorizontalScroll() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="flex justify-end mb-8"
           >
-            <div className="flex items-center gap-3 text-[#9e9ea0]">
-              <span className="w-6 h-px bg-[#9e9ea0]" />
-              <motion.span
-                animate={{ rotate: [0, 90, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="text-sm"
-              >
-                ◆
-              </motion.span>
-              <span className="text-xs font-medium tracking-wider">02</span>
+            <div className="relative w-14 h-px bg-[#cacacb] dark:bg-[#333333]">
+              <motion.div
+                className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 w-2 h-2 rounded-full bg-[#111111] dark:bg-[#f5f5f5]"
+                style={{ left: dotX }}
+              />
             </div>
           </motion.div>
         </div>
