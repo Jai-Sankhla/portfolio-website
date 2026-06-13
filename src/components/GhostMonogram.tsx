@@ -7,7 +7,6 @@ import { useTheme } from "@/components/ThemeProvider";
 export default function GhostMonogram() {
   const mousePosRef = useRef({ x: -1000, y: -1000 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const trailRef = useRef<{ col: number; row: number }[]>([]);
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
@@ -109,26 +108,32 @@ export default function GhostMonogram() {
 
           ctx.clearRect(0, 0, w, h);
 
-          // Draw snake trail
+          // Draw bloom burst
           if (mx >= 0 && my >= 0) {
-            const currentCol = Math.floor(mx / cellSize);
-            const currentRow = Math.floor(my / cellSize);
-            const trail = trailRef.current;
+            const col = Math.floor(mx / cellSize);
+            const row = Math.floor(my / cellSize);
 
-            // Add new cell position if different from last
-            if (trail.length === 0 || trail[trail.length - 1].col !== currentCol || trail[trail.length - 1].row !== currentRow) {
-              trail.push({ col: currentCol, row: currentRow });
-              if (trail.length > 8) {
-                trail.shift();
-              }
-            }
+            // 8 petal offsets radiating from center
+            const petals = [
+              { dr: -2, dc: 0 },   // N
+              { dr: -1, dc: 2 },   // NE
+              { dr: 0, dc: 2 },    // E
+              { dr: 1, dc: 2 },    // SE
+              { dr: 2, dc: 0 },    // S
+              { dr: 1, dc: -2 },   // SW
+              { dr: 0, dc: -2 },   // W
+              { dr: -1, dc: -2 },  // NW
+            ];
 
-            // Draw trail cells with decaying opacity
-            for (let i = 0; i < trail.length; i++) {
-              const t = trail[i];
-              const opacity = (i + 1) / trail.length;
-              ctx.fillStyle = `rgba(17, 81, 255, ${opacity * (currentIsDark ? 0.20 : 0.12)})`;
-              ctx.fillRect(t.col * cellSize, t.row * cellSize, cellSize, cellSize);
+            // Seeded random per cell position for stable burst shape
+            for (let i = 0; i < petals.length; i++) {
+              const p = petals[i];
+              const petalSeed = ((i * 7919 + col * 104729 + row * 524287) & 0x7fffffff);
+              const petalRand = ((petalSeed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+              if (petalRand > 0.65) continue;
+
+              ctx.fillStyle = currentIsDark ? "rgba(17, 81, 255, 0.18)" : "rgba(17, 81, 255, 0.12)";
+              ctx.fillRect((col + p.dc) * cellSize, (row + p.dr) * cellSize, cellSize, cellSize);
             }
           }
 
