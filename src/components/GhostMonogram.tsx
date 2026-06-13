@@ -7,7 +7,6 @@ import { useTheme } from "@/components/ThemeProvider";
 export default function GhostMonogram() {
   const mousePosRef = useRef({ x: -1000, y: -1000 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const echoPosRef = useRef({ x: -1000, y: -1000 });
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
@@ -109,22 +108,27 @@ export default function GhostMonogram() {
 
           ctx.clearRect(0, 0, w, h);
 
-          // Echo glow: delayed soft circle following cursor
-          if (mx >= 0 && my >= 0) {
-            const echo = echoPosRef.current;
-            echo.x += (mx - echo.x) * 0.04;
-            echo.y += (my - echo.y) * 0.04;
+          // Wave grid: cells light up in a sine wave pattern
+          const time = performance.now() / 1000;
+          const waveSpeed = 1.2;
+          const amplitude = 80;
+          const cursorPhase = my > 0 ? my / amplitude : 0;
 
-            const radius = 200;
-            const grad = ctx.createRadialGradient(echo.x, echo.y, 0, echo.x, echo.y, radius);
-            const alpha = currentIsDark ? 0.08 : 0.05;
-            grad.addColorStop(0, `rgba(17, 81, 255, ${alpha})`);
-            grad.addColorStop(0.5, `rgba(17, 81, 255, ${alpha * 0.4})`);
-            grad.addColorStop(1, "rgba(17, 81, 255, 0)");
-            ctx.fillStyle = grad;
-            ctx.beginPath();
-            ctx.arc(echo.x, echo.y, radius, 0, Math.PI * 2);
-            ctx.fill();
+          for (let r = 0; r * cellSize <= h; r++) {
+            for (let c = 0; c * cellSize <= w; c++) {
+              const wave = (Math.sin(
+                ((r * cellSize) / amplitude) * Math.PI * 2 +
+                  time * waveSpeed +
+                  cursorPhase +
+                  c * 0.25
+              ) + 1) / 2;
+
+              if (wave > 0.6) {
+                const alpha = ((wave - 0.6) / 0.4) * (currentIsDark ? 0.20 : 0.14);
+                ctx.fillStyle = `rgba(17, 81, 255, ${alpha})`;
+                ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+              }
+            }
           }
 
           // Draw grid lines
