@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import ProjectCard from "@/components/ProjectCard";
 import { caseStudies } from "@/data/case-studies";
 
@@ -26,13 +25,17 @@ export default function HorizontalScroll() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="flex justify-end mb-8"
           >
-            <motion.span
-              animate={{ x: [0, 6, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="text-[#9e9ea0]"
-            >
-              <ArrowRight size={20} />
-            </motion.span>
+            <div className="flex items-center gap-3 text-[#9e9ea0]">
+              <span className="w-6 h-px bg-[#9e9ea0]" />
+              <motion.span
+                animate={{ rotate: [0, 90, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="text-sm"
+              >
+                ◆
+              </motion.span>
+              <span className="text-xs font-medium tracking-wider">02</span>
+            </div>
           </motion.div>
         </div>
 
