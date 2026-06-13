@@ -21,12 +21,12 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#ffffff] dark:bg-[#000000] border-b border-[#f5f5f5] dark:border-[#2a2a2a]"
+      className="fixed top-0 left-0 right-0 z-50 bg-[#f5f5f5] dark:bg-[#151515] border-b border-[#cacacb] dark:border-[#2a2a2a]"
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="text-base font-[family-name:var(--font-display)] font-semibold tracking-tight text-[#111111] dark:text-[#ffffff]"
+          className="text-base font-[family-name:var(--font-display)] font-semibold tracking-tight text-[#111111] dark:text-[#f5f5f5]"
         >
           {site.initials}
         </Link>
@@ -38,12 +38,12 @@ export default function Navbar() {
               href={link.href}
               className={`text-sm transition-colors relative ${
                 pathname === link.href
-                  ? "text-[#111111] dark:text-[#ffffff] font-medium"
-                  : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#ffffff]"
+                  ? "text-[#111111] dark:text-[#f5f5f5] font-medium"
+                  : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
               }`}
             >
               {pathname === link.href && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#111111] dark:bg-[#ffffff]" />
+                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#111111] dark:bg-[#f5f5f5]" />
               )}
               {link.label}
             </Link>
@@ -53,7 +53,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-[#111111] dark:text-[#ffffff] transition-colors"
+          className="md:hidden text-[#111111] dark:text-[#f5f5f5] transition-colors"
           aria-label="Menu"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -67,7 +67,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-[#ffffff] dark:bg-[#000000] border-t border-[#f5f5f5] dark:border-[#2a2a2a]"
+            className="md:hidden bg-[#f5f5f5] dark:bg-[#151515] border-t border-[#cacacb] dark:border-[#2a2a2a]"
           >
             <div className="px-6 py-4 flex flex-col gap-2">
               {site.nav.map((link) => (
@@ -76,8 +76,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`px-4 py-3 text-sm rounded-lg transition-colors ${
                     pathname === link.href
-                      ? "bg-[#f5f5f5] dark:bg-[#151515] text-[#111111] dark:text-[#ffffff] font-medium"
-                      : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#ffffff]"
+                      ? "bg-[#cacacb] dark:bg-[#2a2a2a] text-[#111111] dark:text-[#f5f5f5] font-medium"
+                      : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
                   }`}
                 >
                   {link.label}
