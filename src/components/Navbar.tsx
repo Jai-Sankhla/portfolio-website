@@ -47,12 +47,15 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm transition-colors ${
+              className={`text-sm transition-colors relative ${
                 pathname === link.href
                   ? "text-[#111111] dark:text-[#f5f5f5] font-medium"
-                  : "text-[#707072] dark:text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
+                  : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
               }`}
             >
+              {pathname === link.href && (
+                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#1151ff]" />
+              )}
               {link.label}
             </Link>
           ))}
@@ -85,7 +88,7 @@ export default function Navbar() {
                   className={`px-4 py-3 text-sm rounded-lg transition-colors ${
                     pathname === link.href
                       ? "bg-[#f5f5f5] dark:bg-[#151515] text-[#111111] dark:text-[#f5f5f5] font-medium"
-                      : "text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
+                      : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
                   }`}
                 >
                   {link.label}
