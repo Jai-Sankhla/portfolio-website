@@ -7,6 +7,8 @@ import { useTheme } from "@/components/ThemeProvider";
 export default function GhostMonogram() {
   const mousePosRef = useRef({ x: -1000, y: -1000 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const ripplesRef = useRef<{ col: number; row: number; startTime: number }[]>([]);
+  const prevCellRef = useRef<{ col: number; row: number } | null>(null);
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
@@ -108,33 +110,51 @@ export default function GhostMonogram() {
 
           ctx.clearRect(0, 0, w, h);
 
-          // Draw bloom burst
+          // Spawn ripples on cell entry
           if (mx >= 0 && my >= 0) {
             const col = Math.floor(mx / cellSize);
             const row = Math.floor(my / cellSize);
-
-            // 8 petal offsets radiating from center
-            const petals = [
-              { dr: -2, dc: 0 },   // N
-              { dr: -1, dc: 2 },   // NE
-              { dr: 0, dc: 2 },    // E
-              { dr: 1, dc: 2 },    // SE
-              { dr: 2, dc: 0 },    // S
-              { dr: 1, dc: -2 },   // SW
-              { dr: 0, dc: -2 },   // W
-              { dr: -1, dc: -2 },  // NW
-            ];
-
-            // Seeded random per cell position for stable burst shape
-            for (let i = 0; i < petals.length; i++) {
-              const p = petals[i];
-              const petalSeed = ((i * 7919 + col * 104729 + row * 524287) & 0x7fffffff);
-              const petalRand = ((petalSeed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
-              if (petalRand > 0.65) continue;
-
-              ctx.fillStyle = currentIsDark ? "rgba(17, 81, 255, 0.18)" : "rgba(17, 81, 255, 0.12)";
-              ctx.fillRect((col + p.dc) * cellSize, (row + p.dr) * cellSize, cellSize, cellSize);
+            const prev = prevCellRef.current;
+            if (!prev || prev.col !== col || prev.row !== row) {
+              ripplesRef.current.push({ col, row, startTime: performance.now() });
+              prevCellRef.current = { col, row };
             }
+          }
+
+          // Draw ripples
+          const now = performance.now();
+          const ripples = ripplesRef.current;
+          const maxRadius = 3.5 * cellSize;
+          const duration = 1000;
+
+          for (let i = ripples.length - 1; i >= 0; i--) {
+            const rip = ripples[i];
+            const elapsed = now - rip.startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            if (progress >= 1) {
+              ripples.splice(i, 1);
+              continue;
+            }
+
+            const cx = rip.col * cellSize + cellSize / 2;
+            const cy = rip.row * cellSize + cellSize / 2;
+            const r = progress * maxRadius;
+            const opacity = (1 - progress) * (currentIsDark ? 0.30 : 0.20);
+
+            // Main ring
+            ctx.strokeStyle = `rgba(17, 81, 255, ${opacity})`;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(cx, cy, r, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Inner ring
+            ctx.strokeStyle = `rgba(17, 81, 255, ${opacity * 0.5})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(cx, cy, r * 0.6, 0, Math.PI * 2);
+            ctx.stroke();
           }
 
           // Draw grid lines
