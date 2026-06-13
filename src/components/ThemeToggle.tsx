@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 
 export default function ThemeToggle() {
@@ -9,7 +10,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="relative w-9 h-9 flex items-center justify-center rounded-full bg-[#f5f5f5] dark:bg-[#151515] hover:bg-[#cacacb] dark:hover:bg-[#333333] transition-colors"
+      className="relative w-9 h-9 flex items-center justify-center rounded-full text-[#9e9ea0] hover:text-[#ffffff] transition-colors"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       <motion.span
@@ -17,9 +18,9 @@ export default function ThemeToggle() {
         initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
         animate={{ rotate: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="text-sm"
+        className="flex items-center justify-center"
       >
-        {theme === "light" ? "🌙" : "☀️"}
+        {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
       </motion.span>
     </button>
   );
