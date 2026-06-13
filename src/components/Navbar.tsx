@@ -21,7 +21,7 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#f5f5f5] dark:bg-[#151515] border-b border-[#cacacb] dark:border-[#2a2a2a]"
+      className="fixed top-0 left-0 right-0 z-50 bg-[#ffffff] dark:bg-[#151515] border-b border-[#cacacb] dark:border-[#2a2a2a]"
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
@@ -67,7 +67,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-[#f5f5f5] dark:bg-[#151515] border-t border-[#cacacb] dark:border-[#2a2a2a]"
+            className="md:hidden bg-[#ffffff] dark:bg-[#151515] border-t border-[#cacacb] dark:border-[#2a2a2a]"
           >
             <div className="px-6 py-4 flex flex-col gap-2">
               {site.nav.map((link) => (
