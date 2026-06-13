@@ -7,8 +7,7 @@ import { useTheme } from "@/components/ThemeProvider";
 export default function GhostMonogram() {
   const mousePosRef = useRef({ x: -1000, y: -1000 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const ripplesRef = useRef<{ col: number; row: number; startTime: number }[]>([]);
-  const prevCellRef = useRef<{ col: number; row: number } | null>(null);
+  const echoPosRef = useRef({ x: -1000, y: -1000 });
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
@@ -110,51 +109,22 @@ export default function GhostMonogram() {
 
           ctx.clearRect(0, 0, w, h);
 
-          // Spawn ripples on cell entry
+          // Echo glow: delayed soft circle following cursor
           if (mx >= 0 && my >= 0) {
-            const col = Math.floor(mx / cellSize);
-            const row = Math.floor(my / cellSize);
-            const prev = prevCellRef.current;
-            if (!prev || prev.col !== col || prev.row !== row) {
-              ripplesRef.current.push({ col, row, startTime: performance.now() });
-              prevCellRef.current = { col, row };
-            }
-          }
+            const echo = echoPosRef.current;
+            echo.x += (mx - echo.x) * 0.04;
+            echo.y += (my - echo.y) * 0.04;
 
-          // Draw ripples
-          const now = performance.now();
-          const ripples = ripplesRef.current;
-          const maxRadius = 3.5 * cellSize;
-          const duration = 1000;
-
-          for (let i = ripples.length - 1; i >= 0; i--) {
-            const rip = ripples[i];
-            const elapsed = now - rip.startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            if (progress >= 1) {
-              ripples.splice(i, 1);
-              continue;
-            }
-
-            const cx = rip.col * cellSize + cellSize / 2;
-            const cy = rip.row * cellSize + cellSize / 2;
-            const r = progress * maxRadius;
-            const opacity = (1 - progress) * (currentIsDark ? 0.30 : 0.20);
-
-            // Main ring
-            ctx.strokeStyle = `rgba(17, 81, 255, ${opacity})`;
-            ctx.lineWidth = 2;
+            const radius = 200;
+            const grad = ctx.createRadialGradient(echo.x, echo.y, 0, echo.x, echo.y, radius);
+            const alpha = currentIsDark ? 0.08 : 0.05;
+            grad.addColorStop(0, `rgba(17, 81, 255, ${alpha})`);
+            grad.addColorStop(0.5, `rgba(17, 81, 255, ${alpha * 0.4})`);
+            grad.addColorStop(1, "rgba(17, 81, 255, 0)");
+            ctx.fillStyle = grad;
             ctx.beginPath();
-            ctx.arc(cx, cy, r, 0, Math.PI * 2);
-            ctx.stroke();
-
-            // Inner ring
-            ctx.strokeStyle = `rgba(17, 81, 255, ${opacity * 0.5})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.arc(cx, cy, r * 0.6, 0, Math.PI * 2);
-            ctx.stroke();
+            ctx.arc(echo.x, echo.y, radius, 0, Math.PI * 2);
+            ctx.fill();
           }
 
           // Draw grid lines
