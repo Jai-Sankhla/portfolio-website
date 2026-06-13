@@ -108,11 +108,11 @@ export default function GhostMonogram() {
 
           ctx.clearRect(0, 0, w, h);
 
-          // Draw cell highlights under cursor
+          // Draw colorful confetti cell highlights under cursor
           if (mx >= 0 && my >= 0) {
             const col = Math.floor(mx / cellSize);
             const row = Math.floor(my / cellSize);
-            const glowRadius = 2;
+            const glowRadius = 4;
 
             for (let r = row - glowRadius; r <= row + glowRadius; r++) {
               for (let c = col - glowRadius; c <= col + glowRadius; c++) {
@@ -120,8 +120,23 @@ export default function GhostMonogram() {
                 const cy = r * cellSize;
                 const dist = Math.sqrt((c - col) ** 2 + (r - row) ** 2);
                 if (dist > glowRadius) continue;
-                const opacity = (1 - dist / glowRadius);
-                ctx.fillStyle = `rgba(17, 81, 255, ${opacity * 0.15})`;
+
+                // Seeded pseudo-random for scattered pattern
+                const seed = (c * 73856093 + r * 19349663) & 0x7fffffff;
+                const rand = ((seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+                if (rand > 0.45) continue;
+
+                // Color: angle from cursor determines hue (blue → purple → pink → magenta)
+                const cellCenterX = cx + cellSize / 2;
+                const cellCenterY = cy + cellSize / 2;
+                const angle = Math.atan2(cellCenterY - my, cellCenterX - mx);
+                const degrees = ((angle * 180) / Math.PI + 360) % 360;
+                const hue = 200 + (degrees / 360) * 140;
+                const hueJitter = rand * 40 - 20;
+                const finalHue = ((hue + hueJitter) % 360 + 360) % 360;
+
+                const alpha = currentIsDark ? 0.22 : 0.14;
+                ctx.fillStyle = `hsla(${finalHue}, 80%, ${currentIsDark ? 65 : 50}%, ${alpha})`;
                 ctx.fillRect(cx, cy, cellSize, cellSize);
               }
             }
