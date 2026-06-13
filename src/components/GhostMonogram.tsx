@@ -7,6 +7,7 @@ import { useTheme } from "@/components/ThemeProvider";
 export default function GhostMonogram() {
   const mousePosRef = useRef({ x: -1000, y: -1000 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const trailRef = useRef<{ col: number; row: number }[]>([]);
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
@@ -108,78 +109,27 @@ export default function GhostMonogram() {
 
           ctx.clearRect(0, 0, w, h);
 
-          // Draw constellation pattern
+          // Draw snake trail
           if (mx >= 0 && my >= 0) {
-            // Anchor: snap cursor to nearest grid intersection
-            const anchorX = Math.round(mx / cellSize) * cellSize;
-            const anchorY = Math.round(my / cellSize) * cellSize;
-            const anchorCol = Math.round(mx / cellSize);
-            const anchorRow = Math.round(my / cellSize);
+            const currentCol = Math.floor(mx / cellSize);
+            const currentRow = Math.floor(my / cellSize);
+            const trail = trailRef.current;
 
-            const constColor = currentIsDark ? "rgba(17, 81, 255, 0.20)" : "rgba(17, 81, 255, 0.12)";
-            const dotColor = currentIsDark ? "rgba(17, 81, 255, 0.35)" : "rgba(17, 81, 255, 0.20)";
-
-            // Generate candidate intersections within 3-cell radius
-            const candidates: { x: number; y: number }[] = [];
-            const satRadius = 3;
-
-            for (let r = anchorRow - satRadius; r <= anchorRow + satRadius; r++) {
-              for (let c = anchorCol - satRadius; c <= anchorCol + satRadius; c++) {
-                if (r === anchorRow && c === anchorCol) continue;
-                const dist = Math.sqrt((c - anchorCol) ** 2 + (r - anchorRow) ** 2);
-                if (dist > satRadius) continue;
-
-                const seed = (c * 73856093 + r * 19349663 + anchorCol * 13 + anchorRow * 7) & 0x7fffffff;
-                const rand = ((seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
-                if (rand > 0.35) continue;
-
-                candidates.push({ x: c * cellSize, y: r * cellSize });
+            // Add new cell position if different from last
+            if (trail.length === 0 || trail[trail.length - 1].col !== currentCol || trail[trail.length - 1].row !== currentRow) {
+              trail.push({ col: currentCol, row: currentRow });
+              if (trail.length > 8) {
+                trail.shift();
               }
             }
 
-            // Pick up to 5
-            const selected = candidates.slice(0, 5);
-
-            if (selected.length > 0) {
-              // Sort by angle from anchor
-              selected.sort((a, b) => {
-                const aa = Math.atan2(a.y - anchorY, a.x - anchorX);
-                const ab = Math.atan2(b.y - anchorY, b.x - anchorX);
-                return aa - ab;
-              });
-
-              // Lines from anchor to satellites
-              ctx.strokeStyle = constColor;
-              ctx.lineWidth = 1;
-              for (const sat of selected) {
-                ctx.beginPath();
-                ctx.moveTo(anchorX, anchorY);
-                ctx.lineTo(sat.x, sat.y);
-                ctx.stroke();
-              }
-
-              // Lines between angularly adjacent satellites
-              for (let i = 0; i < selected.length - 1; i++) {
-                ctx.beginPath();
-                ctx.moveTo(selected[i].x, selected[i].y);
-                ctx.lineTo(selected[i + 1].x, selected[i + 1].y);
-                ctx.stroke();
-              }
-
-              // Satellite dots
-              ctx.fillStyle = dotColor;
-              for (const sat of selected) {
-                ctx.beginPath();
-                ctx.arc(sat.x, sat.y, 3, 0, Math.PI * 2);
-                ctx.fill();
-              }
+            // Draw trail cells with decaying opacity
+            for (let i = 0; i < trail.length; i++) {
+              const t = trail[i];
+              const opacity = (i + 1) / trail.length;
+              ctx.fillStyle = `rgba(17, 81, 255, ${opacity * (currentIsDark ? 0.20 : 0.12)})`;
+              ctx.fillRect(t.col * cellSize, t.row * cellSize, cellSize, cellSize);
             }
-
-            // Anchor dot (always drawn)
-            ctx.fillStyle = currentIsDark ? "rgba(17, 81, 255, 0.45)" : "rgba(17, 81, 255, 0.30)";
-            ctx.beginPath();
-            ctx.arc(anchorX, anchorY, 5, 0, Math.PI * 2);
-            ctx.fill();
           }
 
           // Draw grid lines
