@@ -104,45 +104,35 @@ export default function GhostMonogram() {
           const h = window.innerHeight;
           const cellSize = 80;
           const currentIsDark = theme === "dark";
-          const lineColor = currentIsDark ? "rgba(51, 51, 51, 0.25)" : "rgba(202, 202, 203, 0.35)";
 
           ctx.clearRect(0, 0, w, h);
 
-          // Wave grid: cells light up in a sine wave pattern
-          const time = performance.now() / 1000;
-          const waveSpeed = 1.2;
-          const amplitude = 80;
-          const cursorPhase = my > 0 ? my / amplitude : 0;
+          // Reveal grid: lines fade in around cursor
+          const revealRadius = 300;
+          const baseAlpha = currentIsDark ? 0.25 : 0.35;
 
-          for (let r = 0; r * cellSize <= h; r++) {
-            for (let c = 0; c * cellSize <= w; c++) {
-              const wave = (Math.sin(
-                ((r * cellSize) / amplitude) * Math.PI * 2 +
-                  time * waveSpeed +
-                  cursorPhase +
-                  c * 0.25
-              ) + 1) / 2;
-
-              if (wave > 0.6) {
-                const alpha = ((wave - 0.6) / 0.4) * (currentIsDark ? 0.20 : 0.14);
-                ctx.fillStyle = `rgba(17, 81, 255, ${alpha})`;
-                ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
-              }
-            }
-          }
-
-          // Draw grid lines
-          ctx.strokeStyle = lineColor;
-          ctx.lineWidth = 1;
-
+          // Vertical lines
           for (let x = 0; x <= w; x += cellSize) {
+            const dist = mx >= 0 ? Math.abs(x - mx) : revealRadius;
+            const alpha = Math.max(0, 1 - dist / revealRadius);
+            ctx.strokeStyle = currentIsDark
+              ? `rgba(51, 51, 51, ${alpha * baseAlpha})`
+              : `rgba(202, 202, 203, ${alpha * baseAlpha})`;
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(x, 0);
             ctx.lineTo(x, h);
             ctx.stroke();
           }
 
+          // Horizontal lines
           for (let y = 0; y <= h; y += cellSize) {
+            const dist = my >= 0 ? Math.abs(y - my) : revealRadius;
+            const alpha = Math.max(0, 1 - dist / revealRadius);
+            ctx.strokeStyle = currentIsDark
+              ? `rgba(51, 51, 51, ${alpha * baseAlpha})`
+              : `rgba(202, 202, 203, ${alpha * baseAlpha})`;
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(0, y);
             ctx.lineTo(w, y);
