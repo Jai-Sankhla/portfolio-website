@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CursorGlow from "@/components/CursorGlow";
+// import CursorGlow from "@/components/CursorGlow";
 // import GhostMonogram from "@/components/GhostMonogram";
 
 const dmSans = DM_Sans({
@@ -64,7 +64,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />
-          <CursorGlow />
+          {/* <CursorGlow /> */}
           {/* <GhostMonogram /> */}
           <main>{children}</main>
           <Footer />
