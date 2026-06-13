@@ -108,38 +108,78 @@ export default function GhostMonogram() {
 
           ctx.clearRect(0, 0, w, h);
 
-          // Draw colorful confetti cell highlights under cursor
+          // Draw constellation pattern
           if (mx >= 0 && my >= 0) {
-            const col = Math.floor(mx / cellSize);
-            const row = Math.floor(my / cellSize);
-            const glowRadius = 4;
+            // Anchor: snap cursor to nearest grid intersection
+            const anchorX = Math.round(mx / cellSize) * cellSize;
+            const anchorY = Math.round(my / cellSize) * cellSize;
+            const anchorCol = Math.round(mx / cellSize);
+            const anchorRow = Math.round(my / cellSize);
 
-            for (let r = row - glowRadius; r <= row + glowRadius; r++) {
-              for (let c = col - glowRadius; c <= col + glowRadius; c++) {
-                const cx = c * cellSize;
-                const cy = r * cellSize;
-                const dist = Math.sqrt((c - col) ** 2 + (r - row) ** 2);
-                if (dist > glowRadius) continue;
+            const constColor = currentIsDark ? "rgba(17, 81, 255, 0.20)" : "rgba(17, 81, 255, 0.12)";
+            const dotColor = currentIsDark ? "rgba(17, 81, 255, 0.35)" : "rgba(17, 81, 255, 0.20)";
 
-                // Seeded pseudo-random for scattered pattern
-                const seed = (c * 73856093 + r * 19349663) & 0x7fffffff;
+            // Generate candidate intersections within 3-cell radius
+            const candidates: { x: number; y: number }[] = [];
+            const satRadius = 3;
+
+            for (let r = anchorRow - satRadius; r <= anchorRow + satRadius; r++) {
+              for (let c = anchorCol - satRadius; c <= anchorCol + satRadius; c++) {
+                if (r === anchorRow && c === anchorCol) continue;
+                const dist = Math.sqrt((c - anchorCol) ** 2 + (r - anchorRow) ** 2);
+                if (dist > satRadius) continue;
+
+                const seed = (c * 73856093 + r * 19349663 + anchorCol * 13 + anchorRow * 7) & 0x7fffffff;
                 const rand = ((seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
-                if (rand > 0.45) continue;
+                if (rand > 0.35) continue;
 
-                // Color: angle from cursor determines hue (blue → purple → pink → magenta)
-                const cellCenterX = cx + cellSize / 2;
-                const cellCenterY = cy + cellSize / 2;
-                const angle = Math.atan2(cellCenterY - my, cellCenterX - mx);
-                const degrees = ((angle * 180) / Math.PI + 360) % 360;
-                const hue = 200 + (degrees / 360) * 140;
-                const hueJitter = rand * 40 - 20;
-                const finalHue = ((hue + hueJitter) % 360 + 360) % 360;
-
-                const alpha = currentIsDark ? 0.22 : 0.14;
-                ctx.fillStyle = `hsla(${finalHue}, 80%, ${currentIsDark ? 65 : 50}%, ${alpha})`;
-                ctx.fillRect(cx, cy, cellSize, cellSize);
+                candidates.push({ x: c * cellSize, y: r * cellSize });
               }
             }
+
+            // Pick up to 5
+            const selected = candidates.slice(0, 5);
+
+            if (selected.length > 0) {
+              // Sort by angle from anchor
+              selected.sort((a, b) => {
+                const aa = Math.atan2(a.y - anchorY, a.x - anchorX);
+                const ab = Math.atan2(b.y - anchorY, b.x - anchorX);
+                return aa - ab;
+              });
+
+              // Lines from anchor to satellites
+              ctx.strokeStyle = constColor;
+              ctx.lineWidth = 1;
+              for (const sat of selected) {
+                ctx.beginPath();
+                ctx.moveTo(anchorX, anchorY);
+                ctx.lineTo(sat.x, sat.y);
+                ctx.stroke();
+              }
+
+              // Lines between angularly adjacent satellites
+              for (let i = 0; i < selected.length - 1; i++) {
+                ctx.beginPath();
+                ctx.moveTo(selected[i].x, selected[i].y);
+                ctx.lineTo(selected[i + 1].x, selected[i + 1].y);
+                ctx.stroke();
+              }
+
+              // Satellite dots
+              ctx.fillStyle = dotColor;
+              for (const sat of selected) {
+                ctx.beginPath();
+                ctx.arc(sat.x, sat.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+
+            // Anchor dot (always drawn)
+            ctx.fillStyle = currentIsDark ? "rgba(17, 81, 255, 0.45)" : "rgba(17, 81, 255, 0.30)";
+            ctx.beginPath();
+            ctx.arc(anchorX, anchorY, 5, 0, Math.PI * 2);
+            ctx.fill();
           }
 
           // Draw grid lines
