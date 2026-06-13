@@ -83,9 +83,20 @@ export default function GhostMonogram() {
 
   const isDark = theme === "dark";
   const textColor = isDark ? "rgba(245, 245, 245, 0.055)" : "rgba(17, 17, 17, 0.02)";
+  const gridColor = isDark ? "rgba(51, 51, 51, 0.20)" : "rgba(202, 202, 203, 0.30)";
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1] hidden md:block overflow-hidden">
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `
+            repeating-linear-gradient(0deg, transparent, transparent 39px, ${gridColor} 39px, ${gridColor} 40px),
+            repeating-linear-gradient(90deg, transparent, transparent 39px, ${gridColor} 39px, ${gridColor} 40px)
+          `,
+          backgroundSize: "40px 40px",
+        }}
+      />
       <motion.div
         className="absolute font-[family-name:var(--font-display)] font-bold select-none leading-[0.8]"
         style={{
