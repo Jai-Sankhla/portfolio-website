@@ -19,6 +19,11 @@ export default function GhostMonogram() {
   const springSX = useSpring(sMX, { stiffness: 60, damping: 15 });
   const springSY = useSpring(sMY, { stiffness: 60, damping: 15 });
 
+  const spotX = useMotionValue(-500);
+  const spotY = useMotionValue(-500);
+  const springSpotX = useSpring(spotX, { stiffness: 120, damping: 18 });
+  const springSpotY = useSpring(spotY, { stiffness: 120, damping: 18 });
+
   useEffect(() => {
     const onMouse = (e: MouseEvent) => {
       mousePosRef.current = { x: e.clientX, y: e.clientY };
@@ -74,6 +79,9 @@ export default function GhostMonogram() {
       sMX.set(sFinal.x);
       sMY.set(sFinal.y);
 
+      spotX.set(mx);
+      spotY.set(my);
+
       rafId = requestAnimationFrame(tick);
     };
 
@@ -98,6 +106,20 @@ export default function GhostMonogram() {
           backgroundSize: "80px 80px",
           WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent)",
           maskImage: "linear-gradient(to bottom, black 60%, transparent)",
+        }}
+      />
+      <motion.div
+        className="absolute pointer-events-none"
+        style={{
+          width: 300,
+          height: 300,
+          borderRadius: "50%",
+          left: springSpotX,
+          top: springSpotY,
+          transform: "translate(-50%, -50%)",
+          background: `radial-gradient(circle, ${
+            isDark ? "rgba(17, 81, 255, 0.12)" : "rgba(17, 81, 255, 0.08)"
+          } 0%, transparent 70%)`,
         }}
       />
       <motion.div
