@@ -109,7 +109,7 @@ export default function GhostMonogram() {
 
           // Reveal grid: lines fade in around cursor
           const revealRadius = 300;
-          const baseAlpha = currentIsDark ? 0.45 : 0.35;
+          const baseAlpha = currentIsDark ? 0.55 : 0.35;
 
           // Vertical lines
           for (let x = 0; x <= w; x += cellSize) {
