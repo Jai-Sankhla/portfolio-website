@@ -109,7 +109,7 @@ export default function GhostMonogram() {
 
           // Reveal grid: lines fade in around cursor
           const revealRadius = 300;
-          const baseAlpha = currentIsDark ? 0.55 : 0.35;
+          const baseAlpha = currentIsDark ? 0.65 : 0.35;
 
           // Vertical lines
           for (let x = 0; x <= w; x += cellSize) {
@@ -152,7 +152,7 @@ export default function GhostMonogram() {
   const textColor = isDark ? "rgba(245, 245, 245, 0.055)" : "rgba(17, 17, 17, 0.02)";
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[-1] hidden md:block overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full"
