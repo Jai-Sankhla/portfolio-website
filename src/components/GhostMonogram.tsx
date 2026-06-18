@@ -86,7 +86,7 @@ export default function GhostMonogram() {
           }
 
           // Scroll pulse band
-          const bandHeight = 300;
+          const bandHeight = h * 0.45;
           const bandCenterY = progress * h;
           const bandHalf = bandHeight / 2;
           const peakAlpha = currentIsDark ? 0.50 : 0.35;
