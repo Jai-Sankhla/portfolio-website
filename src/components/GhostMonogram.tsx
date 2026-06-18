@@ -7,7 +7,6 @@ import { useTheme } from "@/components/ThemeProvider";
 export default function GhostMonogram() {
   const mousePosRef = useRef({ x: -1000, y: -1000 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const starsRef = useRef<{ px: number; py: number; phase: number }[]>([]);
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
@@ -49,26 +48,35 @@ export default function GhostMonogram() {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  // Generate star positions
   useEffect(() => {
-    const generate = () => {
-      const count = 8;
-      const stars: { px: number; py: number; phase: number }[] = [];
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          px: 0.1 + Math.random() * 0.8,
-          py: 0.1 + Math.random() * 0.7,
-          phase: Math.random() * Math.PI * 2,
+    // Initialize asteroids
+    const asteroids: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      tail: { x: number; y: number }[];
+    }[] = [];
+
+    const initAsteroids = () => {
+      asteroids.length = 0;
+      const w = window.innerWidth;
+      for (let i = 0; i < 15; i++) {
+        asteroids.push({
+          x: Math.random() * w,
+          y: -Math.random() * 200 - 50,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: 0.8 + Math.random() * 1.2,
+          size: 2 + Math.random() * 3,
+          tail: [],
         });
       }
-      starsRef.current = stars;
     };
-    generate();
-    window.addEventListener("resize", generate);
-    return () => window.removeEventListener("resize", generate);
-  }, []);
 
-  useEffect(() => {
+    initAsteroids();
+    window.addEventListener("resize", initAsteroids);
+
     let rafId: number;
 
     const tick = () => {
@@ -148,42 +156,59 @@ export default function GhostMonogram() {
             ctx.stroke();
           }
 
-          // Constellation mouse
-          const time = performance.now() / 1000;
-          const connectRadius = 200;
-          const stars = starsRef.current;
-
-          for (const star of stars) {
-            const sx = star.px * w;
-            const sy = star.py * h;
-            const dist = Math.sqrt((mx - sx) ** 2 + (my - sy) ** 2);
-            const isNear = mx >= 0 && dist < connectRadius;
-            const distanceAlpha = isNear ? Math.max(0, 1 - dist / connectRadius) : 0;
-
-            // Twinkle
-            const twinkle = (Math.sin(time * 1.2 + star.phase) + 1) / 2;
-            let starBrightness = 0.15 + twinkle * 0.25;
-            if (isNear) {
-              starBrightness = Math.max(starBrightness, 0.3 + distanceAlpha * 0.4);
+          // Falling asteroids
+          for (const a of asteroids) {
+            // Gravity well toward cursor
+            if (mx >= 0 && my >= 0) {
+              const dx = mx - a.x;
+              const dy = my - a.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 300 && dist > 0) {
+                const force = ((300 - dist) / 300) * 0.3;
+                a.vx += (dx / dist) * force;
+                a.vy += (dy / dist) * force;
+              }
             }
 
-            // Connection line
-            if (isNear && dist > 5) {
-              ctx.strokeStyle = `rgba(17, 81, 255, ${distanceAlpha * 0.12})`;
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              ctx.moveTo(sx, sy);
-              ctx.lineTo(mx, my);
-              ctx.stroke();
+            // Damping
+            a.vx *= 0.98;
+            a.vy *= 0.98;
+            a.vy += 0.02;
+
+            a.x += a.vx;
+            a.y += a.vy;
+
+            // Update tail
+            a.tail.push({ x: a.x, y: a.y });
+            if (a.tail.length > 6) a.tail.shift();
+
+            // Wrap around when off-screen
+            if (a.y > h + 50) {
+              a.x = Math.random() * w;
+              a.y = -Math.random() * 100 - 50;
+              a.vx = (Math.random() - 0.5) * 0.8;
+              a.vy = 0.8 + Math.random() * 1.2;
+              a.tail = [];
             }
 
-            // Star dot
-            const starSize = isNear ? 1.5 + distanceAlpha * 1.5 : 1.5;
-            ctx.fillStyle = currentIsDark
-              ? `rgba(245, 245, 245, ${starBrightness})`
-              : `rgba(17, 17, 17, ${starBrightness})`;
+            // Draw tail as fading line
+            if (a.tail.length > 1) {
+              for (let i = 1; i < a.tail.length; i++) {
+                const progress = i / a.tail.length;
+                ctx.strokeStyle = `rgba(17, 81, 255, ${progress * 0.2})`;
+                ctx.lineWidth = a.size * progress;
+                ctx.beginPath();
+                ctx.moveTo(a.tail[i - 1].x, a.tail[i - 1].y);
+                ctx.lineTo(a.tail[i].x, a.tail[i].y);
+                ctx.stroke();
+              }
+            }
+
+            // Draw head
+            const headAlpha = currentIsDark ? 0.5 : 0.35;
+            ctx.fillStyle = `rgba(17, 81, 255, ${headAlpha})`;
             ctx.beginPath();
-            ctx.arc(sx, sy, starSize, 0, Math.PI * 2);
+            ctx.arc(a.x, a.y, a.size, 0, Math.PI * 2);
             ctx.fill();
           }
         }
