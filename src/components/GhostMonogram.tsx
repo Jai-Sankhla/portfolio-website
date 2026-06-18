@@ -7,6 +7,7 @@ import { useTheme } from "@/components/ThemeProvider";
 export default function GhostMonogram() {
   const mousePosRef = useRef({ x: -1000, y: -1000 });
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const starsRef = useRef<{ px: number; py: number; phase: number }[]>([]);
   const { scrollY } = useScroll();
   const { theme } = useTheme();
 
@@ -46,6 +47,25 @@ export default function GhostMonogram() {
     resize();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
+  }, []);
+
+  // Generate star positions
+  useEffect(() => {
+    const generate = () => {
+      const count = 8;
+      const stars: { px: number; py: number; phase: number }[] = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          px: 0.1 + Math.random() * 0.8,
+          py: 0.1 + Math.random() * 0.7,
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
+      starsRef.current = stars;
+    };
+    generate();
+    window.addEventListener("resize", generate);
+    return () => window.removeEventListener("resize", generate);
   }, []);
 
   useEffect(() => {
@@ -107,36 +127,64 @@ export default function GhostMonogram() {
 
           ctx.clearRect(0, 0, w, h);
 
-          // Reveal grid: lines fade in around cursor
-          const revealRadius = 300;
-          const baseAlpha = currentIsDark ? 0.65 : 0.35;
+          // Fixed grid lines at low opacity
+          const gridAlpha = currentIsDark ? 0.12 : 0.08;
+          const lineColor = currentIsDark
+            ? `rgba(51, 51, 51, ${gridAlpha})`
+            : `rgba(202, 202, 203, ${gridAlpha})`;
+          ctx.strokeStyle = lineColor;
+          ctx.lineWidth = 1;
 
-          // Vertical lines
           for (let x = 0; x <= w; x += cellSize) {
-            const dist = mx >= 0 ? Math.abs(x - mx) : revealRadius;
-            const alpha = Math.max(0, 1 - dist / revealRadius);
-            ctx.strokeStyle = currentIsDark
-              ? `rgba(51, 51, 51, ${alpha * baseAlpha})`
-              : `rgba(202, 202, 203, ${alpha * baseAlpha})`;
-            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(x, 0);
             ctx.lineTo(x, h);
             ctx.stroke();
           }
-
-          // Horizontal lines
           for (let y = 0; y <= h; y += cellSize) {
-            const dist = my >= 0 ? Math.abs(y - my) : revealRadius;
-            const alpha = Math.max(0, 1 - dist / revealRadius);
-            ctx.strokeStyle = currentIsDark
-              ? `rgba(51, 51, 51, ${alpha * baseAlpha})`
-              : `rgba(202, 202, 203, ${alpha * baseAlpha})`;
-            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(0, y);
             ctx.lineTo(w, y);
             ctx.stroke();
+          }
+
+          // Constellation mouse
+          const time = performance.now() / 1000;
+          const connectRadius = 200;
+          const stars = starsRef.current;
+
+          for (const star of stars) {
+            const sx = star.px * w;
+            const sy = star.py * h;
+            const dist = Math.sqrt((mx - sx) ** 2 + (my - sy) ** 2);
+            const isNear = mx >= 0 && dist < connectRadius;
+            const distanceAlpha = isNear ? Math.max(0, 1 - dist / connectRadius) : 0;
+
+            // Twinkle
+            const twinkle = (Math.sin(time * 1.2 + star.phase) + 1) / 2;
+            let starBrightness = 0.15 + twinkle * 0.25;
+            if (isNear) {
+              starBrightness = Math.max(starBrightness, 0.3 + distanceAlpha * 0.4);
+            }
+
+            // Connection line
+            if (isNear && dist > 5) {
+              ctx.strokeStyle = `rgba(17, 81, 255, ${distanceAlpha * 0.12})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(sx, sy);
+              ctx.lineTo(mx, my);
+              ctx.stroke();
+            }
+
+            // Star dot
+            const starSize = isNear ? 1.5 + distanceAlpha * 1.5 : 1.5;
+            ctx.fillStyle = currentIsDark
+              ? `rgba(245, 245, 245, ${starBrightness})`
+              : `rgba(17, 17, 17, ${starBrightness})`;
+            ctx.beginPath();
+            ctx.arc(sx, sy, starSize, 0, Math.PI * 2);
+            ctx.fill();
           }
         }
       }
