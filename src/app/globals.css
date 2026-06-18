@@ -4,15 +4,19 @@
 
 @theme inline {
   --color-ink: #111111;
-  --color-ink-dark: #000000;
-  --color-canvas: #ffffff;
+  --color-ink-dark: #0D0D14;
+  --color-canvas: #F5F5F5;
+  --color-canvas-pure: #ffffff;
   --color-soft-cloud: #f5f5f5;
-  --color-mute: #707072;
+  --color-mute: #8B8B9E;
   --color-ash: #4b4b4d;
   --color-hairline: #cacacb;
-  --color-info: #1151ff;
-  --color-info-light: #3a71ff;
-  --color-info-dark: #0034e3;
+  --color-info: #E10600;
+  --color-info-light: #FF3A30;
+  --color-info-dark: #B00500;
+  --color-gold: #FFD700;
+  --color-silver: #B0B0C0;
+  --color-carbon: #1A1A28;
   --color-sale: #d30005;
   --color-success: #007d48;
   --color-surface-dark: #151515;
@@ -20,6 +24,7 @@
   --color-border-darker: #333333;
   --font-sans: "Inter", sans-serif;
   --font-display: "DM Sans", sans-serif;
+  --font-race: var(--font-oswald);
 }
 
 @layer base {
@@ -54,5 +59,22 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+  .checkered-bg {
+    background-image: repeating-conic-gradient(
+      var(--color-ink) 0% 25%,
+      transparent 0% 50%
+    );
+    background-size: 20px 20px;
+  }
+  .checkered-red {
+    background-image: repeating-conic-gradient(
+      var(--color-info) 0% 25%,
+      transparent 0% 50%
+    );
+    background-size: 16px 16px;
   }
 }

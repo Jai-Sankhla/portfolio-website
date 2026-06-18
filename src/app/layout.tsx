@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter } from "next/font/google";
+import { DM_Sans, Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Navbar from "@/components/Navbar";
+import PitWallNavbar from "@/components/PitWallNavbar";
 import Footer from "@/components/Footer";
-// import CursorGlow from "@/components/CursorGlow";
-import GhostMonogram from "@/components/GhostMonogram";
+import RacetrackCanvas from "@/components/RacetrackCanvas";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -18,6 +17,13 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-oswald",
   display: "swap",
 });
 
@@ -59,13 +65,12 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${dmSans.variable} ${inter.variable}`}
+      className={`${dmSans.variable} ${inter.variable} ${oswald.variable}`}
     >
       <body suppressHydrationWarning>
         <ThemeProvider>
-          <Navbar />
-          {/* <CursorGlow /> */}
-          <GhostMonogram />
+          <PitWallNavbar />
+          <RacetrackCanvas />
           <main>{children}</main>
           <Footer />
         </ThemeProvider>
