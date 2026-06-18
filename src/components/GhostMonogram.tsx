@@ -48,137 +48,34 @@ export default function GhostMonogram() {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  /* ---- doodle drawing functions ---- */
-  const doodleDefs = [
-    // 0. Cursor arrow
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x - s * 0.4, y + s);
-      ctx.lineTo(x - s * 0.15, y + s * 0.4);
-      ctx.lineTo(x - s * 0.9, y + s * 1.2);
-      ctx.stroke();
-    },
-    // 1. Pen nib
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      ctx.moveTo(x, y - s * 0.6);
-      ctx.lineTo(x + s * 0.5, y + s * 0.4);
-      ctx.lineTo(x, y + s * 0.6);
-      ctx.lineTo(x - s * 0.5, y + s * 0.4);
-      ctx.closePath();
-      ctx.stroke();
-    },
-    // 2. Selection marquee
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.strokeRect(x - s * 0.5, y - s * 0.5, s, s);
-    },
-    // 3. Move cross
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      ctx.moveTo(x, y - s);
-      ctx.lineTo(x, y + s);
-      ctx.moveTo(x - s, y);
-      ctx.lineTo(x + s, y);
-      ctx.stroke();
-    },
-    // 4. Magnifier
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      ctx.arc(x - s * 0.1, y - s * 0.1, s * 0.4, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(x + s * 0.2, y + s * 0.2);
-      ctx.lineTo(x + s * 0.6, y + s * 0.6);
-      ctx.stroke();
-    },
-    // 5. Text cursor
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      ctx.moveTo(x - s * 0.12, y - s);
-      ctx.lineTo(x + s * 0.12, y - s);
-      ctx.moveTo(x, y - s);
-      ctx.lineTo(x, y + s);
-      ctx.moveTo(x - s * 0.12, y + s);
-      ctx.lineTo(x + s * 0.12, y + s);
-      ctx.stroke();
-    },
-    // 6. Star
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      for (let i = 0; i < 5; i++) {
-        const angle = (i * 4 * Math.PI) / 5 - Math.PI / 2;
-        const px = x + Math.cos(angle) * s;
-        const py = y + Math.sin(angle) * s;
-        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-      }
-      ctx.closePath();
-      ctx.stroke();
-    },
-    // 7. Diamond
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      ctx.moveTo(x, y - s);
-      ctx.lineTo(x + s, y);
-      ctx.lineTo(x, y + s);
-      ctx.lineTo(x - s, y);
-      ctx.closePath();
-      ctx.stroke();
-    },
-    // 8. Squiggle
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      ctx.moveTo(x - s, y - s * 0.3);
-      ctx.bezierCurveTo(x - s * 0.5, y + s * 0.5, x + s * 0.2, y - s * 0.8, x + s * 0.7, y - s * 0.1);
-      ctx.bezierCurveTo(x + s, y + s * 0.3, x + s * 0.3, y + s * 0.7, x - s * 0.5, y + s * 0.5);
-      ctx.stroke();
-    },
-    // 9. Heart
-    (ctx: CanvasRenderingContext2D, x: number, y: number, s: number) => {
-      ctx.beginPath();
-      ctx.moveTo(x, y + s * 0.3);
-      ctx.bezierCurveTo(x - s, y - s * 0.4, x - s * 0.3, y - s, x, y - s * 0.3);
-      ctx.bezierCurveTo(x + s * 0.3, y - s, x + s, y - s * 0.4, x, y + s * 0.3);
-      ctx.stroke();
-    },
-  ];
-
   useEffect(() => {
-    // Initialize doodles
-    const doodles: {
+    // Initialize asteroids
+    const asteroids: {
       x: number;
       y: number;
       vx: number;
       vy: number;
-      rotation: number;
-      rotSpeed: number;
-      phase: number;
       size: number;
-      type: number;
+      tail: { x: number; y: number }[];
     }[] = [];
 
-    const initDoodles = () => {
-      doodles.length = 0;
+    const initAsteroids = () => {
+      asteroids.length = 0;
       const w = window.innerWidth;
-      const h = window.innerHeight;
-      const count = 10;
-      for (let i = 0; i < count; i++) {
-        doodles.push({
+      for (let i = 0; i < 15; i++) {
+        asteroids.push({
           x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.15,
-          vy: (Math.random() - 0.5) * 0.15,
-          rotation: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.005,
-          phase: Math.random() * Math.PI * 2,
-          size: 10 + Math.random() * 18,
-          type: Math.floor(Math.random() * doodleDefs.length),
+          y: -Math.random() * 200 - 50,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: 0.8 + Math.random() * 1.2,
+          size: 2 + Math.random() * 3,
+          tail: [],
         });
       }
     };
 
-    initDoodles();
-    window.addEventListener("resize", initDoodles);
+    initAsteroids();
+    window.addEventListener("resize", initAsteroids);
 
     let rafId: number;
 
@@ -259,44 +156,60 @@ export default function GhostMonogram() {
             ctx.stroke();
           }
 
-          // Floating doodles
-          const time = performance.now() / 1000;
-          for (const d of doodles) {
-            // Cursor nudge
+          // Falling asteroids
+          for (const a of asteroids) {
+            // Gravity well toward cursor
             if (mx >= 0 && my >= 0) {
-              const dx = mx - d.x;
-              const dy = my - d.y;
+              const dx = mx - a.x;
+              const dy = my - a.y;
               const dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < 200 && dist > 0) {
-                const force = ((200 - dist) / 200) * 0.05;
-                d.vx += (dx / dist) * force;
-                d.vy += (dy / dist) * force;
+              if (dist < 300 && dist > 0) {
+                const force = ((300 - dist) / 300) * 0.3;
+                a.vx += (dx / dist) * force;
+                a.vy += (dy / dist) * force;
               }
             }
 
-            d.vx *= 0.98;
-            d.vy *= 0.98;
-            d.x += d.vx;
-            d.y += d.vy;
-            d.rotation += d.rotSpeed;
+            // Damping
+            a.vx *= 0.98;
+            a.vy *= 0.98;
+            a.vy += 0.02;
 
-            const fade = (Math.sin(time * 0.3 + d.phase) + 1) / 2;
-            const opacity = 0.15 + fade * 0.3;
+            a.x += a.vx;
+            a.y += a.vy;
 
-            if (d.x < -100) d.x = w + 50;
-            if (d.x > w + 100) d.x = -50;
-            if (d.y < -100) d.y = h + 50;
-            if (d.y > h + 100) d.y = -50;
+            // Update tail
+            a.tail.push({ x: a.x, y: a.y });
+            if (a.tail.length > 6) a.tail.shift();
 
-            ctx.save();
-            ctx.translate(d.x, d.y);
-            ctx.rotate(d.rotation);
-            ctx.strokeStyle = currentIsDark
-              ? `rgba(245, 245, 245, ${opacity})`
-              : `rgba(17, 17, 17, ${opacity})`;
-            ctx.lineWidth = 1.5;
-            doodleDefs[d.type](ctx, 0, 0, d.size);
-            ctx.restore();
+            // Wrap around when off-screen
+            if (a.y > h + 50) {
+              a.x = Math.random() * w;
+              a.y = -Math.random() * 100 - 50;
+              a.vx = (Math.random() - 0.5) * 0.8;
+              a.vy = 0.8 + Math.random() * 1.2;
+              a.tail = [];
+            }
+
+            // Draw tail as fading line
+            if (a.tail.length > 1) {
+              for (let i = 1; i < a.tail.length; i++) {
+                const progress = i / a.tail.length;
+                ctx.strokeStyle = `rgba(17, 81, 255, ${progress * 0.2})`;
+                ctx.lineWidth = a.size * progress;
+                ctx.beginPath();
+                ctx.moveTo(a.tail[i - 1].x, a.tail[i - 1].y);
+                ctx.lineTo(a.tail[i].x, a.tail[i].y);
+                ctx.stroke();
+              }
+            }
+
+            // Draw head
+            const headAlpha = currentIsDark ? 0.5 : 0.35;
+            ctx.fillStyle = `rgba(17, 81, 255, ${headAlpha})`;
+            ctx.beginPath();
+            ctx.arc(a.x, a.y, a.size, 0, Math.PI * 2);
+            ctx.fill();
           }
         }
       }
