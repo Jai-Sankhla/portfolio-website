@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ParticleCanvas from "@/components/ParticleCanvas";
+import Image from "next/image";
 import { site } from "@/data/site";
 
 const stagger = {
@@ -79,8 +79,21 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          <div className="relative aspect-square md:aspect-auto md:h-[500px] rounded-2xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515]">
-            <ParticleCanvas />
+          <div className="flex justify-center md:justify-end">
+            <div className="relative w-[280px] sm:w-[320px] -rotate-2 bg-white dark:bg-[#1a1a1a] p-3 pb-8 rounded-sm shadow-xl dark:shadow-[#000]/30">
+              <div className="aspect-[3/4] w-full overflow-hidden rounded-sm bg-[#f5f5f5] dark:bg-[#151515]">
+                <Image
+                  src="/images/avatar.jpg"
+                  alt={site.name}
+                  width={320}
+                  height={427}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs font-[family-name:var(--font-caveat)] text-[#707072]">
+                {site.name} &mdash; {new Date().getFullYear()}
+              </p>
+            </div>
           </div>
         </div>
       </div>
