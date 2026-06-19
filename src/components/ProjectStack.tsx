@@ -7,7 +7,7 @@ import Link from "next/link";
 import { caseStudies } from "@/data/case-studies";
 import type { CaseStudy } from "@/data/case-studies";
 
-const SECTION_HEIGHT = 200;
+const SECTION_HEIGHT = 130;
 const OVERLAP = 30;
 const CARD_HEIGHT = 100;
 const STICKY_GAP = CARD_HEIGHT - OVERLAP;
