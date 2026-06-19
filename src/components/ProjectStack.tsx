@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,6 +26,8 @@ function StackedCard({
 }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isLast = index === total - 1;
+  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
+  const [isHovered, setIsHovered] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -44,6 +46,28 @@ function StackedCard({
     [0, 0.15]
   );
 
+  const blur = useTransform(
+    scrollYProgress,
+    [0, 0.02, ANIM_START, ANIM_END, 1],
+    [6, 0, 0, 6, 12]
+  );
+
+  const blurFilter = useTransform(blur, (b) => `blur(${b}px)`);
+
+  const cardOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.02, ANIM_START, ANIM_END, 1],
+    [0.4, 1, 1, 0.4, 0.2]
+  );
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: (e.clientX - rect.left) / rect.width,
+      y: (e.clientY - rect.top) / rect.height,
+    });
+  };
+
   return (
     <div
       ref={sectionRef}
@@ -58,7 +82,11 @@ function StackedCard({
         style={{ zIndex: index + 1 }}
       >
         <motion.div
-          style={!isLast ? { scale } : undefined}
+          style={{
+            scale: !isLast ? scale : undefined,
+            filter: blurFilter,
+            opacity: cardOpacity,
+          }}
           className="w-full max-w-6xl relative"
         >
           {!isLast && (
@@ -68,7 +96,12 @@ function StackedCard({
             />
           )}
           <Link href={`/work/${project.slug}`} className="group block relative z-10">
-            <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[#f5f5f5] dark:bg-[#151515] mb-6">
+            <div
+              className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[#f5f5f5] dark:bg-[#151515] mb-6 cursor-pointer"
+              onMouseMove={handleMouseMove}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -82,6 +115,17 @@ function StackedCard({
                   sizes="(max-width: 768px) 100vw, 80vw"
                 />
               </motion.div>
+              <div
+                className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-500"
+                style={{ opacity: isHovered ? 1 : 0 }}
+              >
+                <div
+                  className="w-full h-full"
+                  style={{
+                    background: `radial-gradient(600px circle at ${mousePos.x * 100}% ${mousePos.y * 100}%, rgba(17, 81, 255, 0.07), transparent)`,
+                  }}
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               <div className="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
                 <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff] px-4 py-2 rounded-full">
