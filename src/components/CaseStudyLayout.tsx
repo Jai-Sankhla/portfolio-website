@@ -6,7 +6,6 @@ import type { CaseStudy, CaseStudySection } from "@/data/case-studies";
 import { caseStudies } from "@/data/case-studies";
 import ScrollReveal from "@/components/ScrollReveal";
 import ParallaxWrapper from "@/components/ParallaxWrapper";
-import ClipReveal from "@/components/ClipReveal";
 import CaseStudyTOC from "@/components/CaseStudyTOC";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import MagneticWrapper from "@/components/MagneticWrapper";
@@ -229,52 +228,48 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
 
     case "image":
       return (
-        <ClipReveal>
-          <div>
-            <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
-              <Image
-                src={item.image!.src}
-                alt={item.image!.alt}
-                width={0}
-                height={0}
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="w-full h-auto rounded-lg"
-              />
-            </ParallaxWrapper>
-            {item.image?.caption && (
-              <p className="text-xs text-[#707072] mt-2 leading-relaxed">
-                {item.image.caption}
-              </p>
-            )}
-          </div>
-        </ClipReveal>
+        <div>
+          <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+            <Image
+              src={item.image!.src}
+              alt={item.image!.alt}
+              width={0}
+              height={0}
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="w-full h-auto rounded-lg"
+            />
+          </ParallaxWrapper>
+          {item.image?.caption && (
+            <p className="text-xs text-[#707072] mt-2 leading-relaxed">
+              {item.image.caption}
+            </p>
+          )}
+        </div>
       );
 
     case "image-grid":
       return (
-        <ClipReveal>
-          <div className="space-y-4">
-            {item.images?.map((img, k) => (
-              <div key={k}>
-                <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 768px) 100vw, 768px"
-                    className="w-full h-auto rounded-lg"
-                  />
-                </ParallaxWrapper>
-                {img.caption && (
-                  <p className="text-xs text-[#707072] mt-2 leading-relaxed">
-                    {img.caption}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </ClipReveal>
+        <div className="space-y-4">
+          {item.images?.map((img, k) => (
+            <div key={k}>
+              <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="w-full h-auto rounded-lg"
+                />
+              </ParallaxWrapper>
+              {img.caption && (
+                <p className="text-xs text-[#707072] mt-2 leading-relaxed">
+                  {img.caption}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
       );
 
     case "quote":
