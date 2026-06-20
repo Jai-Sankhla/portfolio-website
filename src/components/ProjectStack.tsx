@@ -8,7 +8,7 @@ import { caseStudies } from "@/data/case-studies";
 import type { CaseStudy } from "@/data/case-studies";
 
 const SECTION_HEIGHT = 130;
-const OVERLAP = 10;
+const OVERLAP = 0;
 const CARD_HEIGHT = 100;
 const STICKY_GAP = CARD_HEIGHT - OVERLAP;
 const MARGIN_TOP = -(SECTION_HEIGHT - STICKY_GAP);
