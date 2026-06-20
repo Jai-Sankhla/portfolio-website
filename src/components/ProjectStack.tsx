@@ -44,18 +44,6 @@ function StackedCard({
     [0, 0.15]
   );
 
-  const textY = useTransform(
-    scrollYProgress,
-    [0, 0.03, ANIM_START, ANIM_END],
-    [40, 0, 0, -20]
-  );
-
-  const textOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.03, ANIM_START, ANIM_END],
-    [0, 1, 1, 0]
-  );
-
   return (
     <div
       ref={sectionRef}
@@ -107,10 +95,7 @@ function StackedCard({
               </div>
             </div>
 
-            <motion.div
-              style={{ y: textY, opacity: textOpacity }}
-              className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-8"
-            >
+            <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-8">
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-xs text-[#1151ff] font-medium uppercase tracking-wider">
@@ -133,7 +118,7 @@ function StackedCard({
                   {project.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           </Link>
         </motion.div>
       </div>
