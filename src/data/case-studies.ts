@@ -5,7 +5,7 @@ export interface CaseStudyImage {
 }
 
 export interface CaseStudySection {
-  type: "text" | "image" | "image-grid" | "quote" | "metrics" | "embed";
+  type: "text" | "image" | "image-grid" | "quote" | "metrics" | "embed" | "before-after";
   content?: string;
   image?: CaseStudyImage;
   images?: CaseStudyImage[];
@@ -13,6 +13,8 @@ export interface CaseStudySection {
   author?: string;
   metrics?: { value: string; label: string }[];
   embed?: { url: string; title: string };
+  before?: CaseStudyImage;
+  after?: CaseStudyImage;
 }
 
 export interface CaseStudy {
@@ -486,6 +488,33 @@ export const caseStudies: CaseStudy[] = [
             type: "text",
             content:
               "Confidence in Progress \u2014 Show clear progress and upcoming sessions, empowering users to track their journey and stay motivated.",
+          },
+        ],
+      },
+      {
+        heading: "Before vs After",
+        items: [
+          {
+            type: "before-after",
+            before: {
+              src: "/images/case-studies/nirva-homepage/problem-1.png",
+              alt: "Cluttered homepage before redesign",
+            },
+            after: {
+              src: "/images/case-studies/nirva-homepage/solution-1.png",
+              alt: "Structured dashboard after redesign",
+            },
+          },
+          {
+            type: "before-after",
+            before: {
+              src: "/images/case-studies/nirva-homepage/problem-2.png",
+              alt: "Confusing navigation before redesign",
+            },
+            after: {
+              src: "/images/case-studies/nirva-homepage/solution-2.png",
+              alt: "Clear navigation after redesign",
+            },
           },
         ],
       },
@@ -972,19 +1001,15 @@ export const caseStudies: CaseStudy[] = [
         heading: "Solution 1: Distraction-Free Cart Page",
         items: [
           {
-            type: "image-grid",
-            images: [
-              {
-                src: "/images/case-studies/slc-checkout/Solution 1 Desktop.jpg",
-                alt: "Solution 1 Desktop view",
-                caption: "Desktop: Before vs After Cart Page Side By Side Comparison",
-              },
-              {
-                src: "/images/case-studies/slc-checkout/Solution 1 Mobile.jpg",
-                alt: "Solution 1 Mobile view",
-                caption: "Mobile: Before vs After Cart Page Comparison",
-              },
-            ],
+            type: "before-after",
+            before: {
+              src: "/images/case-studies/slc-checkout/Problem 1.jpg",
+              alt: "Cluttered cart page before redesign",
+            },
+            after: {
+              src: "/images/case-studies/slc-checkout/Solution 1 Desktop.jpg",
+              alt: "Distraction-free cart page after redesign",
+            },
           },
           {
             type: "embed",
@@ -1004,24 +1029,15 @@ export const caseStudies: CaseStudy[] = [
         heading: "Solution 2: Streamlined Address Entry & Inline Validation",
         items: [
           {
-            type: "image-grid",
-            images: [
-              {
-                src: "/images/case-studies/slc-checkout/Solution 2- Streamlined Address Entry & Inline Validation.webp",
-                alt: "Streamlined checkout flow transformation",
-                caption: "The 5-step flow collapsed into a streamlined 3-page checkout",
-              },
-              {
-                src: "/images/case-studies/slc-checkout/Solution 3 Desktop.jpg",
-                alt: "Address entry desktop view",
-                caption: "Desktop: Inline validation and address entry redesign",
-              },
-              {
-                src: "/images/case-studies/slc-checkout/Solution 3 Mobile.jpg",
-                alt: "Address entry mobile view",
-                caption: "Mobile: Streamlined address entry with inline validation",
-              },
-            ],
+            type: "before-after",
+            before: {
+              src: "/images/case-studies/slc-checkout/Problem 3.jpg",
+              alt: "Complex form fields before redesign",
+            },
+            after: {
+              src: "/images/case-studies/slc-checkout/Solution 3 Desktop.jpg",
+              alt: "Streamlined address entry after redesign",
+            },
           },
           {
             type: "embed",
@@ -1041,19 +1057,15 @@ export const caseStudies: CaseStudy[] = [
         heading: "Solution 3: Simplified Delivery Method Selector",
         items: [
           {
-            type: "image-grid",
-            images: [
-              {
-                src: "/images/case-studies/slc-checkout/Solution 4 Desktop.jpg",
-                alt: "Delivery method desktop view",
-                caption: "Desktop: Simplified delivery method selector with estimated dates",
-              },
-              {
-                src: "/images/case-studies/slc-checkout/Solution 4 Mobile.jpg",
-                alt: "Delivery method mobile view",
-                caption: "Mobile: Clear delivery options with cost transparency",
-              },
-            ],
+            type: "before-after",
+            before: {
+              src: "/images/case-studies/slc-checkout/Problem 4.webp",
+              alt: "Complex delivery options before redesign",
+            },
+            after: {
+              src: "/images/case-studies/slc-checkout/Solution 4 Desktop.jpg",
+              alt: "Simplified delivery selector after redesign",
+            },
           },
           {
             type: "embed",

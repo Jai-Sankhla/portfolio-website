@@ -7,6 +7,7 @@ import { caseStudies } from "@/data/case-studies";
 import ScrollReveal from "@/components/ScrollReveal";
 import ParallaxWrapper from "@/components/ParallaxWrapper";
 import CaseStudyTOC from "@/components/CaseStudyTOC";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import MagneticWrapper from "@/components/MagneticWrapper";
 import { site } from "@/data/site";
@@ -315,6 +316,9 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
           />
         </div>
       );
+
+    case "before-after":
+      return <BeforeAfterSlider before={item.before!} after={item.after!} />;
 
     default:
       return null;
