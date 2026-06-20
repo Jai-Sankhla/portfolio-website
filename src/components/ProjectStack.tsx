@@ -44,10 +44,16 @@ function StackedCard({
     [0, 0.15]
   );
 
-  const glowOpacity = useTransform(
+  const textY = useTransform(
     scrollYProgress,
     [0, 0.03, ANIM_START, ANIM_END],
-    [0, 0.6, 0.6, 0]
+    [40, 0, 0, -20]
+  );
+
+  const textOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.03, ANIM_START, ANIM_END],
+    [0, 1, 1, 0]
   );
 
   return (
@@ -84,13 +90,6 @@ function StackedCard({
                   sizes="(max-width: 768px) 100vw, 80vw"
                 />
               </motion.div>
-              <motion.div
-                className="absolute inset-0 rounded-2xl pointer-events-none z-20"
-                style={{
-                  opacity: glowOpacity,
-                  boxShadow: "inset 0 0 0 1px rgba(17,81,255,0.25), 0 0 30px rgba(17,81,255,0.15)",
-                }}
-              />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               <div className="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
                 <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff] px-4 py-2 rounded-full">
@@ -108,7 +107,10 @@ function StackedCard({
               </div>
             </div>
 
-            <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-8">
+            <motion.div
+              style={{ y: textY, opacity: textOpacity }}
+              className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-8"
+            >
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-xs text-[#1151ff] font-medium uppercase tracking-wider">
@@ -131,7 +133,7 @@ function StackedCard({
                   {project.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           </Link>
         </motion.div>
       </div>
