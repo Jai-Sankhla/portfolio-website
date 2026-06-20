@@ -8,7 +8,7 @@ import { caseStudies } from "@/data/case-studies";
 import type { CaseStudy } from "@/data/case-studies";
 
 const SECTION_HEIGHT = 130;
-const OVERLAP = 30;
+const OVERLAP = 10;
 const CARD_HEIGHT = 100;
 const STICKY_GAP = CARD_HEIGHT - OVERLAP;
 const MARGIN_TOP = -(SECTION_HEIGHT - STICKY_GAP);
@@ -79,8 +79,8 @@ function StackedCard({
                 />
               </motion.div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-              <div className="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
-                <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff] px-4 py-2 rounded-full">
+              <div className="absolute bottom-6 left-6 pointer-events-none">
+                <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff]/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
                   View case study
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path
