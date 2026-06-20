@@ -492,33 +492,6 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        heading: "Before vs After",
-        items: [
-          {
-            type: "before-after",
-            before: {
-              src: "/images/case-studies/nirva-homepage/problem-1.png",
-              alt: "Cluttered homepage before redesign",
-            },
-            after: {
-              src: "/images/case-studies/nirva-homepage/solution-1.png",
-              alt: "Structured dashboard after redesign",
-            },
-          },
-          {
-            type: "before-after",
-            before: {
-              src: "/images/case-studies/nirva-homepage/problem-2.png",
-              alt: "Confusing navigation before redesign",
-            },
-            after: {
-              src: "/images/case-studies/nirva-homepage/solution-2.png",
-              alt: "Clear navigation after redesign",
-            },
-          },
-        ],
-      },
-      {
         heading: "Solution: An Action-Oriented Dashboard",
         items: [
           {
