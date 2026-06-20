@@ -91,24 +91,13 @@ function StackedCard({
 
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#111111]/80 via-[#111111]/30 to-transparent pointer-events-none" />
 
-              <div className="absolute top-5 left-5">
-                <span className="inline-flex items-center gap-2 text-xs font-medium text-white/90 bg-[#111111]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                  {project.client}
-                  <span className="w-1 h-1 rounded-full bg-white/30" />
-                  <span className="text-white/60">{project.industry}</span>
-                </span>
-              </div>
-
-              {project.metric && (
-                <div className="absolute top-5 right-5">
-                  <span className="inline-block text-xs font-medium text-white/90 bg-[#111111]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                    {project.metric.value} &mdash; {project.metric.label}
-                  </span>
-                </div>
-              )}
-
               <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                 <div className="max-w-xl">
+                  <div className="flex items-center gap-2 text-xs text-white/60 mb-2">
+                    <span>{project.client}</span>
+                    <span className="w-1 h-1 rounded-full bg-white/30" />
+                    <span>{project.industry}</span>
+                  </div>
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-white mb-2">
                     {project.title}
                   </h2>
@@ -116,18 +105,25 @@ function StackedCard({
                     {project.description}
                   </p>
                   <div className="mt-4 opacity-100 md:opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-300">
-                    <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff] px-4 py-2 rounded-full">
-                      View case study
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <path
-                          d="M1 11L11 1M11 1H3M11 1V9"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff] px-4 py-2 rounded-full">
+                        View case study
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path
+                            d="M1 11L11 1M11 1H3M11 1V9"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      {project.metric && (
+                        <span className="text-xs text-white/60 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                          {project.metric.value} &mdash; {project.metric.label}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
