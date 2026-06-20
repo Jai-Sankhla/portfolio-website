@@ -43,7 +43,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           &larr; Back to work
         </Link>
 
-        <ClipReveal>
+        <ScrollReveal>
           <ParallaxWrapper className="w-full rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-8">
             <Image
               src={caseStudy.coverImage}
@@ -57,7 +57,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
               blurDataURL={BLUR_DATA_URL}
             />
           </ParallaxWrapper>
-        </ClipReveal>
+        </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
           <div className="flex flex-wrap items-center gap-2 mb-4">

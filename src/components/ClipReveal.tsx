@@ -15,11 +15,12 @@ export default function ClipReveal({ children, className = "" }: ClipRevealProps
     offset: ["start end", "end start"],
   });
 
-  const clipProgress = useTransform(scrollYProgress, [0, 0.4, 0.7], [1, 0, 0]);
+  const clipProgress = useTransform(scrollYProgress, [0, 0.3, 0.6], [1, 0, 0]);
+  const clipPath = useTransform(clipProgress, (v) => `inset(0 0 ${v * 100}% 0)`);
 
   return (
     <div ref={ref} className={className}>
-      <motion.div style={{ clipPath: useTransform(clipProgress, (v) => `inset(0 0 ${v * 100}% 0)`) }}>
+      <motion.div style={{ clipPath }}>
         {children}
       </motion.div>
     </div>
