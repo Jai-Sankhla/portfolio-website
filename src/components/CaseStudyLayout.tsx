@@ -12,7 +12,6 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import MagneticWrapper from "@/components/MagneticWrapper";
 import { site } from "@/data/site";
 import { calculateReadingTime } from "@/lib/reading-time";
-import { BLUR_DATA_URL } from "@/lib/images";
 
 const ACCENT = "#1151ff";
 
@@ -53,8 +52,6 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
               sizes="(max-width: 768px) 100vw, 768px"
               className="w-full h-auto rounded-xl"
               priority
-              placeholder="blur"
-              blurDataURL={BLUR_DATA_URL}
             />
           </ParallaxWrapper>
         </ScrollReveal>
@@ -242,8 +239,6 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
                 height={0}
                 sizes="(max-width: 768px) 100vw, 768px"
                 className="w-full h-auto rounded-lg"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
               />
             </ParallaxWrapper>
             {item.image?.caption && (
@@ -269,8 +264,6 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
                     height={0}
                     sizes="(max-width: 768px) 100vw, 768px"
                     className="w-full h-auto rounded-lg"
-                    placeholder="blur"
-                    blurDataURL={BLUR_DATA_URL}
                   />
                 </ParallaxWrapper>
                 {img.caption && (
