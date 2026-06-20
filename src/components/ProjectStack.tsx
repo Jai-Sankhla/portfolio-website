@@ -14,15 +14,10 @@ const CARD_HEIGHT = 100;
 const STICKY_GAP = CARD_HEIGHT - OVERLAP;
 const MARGIN_TOP = -(SECTION_HEIGHT - STICKY_GAP);
 const EXIT_START = CARD_HEIGHT / SECTION_HEIGHT;
-const EXIT_RANGE = 1 - EXIT_START;
-const MID_O = EXIT_START + EXIT_RANGE * 0.5;
-const MID_S = EXIT_START + EXIT_RANGE * 0.6;
-const MID_Y = EXIT_START + EXIT_RANGE * 0.7;
 
 function StackedCard({
   project,
   index,
-  total,
 }: {
   project: CaseStudy;
   index: number;
@@ -37,26 +32,26 @@ function StackedCard({
 
   const scale = useTransform(
     scrollYProgress,
-    [EXIT_START, MID_S, 1],
-    [1, 0.97, 0.93]
+    [EXIT_START, 0.85, 0.95],
+    [1, 0.95, 0.9]
   );
 
   const shadowOpacity = useTransform(
     scrollYProgress,
-    [EXIT_START, MID_O, 1],
-    [0, 0.08, 0.15]
+    [EXIT_START, 0.85, 1],
+    [0, 0.1, 0.2]
   );
 
   const cardOpacity = useTransform(
     scrollYProgress,
-    [EXIT_START, MID_O, 1],
-    [1, 0.6, 0]
+    [EXIT_START, 0.78, 0.88],
+    [1, 0.4, 0]
   );
 
   const cardY = useTransform(
     scrollYProgress,
-    [EXIT_START, MID_Y, 1],
-    [0, -15, -40]
+    [EXIT_START, 0.85, 1],
+    [0, -5, -15]
   );
 
   return (
@@ -81,57 +76,60 @@ function StackedCard({
             style={{ opacity: shadowOpacity }}
           />
           <Link href={`/work/${project.slug}`} className="group block relative z-10">
-            <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[#f5f5f5] dark:bg-[#151515] mb-6">
-              <motion.div className="w-full h-full">
-                <Image
-                  src={project.coverImage}
-                  alt={project.title}
-                  fill
-                  className="object-cover brightness-[0.95] group-hover:brightness-100 transition-all duration-700"
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URL}
-                />
-              </motion.div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-              <div className="absolute bottom-6 left-6 pointer-events-none">
-                <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff]/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                  View case study
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path
-                      d="M1 11L11 1M11 1H3M11 1V9"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+            <div className="relative h-[75vh] min-h-[460px] max-h-[680px] w-full overflow-hidden rounded-2xl bg-[#f5f5f5] dark:bg-[#151515]">
+              <Image
+                src={project.coverImage}
+                alt={project.title}
+                fill
+                className="object-cover transition-all duration-700 group-hover:scale-[1.03]"
+                sizes="(max-width: 768px) 100vw, 80vw"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+              />
+
+              <div className="absolute inset-0 bg-[#111111]/0 group-hover:bg-[#111111]/10 transition-all duration-700" />
+
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#111111]/80 via-[#111111]/30 to-transparent pointer-events-none" />
+
+              <div className="absolute top-5 left-5">
+                <span className="inline-flex items-center gap-2 text-xs font-medium text-white/80 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                  {project.client}
+                  <span className="w-1 h-1 rounded-full bg-white/40" />
+                  <span className="text-white/60">{project.industry}</span>
                 </span>
               </div>
-            </div>
 
-            <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-8">
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xs text-[#1151ff] font-medium uppercase tracking-wider">
-                    {project.client}
-                  </span>
-                  <span className="text-[#cacacb] dark:text-[#333333]">/</span>
-                  <span className="text-xs text-[#707072]">{project.industry}</span>
-                </div>
-                {project.metric && (
-                  <div className="inline-block text-xs font-medium text-[#111111] dark:text-[#f5f5f5] bg-[#f5f5f5] dark:bg-[#151515] px-3 py-1 rounded-full">
+              {project.metric && (
+                <div className="absolute top-5 right-5">
+                  <span className="inline-block text-xs font-medium text-white bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
                     {project.metric.value} &mdash; {project.metric.label}
+                  </span>
+                </div>
+              )}
+
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <div className="max-w-xl">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-white mb-2">
+                    {project.title}
+                  </h2>
+                  <p className="text-sm md:text-base text-white/70 leading-relaxed line-clamp-2 max-w-lg">
+                    {project.description}
+                  </p>
+                  <div className="mt-4 opacity-100 md:opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                    <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff] px-4 py-2 rounded-full">
+                      View case study
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M1 11L11 1M11 1H3M11 1V9"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
                   </div>
-                )}
-              </div>
-              <div>
-                <h2 className="text-xl md:text-2xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-3">
-                  {project.title}
-                </h2>
-                <p className="text-sm text-[#707072] leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
+                </div>
               </div>
             </div>
           </Link>
