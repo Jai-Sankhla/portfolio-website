@@ -44,6 +44,12 @@ function StackedCard({
     [0, 0.15]
   );
 
+  const cardOpacity = useTransform(
+    scrollYProgress,
+    [ANIM_START, 1],
+    [1, 0]
+  );
+
   return (
     <div
       ref={sectionRef}
@@ -58,7 +64,7 @@ function StackedCard({
         style={{ zIndex: index + 1 }}
       >
         <motion.div
-          style={!isLast ? { scale } : undefined}
+          style={!isLast ? { scale, opacity: cardOpacity } : undefined}
           className="w-full max-w-6xl relative"
         >
           {!isLast && (
