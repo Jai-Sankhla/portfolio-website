@@ -94,7 +94,7 @@ export default function About() {
           <div className="flex flex-wrap gap-3">
             {tools.map((tool, i) => (
               <ScrollReveal key={tool} delay={i * 0.03}>
-                <span className="text-sm px-4 py-2 rounded-full bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333]">
+                <span className="text-sm px-4 py-2 rounded-full bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors">
                   {tool}
                 </span>
               </ScrollReveal>
@@ -111,7 +111,7 @@ export default function About() {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
             {capabilities.map((cap, i) => (
               <ScrollReveal key={cap} delay={i * 0.05}>
-                <div className="p-4 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50">
+                <div className="p-4 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors">
                   <p className="text-sm font-medium mb-1">{cap}</p>
                   <p className="text-xs text-[#707072]">
                     {cap === "User Research" && "Uncover user needs to shape better decisions."}
@@ -173,7 +173,7 @@ function RecommendationCard({
 
   return (
     <ScrollReveal delay={index * 0.1}>
-      <div className="p-6 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50">
+      <div className="p-6 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors">
         <div className="flex items-start gap-4 mb-4">
           <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-[#cacacb] dark:bg-[#333333]">
             <Image
