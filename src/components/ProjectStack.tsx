@@ -7,13 +7,16 @@ import Link from "next/link";
 import { caseStudies } from "@/data/case-studies";
 import type { CaseStudy } from "@/data/case-studies";
 
-const SECTION_HEIGHT = 130;
+const SECTION_HEIGHT = 160;
 const OVERLAP = 0;
 const CARD_HEIGHT = 100;
 const STICKY_GAP = CARD_HEIGHT - OVERLAP;
 const MARGIN_TOP = -(SECTION_HEIGHT - STICKY_GAP);
-const ANIM_START = STICKY_GAP / SECTION_HEIGHT;
-const ANIM_END = CARD_HEIGHT / SECTION_HEIGHT;
+const EXIT_START = CARD_HEIGHT / SECTION_HEIGHT;
+const EXIT_RANGE = 1 - EXIT_START;
+const MID_O = EXIT_START + EXIT_RANGE * 0.5;
+const MID_S = EXIT_START + EXIT_RANGE * 0.6;
+const MID_Y = EXIT_START + EXIT_RANGE * 0.7;
 
 function StackedCard({
   project,
@@ -25,7 +28,6 @@ function StackedCard({
   total: number;
 }) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isLast = index === total - 1;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -34,20 +36,26 @@ function StackedCard({
 
   const scale = useTransform(
     scrollYProgress,
-    [ANIM_START, ANIM_END],
-    [1, 0.95]
+    [EXIT_START, MID_S, 1],
+    [1, 0.97, 0.93]
   );
 
   const shadowOpacity = useTransform(
     scrollYProgress,
-    [ANIM_START, ANIM_END],
-    [0, 0.15]
+    [EXIT_START, MID_O, 1],
+    [0, 0.08, 0.15]
   );
 
   const cardOpacity = useTransform(
     scrollYProgress,
-    [ANIM_START, 1],
-    [1, 0]
+    [EXIT_START, MID_O, 1],
+    [1, 0.6, 0]
+  );
+
+  const cardY = useTransform(
+    scrollYProgress,
+    [EXIT_START, MID_Y, 1],
+    [0, -15, -40]
   );
 
   return (
@@ -64,15 +72,13 @@ function StackedCard({
         style={{ zIndex: index + 1 }}
       >
         <motion.div
-          style={!isLast ? { scale, opacity: cardOpacity } : undefined}
+          style={{ scale, y: cardY, opacity: cardOpacity }}
           className="w-full max-w-6xl relative"
         >
-          {!isLast && (
-            <motion.div
-              className="absolute -inset-2 rounded-3xl bg-black/15 dark:bg-black/50 blur-xl pointer-events-none"
-              style={{ opacity: shadowOpacity }}
-            />
-          )}
+          <motion.div
+            className="absolute -inset-2 rounded-3xl bg-black/15 dark:bg-black/50 blur-xl pointer-events-none"
+            style={{ opacity: shadowOpacity }}
+          />
           <Link href={`/work/${project.slug}`} className="group block relative z-10">
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[#f5f5f5] dark:bg-[#151515] mb-6">
               <motion.div className="w-full h-full">
