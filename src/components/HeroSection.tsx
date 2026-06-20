@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { site } from "@/data/site";
 
@@ -22,6 +22,8 @@ const wordReveal = {
 
 export default function HeroSection() {
   const headline = "Designing products that people love to use.";
+  const { scrollY } = useScroll();
+  const cueOpacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   return (
     <section className="min-h-screen flex items-center pt-24 pb-16 md:pb-0">
@@ -96,6 +98,26 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+
+        <motion.div
+          style={{ opacity: cueOpacity }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-xs text-[#707072]">Scroll to explore</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="text-[#707072]">
+              <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" strokeWidth="1.5" />
+              <motion.rect
+                x="6" y="6" width="4" height="4" rx="2" fill="currentColor"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </svg>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

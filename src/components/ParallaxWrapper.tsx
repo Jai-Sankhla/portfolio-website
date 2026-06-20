@@ -2,21 +2,18 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 
-interface ParallaxImageProps {
-  src: string;
-  alt: string;
+interface ParallaxWrapperProps {
+  children: React.ReactNode;
   speed?: number;
   className?: string;
 }
 
-export default function ParallaxImage({
-  src,
-  alt,
-  speed = 0.3,
+export default function ParallaxWrapper({
+  children,
+  speed = 0.2,
   className = "",
-}: ParallaxImageProps) {
+}: ParallaxWrapperProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -25,10 +22,8 @@ export default function ParallaxImage({
   const y = useTransform(scrollYProgress, [0, 1], [speed * 100, speed * -100]);
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className}`}>
-      <motion.div style={{ y }} className="w-full h-full">
-        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
-      </motion.div>
+    <div ref={ref} className={`overflow-hidden ${className}`}>
+      <motion.div style={{ y }}>{children}</motion.div>
     </div>
   );
 }

@@ -9,8 +9,15 @@ export default function ThemeToggle() {
 
   return (
     <button
-      onClick={toggle}
-      className="relative w-9 h-9 flex items-center justify-center rounded-full text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors"
+      onClick={() => {
+        toggle();
+        const btn = document.activeElement as HTMLElement;
+        if (btn) btn.style.transform = "scale(0.85)";
+        setTimeout(() => {
+          if (btn) btn.style.transform = "";
+        }, 150);
+      }}
+      className="relative w-9 h-9 flex items-center justify-center rounded-full text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors active:scale-90"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       <motion.span

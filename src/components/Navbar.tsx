@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { site } from "@/data/site";
@@ -32,22 +32,27 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {site.nav.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm transition-colors relative ${
-                pathname === link.href
-                  ? "text-[#111111] dark:text-[#f5f5f5] font-medium"
-                  : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
-              }`}
-            >
-              {pathname === link.href && (
-                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#111111] dark:bg-[#f5f5f5]" />
-              )}
-              {link.label}
-            </Link>
-          ))}
+          <LayoutGroup>
+            {site.nav.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm transition-colors relative ${
+                  pathname === link.href
+                    ? "text-[#111111] dark:text-[#f5f5f5] font-medium"
+                    : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
+                }`}
+              >
+                {link.label}
+                {pathname === link.href && (
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#1151ff]"
+                  />
+                )}
+              </Link>
+            ))}
+          </LayoutGroup>
           <ThemeToggle />
         </div>
 

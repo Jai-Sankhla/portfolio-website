@@ -76,6 +76,22 @@ export default function About() {
           </div>
         </div>
 
+        <div className="grid grid-cols-3 gap-4 mb-12">
+          {["about-1", "about-3", "about-4"].map((img, i) => (
+            <ScrollReveal key={img} delay={0.3 + i * 0.05}>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515]">
+                <Image
+                  src={`/images/${img}.jpeg`}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="33vw"
+                />
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
         <section className="mb-16">
           <ScrollReveal>
             <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
@@ -94,7 +110,12 @@ export default function About() {
           <div className="flex flex-wrap gap-3">
             {tools.map((tool, i) => (
               <ScrollReveal key={tool} delay={i * 0.03}>
-                <span className="text-sm px-4 py-2 rounded-full bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors">
+                <span className="text-sm px-3 py-1.5 rounded-full bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors inline-flex items-center gap-2">
+                  <img
+                    src={`/images/tool-${tool.toLowerCase()}.svg`}
+                    alt=""
+                    className="w-4 h-4"
+                  />
                   {tool}
                 </span>
               </ScrollReveal>

@@ -35,7 +35,7 @@ export default function Footer() {
                 href={site.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#707072] hover:text-[#1151ff] transition-colors w-fit"
+                className="text-sm text-[#707072] hover:text-[#1151ff] hover:-translate-y-0.5 transition-all duration-300 w-fit"
               >
                 LinkedIn
               </a>
@@ -43,7 +43,7 @@ export default function Footer() {
                 href={site.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#707072] hover:text-[#1151ff] transition-colors w-fit"
+                className="text-sm text-[#707072] hover:text-[#1151ff] hover:-translate-y-0.5 transition-all duration-300 w-fit"
               >
                 X / Twitter
               </a>
@@ -51,7 +51,7 @@ export default function Footer() {
                 href={site.social.dribbble}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#707072] hover:text-[#1151ff] transition-colors w-fit"
+                className="text-sm text-[#707072] hover:text-[#1151ff] hover:-translate-y-0.5 transition-all duration-300 w-fit"
               >
                 Dribbble
               </a>

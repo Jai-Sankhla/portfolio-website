@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { CaseStudy, CaseStudySection } from "@/data/case-studies";
 import { caseStudies } from "@/data/case-studies";
 import ScrollReveal from "@/components/ScrollReveal";
+import ParallaxWrapper from "@/components/ParallaxWrapper";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { site } from "@/data/site";
 
@@ -34,7 +35,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
         </Link>
 
         <ScrollReveal>
-          <div className="w-full overflow-hidden rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-8">
+          <ParallaxWrapper className="w-full rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-8">
             <Image
               src={caseStudy.coverImage}
               alt={caseStudy.title}
@@ -44,7 +45,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
               className="w-full h-auto rounded-xl"
               priority
             />
-          </div>
+          </ParallaxWrapper>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
@@ -208,7 +209,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
     case "image":
       return (
         <div>
-          <div className="w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+          <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
             <Image
               src={item.image!.src}
               alt={item.image!.alt}
@@ -217,7 +218,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
               sizes="(max-width: 768px) 100vw, 768px"
               className="w-full h-auto rounded-lg"
             />
-          </div>
+          </ParallaxWrapper>
           {item.image?.caption && (
             <p className="text-xs text-[#707072] mt-2 leading-relaxed">
               {item.image.caption}
@@ -231,7 +232,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
         <div className="space-y-4">
           {item.images?.map((img, k) => (
             <div key={k}>
-              <div className="w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+              <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -240,7 +241,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
                   sizes="(max-width: 768px) 100vw, 768px"
                   className="w-full h-auto rounded-lg"
                 />
-              </div>
+              </ParallaxWrapper>
               {img.caption && (
                 <p className="text-xs text-[#707072] mt-2 leading-relaxed">
                   {img.caption}
