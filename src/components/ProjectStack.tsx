@@ -89,7 +89,7 @@ function StackedCard({
 
               <div className="absolute inset-0 bg-[#111111]/0 group-hover:bg-[#111111]/10 transition-all duration-700" />
 
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#111111]/80 via-[#111111]/30 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#111111]/95 via-[#111111]/60 to-transparent pointer-events-none" />
 
               <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                 <div className="max-w-xl">
