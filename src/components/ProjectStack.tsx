@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { caseStudies } from "@/data/case-studies";
 import type { CaseStudy } from "@/data/case-studies";
+import { BLUR_DATA_URL } from "@/lib/images";
 
 const SECTION_HEIGHT = 160;
 const OVERLAP = 0;
@@ -88,6 +89,8 @@ function StackedCard({
                   fill
                   className="object-cover brightness-[0.95] group-hover:brightness-100 transition-all duration-700"
                   sizes="(max-width: 768px) 100vw, 80vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
                 />
               </motion.div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

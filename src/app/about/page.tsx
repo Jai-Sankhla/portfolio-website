@@ -5,8 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import Timeline from "@/components/Timeline";
+import MagneticWrapper from "@/components/MagneticWrapper";
 import { recommendations } from "@/data/recommendations";
 import { site } from "@/data/site";
+import { BLUR_DATA_URL } from "@/lib/images";
 
 const tools = [
   "Figma", "Miro", "Photoshop", "Notion", "Framer",
@@ -45,6 +47,8 @@ export default function About() {
                 fill
                 className="object-cover"
                 sizes="240px"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
               />
             </div>
           </ScrollReveal>
@@ -66,12 +70,14 @@ export default function About() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.25}>
-              <a
-                href={`mailto:${site.email}`}
-                className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all"
-              >
-                {site.email}
-              </a>
+              <MagneticWrapper>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all tracking-hover"
+                >
+                  {site.email}
+                </a>
+              </MagneticWrapper>
             </ScrollReveal>
           </div>
         </div>
@@ -86,6 +92,8 @@ export default function About() {
                   fill
                   className="object-cover"
                   sizes="33vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
                 />
               </div>
             </ScrollReveal>
@@ -172,7 +180,7 @@ export default function About() {
             </p>
             <Link
               href="/beyond"
-              className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all"
+              className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all tracking-hover"
             >
               Explore &rarr;
             </Link>
@@ -203,6 +211,8 @@ function RecommendationCard({
               width={48}
               height={48}
               className="w-full h-full object-cover"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
           <div>

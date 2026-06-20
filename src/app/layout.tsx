@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
 import GhostMonogram from "@/components/GhostMonogram";
 import ReadingProgress from "@/components/ReadingProgress";
+import BackToTop from "@/components/BackToTop";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -70,6 +71,7 @@ export default function RootLayout({
           <GhostMonogram />
           <main>{children}</main>
           <Footer />
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>

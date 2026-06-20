@@ -62,4 +62,10 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .tracking-hover {
+    transition: letter-spacing 0.3s ease, color 0.3s ease;
+  }
+  .tracking-hover:hover {
+    letter-spacing: 0.04em;
+  }
 }

@@ -27,6 +27,7 @@ export interface CaseStudy {
   timeline: string;
   tags: string[];
   metric: { value: string; label: string };
+  accentColor?: string;
   sections: { heading: string; items: CaseStudySection[] }[];
 }
 
@@ -44,6 +45,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "8 weeks",
     tags: ["Fintech", "Mobile App"],
     metric: { value: "End-to-end", label: "Product Design" },
+    accentColor: "#059669",
     sections: [
       {
         heading: "Introduction",
@@ -391,6 +393,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "6 weeks",
     tags: ["UX Redesign", "Health", "Mobile"],
     metric: { value: "40%", label: "First task completion increase" },
+    accentColor: "#0d9488",
     sections: [
       {
         heading: "Introduction",
@@ -592,6 +595,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "10 weeks",
     tags: ["Gamification", "Health"],
     metric: { value: "2x", label: "Daily engagement" },
+    accentColor: "#8b5cf6",
     sections: [
       {
         heading: "Introduction",
@@ -804,6 +808,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "8 weeks",
     tags: ["E-Commerce", "UX Strategy", "Checkout"],
     metric: { value: "26%", label: "Cart abandonment reduction" },
+    accentColor: "#d97706",
     sections: [
       {
         heading: "Introduction",
@@ -1152,6 +1157,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "6 weeks",
     tags: ["E-Commerce", "UX Strategy", "Category Design"],
     metric: { value: "+120%", label: "Ad-to-purchase conversion" },
+    accentColor: "#6366f1",
     sections: [
       {
         heading: "Introduction",

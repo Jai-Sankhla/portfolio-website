@@ -37,7 +37,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors relative ${
+                className={`text-sm tracking-hover relative ${
                   pathname === link.href
                     ? "text-[#111111] dark:text-[#f5f5f5] font-medium"
                     : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
@@ -79,11 +79,11 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-3 text-sm rounded-lg transition-colors ${
-                    pathname === link.href
-                      ? "bg-[#cacacb] dark:bg-[#2a2a2a] text-[#111111] dark:text-[#f5f5f5] font-medium"
-                      : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
-                  }`}
+                className={`px-4 py-3 text-sm rounded-lg tracking-hover ${
+                  pathname === link.href
+                    ? "bg-[#cacacb] dark:bg-[#2a2a2a] text-[#111111] dark:text-[#f5f5f5] font-medium"
+                    : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
+                }`}
                 >
                   {link.label}
                 </Link>

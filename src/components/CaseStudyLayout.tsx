@@ -6,8 +6,15 @@ import type { CaseStudy, CaseStudySection } from "@/data/case-studies";
 import { caseStudies } from "@/data/case-studies";
 import ScrollReveal from "@/components/ScrollReveal";
 import ParallaxWrapper from "@/components/ParallaxWrapper";
+import ClipReveal from "@/components/ClipReveal";
+import CaseStudyTOC from "@/components/CaseStudyTOC";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import MagneticWrapper from "@/components/MagneticWrapper";
 import { site } from "@/data/site";
+import { calculateReadingTime } from "@/lib/reading-time";
+import { BLUR_DATA_URL } from "@/lib/images";
+
+const ACCENT = "#1151ff";
 
 interface Props {
   caseStudy: CaseStudy;
@@ -21,20 +28,22 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
       ? caseStudies[currentIndex + 1]
       : null;
 
+  const readingTime = calculateReadingTime(caseStudy);
+  const accentColor = caseStudy.accentColor || ACCENT;
   const metricValue = parseInt(caseStudy.metric.value.replace(/[^0-9]/g, ""));
   const isNumericMetric = !isNaN(metricValue);
 
   return (
-    <div className="pt-28 pb-20">
+    <div className="pt-28 pb-20" style={{ "--accent": accentColor } as React.CSSProperties}>
       <div className="max-w-3xl mx-auto px-6">
         <Link
           href="/work"
-          className="text-sm text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors inline-flex items-center gap-1 mb-8"
+          className="text-sm text-[#707072] tracking-hover inline-flex items-center gap-1 mb-8"
         >
           &larr; Back to work
         </Link>
 
-        <ScrollReveal>
+        <ClipReveal>
           <ParallaxWrapper className="w-full rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-8">
             <Image
               src={caseStudy.coverImage}
@@ -44,20 +53,24 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
               sizes="(max-width: 768px) 100vw, 768px"
               className="w-full h-auto rounded-xl"
               priority
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </ParallaxWrapper>
-        </ScrollReveal>
+        </ClipReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap items-center gap-2 mb-4">
             {caseStudy.tags.map((tag) => (
               <span
                 key={tag}
                 className="text-xs text-[#707072] border border-[#cacacb] dark:border-[#333333] px-2.5 py-0.5 rounded-full"
+                style={{ borderColor: `color-mix(in srgb, ${accentColor} 40%, transparent)` }}
               >
                 {tag}
               </span>
             ))}
+            <span className="text-xs text-[#707072] ml-2">&middot; {readingTime}</span>
           </div>
         </ScrollReveal>
 
@@ -110,11 +123,18 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
 
         {caseStudy.metric && (
           <ScrollReveal delay={0.3}>
-            <div className="mb-10 p-8 rounded-xl bg-[#1151ff]/10 dark:bg-[#1151ff]/5 border border-[#1151ff]/20">
-              <p className="text-xs text-[#707072] mb-2">
-                Key Impact
-              </p>
-              <p className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-bold text-[#1151ff]">
+            <div
+              className="mb-10 p-8 rounded-xl border"
+              style={{
+                backgroundColor: `color-mix(in srgb, ${accentColor} 10%, transparent)`,
+                borderColor: `color-mix(in srgb, ${accentColor} 20%, transparent)`,
+              }}
+            >
+              <p className="text-xs text-[#707072] mb-2">Key Impact</p>
+              <p
+                className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-bold"
+                style={{ color: accentColor }}
+              >
                 {isNumericMetric ? (
                   <>
                     <AnimatedCounter to={metricValue} />
@@ -131,11 +151,13 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           </ScrollReveal>
         )}
 
+        <CaseStudyTOC caseStudy={caseStudy} />
+
         <div className="space-y-16">
           {caseStudy.sections.map((section, i) => (
             <section key={i}>
               <ScrollReveal>
-                <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
+                <h2 data-section-index={i} className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
                   {section.heading}
                 </h2>
               </ScrollReveal>
@@ -156,12 +178,12 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
               {prev && (
                 <Link
                   href={`/work/${prev.slug}`}
-                  className="group text-left"
+                  className="group text-left block"
                 >
                   <span className="text-xs text-[#707072]">
-                    Previous project
+                    &larr; Previous project
                   </span>
-                  <p className="text-sm font-medium group-hover:text-[#1151ff] transition-colors">
+                  <p className="text-sm font-medium mt-0.5 tracking-hover">
                     {prev.title}
                   </p>
                 </Link>
@@ -171,12 +193,12 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
               {next && (
                 <Link
                   href={`/work/${next.slug}`}
-                  className="group text-right"
+                  className="group text-right block"
                 >
                   <span className="text-xs text-[#707072]">
-                    Next project
+                    Next project &rarr;
                   </span>
-                  <p className="text-sm font-medium group-hover:text-[#1151ff] transition-colors">
+                  <p className="text-sm font-medium mt-0.5 tracking-hover">
                     {next.title}
                   </p>
                 </Link>
@@ -189,12 +211,14 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           <p className="text-[#707072] mb-4">
             Interested in working together?
           </p>
-          <a
-            href={`mailto:${site.email}`}
-            className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors"
-          >
-            Get in touch
-          </a>
+          <MagneticWrapper>
+            <a
+              href={`mailto:${site.email}`}
+              className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors tracking-hover"
+            >
+              Get in touch
+            </a>
+          </MagneticWrapper>
         </div>
       </div>
     </div>
@@ -208,53 +232,61 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
 
     case "image":
       return (
-        <div>
-          <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
-            <Image
-              src={item.image!.src}
-              alt={item.image!.alt}
-              width={0}
-              height={0}
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="w-full h-auto rounded-lg"
-            />
-          </ParallaxWrapper>
-          {item.image?.caption && (
-            <p className="text-xs text-[#707072] mt-2 leading-relaxed">
-              {item.image.caption}
-            </p>
-          )}
-        </div>
+        <ClipReveal>
+          <div>
+            <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+              <Image
+                src={item.image!.src}
+                alt={item.image!.alt}
+                width={0}
+                height={0}
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="w-full h-auto rounded-lg"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+              />
+            </ParallaxWrapper>
+            {item.image?.caption && (
+              <p className="text-xs text-[#707072] mt-2 leading-relaxed">
+                {item.image.caption}
+              </p>
+            )}
+          </div>
+        </ClipReveal>
       );
 
     case "image-grid":
       return (
-        <div className="space-y-4">
-          {item.images?.map((img, k) => (
-            <div key={k}>
-              <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={0}
-                  height={0}
-                  sizes="(max-width: 768px) 100vw, 768px"
-                  className="w-full h-auto rounded-lg"
-                />
-              </ParallaxWrapper>
-              {img.caption && (
-                <p className="text-xs text-[#707072] mt-2 leading-relaxed">
-                  {img.caption}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
+        <ClipReveal>
+          <div className="space-y-4">
+            {item.images?.map((img, k) => (
+              <div key={k}>
+                <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 768px) 100vw, 768px"
+                    className="w-full h-auto rounded-lg"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
+                  />
+                </ParallaxWrapper>
+                {img.caption && (
+                  <p className="text-xs text-[#707072] mt-2 leading-relaxed">
+                    {img.caption}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </ClipReveal>
       );
 
     case "quote":
       return (
-        <blockquote className="border-l-2 border-[#1151ff] pl-5">
+        <blockquote className="border-l-2 pl-5" style={{ borderColor: "var(--accent)" }}>
           <p className="text-[#111111] dark:text-[#f5f5f5] italic leading-relaxed">
             {item.quote}
           </p>

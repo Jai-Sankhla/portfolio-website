@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { recommendations } from "@/data/recommendations";
+import { BLUR_DATA_URL } from "@/lib/images";
 
 function RecommendationCard({
   rec,
@@ -34,6 +35,8 @@ function RecommendationCard({
             width={44}
             height={44}
             className="w-full h-full object-cover"
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
           />
         </div>
         <div>
