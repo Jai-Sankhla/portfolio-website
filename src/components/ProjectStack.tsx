@@ -92,16 +92,16 @@ function StackedCard({
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#111111]/80 via-[#111111]/30 to-transparent pointer-events-none" />
 
               <div className="absolute top-5 left-5">
-                <span className="inline-flex items-center gap-2 text-xs font-medium text-white/80 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                <span className="inline-flex items-center gap-2 text-xs font-medium text-white/90 bg-[#111111]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
                   {project.client}
-                  <span className="w-1 h-1 rounded-full bg-white/40" />
+                  <span className="w-1 h-1 rounded-full bg-white/30" />
                   <span className="text-white/60">{project.industry}</span>
                 </span>
               </div>
 
               {project.metric && (
                 <div className="absolute top-5 right-5">
-                  <span className="inline-block text-xs font-medium text-white bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                  <span className="inline-block text-xs font-medium text-white/90 bg-[#111111]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
                     {project.metric.value} &mdash; {project.metric.label}
                   </span>
                 </div>
