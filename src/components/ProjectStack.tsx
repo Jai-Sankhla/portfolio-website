@@ -149,15 +149,7 @@ export default function ProjectStack() {
   return (
     <div className="relative" style={{ height: `${(total - 1) * STICKY_GAP + SECTION_HEIGHT}vh` }}>
       {caseStudies.map((project, i) => (
-        <motion.div
-          key={project.slug}
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-        >
-          <StackedCard project={project} index={i} total={total} />
-        </motion.div>
+        <StackedCard key={project.slug} project={project} index={i} total={total} />
       ))}
     </div>
   );
