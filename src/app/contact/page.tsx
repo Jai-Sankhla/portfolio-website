@@ -59,7 +59,7 @@ export default function Contact() {
               href: site.social.behance,
             },
             {
-              label: "Twitter",
+              label: "X / Twitter",
               href: site.social.twitter,
             },
           ].map((link, i) => (
