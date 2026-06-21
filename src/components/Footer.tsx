@@ -6,7 +6,7 @@ const links = [
   { label: "Email", href: `mailto:${site.email}` },
   { label: "LinkedIn", href: site.social.linkedin },
   { label: "Behance", href: site.social.behance },
-  { label: "Twitter", href: site.social.twitter },
+  { label: "X / Twitter", href: site.social.twitter },
 ];
 
 export default function Footer() {
