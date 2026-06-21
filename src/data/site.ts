@@ -1,6 +1,7 @@
 export const site = {
   name: "Jai Sankhla",
   initials: "JS",
+  avatar: "/images/avatar.jpg",
   role: "Product Designer",
   tagline: "Designing products that people love to use.",
   email: "jaisankhla0771@gmail.com",
