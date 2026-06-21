@@ -34,7 +34,7 @@ export default function HeroSection() {
   const cueOpacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   return (
-    <section className="relative min-h-[80vh] flex items-center pt-36 overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center pt-48 overflow-hidden">
       {/* Dot grid background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
