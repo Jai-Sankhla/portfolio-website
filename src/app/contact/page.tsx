@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
-import MagneticWrapper from "@/components/MagneticWrapper";
 import { site } from "@/data/site";
 
 export default function Contact() {
@@ -34,14 +33,12 @@ export default function Contact() {
               <p className="text-sm text-[#707072] mb-1">Email me at</p>
               <p className="text-base font-medium">{site.email}</p>
             </div>
-            <MagneticWrapper>
-              <button
+            <button
                 onClick={copyEmail}
                 className="px-5 py-2.5 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors shrink-0"
               >
                 {copied ? "Copied!" : "Copy email"}
               </button>
-            </MagneticWrapper>
           </div>
         </ScrollReveal>
 

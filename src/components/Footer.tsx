@@ -1,73 +1,57 @@
 "use client";
 
-import Link from "next/link";
 import { site } from "@/data/site";
+
+const links = [
+  { label: "Email", href: `mailto:${site.email}` },
+  { label: "LinkedIn", href: site.social.linkedin },
+  { label: "GitHub", href: site.social.github },
+  { label: "Dribbble", href: site.social.dribbble },
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-10">
-          <div>
-            <Link href="/" className="text-base font-[family-name:var(--font-display)] font-semibold tracking-tight">
-              {site.initials}
-            </Link>
-            <p className="text-sm text-[#707072] mt-1">{site.role}</p>
-          </div>
-          <div>
-            <p className="text-xs text-[#707072] font-medium uppercase tracking-wider mb-3">Navigation</p>
-            <div className="flex flex-col gap-2">
-              {site.nav.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-[#707072] tracking-hover w-fit"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="col-span-2 md:col-span-1">
-            <p className="text-xs text-[#707072] font-medium uppercase tracking-wider mb-3">Connect</p>
-            <div className="flex flex-col gap-2">
+    <footer className="border-t border-[#f0f0f0] dark:border-[#2a2a2a] bg-white dark:bg-transparent transition-colors">
+      <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
+        <a
+          href={`mailto:${site.email}`}
+          className="group block mb-12 md:mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-[#111111] dark:text-[#f5f5f5] group-hover:text-[#1151ff] dark:group-hover:text-[#1151ff] transition-colors">
+            Let&apos;s work together
+          </h2>
+        </a>
+
+        <div className="h-px bg-[#f0f0f0] dark:bg-[#2a2a2a] mb-8" />
+
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-8">
+          {links.map((link, i) => (
+            <span key={link.label} className="flex items-center gap-x-6">
               <a
-                href={site.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[#707072] tracking-hover hover:-translate-y-0.5 w-fit"
+                href={link.href}
+                target={link.label === "Email" ? undefined : "_blank"}
+                rel={link.label === "Email" ? undefined : "noopener noreferrer"}
+                className="group relative text-sm text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors tracking-hover"
               >
-                LinkedIn
+                {link.label}
+                <span className="absolute -bottom-0.5 left-0 w-full h-px bg-[#111111] dark:bg-[#f5f5f5] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </a>
-              <a
-                href={site.social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[#707072] tracking-hover hover:-translate-y-0.5 w-fit"
-              >
-                X / Twitter
-              </a>
-              <a
-                href={site.social.dribbble}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[#707072] tracking-hover hover:-translate-y-0.5 w-fit"
-              >
-                Dribbble
-              </a>
-            </div>
-          </div>
+              {i < links.length - 1 && (
+                <span className="text-[#cacacb] dark:text-[#333333] select-none">·</span>
+              )}
+            </span>
+          ))}
         </div>
-        <div className="pt-6 border-t border-[#f5f5f5] dark:border-[#2a2a2a] flex flex-col sm:flex-row items-center justify-between gap-4">
+
+        <div className="h-px bg-[#f0f0f0] dark:bg-[#2a2a2a] mb-6" />
+
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <p className="text-xs text-[#707072]">
             &copy; {new Date().getFullYear()} {site.name}
           </p>
-          <Link
-            href={`mailto:${site.email}`}
-            className="text-xs text-[#707072] tracking-hover"
-          >
-            {site.email}
-          </Link>
+          <p className="text-xs text-[#707072]">
+            {site.role}
+          </p>
         </div>
       </div>
     </footer>

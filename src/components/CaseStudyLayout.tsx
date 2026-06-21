@@ -9,7 +9,6 @@ import ParallaxWrapper from "@/components/ParallaxWrapper";
 import CaseStudyTOC from "@/components/CaseStudyTOC";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import MagneticWrapper from "@/components/MagneticWrapper";
 import { site } from "@/data/site";
 import { calculateReadingTime } from "@/lib/reading-time";
 
@@ -208,14 +207,12 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           <p className="text-[#707072] mb-4">
             Interested in working together?
           </p>
-          <MagneticWrapper>
-            <a
+          <a
               href={`mailto:${site.email}`}
               className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors tracking-hover"
             >
               Get in touch
             </a>
-          </MagneticWrapper>
         </div>
       </div>
     </div>

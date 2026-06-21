@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import Timeline from "@/components/Timeline";
-import MagneticWrapper from "@/components/MagneticWrapper";
 import AboutGallery from "@/components/AboutGallery";
 import { recommendations } from "@/data/recommendations";
 import { site } from "@/data/site";
@@ -70,14 +69,12 @@ export default function About() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.25}>
-              <MagneticWrapper>
                 <a
                   href={`mailto:${site.email}`}
                   className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all tracking-hover"
                 >
                   {site.email}
                 </a>
-              </MagneticWrapper>
             </ScrollReveal>
           </div>
         </div>

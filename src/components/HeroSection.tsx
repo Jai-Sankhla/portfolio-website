@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { site } from "@/data/site";
-import MagneticWrapper from "@/components/MagneticWrapper";
 import { BLUR_DATA_URL } from "@/lib/images";
 
 const tools = [
@@ -123,23 +122,19 @@ export default function HeroSection() {
               variants={wordReveal}
               className="flex items-center gap-4 mt-8"
             >
-              <MagneticWrapper>
-                <a
-                  href="/work"
-                  className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors"
-                >
-                  View my work
-                </a>
-              </MagneticWrapper>
-              <MagneticWrapper>
-                <a
-                  href={site.resume}
+              <a
+                href="/work"
+                className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors"
+              >
+                View my work
+              </a>
+              <a
+                href={site.resume}
                   download
                   className="inline-flex px-6 py-3 text-sm font-medium rounded-full border border-[#cacacb] dark:border-[#333333] hover:border-[#111111] dark:hover:border-[#f5f5f5] transition-colors"
                 >
                   Download resume
                 </a>
-              </MagneticWrapper>
             </motion.div>
           </motion.div>
 

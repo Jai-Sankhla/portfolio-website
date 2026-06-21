@@ -10,6 +10,7 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/jaisankhla",
     twitter: "https://x.com/jaisankhla",
     dribbble: "https://dribbble.com/jaisankhla",
+    github: "https://github.com/Jai-Sankhla",
   },
   location: "India",
   available: true,
