@@ -181,7 +181,8 @@ export default function HeroSection() {
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           >
             {[...tools, ...tools].map((tool, i) => (
-              <span key={i} className="text-sm text-[#707072] whitespace-nowrap">
+              <span key={i} className="inline-flex items-center gap-2 text-sm text-[#707072] whitespace-nowrap">
+                <img src={`/images/tool-${tool.toLowerCase()}.svg`} alt="" className="w-4 h-4" />
                 {tool}
               </span>
             ))}
