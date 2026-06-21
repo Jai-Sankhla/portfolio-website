@@ -5,6 +5,7 @@ import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import Timeline from "@/components/Timeline";
 import MagneticWrapper from "@/components/MagneticWrapper";
+import AboutGallery from "@/components/AboutGallery";
 import { recommendations } from "@/data/recommendations";
 import { site } from "@/data/site";
 import { BLUR_DATA_URL } from "@/lib/images";
@@ -81,22 +82,10 @@ export default function About() {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 mb-12">
-          {["about-1", "about-3", "about-4"].map((img, i) => (
-            <ScrollReveal key={img} delay={0.3 + i * 0.05}>
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515]">
-                <Image
-                  src={`/images/${img}.jpeg`}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="33vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URL}
-                />
-              </div>
-            </ScrollReveal>
-          ))}
+        <div className="mb-12">
+          <ScrollReveal delay={0.3}>
+            <AboutGallery />
+          </ScrollReveal>
         </div>
 
         <section className="mb-16">
