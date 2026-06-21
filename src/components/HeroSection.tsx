@@ -33,7 +33,7 @@ export default function HeroSection() {
   const cueOpacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   return (
-    <section className="relative min-h-[80vh] flex items-center pt-48 overflow-hidden">
+    <section className="relative min-h-screen md:min-h-[80vh] flex items-center pt-20 md:pt-48 overflow-hidden">
       {/* Dot grid background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
@@ -187,7 +187,7 @@ export default function HeroSection() {
         {/* Scroll cue */}
         <motion.div
           style={{ opacity: cueOpacity }}
-          className="flex flex-col items-center gap-2 mt-12"
+          className="flex flex-col items-center gap-2 mt-6 md:mt-12"
         >
           <span className="text-xs text-[#707072]">Scroll to explore</span>
           <motion.div

@@ -12,7 +12,7 @@ export default function Home() {
       <HeroSection />
       <ProjectStack />
       <TestimonialGrid />
-      <section className="py-16 md:py-20">
+      <section className="py-10 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal>
             <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-4">

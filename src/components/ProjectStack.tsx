@@ -8,7 +8,7 @@ import { caseStudies } from "@/data/case-studies";
 import type { CaseStudy } from "@/data/case-studies";
 import { BLUR_DATA_URL } from "@/lib/images";
 
-const SECTION_HEIGHT = 160;
+const SECTION_HEIGHT = 120;
 const OVERLAP = 0;
 const CARD_HEIGHT = 100;
 const STICKY_GAP = CARD_HEIGHT - OVERLAP;

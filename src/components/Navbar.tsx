@@ -23,7 +23,7 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-24 left-1/2 -translate-x-1/2 z-50 h-14 bg-white dark:bg-[#151515] rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] flex items-center gap-6 px-4"
+        className="fixed top-8 md:top-24 left-1/2 -translate-x-1/2 z-50 h-14 bg-white dark:bg-[#151515] rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] flex items-center gap-6 px-4"
       >
         <Link href="/" className="flex-shrink-0">
           <Image
@@ -92,7 +92,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-[160px] left-1/2 -translate-x-1/2 z-40 w-[240px] bg-white dark:bg-[#151515] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] p-2 md:hidden"
+            className="fixed top-[88px] md:top-[160px] left-1/2 -translate-x-1/2 z-40 w-[240px] bg-white dark:bg-[#151515] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] p-2 md:hidden"
           >
             <div className="flex flex-col gap-1">
               {site.nav.map((link) => (
