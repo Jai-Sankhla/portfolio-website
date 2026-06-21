@@ -6,19 +6,18 @@ import TestimonialGrid from "@/components/TestimonialGrid";
 import ScrollReveal from "@/components/ScrollReveal";
 import MagneticWrapper from "@/components/MagneticWrapper";
 import PageTOC from "@/components/PageTOC";
+import { caseStudies } from "@/data/case-studies";
 import { site } from "@/data/site";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <div data-section-index="0">
-        <ProjectStack />
-      </div>
-      <div data-section-index="1">
+      <ProjectStack />
+      <div data-section-index="5">
         <TestimonialGrid />
       </div>
-      <section data-section-index="2" className="py-16 md:py-20">
+      <section data-section-index="6" className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal>
             <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-4">
@@ -43,7 +42,7 @@ export default function Home() {
         </div>
       </section>
       <PageTOC sections={[
-        { id: "work", label: "Work" },
+        ...caseStudies.map(cs => ({ id: cs.slug, label: cs.title })),
         { id: "testimonials", label: "Testimonials" },
         { id: "contact", label: "Contact" },
       ]} />
