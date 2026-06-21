@@ -6,6 +6,12 @@ import { site } from "@/data/site";
 import MagneticWrapper from "@/components/MagneticWrapper";
 import { BLUR_DATA_URL } from "@/lib/images";
 
+const tools = [
+  "Figma", "Miro", "Photoshop", "Notion", "Framer",
+  "Marvel", "Lovable", "Jitter", "Whimsical", "Uizard",
+  "Maze", "Hotjar", "FigJam", "Replit",
+];
+
 const stagger = {
   hidden: {},
   visible: {
@@ -22,15 +28,66 @@ const wordReveal = {
   },
 };
 
+const statBadges = [
+  { label: "5+ Years", sub: "Experience", color: "#1151ff" },
+  { label: "10+", sub: "Projects Delivered", color: "#059669" },
+  { label: "92%", sub: "Client Satisfaction", color: "#8b5cf6" },
+];
+
 export default function HeroSection() {
   const headline = "Designing products that people love to use.";
   const { scrollY } = useScroll();
   const cueOpacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   return (
-    <section className="min-h-screen flex items-center pt-24 pb-16 md:pb-0">
+    <section className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
+      {/* Dot grid background */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="w-full h-full opacity-[0.04] dark:opacity-[0.06]"
+          style={{
+            backgroundImage: `radial-gradient(circle, #111111 1px, transparent 1px)`,
+            backgroundSize: "36px 36px",
+          }}
+        />
+      </div>
+
+      {/* Floating stat badges */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="absolute top-[22%] left-6 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+      >
+        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[0].color }} />
+        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[0].label}</span>
+        <span className="text-[#707072]">{statBadges[0].sub}</span>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 1.0 }}
+        className="absolute top-[15%] right-6 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+      >
+        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[1].color }} />
+        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[1].label}</span>
+        <span className="text-[#707072]">{statBadges[1].sub}</span>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+        className="absolute bottom-[25%] right-8 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+      >
+        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[2].color }} />
+        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[2].label}</span>
+        <span className="text-[#707072]">{statBadges[2].sub}</span>
+      </motion.div>
+
       <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -87,8 +144,13 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          <div className="flex justify-center md:justify-end">
-            <div className="relative w-[320px] sm:w-[400px] -rotate-2 bg-white dark:bg-[#1a1a1a] p-3 pb-8 rounded-sm shadow-xl dark:shadow-[#000]/30">
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative w-[320px] sm:w-[400px] -rotate-2 bg-white dark:bg-[#1a1a1a] p-3 pb-8 rounded-sm shadow-xl dark:shadow-[#000]/30"
+            >
               <div className="aspect-square w-full overflow-hidden rounded-sm bg-[#f5f5f5] dark:bg-[#151515]">
                 <Image
                   src="/images/avatar.jpg"
@@ -103,13 +165,34 @@ export default function HeroSection() {
               <p className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs font-[family-name:var(--font-caveat)] text-[#707072]">
                 {site.name} &mdash; {new Date().getFullYear()}
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
 
+        {/* Tool marquee */}
+        <div className="mt-10 md:mt-16 overflow-hidden">
+          <div className="flex items-center gap-2 text-xs text-[#707072] mb-3">
+            <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">Trusted tools</span>
+            <span className="w-1 h-1 rounded-full bg-[#cacacb]" />
+            <span>Always exploring new ones</span>
+          </div>
+          <motion.div
+            className="flex gap-8 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          >
+            {[...tools, ...tools].map((tool, i) => (
+              <span key={i} className="text-sm text-[#707072] whitespace-nowrap">
+                {tool}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Scroll cue */}
         <motion.div
           style={{ opacity: cueOpacity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="flex flex-col items-center gap-2 mt-12"
         >
           <span className="text-xs text-[#707072]">Scroll to explore</span>
           <motion.div
