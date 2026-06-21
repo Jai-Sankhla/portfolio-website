@@ -76,54 +76,62 @@ function StackedCard({
             style={{ opacity: shadowOpacity }}
           />
           <Link href={`/work/${project.slug}`} className="group block relative z-10">
-            <div className="relative h-[75vh] min-h-[460px] max-h-[680px] w-full overflow-hidden rounded-2xl bg-[#f5f5f5] dark:bg-[#151515]">
-              <Image
-                src={project.coverImage}
-                alt={project.title}
-                fill
-                className="object-cover transition-all duration-700 group-hover:scale-[1.03]"
-                sizes="(max-width: 768px) 100vw, 80vw"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
-              />
+            <div className={`flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515] ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              <div className="relative h-[35vh] md:h-full md:flex-[3] overflow-hidden">
+                <Image
+                  src={project.coverImage}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-all duration-700 group-hover:scale-[1.03]"
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                />
+                <div className="absolute inset-0 bg-[#111111]/0 group-hover:bg-[#111111]/10 transition-all duration-700" />
+              </div>
+              <div
+                className="relative md:flex-[2] p-6 md:p-8 lg:p-10 flex flex-col justify-center"
+                style={{ backgroundColor: `${project.accentColor ?? "#1151ff"}0D` }}
+              >
+                <div className="flex items-center gap-2 text-xs font-medium mb-3" style={{ color: project.accentColor ?? "#1151ff" }}>
+                  <span className="uppercase tracking-wider">{project.client}</span>
+                  <span className="w-1 h-1 rounded-full" style={{ backgroundColor: project.accentColor ?? "#1151ff" }} />
+                  <span>{project.industry}</span>
+                </div>
 
-              <div className="absolute inset-0 bg-[#111111]/0 group-hover:bg-[#111111]/10 transition-all duration-700" />
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-[#111111] dark:text-[#f5f5f5] mb-3">
+                  {project.title}
+                </h2>
 
-              <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#111111]/95 via-[#111111]/60 to-transparent pointer-events-none" />
+                <p className="text-sm text-[#707072] leading-relaxed line-clamp-3 mb-6 max-w-md">
+                  {project.description}
+                </p>
 
-              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                <div className="max-w-xl">
-                  <div className="flex items-center gap-2 text-xs text-white/60 mb-2">
-                    <span>{project.client}</span>
-                    <span className="w-1 h-1 rounded-full bg-white/30" />
-                    <span>{project.industry}</span>
-                  </div>
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-white mb-2">
-                    {project.title}
-                  </h2>
-                  <p className="text-sm md:text-base text-white/70 leading-relaxed line-clamp-2 max-w-lg">
-                    {project.description}
-                  </p>
-                  <div className="mt-4 opacity-100 md:opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-300">
-                    <div className="flex items-center gap-3">
-                      <span className="inline-flex items-center gap-2 text-sm text-white bg-[#1151ff] px-4 py-2 rounded-full">
-                        View case study
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                          <path
-                            d="M1 11L11 1M11 1H3M11 1V9"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </span>
-                      {project.metric && (
-                        <span className="text-xs text-white/60 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                          {project.metric.value} &mdash; {project.metric.label}
-                        </span>
-                      )}
-                    </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  {project.metric && (
+                    <span
+                      className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full"
+                      style={{ backgroundColor: `${project.accentColor ?? "#1151ff"}1A`, color: project.accentColor ?? "#1151ff" }}
+                    >
+                      {project.metric.value} &mdash; {project.metric.label}
+                    </span>
+                  )}
+                  <div className="opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span
+                      className="inline-flex items-center gap-2 text-sm text-white px-4 py-2 rounded-full"
+                      style={{ backgroundColor: project.accentColor ?? "#1151ff" }}
+                    >
+                      View case study
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path
+                          d="M1 11L11 1M11 1H3M11 1V9"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
                   </div>
                 </div>
               </div>
