@@ -28,12 +28,6 @@ const wordReveal = {
   },
 };
 
-const statBadges = [
-  { label: "5+ Years", sub: "Experience", color: "#1151ff" },
-  { label: "10+", sub: "Projects Delivered", color: "#059669" },
-  { label: "92%", sub: "Client Satisfaction", color: "#8b5cf6" },
-];
-
 export default function HeroSection() {
   const headline = "Designing products that people love to use.";
   const { scrollY } = useScroll();
@@ -52,38 +46,42 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Floating stat badges */}
+      {/* Floating badges */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute top-[22%] left-6 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+        className="absolute top-[22%] left-6 hidden lg:flex items-center gap-1.5 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
       >
-        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[0].color }} />
-        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[0].label}</span>
-        <span className="text-[#707072]">{statBadges[0].sub}</span>
+        <span className="text-[#707072]">📍 Based in India</span>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute top-[15%] right-6 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+        className="absolute top-[15%] right-6 hidden lg:flex items-center gap-1.5 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
       >
-        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[1].color }} />
-        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[1].label}</span>
-        <span className="text-[#707072]">{statBadges[1].sub}</span>
+        <span className="text-[#707072]">🎓 10kdesigners Cohort</span>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 1.1 }}
+        className="absolute top-[28%] right-6 hidden lg:flex items-center gap-1.5 text-xs bg-[#059669]/10 px-3 py-1.5 rounded-full border border-[#059669]/30 shadow-sm"
+      >
+        <span className="w-2 h-2 rounded-full bg-[#059669]" />
+        <span className="font-medium text-[#059669]">Open for new roles</span>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-[25%] right-8 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+        className="absolute bottom-[25%] right-8 hidden lg:flex items-center gap-1.5 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
       >
-        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[2].color }} />
-        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[2].label}</span>
-        <span className="text-[#707072]">{statBadges[2].sub}</span>
+        <span className="text-[#707072]">📬 Available for projects</span>
       </motion.div>
 
       <div className="max-w-6xl mx-auto px-6 w-full">
