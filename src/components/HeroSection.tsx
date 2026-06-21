@@ -60,7 +60,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute top-[34%] left-6 hidden lg:flex items-center gap-1.5 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+        className="absolute bottom-[25%] left-8 hidden lg:flex items-center gap-1.5 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
       >
         <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">💼 3 Years</span>
         <span className="text-[#707072]">of Experience</span>
