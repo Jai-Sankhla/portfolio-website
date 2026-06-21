@@ -28,19 +28,13 @@ const wordReveal = {
   },
 };
 
-const statBadges = [
-  { label: "5+ Years", sub: "Experience", color: "#1151ff" },
-  { label: "10+", sub: "Projects Delivered", color: "#059669" },
-  { label: "92%", sub: "Client Satisfaction", color: "#8b5cf6" },
-];
-
 export default function HeroSection() {
   const headline = "Designing products that people love to use.";
   const { scrollY } = useScroll();
   const cueOpacity = useTransform(scrollY, [0, 100], [1, 0]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Dot grid background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
@@ -51,40 +45,6 @@ export default function HeroSection() {
           }}
         />
       </div>
-
-      {/* Floating stat badges */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute top-[22%] left-6 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
-      >
-        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[0].color }} />
-        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[0].label}</span>
-        <span className="text-[#707072]">{statBadges[0].sub}</span>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute top-[15%] right-6 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
-      >
-        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[1].color }} />
-        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[1].label}</span>
-        <span className="text-[#707072]">{statBadges[1].sub}</span>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-[25%] right-8 hidden lg:flex items-center gap-2 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
-      >
-        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: statBadges[2].color }} />
-        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">{statBadges[2].label}</span>
-        <span className="text-[#707072]">{statBadges[2].sub}</span>
-      </motion.div>
 
       <div className="max-w-6xl mx-auto px-6 w-full">
         <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center">
@@ -182,7 +142,8 @@ export default function HeroSection() {
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           >
             {[...tools, ...tools].map((tool, i) => (
-              <span key={i} className="text-sm text-[#707072] whitespace-nowrap">
+              <span key={i} className="inline-flex items-center gap-2 text-sm text-[#707072] whitespace-nowrap">
+                <img src={`/images/tool-${tool.toLowerCase()}.svg`} alt="" className="w-4 h-4" />
                 {tool}
               </span>
             ))}
@@ -192,7 +153,7 @@ export default function HeroSection() {
         {/* Scroll cue */}
         <motion.div
           style={{ opacity: cueOpacity }}
-          className="flex flex-col items-center gap-2 mt-12"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
           <span className="text-xs text-[#707072]">Scroll to explore</span>
           <motion.div
