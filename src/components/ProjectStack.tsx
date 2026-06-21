@@ -76,7 +76,7 @@ function StackedCard({
             style={{ opacity: shadowOpacity }}
           />
           <Link href={`/work/${project.slug}`} className="group block relative z-10">
-            <div className={`flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515] ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <div className={`flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515] md:flex-row-reverse`}>
               <div className="relative h-[35vh] md:h-full md:flex-[3] overflow-hidden">
                 <Image
                   src={project.coverImage}
