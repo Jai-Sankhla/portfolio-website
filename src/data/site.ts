@@ -9,6 +9,7 @@ export const site = {
   social: {
     linkedin: "https://www.linkedin.com/in/jaisankhla",
     twitter: "https://x.com/jaisankhla",
+    behance: "https://www.behance.net/jaisankhla",
     dribbble: "https://dribbble.com/jaisankhla",
     github: "https://github.com/Jai-Sankhla",
   },

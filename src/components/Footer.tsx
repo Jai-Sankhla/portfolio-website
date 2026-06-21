@@ -5,8 +5,8 @@ import { site } from "@/data/site";
 const links = [
   { label: "Email", href: `mailto:${site.email}` },
   { label: "LinkedIn", href: site.social.linkedin },
-  { label: "GitHub", href: site.social.github },
-  { label: "Dribbble", href: site.social.dribbble },
+  { label: "Behance", href: site.social.behance },
+  { label: "Twitter", href: site.social.twitter },
 ];
 
 export default function Footer() {
