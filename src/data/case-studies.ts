@@ -39,7 +39,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Designing Budgify: An Intuitive App for Tracking and Conquering Expenses",
     description:
       "This case study details my end-to-end design process for an app that simplifies expense tracking and helps users achieve their financial goals with clarity.",
-    coverImage: "/images/case-studies/budgify/cover.jpeg",
+    coverImage: "/images/case-studies/budgify/cover.jpg",
     client: "Budgify / 10kdesigners",
     role: "Product Designer",
     industry: "Fintech",
