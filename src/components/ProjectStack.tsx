@@ -57,7 +57,6 @@ function StackedCard({
   return (
     <div
       ref={sectionRef}
-      data-section-index={index}
       className="relative"
       style={{
         height: `${SECTION_HEIGHT}vh`,
