@@ -166,9 +166,9 @@ export default function HeroSection() {
         {/* Tool marquee */}
         <div className="mt-10 md:mt-16 overflow-hidden">
           <div className="flex items-center gap-2 text-xs text-[#707072] mb-3">
-            <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">Trusted tools</span>
+            <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">The good stuff</span>
             <span className="w-1 h-1 rounded-full bg-[#cacacb]" />
-            <span>Always exploring new ones</span>
+            <span>Always adding more</span>
           </div>
           <motion.div
             className="flex gap-8 w-max"
