@@ -88,13 +88,13 @@ export default function HeroSection() {
           </motion.div>
 
           <div className="flex justify-center md:justify-end">
-            <div className="relative w-[280px] sm:w-[320px] -rotate-2 bg-white dark:bg-[#1a1a1a] p-3 pb-8 rounded-sm shadow-xl dark:shadow-[#000]/30">
-              <div className="aspect-[3/4] w-full overflow-hidden rounded-sm bg-[#f5f5f5] dark:bg-[#151515]">
+            <div className="relative w-[320px] sm:w-[400px] -rotate-2 bg-white dark:bg-[#1a1a1a] p-3 pb-8 rounded-sm shadow-xl dark:shadow-[#000]/30">
+              <div className="aspect-square w-full overflow-hidden rounded-sm bg-[#f5f5f5] dark:bg-[#151515]">
                 <Image
                   src="/images/avatar.jpg"
                   alt={site.name}
-                  width={320}
-                  height={427}
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}

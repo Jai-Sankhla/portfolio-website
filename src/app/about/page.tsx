@@ -82,16 +82,16 @@ export default function About() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-3 gap-4 mb-12">
           {["about-1", "about-3", "about-4"].map((img, i) => (
             <ScrollReveal key={img} delay={0.3 + i * 0.05}>
-              <div className="relative aspect-square rounded-xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515]">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515]">
                 <Image
                   src={`/images/${img}.jpeg`}
                   alt=""
                   fill
                   className="object-cover"
-                  sizes="50vw"
+                  sizes="33vw"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
                 />
