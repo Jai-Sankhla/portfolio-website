@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import Timeline from "@/components/Timeline";
 import MagneticWrapper from "@/components/MagneticWrapper";
@@ -172,20 +171,6 @@ export default function About() {
             ))}
           </div>
         </section>
-
-        <div className="mt-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a] text-center">
-          <ScrollReveal>
-            <p className="text-[#707072] mb-2">
-              Things I do beyond work
-            </p>
-            <Link
-              href="/beyond"
-              className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all tracking-hover"
-            >
-              Explore &rarr;
-            </Link>
-          </ScrollReveal>
-        </div>
       </div>
     </div>
   );
