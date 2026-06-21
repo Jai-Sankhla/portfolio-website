@@ -33,13 +33,9 @@ export default function AboutGallery() {
     };
   }, [paused]);
 
-  function goTo(index: number) {
-    setCurrent(index);
-  }
-
   return (
     <div
-      className="relative mb-12 group"
+      className="relative mb-12"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -47,10 +43,10 @@ export default function AboutGallery() {
         <AnimatePresence mode="popLayout">
           <motion.div
             key={current}
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -60 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="grid grid-cols-3 gap-4"
           >
             {slides[current].map((img) => (
@@ -72,42 +68,6 @@ export default function AboutGallery() {
           </motion.div>
         </AnimatePresence>
       </div>
-
-      {slides.length > 1 && (
-        <div className="flex items-center justify-between mt-4">
-          <button
-            onClick={() => goTo((current - 1 + slides.length) % slides.length)}
-            className="w-8 h-8 rounded-full bg-[#f5f5f5] dark:bg-[#1a1a1a] flex items-center justify-center text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors"
-            aria-label="Previous"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-
-          <div className="flex items-center gap-2">
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === current ? "w-6 bg-[#111111] dark:bg-[#f5f5f5]" : "w-1.5 bg-[#cacacb] dark:bg-[#333333] hover:bg-[#707072] dark:hover:bg-[#707072]"
-                }`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => goTo((current + 1) % slides.length)}
-            className="w-8 h-8 rounded-full bg-[#f5f5f5] dark:bg-[#1a1a1a] flex items-center justify-center text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] transition-colors"
-            aria-label="Next"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
-      )}
     </div>
   );
 }
