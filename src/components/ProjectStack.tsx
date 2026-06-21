@@ -44,7 +44,7 @@ function StackedCard({
 
   const cardOpacity = useTransform(
     scrollYProgress,
-    [EXIT_START, 0.78, 0.88],
+    [EXIT_START, 0.88, 0.95],
     [1, 0.4, 0]
   );
 
