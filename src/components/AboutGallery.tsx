@@ -4,19 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { BLUR_DATA_URL } from "@/lib/images";
 
-const images: { name: string; aspect: string }[] = [
-  { name: "about-1", aspect: "1/1" },
-  { name: "about-2", aspect: "1/1" },
-  { name: "about-3", aspect: "1/1" },
-  { name: "about-4", aspect: "1/1" },
-  { name: "about-5", aspect: "3/4" },
-  { name: "about-6", aspect: "16/9" },
-  { name: "about-7", aspect: "1/1" },
-  { name: "about-8", aspect: "1/1" },
-  { name: "about-9", aspect: "1/1" },
-  { name: "about-10", aspect: "1/1" },
-  { name: "about-11", aspect: "1/1" },
-];
+const images = ["about-1", "about-2", "about-3", "about-4", "about-5", "about-6", "about-7", "about-8", "about-9", "about-10", "about-11"];
 
 export default function AboutGallery() {
   return (
@@ -34,12 +22,11 @@ export default function AboutGallery() {
       >
         {[...images, ...images].map((img, i) => (
           <div
-            key={`${img.name}-${i}`}
-            className="relative w-[280px] sm:w-[320px] rounded-xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515] flex-shrink-0"
-            style={{ aspectRatio: img.aspect }}
+            key={`${img}-${i}`}
+            className="relative w-[280px] sm:w-[320px] aspect-square rounded-xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515] flex-shrink-0"
           >
             <Image
-              src={`/images/${img.name}.jpeg`}
+              src={`/images/${img}.jpeg`}
               alt=""
               fill
               className="object-cover"
