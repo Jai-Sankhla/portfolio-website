@@ -29,7 +29,7 @@ export default function AboutGallery() {
               src={`/images/${img}.jpeg`}
               alt=""
               fill
-              className="object-cover"
+              className="object-contain p-2"
               sizes="33vw"
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
