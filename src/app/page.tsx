@@ -27,7 +27,7 @@ export default function Home() {
           <ScrollReveal delay={0.2}>
               <a
                 href={`mailto:${site.email}`}
-                className="inline-flex px-8 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors"
+                className="inline-flex px-8 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] hover:text-white dark:hover:text-white transition-colors"
               >
                 {site.email}
               </a>
