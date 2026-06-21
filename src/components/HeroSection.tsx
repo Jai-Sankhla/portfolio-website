@@ -153,7 +153,7 @@ export default function HeroSection() {
         {/* Scroll cue */}
         <motion.div
           style={{ opacity: cueOpacity }}
-          className="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="flex flex-col items-center gap-2 mt-4"
         >
           <span className="text-xs text-[#707072]">Scroll to explore</span>
           <motion.div
