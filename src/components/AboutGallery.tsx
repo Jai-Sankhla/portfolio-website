@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { BLUR_DATA_URL } from "@/lib/images";
 
-const images = ["about-1", "about-3", "about-4"];
+const images = ["about-1", "about-2", "about-3", "about-4", "about-5", "about-6", "about-7", "about-8", "about-9", "about-10", "about-11"];
 
 export default function AboutGallery() {
   return (
