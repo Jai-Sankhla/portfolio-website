@@ -55,23 +55,19 @@ export default function Contact() {
               href: site.social.linkedin,
             },
             {
-              label: "X / Twitter",
+              label: "Behance",
+              href: site.social.behance,
+            },
+            {
+              label: "Twitter",
               href: site.social.twitter,
-            },
-            {
-              label: "Dribbble",
-              href: site.social.dribbble,
-            },
-            {
-              label: "Resume",
-              href: site.resume,
-              download: true,
             },
           ].map((link, i) => (
             <ScrollReveal key={link.label} delay={0.2 + i * 0.05}>
               <a
                 href={link.href}
-                {...(link.download ? { download: true } : { target: "_blank", rel: "noopener noreferrer" })}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between p-4 rounded-xl border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors"
               >
                 <span className="text-sm font-medium">{link.label}</span>

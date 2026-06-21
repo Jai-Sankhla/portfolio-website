@@ -8,7 +8,7 @@ export const site = {
   resume: "/resume.pdf",
   social: {
     linkedin: "https://www.linkedin.com/in/jaisankhla",
-    twitter: "https://x.com/jaisankhla",
+    twitter: "https://x.com/JaiSankhla2",
     behance: "https://www.behance.net/jaisankhla",
     dribbble: "https://dribbble.com/jaisankhla",
     github: "https://github.com/Jai-Sankhla",
