@@ -13,7 +13,7 @@ export default function BackToTop() {
   return (
     <motion.button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] flex items-center justify-center shadow-lg hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors"
+      className="fixed bottom-20 right-6 z-50 w-10 h-10 rounded-full bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] flex items-center justify-center shadow-lg hover:bg-[#1151ff] dark:hover:bg-[#1151ff] transition-colors"
       style={{ opacity: visible, pointerEvents: "auto" as const }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}

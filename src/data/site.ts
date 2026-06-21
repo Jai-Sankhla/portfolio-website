@@ -10,6 +10,8 @@ export const site = {
     twitter: "https://x.com/jaisankhla",
     dribbble: "https://dribbble.com/jaisankhla",
   },
+  location: "India",
+  available: true,
   nav: [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/work" },

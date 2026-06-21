@@ -8,6 +8,7 @@ import CursorGlow from "@/components/CursorGlow";
 import GhostMonogram from "@/components/GhostMonogram";
 import ReadingProgress from "@/components/ReadingProgress";
 import BackToTop from "@/components/BackToTop";
+import Chatbot from "@/components/Chatbot";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <BackToTop />
+          <Chatbot />
         </ThemeProvider>
       </body>
     </html>
