@@ -21,7 +21,7 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#ffffff]/60 dark:bg-[#000000]/60 backdrop-blur-md"
+      className="fixed top-0 left-0 right-0 z-50 bg-[#ffffff]/90 dark:bg-[#000000]/90 backdrop-blur-md"
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
@@ -40,7 +40,7 @@ export default function Navbar() {
                 className={`text-sm tracking-hover relative ${
                   pathname === link.href
                     ? "text-[#111111] dark:text-[#f5f5f5] font-medium"
-                    : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
+                    : "text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
                 }`}
               >
                 {link.label}
@@ -82,7 +82,7 @@ export default function Navbar() {
                 className={`px-4 py-3 text-sm rounded-lg tracking-hover ${
                   pathname === link.href
                     ? "bg-[#cacacb] dark:bg-[#2a2a2a] text-[#111111] dark:text-[#f5f5f5] font-medium"
-                    : "text-[#9e9ea0] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
+                    : "text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
                 }`}
                 >
                   {link.label}
