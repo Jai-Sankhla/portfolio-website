@@ -110,19 +110,19 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           </div>
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-[#707072] uppercase tracking-wider">Role</span>
-              <span className="text-xs font-medium">{project.role}</span>
+              <span className="text-[10px] text-[#707072] uppercase tracking-wider shrink-0">Role</span>
+              <span className="text-xs font-medium truncate">{project.role}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-[#707072] uppercase tracking-wider">Timeline</span>
-              <span className="text-xs font-medium">{project.timeline}</span>
+              <span className="text-[10px] text-[#707072] uppercase tracking-wider shrink-0">Timeline</span>
+              <span className="text-xs font-medium truncate">{project.timeline}</span>
             </div>
             {project.metric && (
               <div className="pt-1.5 border-t border-[#f0f0f0] dark:border-[#2a2a2a]">
-                <span className="text-xs font-medium text-[#1151ff]">
+                <span className="text-xs font-medium text-[#1151ff] truncate">
                   {project.metric.value}
                 </span>
-                <span className="text-[10px] text-[#707072] ml-1">
+                <span className="text-[10px] text-[#707072] ml-1 truncate">
                   {project.metric.label}
                 </span>
               </div>
