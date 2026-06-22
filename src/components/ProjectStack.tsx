@@ -33,6 +33,14 @@ function StackedCard({
     "bg-[#eff6ff]",  // SLC Category — blue
   ];
 
+  const panelTextColors = [
+    "#059669",  // Budgify
+    "#ca8a04",  // Nirva Homepage
+    "#7c3aed",  // Nirva Gamification
+    "#ea580c",  // SLC Checkout
+    "#3b82f6",  // SLC Category
+  ];
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -100,9 +108,9 @@ function StackedCard({
               <div
                 className={`relative md:flex-[2] p-6 md:p-8 lg:p-10 flex flex-col justify-center ${panelColors[index]}`}
               >
-                <div className="flex items-center gap-2 text-xs font-medium mb-3" style={{ color: project.accentColor ?? "#1151ff" }}>
+                <div className="flex items-center gap-2 text-xs font-medium mb-3" style={{ color: panelTextColors[index] }}>
                   <span className="uppercase tracking-wider">{project.client}</span>
-                  <span className="w-1 h-1 rounded-full" style={{ backgroundColor: project.accentColor ?? "#1151ff" }} />
+                  <span className="w-1 h-1 rounded-full" style={{ backgroundColor: panelTextColors[index] }} />
                   <span>{project.industry}</span>
                 </div>
 
@@ -118,7 +126,7 @@ function StackedCard({
                   {project.metric && (
                     <span
                       className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full"
-                      style={{ backgroundColor: `${project.accentColor ?? "#1151ff"}1A`, color: project.accentColor ?? "#1151ff" }}
+                      style={{ backgroundColor: `${panelTextColors[index]}1A`, color: panelTextColors[index] }}
                     >
                       {project.metric.value} &mdash; {project.metric.label}
                     </span>
