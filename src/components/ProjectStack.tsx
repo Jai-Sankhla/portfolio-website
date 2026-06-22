@@ -76,8 +76,7 @@ function StackedCard({
             style={{ opacity: shadowOpacity }}
           />
           <Link href={`/work/${project.slug}`} className="group block relative z-10">
-            <div className={`flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-[#f5f5f5] md:flex-row-reverse`}
-              style={{ borderTop: `3px solid ${project.accentColor ?? "#1151ff"}` }}>
+            <div className={`flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-[#f5f5f5] md:flex-row-reverse`}>
               <div className="relative h-[35vh] md:h-full md:flex-[3] overflow-hidden">
                 <Image
                   src={project.coverImage}
@@ -92,7 +91,7 @@ function StackedCard({
               </div>
               <div
                 className="relative md:flex-[2] p-6 md:p-8 lg:p-10 flex flex-col justify-center"
-                style={{ backgroundColor: `${project.accentColor ?? "#1151ff"}18` }}
+                style={{ backgroundColor: `${project.accentColor ?? "#1151ff"}0D` }}
               >
                 <div className="flex items-center gap-2 text-xs font-medium mb-3" style={{ color: project.accentColor ?? "#1151ff" }}>
                   <span className="uppercase tracking-wider">{project.client}</span>
