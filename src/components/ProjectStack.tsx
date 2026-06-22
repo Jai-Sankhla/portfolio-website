@@ -26,11 +26,11 @@ function StackedCard({
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const panelColors = [
-    "bg-[#ecfdf5]",  // Budgify — light green
-    "bg-[#f0fdfa]",  // Nirva Homepage — light teal
-    "bg-[#faf5ff]",  // Nirva Gamification — light purple
-    "bg-[#fffbeb]",  // SLC Checkout — light amber
-    "bg-[#eef2ff]",  // SLC Category — light indigo
+    "bg-[#fef2f2]",  // Budgify — rose
+    "bg-[#ecfeff]",  // Nirva Homepage — cyan
+    "bg-[#faf5ff]",  // Nirva Gamification — purple
+    "bg-[#fefce8]",  // SLC Checkout — yellow
+    "bg-[#f0fdf4]",  // SLC Category — green
   ];
 
   const { scrollYProgress } = useScroll({
