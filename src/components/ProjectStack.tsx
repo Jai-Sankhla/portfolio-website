@@ -134,7 +134,7 @@ function StackedCard({
                   <div className="opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <span
                       className="inline-flex items-center gap-2 text-sm text-white px-4 py-2 rounded-full"
-                      style={{ backgroundColor: project.accentColor ?? "#1151ff" }}
+                      style={{ backgroundColor: panelTextColors[index] }}
                     >
                       View case study
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
