@@ -25,6 +25,14 @@ function StackedCard({
 }) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const panelColors = [
+    "bg-[#ecfdf5]",  // Budgify — light green
+    "bg-[#f0fdfa]",  // Nirva Homepage — light teal
+    "bg-[#faf5ff]",  // Nirva Gamification — light purple
+    "bg-[#fffbeb]",  // SLC Checkout — light amber
+    "bg-[#eef2ff]",  // SLC Category — light indigo
+  ];
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -90,8 +98,7 @@ function StackedCard({
                 <div className="absolute inset-0 bg-[#111111]/0 group-hover:bg-[#111111]/10 transition-all duration-700" />
               </div>
               <div
-                className="relative md:flex-[2] p-6 md:p-8 lg:p-10 flex flex-col justify-center"
-                style={{ backgroundColor: `${project.accentColor ?? "#1151ff"}0D` }}
+                className={`relative md:flex-[2] p-6 md:p-8 lg:p-10 flex flex-col justify-center ${panelColors[index]}`}
               >
                 <div className="flex items-center gap-2 text-xs font-medium mb-3" style={{ color: project.accentColor ?? "#1151ff" }}>
                   <span className="uppercase tracking-wider">{project.client}</span>
