@@ -79,7 +79,7 @@ export default function About() {
 
   return (
     <div className="pt-28 pb-20">
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
             About me

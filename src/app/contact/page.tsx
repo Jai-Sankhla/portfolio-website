@@ -16,7 +16,7 @@ export default function Contact() {
 
   return (
     <div className="pt-28 pb-20">
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="relative mb-12 overflow-hidden rounded-2xl bg-[#f5f5f5]/50 p-8 md:p-12">
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <motion.div
