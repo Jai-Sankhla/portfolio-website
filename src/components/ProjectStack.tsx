@@ -8,7 +8,7 @@ import { caseStudies } from "@/data/case-studies";
 import type { CaseStudy } from "@/data/case-studies";
 import { BLUR_DATA_URL } from "@/lib/images";
 
-const SECTION_HEIGHT = 120;
+const SECTION_HEIGHT = 140;
 const OVERLAP = 0;
 const CARD_HEIGHT = 100;
 const STICKY_GAP = CARD_HEIGHT - OVERLAP;
@@ -32,25 +32,25 @@ function StackedCard({
 
   const scale = useTransform(
     scrollYProgress,
-    [EXIT_START, 0.85, 0.95],
+    [EXIT_START, 0.80, 0.92],
     [1, 0.95, 0.9]
   );
 
   const shadowOpacity = useTransform(
     scrollYProgress,
-    [EXIT_START, 0.85, 1],
+    [EXIT_START, 0.80, 1],
     [0, 0.1, 0.2]
   );
 
   const cardOpacity = useTransform(
     scrollYProgress,
-    [EXIT_START, 0.88, 0.95],
+    [EXIT_START, 0.82, 0.90],
     [1, 0.4, 0]
   );
 
   const cardY = useTransform(
     scrollYProgress,
-    [EXIT_START, 0.85, 1],
+    [EXIT_START, 0.80, 1],
     [0, -5, -15]
   );
 
