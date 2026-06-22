@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const experience = [
   {
-    period: "2024",
+    period: "Jul 2024 – Present (2 yrs)",
     role: "Lead UI/UX Designer",
     company: "Sierra Living Concepts",
     description:
@@ -12,42 +12,50 @@ const experience = [
     color: "#1151ff",
   },
   {
-    period: "2023",
-    role: "Product Designer Intern",
+    period: "Jul 2023 – Mar 2024 (9 mo)",
+    role: "Product Design Intern",
     company: "Nirva Health",
     description:
       "Designed a gamification system that turned user drop-offs into 2x daily engagement. Redesigned homepage increasing first task completion by 40%.",
     color: "#111111",
   },
   {
-    period: "2022",
-    role: "Product Designer (Cohort 6)",
+    period: "Nov 2022 – Jan 2023 (3 mo)",
+    role: "UI/UX Designer (Cohort 6)",
     company: "10kdesigners",
     description:
       "Completed an intensive design program. Designed Budgify — an end-to-end expense tracking app — from research through high-fidelity prototype.",
     color: "#707072",
   },
   {
-    period: "2021 - 2020",
+    period: "Jun 2022 – Jan 2023 (8 mo)",
     role: "Graphic Designer",
-    company: "Caffena Coffee & Saimex Group",
+    company: "Caffena Coffee",
     description:
-      "Managed social media design, product catalogs, brochures, and exhibition graphics. Graduated as Gold Medalist in Interior Design.",
+      "Managed social media design, product catalogs, brochures, and exhibition graphics for the coffee brand.",
     color: "#cacacb",
+  },
+  {
+    period: "Jul 2022 – Oct 2022 (4 mo)",
+    role: "Graphic Design Intern",
+    company: "Saimex Group",
+    description:
+      "Designed graphics for product catalogs, exhibitions including IHE Expo 2022, and supported digital marketing efforts.",
+    color: "#9e9ea0",
   },
 ];
 
 export default function Timeline() {
   return (
     <div className="relative">
-      <div className="absolute left-[7px] top-3 bottom-3 w-px bg-[#cacacb] dark:bg-[#333333]" />
+      <div className="absolute left-[7px] top-3 bottom-3 w-px bg-[#cacacb]" />
 
       <div className="space-y-12">
         {experience.map((item, i) => (
           <ScrollReveal key={i} delay={i * 0.1}>
             <div className="relative pl-8">
               <div
-                className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 border-[#ffffff] dark:border-[#000000]"
+                className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 border-white"
                 style={{ backgroundColor: item.color }}
               />
               <span className="text-xs text-[#707072] font-[family-name:var(--font-mono)] block mb-1">

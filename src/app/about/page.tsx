@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 import Timeline from "@/components/Timeline";
 import AboutGallery from "@/components/AboutGallery";
@@ -15,19 +16,67 @@ const tools = [
   "Maze", "Hotjar", "FigJam", "Replit",
 ];
 
-const capabilities = [
-  "User Research",
-  "Wireframing",
-  "Prototyping",
-  "Design System",
-  "Information Architecture",
-  "Responsive Design",
-  "UX Strategy",
-  "Conversion Optimization",
-  "Visual Design",
+const phases = [
+  {
+    phase: "Research",
+    color: "#1151ff",
+    items: [
+      { name: "User Research", desc: "Uncover user needs to shape better decisions." },
+      { name: "UX Strategy", desc: "Align design with business goals and user needs." },
+      { name: "Information Architecture", desc: "Organize content for effortless findability." },
+    ],
+  },
+  {
+    phase: "Design",
+    color: "#059669",
+    items: [
+      { name: "Wireframing", desc: "Visualize structure and key interactions." },
+      { name: "Prototyping", desc: "Test ideas with realistic, interactive experiences." },
+      { name: "Visual Design", desc: "Create polished, engaging interfaces." },
+      { name: "Design System", desc: "Build unified languages for consistency." },
+    ],
+  },
+  {
+    phase: "Build",
+    color: "#8b5cf6",
+    items: [
+      { name: "Responsive Design", desc: "Ensure quality across every device." },
+      { name: "Conversion Optimization", desc: "Design data-driven interfaces that perform." },
+      { name: "Vibe Coding", desc: "Blend design intuition with AI-assisted rapid prototyping." },
+    ],
+  },
+  {
+    phase: "Ship",
+    color: "#d97706",
+    items: [
+      {
+        name: "Production Environments",
+        desc: "Design with engineering constraints — responsive, accessible, performant.",
+      },
+    ],
+  },
 ];
 
 export default function About() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8;
+    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+    setTimeout(updateScroll, 400);
+  };
+
   return (
     <div className="pt-28 pb-20">
       <div className="max-w-3xl mx-auto px-6">
@@ -39,7 +88,7 @@ export default function About() {
 
         <div className="grid md:grid-cols-[240px_1fr] gap-8 mb-12">
           <ScrollReveal delay={0.1}>
-            <div className="relative aspect-square w-full max-w-[240px] rounded-xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515]">
+            <div className="relative aspect-square w-full max-w-[240px] rounded-xl overflow-hidden bg-[#f5f5f5]">
               <Image
                 src="/images/avatar.jpg"
                 alt={site.name}
@@ -71,7 +120,7 @@ export default function About() {
             <ScrollReveal delay={0.25}>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-sm text-[#111111] dark:text-[#f5f5f5] underline underline-offset-4 decoration-[#cacacb] dark:decoration-[#333333] hover:decoration-[#1151ff] transition-all tracking-hover"
+                  className="text-sm text-[#111111] underline underline-offset-4 decoration-[#cacacb] hover:decoration-[#1151ff] transition-all tracking-hover"
                 >
                   {site.email}
                 </a>
@@ -94,7 +143,7 @@ export default function About() {
           <Timeline />
         </section>
 
-        <section className="mb-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
+        <section className="mb-16 pt-12 border-t border-[#f5f5f5]">
           <ScrollReveal>
             <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
               Tools &amp; toolkit
@@ -103,7 +152,7 @@ export default function About() {
           <div className="flex flex-wrap gap-3">
             {tools.map((tool, i) => (
               <ScrollReveal key={tool} delay={i * 0.03}>
-                <span className="text-sm px-3 py-1.5 rounded-full bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors inline-flex items-center gap-2">
+                <span className="text-sm px-3 py-1.5 rounded-full bg-[#f5f5f5]/50 border border-[#cacacb] hover:border-[#1151ff] transition-colors inline-flex items-center gap-2">
                   <img
                     src={`/images/tool-${tool.toLowerCase()}.svg`}
                     alt=""
@@ -116,42 +165,95 @@ export default function About() {
           </div>
         </section>
 
-        <section className="mb-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
+        <section className="mb-16 pt-12 border-t border-[#f5f5f5]">
           <ScrollReveal>
-            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
+            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-2">
               Capabilities
             </h2>
+            <p className="text-sm text-[#707072] mb-8">
+              End-to-end product building — from research through shipping and beyond.
+            </p>
           </ScrollReveal>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {capabilities.map((cap, i) => (
-              <ScrollReveal key={cap} delay={i * 0.05}>
-                <div className="p-4 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors">
-                  <p className="text-sm font-medium mb-1">{cap}</p>
-                  <p className="text-xs text-[#707072]">
-                    {cap === "User Research" && "Uncover user needs to shape better decisions."}
-                    {cap === "Wireframing" && "Visualize structure and key interactions."}
-                    {cap === "Prototyping" && "Test ideas with realistic, interactive experiences."}
-                    {cap === "Design System" && "Build unified languages for consistency."}
-                    {cap === "Information Architecture" && "Organize content for effortless findability."}
-                    {cap === "Responsive Design" && "Ensure quality across every device."}
-                    {cap === "UX Strategy" && "Align design with business goals and user needs."}
-                    {cap === "Conversion Optimization" && "Design data-driven interfaces that perform."}
-                    {cap === "Visual Design" && "Create polished, engaging interfaces."}
-                  </p>
-                </div>
-              </ScrollReveal>
+
+          <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-3">
+            {phases.map((phase, pi) => (
+              <div key={phase.phase} className="flex-1">
+                <ScrollReveal delay={pi * 0.1}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div
+                      className="w-3 h-3 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: phase.color }}
+                    />
+                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: phase.color }}>
+                      {phase.phase}
+                    </span>
+                    {pi < phases.length - 1 && (
+                      <span className="hidden md:block text-[#cacacb] flex-1 text-right text-lg font-light">→</span>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    {phase.items.map((item) => (
+                      <div
+                        key={item.name}
+                        className="p-3 rounded-lg bg-[#f5f5f5]/50 border border-[#cacacb] hover:border-[#1151ff] transition-colors"
+                      >
+                        <p className="text-sm font-medium">{item.name}</p>
+                        <p className="text-xs text-[#707072] mt-0.5">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollReveal>
+              </div>
             ))}
           </div>
         </section>
 
-        <section className="pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
+        <section className="pt-12 border-t border-[#f5f5f5]">
           <ScrollReveal>
             <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
               Recommendations
             </h2>
           </ScrollReveal>
 
-          <div className="space-y-8">
+          {/* Mobile: horizontal scroll with chevrons */}
+          <div className="relative md:hidden">
+            {canScrollLeft && (
+              <button
+                onClick={() => scroll("left")}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center"
+                aria-label="Scroll left"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+            )}
+            {canScrollRight && (
+              <button
+                onClick={() => scroll("right")}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center"
+                aria-label="Scroll right"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            )}
+            <div
+              ref={scrollRef}
+              onScroll={updateScroll}
+              className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory"
+            >
+              {recommendations.map((rec, i) => (
+                <div key={rec.name} className="min-w-[85vw] snap-center">
+                  <RecommendationCard rec={rec} index={i} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: 2-column grid */}
+          <div className="hidden md:grid md:grid-cols-2 gap-6">
             {recommendations.map((rec, i) => (
               <RecommendationCard key={rec.name} rec={rec} index={i} />
             ))}
@@ -172,41 +274,49 @@ function RecommendationCard({
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <ScrollReveal delay={index * 0.1}>
-      <div className="p-6 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#cacacb] dark:border-[#333333] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors">
-        <div className="flex items-start gap-4 mb-4">
-          <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-[#cacacb] dark:bg-[#333333]">
-            <Image
-              src={rec.avatar}
-              alt={rec.name}
-              width={48}
-              height={48}
-              className="w-full h-full object-cover"
-              placeholder="blur"
-              blurDataURL={BLUR_DATA_URL}
-            />
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold">{rec.name}</h3>
-            <p className="text-xs text-[#707072]">
-              {rec.role} &middot; {rec.company}
-            </p>
-          </div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="p-6 rounded-xl bg-[#f5f5f5]/50 border border-[#cacacb] hover:border-[#1151ff] transition-colors"
+    >
+      <div className="flex items-start gap-4 mb-4">
+        <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-[#cacacb]">
+          <Image
+            src={rec.avatar}
+            alt={rec.name}
+            width={44}
+            height={44}
+            className="w-full h-full object-cover"
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
+          />
         </div>
-        <div
-          className={`text-sm text-[#707072] leading-relaxed whitespace-pre-line ${
-            expanded ? "" : "line-clamp-3"
-          }`}
-        >
-          {rec.text}
+        <div>
+          <h3 className="text-sm font-semibold">{rec.name}</h3>
+          <p className="text-xs text-[#707072]">
+            {rec.role} &middot; {rec.company}
+          </p>
         </div>
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-xs text-[#1151ff] font-medium mt-2 hover:opacity-70 transition-opacity"
-        >
-          {expanded ? "View less" : "View more"}
-        </button>
       </div>
-    </ScrollReveal>
+      <div
+        className={`text-sm text-[#707072] leading-relaxed whitespace-pre-line ${
+          expanded ? "" : "line-clamp-3"
+        }`}
+      >
+        {rec.text}
+      </div>
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="text-xs text-[#1151ff] font-medium mt-2 hover:opacity-70 transition-opacity"
+      >
+        {expanded ? "View less" : "View more"}
+      </button>
+    </motion.div>
   );
 }

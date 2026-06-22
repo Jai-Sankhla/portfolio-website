@@ -49,7 +49,7 @@ export default function Work() {
               key={cs.slug}
               className={`relative rounded-2xl transition-all duration-300 ${
                 focusedIndex === i
-                  ? "ring-2 ring-[#1151ff] ring-offset-4 ring-offset-white dark:ring-offset-[#111]"
+                  ? "ring-2 ring-[#1151ff] ring-offset-4 ring-offset-white"
                   : ""
               }`}
               onClick={() => setFocusedIndex(i)}
@@ -64,13 +64,13 @@ export default function Work() {
 
         {focusedIndex >= 0 && (
           <p className="text-center text-xs text-[#707072] mt-8">
-            <kbd className="px-1.5 py-0.5 bg-[#f5f5f5] dark:bg-[#151515] rounded text-[10px] font-mono">←</kbd>
+            <kbd className="px-1.5 py-0.5 bg-[#f5f5f5] rounded text-[10px] font-mono">←</kbd>
             {" "}or{" "}
-            <kbd className="px-1.5 py-0.5 bg-[#f5f5f5] dark:bg-[#151515] rounded text-[10px] font-mono">→</kbd>
+            <kbd className="px-1.5 py-0.5 bg-[#f5f5f5] rounded text-[10px] font-mono">→</kbd>
             {" "}to navigate &middot;{" "}
-            <kbd className="px-1.5 py-0.5 bg-[#f5f5f5] dark:bg-[#151515] rounded text-[10px] font-mono">Enter</kbd>
+            <kbd className="px-1.5 py-0.5 bg-[#f5f5f5] rounded text-[10px] font-mono">Enter</kbd>
             {" "}to open &middot;{" "}
-            <kbd className="px-1.5 py-0.5 bg-[#f5f5f5] dark:bg-[#151515] rounded text-[10px] font-mono">Esc</kbd>
+            <kbd className="px-1.5 py-0.5 bg-[#f5f5f5] rounded text-[10px] font-mono">Esc</kbd>
             {" "}to dismiss
           </p>
         )}

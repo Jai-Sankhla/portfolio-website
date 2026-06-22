@@ -49,13 +49,13 @@ export default function PageTOC({ sections }: PageTOCProps) {
           >
             <span
               className={`h-px transition-all duration-500 ${
-                i === activeIndex ? "w-8 bg-[#111111] dark:bg-[#f5f5f5]" : "w-4 bg-[#cacacb] dark:bg-[#333333] group-hover:w-6"
+                i === activeIndex ? "w-8 bg-[#111111]" : "w-4 bg-[#cacacb] group-hover:w-6"
               }`}
             />
             <span
               className={`text-xs transition-all duration-300 ${
                 i === activeIndex
-                  ? "text-[#111111] dark:text-[#f5f5f5] opacity-100"
+                  ? "text-[#111111] opacity-100"
                   : "text-[#707072] opacity-0 group-hover:opacity-60"
               }`}
             >

@@ -72,11 +72,11 @@ function StackedCard({
           className="w-full max-w-6xl relative"
         >
           <motion.div
-            className="absolute -inset-2 rounded-3xl bg-black/15 dark:bg-black/50 blur-xl pointer-events-none"
+            className="absolute -inset-2 rounded-3xl bg-black/15 blur-xl pointer-events-none"
             style={{ opacity: shadowOpacity }}
           />
           <Link href={`/work/${project.slug}`} className="group block relative z-10">
-            <div className={`flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-[#f5f5f5] dark:bg-[#151515] md:flex-row-reverse`}>
+            <div className={`flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-[#f5f5f5] md:flex-row-reverse`}>
               <div className="relative h-[35vh] md:h-full md:flex-[3] overflow-hidden">
                 <Image
                   src={project.coverImage}
@@ -99,7 +99,7 @@ function StackedCard({
                   <span>{project.industry}</span>
                 </div>
 
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-[#111111] dark:text-[#f5f5f5] mb-3">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-[#111111] mb-3">
                   {project.title}
                 </h2>
 

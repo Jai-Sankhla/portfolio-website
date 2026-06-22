@@ -25,10 +25,10 @@ function RecommendationCard({
         delay: index * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="p-6 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50 border border-[#f0f0f0] dark:border-[#222222] hover:border-[#1151ff] dark:hover:border-[#1151ff] transition-colors"
+      className="p-6 rounded-xl bg-[#f5f5f5]/50 border border-[#f0f0f0] hover:border-[#1151ff] transition-colors"
     >
       <div className="flex items-start gap-4 mb-4">
-        <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-[#cacacb] dark:bg-[#333333]">
+        <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-[#cacacb]">
           <Image
             src={rec.avatar}
             alt={rec.name}

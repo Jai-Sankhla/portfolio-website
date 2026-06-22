@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
 import GhostMonogram from "@/components/GhostMonogram";
 import ReadingProgress from "@/components/ReadingProgress";
 import BackToTop from "@/components/BackToTop";
-import Chatbot from "@/components/Chatbot";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -59,22 +57,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${dmSans.variable} ${inter.variable}`}
-    >
-      <body suppressHydrationWarning>
-        <ThemeProvider>
-          <Navbar />
-          <ReadingProgress />
-          <CursorGlow />
-          <GhostMonogram />
-          <main>{children}</main>
-          <Footer />
-          <BackToTop />
-          <Chatbot />
-        </ThemeProvider>
+    <html lang="en" className={`${dmSans.variable} ${inter.variable}`}>
+      <body>
+        <Navbar />
+        <ReadingProgress />
+        <CursorGlow />
+        <GhostMonogram />
+        <main>{children}</main>
+        <Footer />
+        <BackToTop />
       </body>
     </html>
   );

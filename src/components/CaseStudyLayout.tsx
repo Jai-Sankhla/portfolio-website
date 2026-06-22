@@ -42,7 +42,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
         </Link>
 
         <ScrollReveal>
-          <ParallaxWrapper className="w-full rounded-xl bg-[#f5f5f5] dark:bg-[#151515] mb-8">
+          <ParallaxWrapper           className="w-full rounded-xl bg-[#f5f5f5] mb-8">
             <Image
               src={caseStudy.coverImage}
               alt={caseStudy.title}
@@ -60,7 +60,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
             {caseStudy.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs text-[#707072] border border-[#cacacb] dark:border-[#333333] px-2.5 py-0.5 rounded-full"
+                className="text-xs text-[#707072] border border-[#cacacb] px-2.5 py-0.5 rounded-full"
                 style={{ borderColor: `color-mix(in srgb, ${accentColor} 40%, transparent)` }}
               >
                 {tag}
@@ -83,7 +83,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.25}>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10 p-6 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10 p-6 rounded-xl bg-[#f5f5f5]/50">
             <div>
               <span className="text-xs text-[#707072] block mb-0.5">
                 Client
@@ -168,7 +168,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           ))}
         </div>
 
-        <div className="mt-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a]">
+        <div className="mt-16 pt-12 border-t border-[#f5f5f5]">
           <div className="flex justify-between items-center">
             <div>
               {prev && (
@@ -203,13 +203,13 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           </div>
         </div>
 
-        <div className="mt-16 pt-12 border-t border-[#f5f5f5] dark:border-[#2a2a2a] text-center">
+        <div className="mt-16 pt-12 border-t border-[#f5f5f5] text-center">
           <p className="text-[#707072] mb-4">
             Interested in working together?
           </p>
           <a
               href={`mailto:${site.email}`}
-              className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] hover:text-white dark:hover:text-white transition-colors tracking-hover"
+              className="inline-flex px-6 py-3 bg-[#111111] text-[#ffffff] text-sm font-medium rounded-full hover:bg-[#1151ff] hover:text-white transition-colors tracking-hover"
             >
               Get in touch
             </a>
@@ -227,7 +227,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
     case "image":
       return (
         <div>
-          <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+          <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5]">
             <Image
               src={item.image!.src}
               alt={item.image!.alt}
@@ -250,7 +250,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
         <div className="space-y-4">
           {item.images?.map((img, k) => (
             <div key={k}>
-              <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+              <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5]">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -273,7 +273,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
     case "quote":
       return (
         <blockquote className="border-l-2 pl-5" style={{ borderColor: "var(--accent)" }}>
-          <p className="text-[#111111] dark:text-[#f5f5f5] italic leading-relaxed">
+          <p className="text-[#111111] italic leading-relaxed">
             {item.quote}
           </p>
           {item.author && (
@@ -290,7 +290,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
           {item.metrics?.map((m, k) => (
             <div
               key={k}
-              className="p-5 rounded-xl bg-[#f5f5f5]/50 dark:bg-[#151515]/50"
+              className="p-5 rounded-xl bg-[#f5f5f5]/50"
             >
               <p className="text-xl md:text-2xl font-[family-name:var(--font-display)] font-bold">
                 {m.value}
@@ -303,7 +303,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
 
     case "embed":
       return (
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515]">
+        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#f5f5f5]">
           <iframe
             src={item.embed!.url}
             title={item.embed!.title}

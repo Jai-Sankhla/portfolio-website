@@ -2,12 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useSpring, useMotionValue } from "framer-motion";
-import { useTheme } from "@/components/ThemeProvider";
 
 export default function GhostMonogram() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { scrollY, scrollYProgress } = useScroll();
-  const { theme } = useTheme();
 
   const jMX = useMotionValue(0);
   const jMY = useMotionValue(0);
@@ -19,7 +17,6 @@ export default function GhostMonogram() {
   const springSX = useSpring(sMX, { stiffness: 60, damping: 15 });
   const springSY = useSpring(sMY, { stiffness: 60, damping: 15 });
 
-  // Canvas resize for DPR
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -46,13 +43,11 @@ export default function GhostMonogram() {
       const sy = scrollY.get();
       const progress = scrollYProgress.get();
 
-      // J scroll drift: move initials as page scrolls
       jMX.set(sy * 0.015);
       jMY.set(sy * 0.03);
       sMX.set(sy * -0.015);
       sMY.set(sy * -0.03);
 
-      // Canvas grid drawing
       const canvas = canvasRef.current;
       if (canvas) {
         const ctx = canvas.getContext("2d");
@@ -60,15 +55,11 @@ export default function GhostMonogram() {
           const w = window.innerWidth;
           const h = window.innerHeight;
           const cellSize = 80;
-          const currentIsDark = theme === "dark";
 
           ctx.clearRect(0, 0, w, h);
 
-          // Base grid at low fixed opacity
-          const baseAlpha = currentIsDark ? 0.12 : 0.08;
-          const baseColor = currentIsDark
-            ? `rgba(51, 51, 51, ${baseAlpha})`
-            : `rgba(202, 202, 203, ${baseAlpha})`;
+          const baseAlpha = 0.08;
+          const baseColor = `rgba(202, 202, 203, ${baseAlpha})`;
           ctx.strokeStyle = baseColor;
           ctx.lineWidth = 1;
 
@@ -85,34 +76,27 @@ export default function GhostMonogram() {
             ctx.stroke();
           }
 
-          // Scroll pulse band
           const bandHeight = h * 0.45;
           const bandHalf = bandHeight / 2;
           const bandCenterY = bandHalf + progress * (h - bandHeight);
-          const peakAlpha = currentIsDark ? 0.50 : 0.35;
+          const peakAlpha = 0.35;
           const yStart = Math.max(0, bandCenterY - bandHalf);
           const yEnd = Math.min(h, bandCenterY + bandHalf);
 
-          // Vertical segments within band
           for (let x = 0; x <= w; x += cellSize) {
             const distFromCenter = Math.abs((yStart + yEnd) / 2 - bandCenterY) / bandHalf;
             const alpha = peakAlpha * (1 - distFromCenter * 0.5);
-            ctx.strokeStyle = currentIsDark
-              ? `rgba(51, 51, 51, ${alpha})`
-              : `rgba(202, 202, 203, ${alpha})`;
+            ctx.strokeStyle = `rgba(202, 202, 203, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(x, yStart);
             ctx.lineTo(x, yEnd);
             ctx.stroke();
           }
 
-          // Horizontal rows within band
           for (let y = Math.floor(yStart / cellSize) * cellSize; y <= yEnd; y += cellSize) {
             const distFromCenter = Math.abs(y - bandCenterY) / bandHalf;
             const alpha = peakAlpha * (1 - distFromCenter * 0.5);
-            ctx.strokeStyle = currentIsDark
-              ? `rgba(51, 51, 51, ${alpha})`
-              : `rgba(202, 202, 203, ${alpha})`;
+            ctx.strokeStyle = `rgba(202, 202, 203, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(0, y);
             ctx.lineTo(w, y);
@@ -126,10 +110,9 @@ export default function GhostMonogram() {
 
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, [theme]);
+  }, []);
 
-  const isDark = theme === "dark";
-  const textColor = isDark ? "rgba(245, 245, 245, 0.055)" : "rgba(17, 17, 17, 0.02)";
+  const textColor = "rgba(17, 17, 17, 0.02)";
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">

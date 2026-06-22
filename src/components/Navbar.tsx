@@ -6,7 +6,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import ThemeToggle from "@/components/ThemeToggle";
 import { site } from "@/data/site";
 
 export default function Navbar() {
@@ -23,7 +22,7 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-8 md:top-24 left-1/2 -translate-x-1/2 z-50 h-14 bg-white dark:bg-[#151515] rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] flex items-center gap-6 px-4"
+        className="fixed top-8 md:top-24 left-1/2 -translate-x-1/2 z-50 h-14 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex items-center gap-6 px-4"
       >
         <Link href="/" className="flex-shrink-0">
           <Image
@@ -44,7 +43,7 @@ export default function Navbar() {
                 className={`relative px-3 py-1.5 text-sm tracking-hover transition-colors ${
                   pathname === link.href
                     ? "text-white font-medium"
-                    : "text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5]"
+                    : "text-[#707072] hover:text-[#111111]"
                 }`}
               >
                 {pathname === link.href && (
@@ -64,7 +63,7 @@ export default function Navbar() {
           <a
             href={site.resume}
             download
-            className="text-sm text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] tracking-hover transition-colors flex items-center gap-1.5"
+            className="text-sm text-[#707072] hover:text-[#111111] tracking-hover transition-colors flex items-center gap-1.5"
           >
             Resume
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -73,12 +72,11 @@ export default function Navbar() {
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
           </a>
-          <ThemeToggle />
         </div>
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-[#111111] dark:text-[#f5f5f5] transition-colors"
+          className="md:hidden text-[#111111] transition-colors"
           aria-label="Menu"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -92,7 +90,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-[88px] md:top-[160px] left-1/2 -translate-x-1/2 z-40 w-[240px] bg-white dark:bg-[#151515] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] p-2 md:hidden"
+            className="fixed top-[88px] md:top-[160px] left-1/2 -translate-x-1/2 z-40 w-[240px] bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-2 md:hidden"
           >
             <div className="flex flex-col gap-1">
               {site.nav.map((link) => (
@@ -102,7 +100,7 @@ export default function Navbar() {
                   className={`px-4 py-2.5 text-sm rounded-lg tracking-hover transition-colors ${
                     pathname === link.href
                       ? "bg-[#1151ff] text-white font-medium"
-                      : "text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] hover:bg-[#f5f5f5] dark:hover:bg-[#1a1a1a]"
+                      : "text-[#707072] hover:text-[#111111] hover:bg-[#f5f5f5]"
                   }`}
                 >
                   {link.label}
@@ -111,7 +109,7 @@ export default function Navbar() {
               <a
                 href={site.resume}
                 download
-                className="flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg tracking-hover text-[#707072] hover:text-[#111111] dark:hover:text-[#f5f5f5] hover:bg-[#f5f5f5] dark:hover:bg-[#1a1a1a] transition-colors"
+                className="flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg tracking-hover text-[#707072] hover:text-[#111111] hover:bg-[#f5f5f5] transition-colors"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
@@ -120,9 +118,6 @@ export default function Navbar() {
                 </svg>
                 Resume
               </a>
-              <div className="px-4 py-2.5">
-                <ThemeToggle />
-              </div>
             </div>
           </motion.div>
         )}

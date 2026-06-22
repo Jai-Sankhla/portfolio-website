@@ -29,6 +29,7 @@ export interface CaseStudy {
   timeline: string;
   tags: string[];
   metric: { value: string; label: string };
+  badges: string[];
   accentColor?: string;
   sections: { heading: string; items: CaseStudySection[] }[];
 }
@@ -47,6 +48,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "8 weeks",
     tags: ["Fintech", "Mobile App"],
     metric: { value: "End-to-end", label: "Product Design" },
+    badges: ["End-to-end product design", "8-week sprint"],
     accentColor: "#059669",
     sections: [
       {
@@ -395,6 +397,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "6 weeks",
     tags: ["UX Redesign", "Health", "Mobile"],
     metric: { value: "40%", label: "First task completion increase" },
+    badges: ["+40% first task completion", "UX research-led redesign"],
     accentColor: "#0d9488",
     sections: [
       {
@@ -597,6 +600,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "10 weeks",
     tags: ["Gamification", "Health"],
     metric: { value: "2x", label: "Daily engagement" },
+    badges: ["2x daily engagement", "Streaks + coins reward system"],
     accentColor: "#8b5cf6",
     sections: [
       {
@@ -810,6 +814,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "8 weeks",
     tags: ["E-Commerce", "UX Strategy", "Checkout"],
     metric: { value: "26%", label: "Cart abandonment reduction" },
+    badges: ["26% cart abandonment reduction", "480k+ user sessions analyzed"],
     accentColor: "#d97706",
     sections: [
       {
@@ -1142,6 +1147,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "6 weeks",
     tags: ["E-Commerce", "UX Strategy", "Category Design"],
     metric: { value: "+120%", label: "Ad-to-purchase conversion" },
+    badges: ["+120% ad-to-purchase conversion", "Unified category + landing pages"],
     accentColor: "#6366f1",
     sections: [
       {

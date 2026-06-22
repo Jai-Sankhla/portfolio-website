@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme inline {
   --color-ink: #111111;
   --color-ink-dark: #000000;
@@ -42,12 +40,6 @@
     -moz-osx-font-smoothing: grayscale;
     font-size: 15px;
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  .dark body,
-  body.dark {
-    background-color: var(--color-ink-dark);
-    color: var(--color-soft-cloud);
   }
 }
 

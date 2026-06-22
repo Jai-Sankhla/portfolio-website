@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { site } from "@/data/site";
 import { BLUR_DATA_URL } from "@/lib/images";
+import { useMousePosition } from "@/hooks/useMousePosition";
 
 const tools = [
   "Figma", "Miro", "Photoshop", "Notion", "Framer",
@@ -31,13 +32,20 @@ export default function HeroSection() {
   const headline = "Designing products that people love to use.";
   const { scrollY } = useScroll();
   const cueOpacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const mouse = useMousePosition();
+  const cx = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
+  const cy = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
+  const dx = mouse.x - cx;
+  const dy = mouse.y - cy;
+
+  const badgeDepth = [0.02, 0.04, 0.03, 0.05];
 
   return (
     <section className="relative min-h-screen md:min-h-[80vh] flex items-center pt-20 md:pt-48 overflow-hidden">
       {/* Dot grid background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
-          className="w-full h-full opacity-[0.04] dark:opacity-[0.06]"
+          className="w-full h-full opacity-[0.04]"
           style={{
             backgroundImage: `radial-gradient(circle, #111111 1px, transparent 1px)`,
             backgroundSize: "36px 36px",
@@ -50,38 +58,58 @@ export default function HeroSection() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute top-[22%] left-6 hidden lg:flex items-center gap-1.5 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+        className="absolute top-[22%] left-6 hidden lg:block"
       >
-        <span className="text-[#707072]">📍 Based in India</span>
+        <motion.div
+          className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
+          style={{ x: dx * badgeDepth[0], y: dy * badgeDepth[0] }}
+        >
+          <span className="text-[#707072]">📍 Based in India</span>
+        </motion.div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute bottom-[25%] left-8 hidden lg:flex items-center gap-1.5 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+        className="absolute bottom-[25%] left-8 hidden lg:block"
       >
-        <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">💼 3 Years</span>
-        <span className="text-[#707072]">of Experience</span>
+        <motion.div
+          className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
+          style={{ x: dx * badgeDepth[1], y: dy * badgeDepth[1] }}
+        >
+          <span className="font-medium text-[#111111]">💼 3 Years</span>
+          <span className="text-[#707072]">of Experience</span>
+        </motion.div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute top-[22%] right-6 hidden lg:flex items-center gap-1.5 text-xs bg-white dark:bg-[#151515] px-3 py-1.5 rounded-full border border-[#f0f0f0] dark:border-[#2a2a2a] shadow-sm"
+        className="absolute top-[22%] right-6 hidden lg:block"
       >
-        <span className="text-[#707072]">🎓 10kdesigners Cohort</span>
+        <motion.div
+          className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
+          style={{ x: dx * badgeDepth[2], y: dy * badgeDepth[2] }}
+        >
+          <span className="text-[#707072]">🎓 10kdesigners Cohort</span>
+        </motion.div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-[25%] right-8 hidden lg:flex items-center gap-1.5 text-xs bg-[#059669]/10 px-3 py-1.5 rounded-full border border-[#059669]/30 shadow-sm"
+        className="absolute bottom-[25%] right-8 hidden lg:block"
       >
-        <span className="w-2 h-2 rounded-full bg-[#059669]" />
-        <span className="font-medium text-[#059669]">Open for new roles and projects</span>
+        <motion.div
+          className="flex items-center gap-1.5 text-xs bg-[#059669]/10 px-3 py-1.5 rounded-full border border-[#059669]/30 shadow-sm"
+          style={{ x: dx * badgeDepth[3], y: dy * badgeDepth[3] }}
+        >
+          <span className="w-2 h-2 rounded-full bg-[#059669]" />
+          <span className="font-medium text-[#059669]">Open for new roles and projects</span>
+        </motion.div>
       </motion.div>
 
       <div className="max-w-6xl mx-auto px-6 w-full">
@@ -112,7 +140,7 @@ export default function HeroSection() {
 
             <motion.p
               variants={wordReveal}
-              className="text-[#707072] dark:text-[#707072] mt-6 leading-relaxed max-w-md"
+              className="text-[#707072] mt-6 leading-relaxed max-w-md"
             >
               I help teams simplify workflows, scale products, and deliver
               real-world solutions through thoughtful, user-centered design.
@@ -124,14 +152,14 @@ export default function HeroSection() {
             >
               <a
                 href="/work"
-                className="inline-flex px-6 py-3 bg-[#111111] dark:bg-[#f5f5f5] text-[#ffffff] dark:text-[#000000] text-sm font-medium rounded-full hover:bg-[#1151ff] dark:hover:bg-[#1151ff] hover:text-white dark:hover:text-white transition-colors"
+                className="inline-flex px-6 py-3 bg-[#111111] text-[#ffffff] text-sm font-medium rounded-full hover:bg-[#1151ff] hover:text-white transition-colors"
               >
                 View my work
               </a>
               <a
                 href={site.resume}
                   download
-                  className="inline-flex px-6 py-3 text-sm font-medium rounded-full border border-[#cacacb] dark:border-[#333333] hover:border-[#111111] dark:hover:border-[#f5f5f5] transition-colors"
+                  className="inline-flex px-6 py-3 text-sm font-medium rounded-full border border-[#cacacb] hover:border-[#111111] transition-colors"
                 >
                   Download resume
                 </a>
@@ -143,9 +171,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative w-[320px] sm:w-[400px] -rotate-2 bg-white dark:bg-[#1a1a1a] p-3 pb-8 rounded-sm shadow-xl dark:shadow-[#000]/30"
+              className="relative w-[320px] sm:w-[400px] -rotate-2 bg-white p-3 pb-8 rounded-sm shadow-xl"
             >
-              <div className="aspect-square w-full overflow-hidden rounded-sm bg-[#f5f5f5] dark:bg-[#151515]">
+              <div className="aspect-square w-full overflow-hidden rounded-sm bg-[#f5f5f5]">
                 <Image
                   src="/images/avatar.jpg"
                   alt={site.name}
@@ -166,7 +194,7 @@ export default function HeroSection() {
         {/* Tool marquee */}
         <div className="mt-10 md:mt-16 overflow-hidden">
           <div className="flex items-center gap-2 text-xs text-[#707072] mb-3">
-            <span className="font-medium text-[#111111] dark:text-[#f5f5f5]">The good stuff</span>
+            <span className="font-medium text-[#111111]">The good stuff</span>
             <span className="w-1 h-1 rounded-full bg-[#cacacb]" />
             <span>Always adding more</span>
           </div>
@@ -190,10 +218,7 @@ export default function HeroSection() {
           className="flex flex-col items-center gap-2 mt-6 md:mt-12"
         >
           <span className="text-xs text-[#707072]">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
+          <div className="h-8 flex items-center">
             <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="text-[#707072]">
               <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" strokeWidth="1.5" />
               <motion.rect
@@ -202,7 +227,7 @@ export default function HeroSection() {
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
               />
             </svg>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

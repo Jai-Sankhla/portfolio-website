@@ -38,7 +38,7 @@ export default function BeforeAfterSlider({ before, after }: BeforeAfterSliderPr
   return (
     <div
       ref={containerRef}
-      className="relative select-none overflow-hidden rounded-lg bg-[#f5f5f5] dark:bg-[#151515] cursor-ew-resize"
+      className="relative select-none overflow-hidden rounded-lg bg-[#f5f5f5] cursor-ew-resize"
       onMouseDown={onMouseDown}
       onTouchMove={(e) => updatePosition(e.touches[0].clientX)}
       style={{ aspectRatio: "16/9" }}
