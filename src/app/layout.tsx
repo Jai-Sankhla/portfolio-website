@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://jaisankhla.dev"),
   title: "Jai Sankhla — Product Designer",
   description: "Product Designer specializing in building complex products.",
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
