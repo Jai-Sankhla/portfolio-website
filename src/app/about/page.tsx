@@ -33,15 +33,14 @@ const phases = [
       { name: "Wireframing", desc: "Visualize structure and key interactions." },
       { name: "Prototyping", desc: "Test ideas with realistic, interactive experiences." },
       { name: "Visual Design", desc: "Create polished, engaging interfaces." },
-      { name: "Design System", desc: "Build unified languages for consistency." },
     ],
   },
   {
     phase: "Build",
     color: "#8b5cf6",
     items: [
+      { name: "Design System", desc: "Build unified languages for cross-product consistency." },
       { name: "Responsive Design", desc: "Ensure quality across every device." },
-      { name: "Conversion Optimization", desc: "Design data-driven interfaces that perform." },
       { name: "Vibe Coding", desc: "Blend design intuition with AI-assisted rapid prototyping." },
     ],
   },
@@ -49,10 +48,9 @@ const phases = [
     phase: "Ship",
     color: "#d97706",
     items: [
-      {
-        name: "Production Environments",
-        desc: "Design with engineering constraints — responsive, accessible, performant.",
-      },
+      { name: "Conversion Optimization", desc: "Design data-driven interfaces that perform." },
+      { name: "Analytics & Iteration", desc: "Monitor, measure, and refine products post-launch." },
+      { name: "Production Environments", desc: "Design within engineering constraints — accessible, performant, scalable." },
     ],
   },
 ];
@@ -118,12 +116,12 @@ export default function About() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.25}>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-sm text-[#111111] underline underline-offset-4 decoration-[#cacacb] hover:decoration-[#1151ff] transition-all tracking-hover"
+                <button
+                  onClick={() => { navigator.clipboard.writeText(site.email); }}
+                  className="text-sm text-[#111111] underline underline-offset-4 decoration-[#cacacb] hover:decoration-[#1151ff] transition-all tracking-hover cursor-pointer"
                 >
                   {site.email}
-                </a>
+                </button>
             </ScrollReveal>
           </div>
         </div>
@@ -175,10 +173,10 @@ export default function About() {
             </p>
           </ScrollReveal>
 
-          <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-3">
+          <div className="flex flex-col md:flex-row md:items-stretch gap-6 md:gap-3">
             {phases.map((phase, pi) => (
-              <div key={phase.phase} className="flex-1">
-                <ScrollReveal delay={pi * 0.1}>
+              <div key={phase.phase} className="flex-1 flex flex-col">
+                <ScrollReveal delay={pi * 0.1} className="flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-3">
                     <div
                       className="w-3 h-3 rounded-full flex-shrink-0"
@@ -191,11 +189,11 @@ export default function About() {
                       <span className="hidden md:block text-[#cacacb] flex-1 text-right text-lg font-light">→</span>
                     )}
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2 flex-1">
                     {phase.items.map((item) => (
                       <div
                         key={item.name}
-                        className="p-3 rounded-lg bg-[#f5f5f5]/50 border border-[#cacacb] hover:border-[#1151ff] transition-colors"
+                        className="flex-1 p-3 rounded-lg bg-[#f5f5f5]/50 border border-[#cacacb] hover:border-[#1151ff] transition-colors"
                       >
                         <p className="text-sm font-medium">{item.name}</p>
                         <p className="text-xs text-[#707072] mt-0.5">{item.desc}</p>

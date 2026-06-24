@@ -103,7 +103,6 @@ function StackedCard({
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
                 />
-                <div className="absolute inset-0 bg-[#111111]/0 group-hover:bg-[#111111]/10 transition-all duration-700" />
               </div>
               <div
                 className={`relative md:flex-[2] p-6 md:p-8 lg:p-10 flex flex-col justify-center ${panelColors[index]}`}
@@ -122,15 +121,18 @@ function StackedCard({
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-3">
-                  {project.metric && (
-                    <span
-                      className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full"
-                      style={{ backgroundColor: `${panelTextColors[index]}1A`, color: panelTextColors[index] }}
-                    >
-                      {project.metric.value} &mdash; {project.metric.label}
-                    </span>
-                  )}
+                <div className="flex flex-wrap items-start gap-4">
+                  <div className="flex flex-wrap gap-2">
+                    {project.badges.map((badge) => (
+                      <span
+                        key={badge}
+                        className="inline-flex items-center text-xs font-medium rounded-full px-3 py-1"
+                        style={{ backgroundColor: `${panelTextColors[index]}1A`, color: panelTextColors[index] }}
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
                   <div className="opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <span
                       className="inline-flex items-center gap-2 text-sm text-white px-4 py-2 rounded-full"

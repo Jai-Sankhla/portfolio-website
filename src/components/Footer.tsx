@@ -1,15 +1,30 @@
 "use client";
 
+import { useState } from "react";
 import { site } from "@/data/site";
 
 const links = [
-  { label: "Email", href: `mailto:${site.email}` },
   { label: "LinkedIn", href: site.social.linkedin },
   { label: "Behance", href: site.social.behance },
   { label: "X / Twitter", href: site.social.twitter },
 ];
 
 export default function Footer() {
+  const [ctaCopied, setCtaCopied] = useState(false);
+  const [socialCopied, setSocialCopied] = useState(false);
+
+  const copyCta = () => {
+    navigator.clipboard.writeText(site.email);
+    setCtaCopied(true);
+    setTimeout(() => setCtaCopied(false), 2000);
+  };
+
+  const copySocial = () => {
+    navigator.clipboard.writeText(site.email);
+    setSocialCopied(true);
+    setTimeout(() => setSocialCopied(false), 2000);
+  };
+
   return (
     <footer className="border-t border-[#f0f0f0] bg-white">
       <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
@@ -21,27 +36,37 @@ export default function Footer() {
             Have a project in mind? I&apos;d love to hear about it. Reach out and
             let&apos;s build something great.
           </p>
-          <a
-            href={`mailto:${site.email}`}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#111111] text-white text-sm font-medium rounded-full hover:bg-[#1151ff] transition-colors"
+          <button
+            onClick={copyCta}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#111111] text-white text-sm font-medium rounded-full hover:bg-[#1151ff] transition-colors cursor-pointer"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
-            {site.email}
-          </a>
+            {ctaCopied ? "Copied!" : site.email}
+          </button>
         </div>
 
         <div className="h-px bg-[#f0f0f0] mb-8" />
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-8">
+          <span className="flex items-center gap-x-6">
+            <button
+              onClick={copySocial}
+              className="group relative text-sm text-[#707072] hover:text-[#111111] transition-colors tracking-hover cursor-pointer"
+            >
+              {socialCopied ? "Copied!" : "Email"}
+              <span className="absolute -bottom-0.5 left-0 w-full h-px bg-[#111111] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </button>
+            <span className="text-[#cacacb] select-none">·</span>
+          </span>
           {links.map((link, i) => (
             <span key={link.label} className="flex items-center gap-x-6">
               <a
                 href={link.href}
-                target={link.label === "Email" ? undefined : "_blank"}
-                rel={link.label === "Email" ? undefined : "noopener noreferrer"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative text-sm text-[#707072] hover:text-[#111111] transition-colors tracking-hover"
               >
                 {link.label}

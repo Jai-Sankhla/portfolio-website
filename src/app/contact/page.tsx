@@ -64,14 +64,13 @@ export default function Contact() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-[#f0f0f0]">
                 <div className="flex-1">
                   <p className="text-sm text-[#707072] mb-1">Email me at</p>
-                  <p className="text-base font-medium">{site.email}</p>
-                </div>
-                <button
+                  <button
                     onClick={copyEmail}
-                    className="px-5 py-2.5 bg-[#111111] text-white text-sm font-medium rounded-full hover:bg-[#1151ff] transition-colors shrink-0"
+                    className="text-base font-medium hover:text-[#1151ff] transition-colors cursor-pointer"
                   >
-                    {copied ? "Copied!" : "Copy email"}
+                    {copied ? "Copied!" : site.email}
                   </button>
+                </div>
               </div>
             </ScrollReveal>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudy, CaseStudySection } from "@/data/case-studies";
@@ -207,12 +208,12 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           <p className="text-[#707072] mb-4">
             Interested in working together?
           </p>
-          <a
-              href={`mailto:${site.email}`}
-              className="inline-flex px-6 py-3 bg-[#111111] text-[#ffffff] text-sm font-medium rounded-full hover:bg-[#1151ff] hover:text-white transition-colors tracking-hover"
+          <button
+              onClick={() => { navigator.clipboard.writeText(site.email); }}
+              className="inline-flex px-6 py-3 bg-[#111111] text-[#ffffff] text-sm font-medium rounded-full hover:bg-[#1151ff] hover:text-white transition-colors tracking-hover cursor-pointer"
             >
               Get in touch
-            </a>
+            </button>
         </div>
       </div>
     </div>
