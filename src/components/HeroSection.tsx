@@ -183,11 +183,8 @@ export default function HeroSection() {
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
                 />
-              </div>
-              <p className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs font-[family-name:var(--font-caveat)] text-[#707072]">
-                {site.name} &mdash; {new Date().getFullYear()}
-              </p>
-            </motion.div>
+            </div>
+          </motion.div>
           </div>
         </div>
 
