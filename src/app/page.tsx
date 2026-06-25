@@ -6,10 +6,10 @@ import TestimonialGrid from "@/components/TestimonialGrid";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col gap-9 md:gap-12">
       <HeroSection />
       <ProjectStack />
       <TestimonialGrid />
-    </>
+    </div>
   );
 }

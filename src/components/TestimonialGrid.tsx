@@ -25,7 +25,7 @@ function RecommendationCard({
         delay: index * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="p-6 rounded-xl bg-[#f5f5f5]/50 border border-[#f0f0f0] hover:border-[#1151ff] transition-colors"
+      className="p-6 rounded-xl bg-[#f5f5f5]/50 border border-[#f0f0f0] hover:border-[#1151ff] transition-colors select-none"
     >
       <div className="flex items-start gap-4 mb-4">
         <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-[#cacacb]">
@@ -84,7 +84,7 @@ export default function TestimonialGrid() {
   };
 
   return (
-    <section className="py-9 md:py-12">
+    <section className="pb-9 md:pb-12">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -135,7 +135,7 @@ export default function TestimonialGrid() {
           <div
             ref={scrollRef}
             onScroll={updateScroll}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-4 no-scrollbar pb-2"
+            className="flex overflow-x-auto snap-x snap-proximity gap-4 no-scrollbar pb-2 [touch-action:pan-x] [overscroll-behavior-x:none]"
           >
             {recommendations.map((rec, i) => (
               <div key={rec.name} className="snap-center w-[85vw] shrink-0 first:ml-0 last:mr-0">

@@ -80,7 +80,7 @@ function StackedCard({
       }}
     >
       <div
-        className="sticky top-0 h-screen flex items-center justify-center p-4 md:p-6"
+        className="sticky top-0 min-h-[75vh] flex items-center justify-center p-4 md:p-6"
         style={{ zIndex: index + 1 }}
       >
         <motion.div
