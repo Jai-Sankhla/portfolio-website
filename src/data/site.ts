@@ -5,7 +5,7 @@ export const site = {
   role: "Product Designer",
   tagline: "Designing products that people love to use.",
   email: "jaisankhla0771@gmail.com",
-  resume: "/resume.pdf",
+  resume: "/CV_JAI.pdf",
   social: {
     linkedin: "https://www.linkedin.com/in/jaisankhla",
     twitter: "https://x.com/JaiSankhla2",
