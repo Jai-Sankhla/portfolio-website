@@ -39,7 +39,7 @@ export default function Work() {
         <ScrollReveal>
           <span className="text-sm text-[#1151ff] font-medium">Portfolio</span>
           <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mt-3 mb-12">
-            Selected projects
+            Projects
           </h1>
         </ScrollReveal>
 
