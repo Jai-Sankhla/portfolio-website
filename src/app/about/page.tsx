@@ -102,17 +102,19 @@ export default function About() {
           <div>
             <ScrollReveal delay={0.15}>
               <p className="text-[#707072] leading-relaxed mb-4">
-                I&apos;m a Product Designer based in India, specializing in
-                creating impactful, user-centered experiences. With a background
-                in interior design and digital design, I balance form and
-                function while bringing a unique perspective to every project.
+                What started as a curiosity for design slowly turned into a
+                career built around solving real problems.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="text-[#707072] leading-relaxed mb-4">
-                Though UX is my primary focus, my practice goes beyond the
-                screens — exploring strategy, systems thinking, and physical
-                spaces.
+                From graduating as a University Gold Medalist to leading
+                product design for startups and global brands, I&apos;ve spent
+                the last few years designing experiences across healthcare, AI,
+                and e-commerce. Today, I&apos;m most interested in creating
+                products that balance business goals with genuine user
+                needs — and I&apos;m still learning something new with every
+                project.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.25}>
