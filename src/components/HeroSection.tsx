@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { site } from "@/data/site";
 import { BLUR_DATA_URL } from "@/lib/images";
@@ -39,6 +40,26 @@ export default function HeroSection() {
   const dy = mouse.y - cy;
 
   const badgeDepth = [0.02, 0.04, 0.03, 0.05];
+
+  const polaroidRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const mouseX = e.clientX - centerX;
+    const mouseY = e.clientY - centerY;
+    const maxTilt = 10;
+    setTilt({
+      x: -(mouseY / (rect.height / 2)) * maxTilt,
+      y: (mouseX / (rect.width / 2)) * maxTilt,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
 
   return (
     <section className="relative min-h-screen md:min-h-[80vh] flex items-center pt-20 md:pt-48 overflow-hidden">
@@ -171,20 +192,30 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative w-[320px] sm:w-[400px] -rotate-2 bg-white p-3 pb-8 rounded-sm shadow-xl"
             >
-              <div className="aspect-square w-full overflow-hidden rounded-sm bg-[#f5f5f5]">
-                <Image
-                  src="/images/avatar.jpg"
-                  alt={site.name}
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover"
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URL}
-                />
-            </div>
-          </motion.div>
+              <div
+                ref={polaroidRef}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) rotate(-2deg)`,
+                  transition: "transform 0.15s ease-out",
+                }}
+                className="relative w-[320px] sm:w-[400px] bg-white p-3 pb-8 rounded-sm shadow-xl cursor-pointer"
+              >
+                <div className="aspect-square w-full overflow-hidden rounded-sm bg-[#f5f5f5]">
+                  <Image
+                    src="/images/avatar.jpg"
+                    alt={site.name}
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
 
