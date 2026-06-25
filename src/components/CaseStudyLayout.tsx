@@ -47,8 +47,8 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
             <Image
               src={caseStudy.coverImage}
               alt={caseStudy.title}
-              width={0}
-              height={0}
+              width={1920}
+              height={1080}
               sizes="(max-width: 768px) 100vw, 768px"
               className="w-full h-auto rounded-xl"
               priority
@@ -232,8 +232,8 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
             <Image
               src={item.image!.src}
               alt={item.image!.alt}
-              width={0}
-              height={0}
+              width={1920}
+              height={1080}
               sizes="(max-width: 768px) 100vw, 768px"
               className="w-full h-auto rounded-lg"
             />
@@ -255,8 +255,8 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
                 <Image
                   src={img.src}
                   alt={img.alt}
-                  width={0}
-                  height={0}
+                  width={1920}
+                  height={1080}
                   sizes="(max-width: 768px) 100vw, 768px"
                   className="w-full h-auto rounded-lg"
                 />
