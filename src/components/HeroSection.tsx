@@ -58,7 +58,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute top-[22%] left-6 hidden lg:block"
+        className="absolute top-[26%] left-16 hidden lg:block"
       >
         <motion.div
           className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
@@ -72,7 +72,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute bottom-[25%] left-8 hidden lg:block"
+        className="absolute bottom-[30%] left-16 hidden lg:block"
       >
         <motion.div
           className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
@@ -87,7 +87,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute top-[22%] right-6 hidden lg:block"
+        className="absolute top-[26%] right-16 hidden lg:block"
       >
         <motion.div
           className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
@@ -101,7 +101,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-[25%] right-8 hidden lg:block"
+        className="absolute bottom-[30%] right-16 hidden lg:block"
       >
         <motion.div
           className="flex items-center gap-1.5 text-xs bg-[#059669]/10 px-3 py-1.5 rounded-full border border-[#059669]/30 shadow-sm"
