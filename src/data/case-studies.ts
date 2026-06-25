@@ -369,7 +369,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "embed",
             embed: {
-              url: "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FUoP1crrd4PsZE1JstBNjEe%2FBudget-Tracking-and-Daily-Expense-App---Jai%3Fpage-id%3D476%253A1338%26type%3Ddesign%26node-id%3D867-4307%26viewport%3D-331%252C364%252C0.14%26scaling%3Dscale-down%26starting-point-node-id%3D867%253A4472",
+              url: "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FUoP1crrd4PsZE1JstBNjEe%2FBudget-Tracking-and-Daily-Expense-App---Jai%3Fpage-id%3D476%253A1338%26type%3Ddesign%26node-id%3D867-4307%26viewport%3D-331%252C364%252C0.14%26scaling%3Dscale-down%26starting-point-node-id%3D867%253A4472%26hide-share-ui%3D1",
               title: "Budgify Figma Prototype",
             },
           },

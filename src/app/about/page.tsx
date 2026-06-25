@@ -76,7 +76,7 @@ export default function About() {
   };
 
   return (
-    <div className="pt-28 pb-20">
+    <div className="pt-28 pb-12 md:pb-20">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <h1 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
@@ -128,24 +128,24 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mb-12">
+        <div className="mb-9 md:mb-12">
           <ScrollReveal delay={0.3}>
             <AboutGallery />
           </ScrollReveal>
         </div>
 
-        <section className="mb-16">
+        <section className="mb-9 md:mb-12">
           <ScrollReveal>
-            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
+            <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
               Experience
             </h2>
           </ScrollReveal>
           <Timeline />
         </section>
 
-        <section className="mb-16 pt-12 border-t border-[#f5f5f5]">
+        <section className="mb-9 md:mb-12 pt-12 border-t border-[#f5f5f5]">
           <ScrollReveal>
-            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
+            <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
               Tools &amp; toolkit
             </h2>
           </ScrollReveal>
@@ -165,9 +165,9 @@ export default function About() {
           </div>
         </section>
 
-        <section className="mb-16 pt-12 border-t border-[#f5f5f5]">
+        <section className="mb-9 md:mb-12 pt-12 border-t border-[#f5f5f5]">
           <ScrollReveal>
-            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-2">
+            <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-2">
               Capabilities
             </h2>
             <p className="text-sm text-[#707072] mb-8">
@@ -210,7 +210,7 @@ export default function About() {
 
         <section className="pt-12 border-t border-[#f5f5f5]">
           <ScrollReveal>
-            <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
+            <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-8">
               Recommendations
             </h2>
           </ScrollReveal>

@@ -27,8 +27,8 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-[#f0f0f0] bg-white">
-      <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-        <div className="text-center md:text-left mb-12">
+      <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
+        <div className="text-center md:text-left mb-9 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-display)] font-semibold tracking-tight text-[#111111] mb-3">
             Let&apos;s work together
           </h2>
@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className="h-px bg-[#f0f0f0] mb-8" />
 
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-8">
+        <div className="flex flex-wrap items-center gap-x-4 md:gap-x-6 gap-y-2 mb-8">
           <span className="flex items-center gap-x-6">
             <button
               onClick={copySocial}
@@ -81,7 +81,7 @@ export default function Footer() {
 
         <div className="h-px bg-[#f0f0f0] mb-6" />
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+        <div className="flex flex-row items-center justify-between gap-2">
           <p className="text-xs text-[#707072]">
             &copy; {new Date().getFullYear()} {site.name}
           </p>

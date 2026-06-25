@@ -15,7 +15,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-28 pb-20">
+    <div className="pt-28 pb-12 md:pb-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="relative mb-12 overflow-hidden rounded-2xl bg-[#f5f5f5]/50 p-8 md:p-12">
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -77,7 +77,7 @@ export default function Contact() {
         </div>
 
         <ScrollReveal delay={0.15}>
-          <h2 className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-4">
+          <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-4">
             Other places to find me
           </h2>
         </ScrollReveal>
@@ -118,7 +118,7 @@ export default function Contact() {
         </div>
 
         <ScrollReveal delay={0.4}>
-          <div className="mt-16 pt-12 border-t border-[#f5f5f5] text-center">
+          <div className="mt-9 md:mt-12 pt-12 border-t border-[#f5f5f5] text-center">
             <p className="text-sm text-[#707072]">
               Based in India &middot; Available for remote work
             </p>

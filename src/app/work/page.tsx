@@ -34,7 +34,7 @@ export default function Work() {
   }, [handleKeyDown]);
 
   return (
-    <div className="pt-28 pb-20">
+    <div className="pt-28 pb-12 md:pb-20">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <span className="text-sm text-[#1151ff] font-medium">Portfolio</span>

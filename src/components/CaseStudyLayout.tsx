@@ -33,7 +33,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
   const isNumericMetric = !isNaN(metricValue);
 
   return (
-    <div className="pt-28 pb-20" style={{ "--accent": accentColor } as React.CSSProperties}>
+    <div className="pt-28 pb-12 md:pb-20" style={{ "--accent": accentColor } as React.CSSProperties}>
       <div className="max-w-3xl mx-auto px-6">
         <Link
           href="/work"
@@ -43,7 +43,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
         </Link>
 
         <ScrollReveal>
-          <ParallaxWrapper           className="w-full rounded-xl bg-[#f5f5f5] mb-8">
+          <ParallaxWrapper           className="w-full rounded-xl mb-8">
             <Image
               src={caseStudy.coverImage}
               alt={caseStudy.title}
@@ -150,11 +150,11 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
 
         <CaseStudyTOC caseStudy={caseStudy} />
 
-        <div className="space-y-16">
+        <div className="space-y-9 md:space-y-12">
           {caseStudy.sections.map((section, i) => (
             <section key={i}>
               <ScrollReveal>
-                <h2 data-section-index={i} className="text-lg font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
+                <h2 data-section-index={i} className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-semibold tracking-tight mb-6">
                   {section.heading}
                 </h2>
               </ScrollReveal>
@@ -169,7 +169,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           ))}
         </div>
 
-        <div className="mt-16 pt-12 border-t border-[#f5f5f5]">
+        <div className="mt-9 md:mt-12 pt-9 md:pt-12 border-t border-[#f5f5f5]">
           <div className="flex justify-between items-center">
             <div>
               {prev && (
@@ -204,7 +204,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           </div>
         </div>
 
-        <div className="mt-16 pt-12 border-t border-[#f5f5f5] text-center">
+        <div className="mt-9 md:mt-12 pt-9 md:pt-12 border-t border-[#f5f5f5] text-center">
           <p className="text-[#707072] mb-4">
             Interested in working together?
           </p>
@@ -228,7 +228,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
     case "image":
       return (
         <div>
-          <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5]">
+          <ParallaxWrapper className="w-full rounded-lg">
             <Image
               src={item.image!.src}
               alt={item.image!.alt}
@@ -251,7 +251,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
         <div className="space-y-4">
           {item.images?.map((img, k) => (
             <div key={k}>
-              <ParallaxWrapper className="w-full rounded-lg bg-[#f5f5f5]">
+              <ParallaxWrapper className="w-full rounded-lg">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -304,15 +304,13 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
 
     case "embed":
       return (
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#f5f5f5]">
-          <iframe
-            src={item.embed!.url}
-            title={item.embed!.title}
-            className="absolute inset-0 w-full h-full"
-            allowFullScreen
-            allow="autoplay; fullscreen"
-          />
-        </div>
+        <iframe
+          src={item.embed!.url}
+          title={item.embed!.title}
+          className="w-full h-[900px] rounded-lg"
+          allowFullScreen
+          allow="autoplay; fullscreen"
+        />
       );
 
     case "before-after":
