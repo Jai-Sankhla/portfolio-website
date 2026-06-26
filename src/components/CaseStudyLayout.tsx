@@ -12,6 +12,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { site } from "@/data/site";
 import { calculateReadingTime } from "@/lib/reading-time";
+import FormattedText from "@/lib/format-text";
 
 const ACCENT = "#1151ff";
 
@@ -221,7 +222,7 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
       return (
         <>
           {paragraphs.map((p, k) => (
-            <p key={k} className="text-[#707072] leading-relaxed">{p}</p>
+            <p key={k} className="text-[#707072] leading-relaxed"><FormattedText content={p} /></p>
           ))}
         </>
       );
