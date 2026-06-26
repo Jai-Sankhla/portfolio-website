@@ -614,7 +614,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "• Users lacked motivation to complete daily health tasks\n• Engagement dropped significantly after the first week\n• Retention suffered without a sense of progress or reward",
+              "• Users lacked motivation to complete daily health tasks\n\n• Engagement dropped significantly after the first week\n\n• Retention suffered without a sense of progress or reward",
           },
           {
             type: "text",
@@ -625,7 +625,6 @@ export const caseStudies: CaseStudy[] = [
             type: "quote",
             quote:
               "I didn't just add coins and badges to the app. I designed a behavioral model that tapped into users' intrinsic motivation — making health tracking feel rewarding, not like a chore.",
-            author: "Jai Sankhla, Product Designer",
           },
         ],
       },
