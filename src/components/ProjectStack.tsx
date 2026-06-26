@@ -92,7 +92,7 @@ function StackedCard({
             style={{ opacity: shadowOpacity }}
           />
           <Link href={`/work/${project.slug}`} className="group block relative z-10">
-            <div className="flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-[#f5f5f5] md:flex-row-reverse">
+            <div className="flex flex-col h-[75vh] min-h-[460px] max-h-[680px] w-full rounded-2xl overflow-hidden bg-white md:flex-row-reverse">
               <div className="relative h-[35vh] md:h-full md:flex-[3] overflow-hidden">
                 <Image
                   src={project.coverImage}
@@ -105,7 +105,7 @@ function StackedCard({
                 />
               </div>
               <div
-                className={`relative md:flex-[2] p-6 md:p-8 lg:p-10 flex flex-col justify-center ${panelColors[index]}`}
+                className={`relative flex-1 md:flex-[2] p-6 md:p-8 lg:p-10 flex flex-col justify-center ${panelColors[index]}`}
               >
                 <div className="flex items-center gap-2 text-xs font-medium mb-3" style={{ color: panelTextColors[index] }}>
                   <span className="uppercase tracking-wider">{project.client}</span>
