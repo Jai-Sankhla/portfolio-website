@@ -180,9 +180,6 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
                   <span className="text-xs text-[#707072]">
                     &larr; Previous project
                   </span>
-                  <p className="text-sm font-medium mt-0.5 tracking-hover">
-                    {prev.title}
-                  </p>
                 </Link>
               )}
             </div>
@@ -195,9 +192,6 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
                   <span className="text-xs text-[#707072]">
                     Next project &rarr;
                   </span>
-                  <p className="text-sm font-medium mt-0.5 tracking-hover">
-                    {next.title}
-                  </p>
                 </Link>
               )}
             </div>
@@ -303,11 +297,12 @@ function SectionRenderer({ item }: { item: CaseStudySection }) {
       );
 
     case "embed":
+      const isVideo = item.embed!.url.includes("vimeo");
       return (
         <iframe
           src={item.embed!.url}
           title={item.embed!.title}
-          className="w-full h-[900px] rounded-lg"
+          className={`w-full rounded-lg ${isVideo ? "aspect-video" : "h-[900px]"}`}
           allowFullScreen
           allow="autoplay; fullscreen"
         />
