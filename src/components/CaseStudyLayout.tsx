@@ -217,7 +217,14 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
 function SectionRenderer({ item }: { item: CaseStudySection }) {
   switch (item.type) {
     case "text":
-      return <p className="text-[#707072] leading-relaxed">{item.content}</p>;
+      const paragraphs = item.content!.split("\n\n").filter(Boolean);
+      return (
+        <>
+          {paragraphs.map((p, k) => (
+            <p key={k} className="text-[#707072] leading-relaxed">{p}</p>
+          ))}
+        </>
+      );
 
     case "image":
       return (
