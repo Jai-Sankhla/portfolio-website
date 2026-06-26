@@ -39,7 +39,7 @@ export default function CaseStudyLayout({ caseStudy }: Props) {
           href="/work"
           className="text-sm text-[#707072] tracking-hover inline-flex items-center gap-1 mb-8"
         >
-          &larr; Back to projects
+          &larr; Back
         </Link>
 
         <ScrollReveal>
