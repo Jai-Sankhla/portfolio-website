@@ -37,7 +37,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               blurDataURL={BLUR_DATA_URL}
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
             <span className="inline-block text-xs text-white bg-[#1151ff] px-3 py-1 rounded-full">
               View case study
