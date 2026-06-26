@@ -50,8 +50,8 @@ export default function Footer() {
 
         <div className="h-px bg-[#f0f0f0] mb-8" />
 
-        <div className="flex flex-wrap items-center gap-x-4 md:gap-x-6 gap-y-2 mb-8">
-          <span className="flex items-center gap-x-6">
+        <div className="flex flex-wrap items-center gap-x-3 md:gap-x-6 gap-y-2 mb-8">
+          <span className="flex items-center gap-x-2 md:gap-x-6">
             <button
               onClick={copySocial}
               className="group relative text-sm text-[#707072] hover:text-[#111111] transition-colors tracking-hover cursor-pointer"
@@ -62,7 +62,7 @@ export default function Footer() {
             <span className="text-[#cacacb] select-none">·</span>
           </span>
           {links.map((link, i) => (
-            <span key={link.label} className="flex items-center gap-x-6">
+            <span key={link.label} className="flex items-center gap-x-2 md:gap-x-6">
               <a
                 href={link.href}
                 target="_blank"
