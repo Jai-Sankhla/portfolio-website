@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-import { useInView } from "framer-motion";
 import { useEffect, useState } from "react";
 
 interface AnimatedCounterProps {
@@ -17,12 +15,9 @@ export default function AnimatedCounter({
   suffix = "",
   className = "",
 }: AnimatedCounterProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
   const [count, setCount] = useState(from);
 
   useEffect(() => {
-    if (!inView) return;
     const duration = 1500;
     const steps = 60;
     const increment = (to - from) / steps;
@@ -37,13 +32,10 @@ export default function AnimatedCounter({
       }
     }, duration / steps);
     return () => clearInterval(timer);
-  }, [inView, from, to]);
+  }, [from, to]);
 
   return (
-    <span
-      ref={ref}
-      className={className}
-    >
+    <span className={className}>
       {count}
       {suffix}
     </span>
