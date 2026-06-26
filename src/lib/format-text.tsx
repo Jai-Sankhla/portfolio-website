@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+
 interface FormattedTextProps {
   content: string;
 }
 
 export default function FormattedText({ content }: FormattedTextProps) {
   const regex = /(\*\*(.+?)\*\*)|(\*(.+?)\*)|(`([^`]+)`)/g;
-  const parts: (string | JSX.Element)[] = [];
+  const parts: (string | ReactNode)[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
