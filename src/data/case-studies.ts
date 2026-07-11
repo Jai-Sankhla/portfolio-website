@@ -572,7 +572,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        heading: "Peace",
+        heading: "Signing Off",
         items: [
           {
             type: "text",
@@ -804,7 +804,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        heading: "Peace",
+        heading: "Signing Off",
         items: [
           {
             type: "text",
