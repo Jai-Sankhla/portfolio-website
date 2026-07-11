@@ -22,12 +22,12 @@ export default function CaseStudyFooter({ prev, next }: Props) {
                 href={`/work/${prev.slug}`}
                 className="group flex items-center gap-4"
               >
-                <div className="w-12 h-12 rounded-lg overflow-hidden bg-[#f5f5f5] shrink-0 border border-[#e8e8e8]">
+                <div className="w-12 h-12 md:w-20 md:h-20 rounded-lg overflow-hidden bg-[#f5f5f5] shrink-0 border border-[#e8e8e8]">
                   <Image
                     src={prev.coverImage}
                     alt=""
-                    width={48}
-                    height={48}
+                    width={64}
+                    height={64}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -56,12 +56,12 @@ export default function CaseStudyFooter({ prev, next }: Props) {
                     {next.client}
                   </span>
                 </div>
-                <div className="w-12 h-12 rounded-lg overflow-hidden bg-[#f5f5f5] shrink-0 border border-[#e8e8e8]">
+                <div className="w-12 h-12 md:w-20 md:h-20 rounded-lg overflow-hidden bg-[#f5f5f5] shrink-0 border border-[#e8e8e8]">
                   <Image
                     src={next.coverImage}
                     alt=""
-                    width={48}
-                    height={48}
+                    width={64}
+                    height={64}
                     className="w-full h-full object-cover"
                   />
                 </div>
