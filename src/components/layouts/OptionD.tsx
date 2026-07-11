@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudy, CaseStudySection } from "@/data/case-studies";
@@ -33,9 +34,29 @@ export default function OptionD({ caseStudy }: Props) {
     ...caseStudy.tags.slice(0, 2),
   ].filter(Boolean).join(" \u2022 ");
 
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const idx = parseInt(entry.target.getAttribute("data-section-index") || "0", 10);
+            setActiveIndex(idx);
+          }
+        }
+      },
+      { rootMargin: "-120px 0px -50% 0px", threshold: 0 }
+    );
+
+    const headings = document.querySelectorAll("[data-section-index]");
+    headings.forEach((h) => observer.observe(h));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="pt-28 pb-12 md:pb-20" style={{ "--accent": accentColor } as React.CSSProperties}>
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <Link
           href="/work"
           className="text-sm text-[#707072] tracking-hover inline-flex items-center gap-1 mb-8 hover:text-[#111111] transition-colors"
@@ -77,11 +98,30 @@ export default function OptionD({ caseStudy }: Props) {
           <span>{readingTime}</span>
         </div>
 
-        <div className="max-w-[65ch] mx-auto mb-8">
-          <p className="text-[#707072] leading-relaxed md:text-lg">{caseStudy.description}</p>
-        </div>
+        <div className="lg:grid lg:grid-cols-[180px_1fr] lg:gap-10">
+          <aside className="hidden lg:block">
+            <div className="sticky top-32 space-y-1">
+              <p className="text-[10px] text-[#707072] uppercase tracking-wider mb-3 font-medium">On this page</p>
+              {caseStudy.sections.map((section, i) => (
+                <button
+                  key={section.heading}
+                  onClick={() => {
+                    const el = document.getElementById(`section-${i}`);
+                    el?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className={`block text-left w-full text-xs py-1.5 transition-colors ${
+                    i === activeIndex ? "text-[#111111] font-medium" : "text-[#707072] hover:text-[#111111]"
+                  }`}
+                  style={i === activeIndex ? { color: accentColor } : {}}
+                >
+                  {section.heading}
+                </button>
+              ))}
+            </div>
+          </aside>
 
-        {caseStudy.metric && (
+          <div>
+            {caseStudy.metric && (
           <div className="inline-flex items-baseline gap-3 mb-10 p-4 bg-[#f5f5f5]/50 rounded-lg">
             <span className="text-xl md:text-2xl font-[family-name:var(--font-display)] font-bold" style={{ color: accentColor }}>
               {isNumericMetric ? <><AnimatedCounter to={metricValue} />{caseStudy.metric.value.replace(/[0-9]/g, "")}</> : caseStudy.metric.value}
@@ -91,8 +131,19 @@ export default function OptionD({ caseStudy }: Props) {
         )}
 
         <div className="space-y-14 pt-10">
+          <section>
+            <div className="space-y-6">
+              {caseStudy.description.split("\n\n").filter(Boolean).map((p, k) => (
+                <ScrollReveal key={k} delay={Math.min(k * 0.05, 0.2)}>
+                  <p className="text-[#707072] leading-relaxed max-w-[72ch] mx-auto md:text-lg">
+                    <FormattedText content={p} />
+                  </p>
+                </ScrollReveal>
+              ))}
+            </div>
+          </section>
           {caseStudy.sections.map((section, i) => (
-            <section key={i}>
+            <section id={`section-${i}`} key={i}>
               {section.heading && (
                 <ScrollReveal>
                   <h2
@@ -112,6 +163,8 @@ export default function OptionD({ caseStudy }: Props) {
               </div>
             </section>
           ))}
+        </div>
+        </div>
         </div>
 
         <CaseStudyFooter prev={prev} next={next} />
@@ -135,7 +188,7 @@ function GalleryItem({
       return (
         <>
           {paragraphs.map((p, k) => (
-            <p key={k} className="text-[#707072] leading-relaxed max-w-[65ch] mx-auto md:text-lg">
+            <p key={k} className="text-[#707072] leading-relaxed max-w-[72ch] mx-auto md:text-lg">
               <FormattedText content={p} />
             </p>
           ))}
@@ -186,7 +239,7 @@ function GalleryItem({
         <div className="py-4">
           <div className="w-6 h-0.5 mb-4 rounded-full" style={{ backgroundColor: accentColor }} />
           <blockquote>
-            <p className="text-lg md:text-2xl font-[family-name:var(--font-display)] italic leading-relaxed text-[#111111] max-w-[65ch] mx-auto">
+            <p className="text-lg md:text-2xl font-[family-name:var(--font-display)] italic leading-relaxed text-[#111111] max-w-[72ch] mx-auto">
               &ldquo;{item.quote}&rdquo;
             </p>
             {item.author && (
