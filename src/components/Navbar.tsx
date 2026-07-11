@@ -51,10 +51,42 @@ export default function Navbar() {
       </motion.div>
 
       <motion.div
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-8 md:top-24 left-1/2 -translate-x-1/2 z-50 h-14 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] hidden md:flex items-center gap-6 px-4"
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 h-12 bg-white/90 backdrop-blur-lg rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] md:hidden flex items-center gap-1 px-3"
+      >
+        <div className="flex items-center gap-1">
+          <LayoutGroup>
+            {site.nav.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative px-2.5 py-1.5 text-xs tracking-hover transition-colors ${
+                  pathname === link.href
+                    ? "text-white font-medium"
+                    : "text-[#707072] hover:text-[#111111]"
+                }`}
+              >
+                {pathname === link.href && (
+                  <motion.div
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-[#1151ff]"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{link.label}</span>
+              </Link>
+            ))}
+          </LayoutGroup>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ y: 80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-50 h-14 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] hidden md:flex items-center gap-6 px-4"
       >
         <Link href="/" className="flex-shrink-0">
           <Image

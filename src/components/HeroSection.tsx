@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { site } from "@/data/site";
 import { BLUR_DATA_URL } from "@/lib/images";
@@ -40,6 +40,12 @@ export default function HeroSection() {
   const dy = mouse.y - cy;
 
   const badgeDepth = [0.02, 0.04, 0.03, 0.05];
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const polaroidRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -83,7 +89,7 @@ export default function HeroSection() {
       >
         <motion.div
           className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
-          style={{ x: dx * badgeDepth[0], y: dy * badgeDepth[0] }}
+          style={{ x: mounted ? dx * badgeDepth[0] : 0, y: mounted ? dy * badgeDepth[0] : 0 }}
         >
           <span className="text-[#707072]">📍 Based in India</span>
         </motion.div>
@@ -97,7 +103,7 @@ export default function HeroSection() {
       >
         <motion.div
           className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
-          style={{ x: dx * badgeDepth[1], y: dy * badgeDepth[1] }}
+          style={{ x: mounted ? dx * badgeDepth[1] : 0, y: mounted ? dy * badgeDepth[1] : 0 }}
         >
           <span className="font-medium text-[#111111]">💼 3 Years</span>
           <span className="text-[#707072]">of Experience</span>
@@ -112,7 +118,7 @@ export default function HeroSection() {
       >
         <motion.div
           className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
-          style={{ x: dx * badgeDepth[2], y: dy * badgeDepth[2] }}
+          style={{ x: mounted ? dx * badgeDepth[2] : 0, y: mounted ? dy * badgeDepth[2] : 0 }}
         >
           <span className="text-[#707072]">🎓 10kdesigners Cohort</span>
         </motion.div>
@@ -126,7 +132,7 @@ export default function HeroSection() {
       >
         <motion.div
           className="flex items-center gap-1.5 text-xs bg-[#059669]/10 px-3 py-1.5 rounded-full border border-[#059669]/30 shadow-sm"
-          style={{ x: dx * badgeDepth[3], y: dy * badgeDepth[3] }}
+          style={{ x: mounted ? dx * badgeDepth[3] : 0, y: mounted ? dy * badgeDepth[3] : 0 }}
         >
           <span className="w-2 h-2 rounded-full bg-[#059669]" />
           <span className="font-medium text-[#059669]">Open for new roles and projects</span>
@@ -169,18 +175,18 @@ export default function HeroSection() {
 
             <motion.div
               variants={wordReveal}
-              className="flex items-center gap-4 mt-8"
+              className="flex items-center gap-3 mt-8"
             >
               <a
                 href="/work"
-                className="inline-flex px-6 py-3 bg-[#111111] text-[#ffffff] text-sm font-medium rounded-full hover:bg-[#1151ff] hover:text-white transition-colors"
+                className="inline-flex px-4 sm:px-6 py-2.5 sm:py-3 bg-[#111111] text-[#ffffff] text-sm font-medium rounded-full hover:bg-[#1151ff] hover:text-white transition-colors"
               >
                 View my work
               </a>
               <a
                 href={site.resume}
                   download
-                  className="inline-flex px-6 py-3 text-sm font-medium rounded-full border border-[#cacacb] hover:border-[#111111] transition-colors"
+                  className="inline-flex px-4 sm:px-6 py-2.5 sm:py-3 text-sm font-medium rounded-full border border-[#cacacb] hover:border-[#111111] transition-colors"
                 >
                   Download resume
                 </a>

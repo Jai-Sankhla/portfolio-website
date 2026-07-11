@@ -135,10 +135,11 @@ export default function TestimonialGrid() {
           <div
             ref={scrollRef}
             onScroll={updateScroll}
-            className="flex overflow-x-auto snap-x snap-proximity gap-4 no-scrollbar pb-2 [touch-action:pan-x] [overscroll-behavior-x:none]"
+            className="flex overflow-x-auto snap-x snap-proximity gap-4 no-scrollbar pb-2"
+            style={{ touchAction: "pan-x", overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}
           >
             {recommendations.map((rec, i) => (
-              <div key={rec.name} className="snap-center w-[85vw] shrink-0 first:ml-0 last:mr-0">
+              <div key={rec.name} className="snap-center w-[85vw] shrink-0 first:ml-0 last:mr-0" style={{ touchAction: "pan-x" }}>
                 <RecommendationCard rec={rec} index={i} />
               </div>
             ))}

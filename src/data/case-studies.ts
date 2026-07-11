@@ -5,14 +5,15 @@ export interface CaseStudyImage {
 }
 
 export interface CaseStudySection {
-  type: "text" | "image" | "image-grid" | "quote" | "metrics" | "embed" | "before-after";
+  type: "text" | "image" | "image-grid" | "quote" | "metrics" | "embed" | "before-after" | "gif";
   content?: string;
   image?: CaseStudyImage;
   images?: CaseStudyImage[];
   quote?: string;
   author?: string;
   metrics?: { value: string; label: string }[];
-  embed?: { url: string; title: string };
+  embed?: { url: string; title: string; width?: number; height?: number };
+  gif?: CaseStudyImage;
   before?: CaseStudyImage;
   after?: CaseStudyImage;
 }
@@ -57,22 +58,22 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "For millions, managing money is overwhelming. While countless budgeting apps exist, they often create more friction than clarity, bombarding users with complex features and making the simple act of tracking expenses a chore. This leads to abandoned budgets and continued financial uncertainty.",
+              "**For millions,** managing money is overwhelming. While countless budgeting apps exist, they often create more friction than clarity, bombarding users with complex features and making the simple act of tracking expenses a chore. This leads to abandoned budgets and continued financial uncertainty.",
           },
           {
             type: "text",
             content:
-              "The challenge? To design a user-centric budgeting app from the ground up that simplifies onboarding to get users tracking in minutes, makes expense logging fast and effortless, visualizes financial health with clarity to inform better decisions, and motivates users by celebrating their progress and achievements.",
+              "==The challenge?== To design a user-centric budgeting app from the ground up that simplifies onboarding to get users tracking in minutes, makes expense logging fast and effortless, visualizes financial health with clarity to inform better decisions, and motivates users by celebrating their progress and achievements.",
           },
           {
             type: "text",
             content:
-              "This case study details my end-to-end design process for Budgify, an app created to answer those questions. My focus was on four key principles: simplifying setup, streamlining expense entry, providing actionable insights, and building user motivation.",
+              "This case study details my end-to-end design process for **Budgify**, an app created to answer those questions. My focus was on four key principles: **simplifying setup, streamlining expense entry, providing actionable insights, and building user motivation.**",
           },
           {
             type: "text",
             content:
-              "This project was completed during my time at the 10kdesigners cohort, with invaluable guidance from my mentors, Abhinav Chhikara and Jayneil Dalal.",
+              "This project was completed during my time at the [10kdesigners](https://www.10kdesigners.com/u/jai-sankhla) cohort, with invaluable guidance from my mentors, [Abhinav Chhikara](https://www.linkedin.com/in/abnux/) and [Jayneil Dalal](https://www.linkedin.com/in/jayneil/).",
           },
           {
             type: "image",
@@ -107,12 +108,12 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Quantitative Surveys: I designed and distributed a survey using Google Forms to gather statistical data on budgeting habits and challenges.",
+              "**Quantitative Surveys:** I designed and distributed a survey using Google Forms to gather statistical data on budgeting habits and challenges.",
           },
           {
             type: "text",
             content:
-              "Qualitative Interviews: I conducted several one-on-one interviews, both in-person and over the phone, to gain deep, contextual insights into their financial behaviors.",
+              "**Qualitative Interviews:** I conducted several one-on-one interviews, both in-person and over the phone, to gain deep, contextual insights into their financial behaviors.",
           },
         ],
       },
@@ -151,7 +152,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Allow me to introduce you to Pradhuman and Shivangi!",
+              "**Allow me to introduce you to Pradhuman and Shivangi!**",
           },
           {
             type: "image",
@@ -168,7 +169,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Visualizing Shivangi's perspective to understand her needs and pain points.",
+              "**Visualizing** Shivangi's perspective to understand her needs and pain points.",
           },
           {
             type: "image",
@@ -185,7 +186,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "A user scenario illustrating 'A Day in Shivangi's Life' to visualize her real-world budgeting challenges.",
+              "A user scenario illustrating '**A Day in Shivangi's Life**' to visualize her real-world budgeting challenges.",
           },
           {
             type: "image",
@@ -202,7 +203,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "To pinpoint opportunities for improvement, I visualized Shivangi's frustrating process of trying to stick to a budget.",
+              "To pinpoint opportunities for improvement, I visualized **Shivangi's** frustrating process of trying to stick to a budget.",
           },
           {
             type: "image",
@@ -305,7 +306,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "The culmination of the design process: high-fidelity mockups, key UI screens, and an intro video demonstrating the core user flow and interactions of the app.",
+              "**The culmination of the design process:** high-fidelity mockups, key UI screens, and an intro video demonstrating the core user flow and interactions of the app.",
           },
           {
             type: "embed",
@@ -406,12 +407,12 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Gamification gave users motivation, but the homepage still failed to guide them. Many described it as \"a maze with no clear starting point.\" Without a sense of direction, users lost momentum, even if they were excited after onboarding.",
+              "Gamification gave users motivation, but the homepage still failed to guide them. Many described it as \"==a maze with no clear starting point.==\" Without a sense of direction, users lost momentum, even if they were excited after onboarding.",
           },
           {
             type: "text",
             content:
-              "My task was to transform confusion into clarity \u2014 redesigning the homepage as a daily wellness dashboard that simplified choices, highlighted progress, and encouraged consistent action.",
+              "My task was to transform confusion into clarity \u2014 redesigning the homepage as **a daily wellness dashboard** that simplified choices, highlighted progress, and encouraged consistent action.",
           },
         ],
       },
@@ -440,17 +441,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "To uncover why users were disengaging after onboarding, we conducted 25+ user interviews and usability reviews focused on Nirva\u2019s homepage experience. Here\u2019s what we learned:",
+              "To uncover why users were disengaging after onboarding, we conducted **25+ user interviews** and usability reviews focused on Nirva\u2019s homepage experience. Here\u2019s what we learned:",
           },
           {
             type: "text",
             content:
-              "\u2022 \"I don\u2019t know where to start\" when I open the app \u2014 the screen feels cluttered and overwhelming.\n\n\u2022 Important tasks like yoga or diet logs are buried. \"I just scroll and give up sometimes.\"\n\n\u2022 The homepage doesn\u2019t guide me. \"It feels random,\" like a feed, not a plan for my day.\n\n\u2022 I want to see my upcoming sessions or progress, but \"I can\u2019t find it easily.\"\n\n\u2022 Without a clear order, I \"end up skipping things\" and closing the app.",
+              "\u2022 \"**I don\u2019t know where to start**\" when I open the app \u2014 the screen feels cluttered and overwhelming.\n\n\u2022 Important tasks like yoga or diet logs are buried. \"**I just scroll and give up sometimes.**\"\n\n\u2022 The homepage doesn\u2019t guide me. \"**It feels random,**\" like a feed, not a plan for my day.\n\n\u2022 I want to see my upcoming sessions or progress, but \"**I can\u2019t find it easily.**\"\n\n\u2022 Without a clear order, I \"**end up skipping things**\" and closing the app.",
           },
           {
             type: "text",
             content:
-              "These insights revealed the core issue: the homepage failed to provide clarity, prioritization, and direction \u2014 leaving users lost, unmotivated, and more likely to drop off.",
+              "**These insights revealed the core issue:** the homepage failed to provide clarity, prioritization, and direction \u2014 leaving users lost, unmotivated, and more likely to drop off.",
           },
         ],
       },
@@ -460,17 +461,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Improve User Retention \u2014 Redesign the homepage to guide users clearly, reducing drop-offs and increasing daily engagement.",
+              "**Improve User Retention** \u2014 Redesign the homepage to guide users clearly, reducing **drop-offs** and increasing daily engagement.",
           },
           {
             type: "text",
             content:
-              "Boost Task Completion \u2014 Surface the most important actions upfront to ensure higher completion of diet logs, yoga, and wellness tasks.",
+              "**Boost Task Completion** \u2014 Surface the most important actions upfront to ensure **higher completion of diet logs, yoga, and wellness tasks.**",
           },
           {
             type: "text",
             content:
-              "Strengthen Product Value \u2014 Position Nirva as a daily companion for wellness by making the homepage a central, engaging hub.",
+              "**Strengthen Product Value** \u2014 Position Nirva as a **daily companion for wellness** by making the homepage a central, engaging hub.",
           },
         ],
       },
@@ -480,17 +481,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Clarity & Direction \u2014 Help users know exactly where to start by providing a structured, prioritized daily plan.",
+              "**Clarity & Direction** \u2014 Help users know exactly where to start by providing a structured, **prioritized daily plan.**",
           },
           {
             type: "text",
             content:
-              "Easy Access to Key Tasks \u2014 Simplify navigation so that core actions like yoga practice and diet logging are always within reach.",
+              "**Easy Access to Key Tasks** \u2014 **Simplify navigation** so that core actions like yoga practice and diet logging are always within reach.",
           },
           {
             type: "text",
             content:
-              "Confidence in Progress \u2014 Show clear progress and upcoming sessions, empowering users to track their journey and stay motivated.",
+              "**Confidence in Progress** \u2014 Show **clear progress and upcoming sessions,** empowering users to track their journey and stay motivated.",
           },
         ],
       },
@@ -533,7 +534,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Revamping Nirva Health\u2019s homepage brought clarity to the user journey and created a stronger sense of direction. First task completion rose by 40%, while user confusion dropped by 65%. By surfacing key actions and progress at the start, the homepage transformed from a cluttered screen into a daily wellness dashboard \u2014 guiding users with confidence and improving overall retention.",
+              "Revamping Nirva Health\u2019s homepage brought clarity to the user journey and created a stronger sense of direction. First task completion rose by **40%**, while user confusion dropped by **65%**. By surfacing key actions and progress at the start, the homepage **transformed** from a cluttered screen into **a daily wellness dashboard** \u2014 guiding users with confidence and improving overall retention.",
           },
           {
             type: "metrics",
@@ -551,22 +552,22 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Refining the Information Hierarchy \u2014 Continue testing different layouts and priorities to ensure that the most critical tasks always remain visible without overwhelming users.",
+              "**Refining the Information Hierarchy** \u2014 Continue testing different layouts and priorities to ensure that the most critical tasks always remain visible without overwhelming users.",
           },
           {
             type: "text",
             content:
-              "Personalization at Scale \u2014 Introduce dynamic homepage cards that adapt to each user\u2019s goals \u2014 whether focused on yoga, diet, or workshops \u2014 to make the experience feel more personal.",
+              "**Personalization at Scale** \u2014 Introduce dynamic homepage cards that adapt to each user\u2019s goals \u2014 whether focused on yoga, diet, or workshops \u2014 to make the experience feel more personal.",
           },
           {
             type: "text",
             content:
-              "Deeper Data Tracking \u2014 Work with analytics teams to measure how each homepage element influences engagement and retention, then fine-tune based on user behavior.",
+              "**Deeper Data Tracking** \u2014 Work with analytics teams to measure how each homepage element influences engagement and retention, then fine-tune based on user behavior.",
           },
           {
             type: "text",
             content:
-              "Iterative Improvements \u2014 Treat the homepage as a living system \u2014 continuously learning from user feedback, A/B testing components, and evolving it into a central hub for growth.",
+              "**Iterative Improvements** \u2014 Treat the homepage as a living system \u2014 continuously learning from user feedback, A/B testing components, and evolving it into a central hub for growth.",
           },
         ],
       },
@@ -576,7 +577,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "This project taught me the importance of clarity as a design principle. By redefining the homepage, I was able to turn confusion into confidence and give users a reason to return daily. I\u2019m thankful to my mentor Archi Kashmiriya, and stakeholders for trusting me with this responsibility, and I\u2019m proud of how the design created measurable impact.",
+              "This project taught me the **importance of clarity** as a design principle. By redefining the homepage, I was able to turn **~confusion into confidence~** and give users a reason to return daily. I\u2019m thankful to my mentor [Archi Kashmiriya](https://www.linkedin.com/in/archik-ux/), and stakeholders for trusting me with this responsibility, and I\u2019m proud of how the design created measurable impact.",
           },
           {
             type: "text",
@@ -609,22 +610,22 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Nirva Health is a Y Combinator-backed startup that combines Ayurveda and Yoga to help users achieve their wellness goals. However, the app faced three critical problems:",
+              "**Nirva Health**, a Y Combinator-backed startup, helps people embrace [Ayurveda and Yoga](https://www.nirvahealth.com/) through personalized wellness plans. But by mid-2023, the app was struggling to keep users engaged::",
           },
           {
             type: "text",
             content:
-              "• Users lacked motivation to complete daily health tasks\n\n• Engagement dropped significantly after the first week\n\n• Retention suffered without a sense of progress or reward",
+              "• Without gamification features, **users lacked motivation** to complete daily wellness tasks.\n\n• **Engagement** with core activities like diet logging and yoga tracking was low, as the experience felt repetitive and unrewarding.\n\n• **Retention suffered**, with many users dropping off after initial onboarding.",
           },
           {
             type: "text",
             content:
-              "The challenge? Design a gamification system that turns everyday wellness activities into an engaging, habit-building experience — without making it feel like a game.",
+              "==The challenge?== Design a gamification system that motivates users to return daily, rewards them for progress, and turns routine wellness into an engaging, habit-forming journey.",
           },
           {
             type: "quote",
             quote:
-              "I didn't just add coins and badges to the app. I designed a behavioral model that tapped into users' intrinsic motivation — making health tracking feel rewarding, not like a chore.",
+              "**I didn't just add coins and badges** \u2014 I built an experience that inspired consistency, improved retention, and made wellness feel rewarding",
           },
         ],
       },
@@ -653,12 +654,12 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "To understand what truly motivates users to build healthy habits, we conducted 25+ user interviews with active and churned users. Here's what we uncovered:",
+              "To understand why engagement and retention were low, we conducted **25+ user interviews** with Nirva Health users who had tried daily wellness plans. Here\u2019s what they shared:",
           },
           {
             type: "text",
             content:
-              "• \"I want to feel like I'm making progress, even on days when I do something small.\"\n\n• \"If I miss a day, I feel like I've lost everything — there's no incentive to come back.\"\n\n• \"I wish the app celebrated my wins the way my fitness tracker does.\"\n\n• \"I compare my progress with friends in other apps — I'd love that here too.\"\n\n• \"I need a reason to open the app every day, something that pulls me in.\"",
+              "• \"**Logging my diet** every day feels repetitive. I don\u2019t feel motivated to continue after a few days.\"\n\n• \"I like yoga sessions, but without rewards or progress tracking, it\u2019s **easy to skip** them.\"\n\n• \"The app doesn\u2019t make me feel like I\u2019m achieving anything. **I can\u2019t see my progress clearly.**\"\n\n• \"After onboarding, there **isn\u2019t much excitement** to return daily\u2014it feels like the same routine.\"\n\n• \"I often **forget about the app** because nothing nudges me to come back and complete tasks.\"",
           },
         ],
       },
@@ -668,22 +669,22 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Increase Daily Active Users — Drive habitual daily app usage by creating compelling motivation loops that make wellness tracking a rewarding daily ritual.",
+              "**Increase Engagement & Retention** \u2014 Introduce gamification features that **motivate users** to return daily, boosting overall app stickiness and reducing drop-offs.",
           },
           {
             type: "text",
             content:
-              "Boost Retention Rates — Reduce early-stage churn by giving users a reason to return beyond the first week of onboarding and initial assessment.",
+              "**Encourage Healthy Habit Formation** \u2014 Support Nirva\u2019s mission by ensuring users consistently engage with **diet logging, yoga practice, and wellness tasks.**",
           },
           {
             type: "text",
             content:
-              "Drive Feature Adoption — Encourage users to explore and engage with underutilized features like meal planning, yoga sessions, and community challenges.",
+              "**Drive Growth Metrics** \u2014 **Improve weekly task** completion and reactivation rates, leading to higher customer lifetime value and stronger subscription conversions.",
           },
           {
             type: "text",
             content:
-              "Differentiate from Competitors — Stand out in the crowded health & wellness market by offering a uniquely engaging, game-like experience that competitors lack.",
+              "**Build Scalable Design Components** \u2014 Design gamification elements (**coins, badges, streaks**) as reusable UI components that can integrate seamlessly with other app features.",
           },
         ],
       },
@@ -693,17 +694,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Stay Motivated — Users want to feel a sense of accomplishment and progress, even from small daily actions, to maintain their wellness journey.",
+              "**Stay Motivated & Rewarded** \u2014 Provide users with coins, badges, and streak tracking that make completing daily health tasks **rewarding and enjoyable.**",
           },
           {
             type: "text",
             content:
-              "Track Progress Visibly — Users need clear, visual indicators of their streaks, achievements, and milestones to feel their efforts are recognized.",
+              "**Track Progress Clearly** \u2014 Help users **visualize progress** with clear indicators and feedback loops, giving them a sense of achievement and momentum.",
           },
           {
             type: "text",
             content:
-              "Be Rewarded Consistently — Users want tangible rewards and recognition for their consistency, making the habit of returning to the app feel valuable.",
+              "**Build Lasting Routines** \u2014 Encourage users to form **sustainable wellness habits** by turning routine tasks into engaging, gamified experiences.",
           },
         ],
       },
@@ -741,19 +742,33 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
+        heading: "Prototype",
+        items: [
+          {
+            type: "embed",
+            embed: {
+              url: "https://marvelapp.com/prototype/cj960f3?emb=1&iosapp=false&frameless=false",
+              title: "Nirva Gamification Prototype",
+              width: 453,
+              height: 864,
+            },
+          },
+        ],
+      },
+      {
         heading: "Final Outcome",
         items: [
           {
             type: "text",
             content:
-              "The gamification system launched and within weeks transformed user behavior. Daily active users doubled as the streak mechanic created a powerful pulling effect — users who maintained a 7+ day streak showed 94% retention at 30 days. Average session duration increased by 40% as users engaged with coins, levels, and challenges. The app evolved from a health tracker into a daily wellness companion that users genuinely looked forward to opening.",
+              "The introduction of gamification significantly **improved engagement** and **retention at Nirva Health.** Weekly task completion jumped from **31% to 55%**, showing stronger user consistency. Retention also improved, with daily return rates growing steadily and reactivation rising from **17% to 25%**. These changes highlighted that gamification wasn\u2019t just a visual add-on\u2014it became a core driver of healthy habit formation and long-term user loyalty.",
           },
           {
             type: "metrics",
             metrics: [
-              { value: "2x", label: "Daily active engagement" },
+              { value: "31% \u2192 55%", label: "Weekly active engagement" },
+              { value: "17% \u2192 25%", label: "30-day retention improvement" },
               { value: "94%", label: "30-day retention (7+ day streak)" },
-              { value: "+40%", label: "Average session duration" },
             ],
           },
         ],
@@ -764,22 +779,27 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Personalized Streak Goals — Tailor streak targets and rewards based on individual user behavior and preferences, making the system adaptable to different motivation levels.",
+              "Unfortunately, my time at Nirva ended before I could further develop the gamification system. If I had stayed, here\u2019s what I would have focused on:",
           },
           {
             type: "text",
             content:
-              "Social Accountability Circles — Introduce friend-based challenges and team streaks where users can motivate each other and share achievements within the app.",
+              "**Expanding Reward Mechanics** \u2014 For a project of this size, even with thorough testing, some minor bugs are bound to slip through. I would have worked with the engineering team to quickly identify and resolve any issues users might encounter after launch.",
           },
           {
             type: "text",
             content:
-              "Deeper Behavioral Analytics — Implement machine learning to predict user churn risk and trigger personalized gamification interventions before users disengage.",
+              "**Optimizing Post-Launch** \u2014 Monitor real-world usage data and user feedback to refine coin values, badge unlocks, and task difficulty so that rewards remain balanced and meaningful.",
           },
           {
             type: "text",
             content:
-              "Iterative Feature Expansion — Continuously A/B test new reward mechanics, limited-time events, and seasonal challenges to keep the gamification system fresh and engaging.",
+              "**Listening to Users** \u2014 Conduct regular interviews and surveys to understand what motivates users most\u2014whether it\u2019s streaks, social recognition, or tangible rewards\u2014and adapt features accordingly.",
+          },
+          {
+            type: "text",
+            content:
+              "**Continuous Improvements** \u2014 Explore cross-feature gamification (e.g., integrating rewards into diet logging, yoga, and subscriptions) to unify the experience and strengthen Nirva\u2019s ecosystem.",
           },
         ],
       },
@@ -789,12 +809,12 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "This project taught me that great design isn't just about usability — it's about behavior. By understanding what drives human motivation, I was able to transform a functional health app into an experience users looked forward to every day. I'm grateful to the Nirva team for trusting me with this vision and to my mentor Archi Kashmiriya for pushing me to think deeper about behavioral design.",
+              "I am proud to count this among my most significant projects at **Nirva Health.** I am also incredibly grateful for the opportunity to collaborate closely with my Senior Product Designer [Archi Kashmiriya](https://www.linkedin.com/in/archik-ux/), and key stakeholders, Co-Founder [Amit Kumar Verma](https://www.linkedin.com/in/amitkv14/), Founder & CEO [Nived Narayanan](https://www.linkedin.com/in/nivednarayanan/).",
           },
           {
             type: "text",
             content:
-              "Thank you for reading about my journey in designing this gamification system. If you'd like to discuss behavioral design or gamification strategies, I'd love to connect.",
+              "Thank you for taking the time to read about my work. I hope you enjoyed learning about my design journey and the process behind it :)",
           },
         ],
       },
@@ -827,7 +847,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "As the Lead UI/UX Designer, I was the sole designer on the project, collaborating closely with Saswata S. SenGupta (Sr. Product Manager) to tackle conversion challenges on the cart and checkout pages.",
+              "As the **Lead UI/UX Designer**, I was the sole designer on the project, collaborating closely with [Saswata S. SenGupta](https://www.linkedin.com/in/sss99/) (Sr. Product Manager) to tackle conversion challenges on the cart and checkout pages.",
           },
         ],
       },
@@ -849,7 +869,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Problem 1: Distractions and Overload on Cart Page — SLC's Cart Page suffered from its own success. It was so feature-rich that it overwhelmed shoppers. With too many distractions like excessive product recommendations and prominent marketing banners, customers frequently lost focus and abandoned their carts.",
+              "**Problem 1: Distractions and Overload on Cart Page** — SLC's Cart Page suffered from its own success. It was so feature-rich that it overwhelmed shoppers. With too many distractions like excessive product recommendations and prominent marketing banners, customers frequently lost focus and abandoned their carts.",
           },
           {
             type: "image",
@@ -861,7 +881,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Problem 2: High Checkout Abandonment Rate — The checkout process was a 5-step linear flow with no progress indicator. Users had to create an account before completing a purchase, creating an unnecessary barrier. Form fields were dense, error messages were generic, and the mobile checkout was nearly unusable with tiny tap targets and horizontal scrolling tables.",
+              "**Problem 2: High Checkout Abandonment Rate** — The checkout process was a 5-step linear flow with no progress indicator. Users had to create an account before completing a purchase, creating an unnecessary barrier. Form fields were dense, error messages were generic, and the mobile checkout was nearly unusable with tiny tap targets and horizontal scrolling tables.",
           },
           {
             type: "image",
@@ -873,7 +893,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Problem 3: Navigation and Form Field Issues — The checkout flow suffered from inconsistent navigation across mobile and desktop. On mobile, the 'Continue' button was hidden below the fold, causing users to think the page wasn't loading. On desktop, the multi-column layout created confusion about the natural reading order.",
+              "**Problem 3: Navigation and Form Field Issues** — The checkout flow suffered from inconsistent navigation across mobile and desktop. On mobile, the 'Continue' button was hidden below the fold, causing users to think the page wasn't loading. On desktop, the multi-column layout created confusion about the natural reading order.",
           },
           {
             type: "image",
@@ -885,7 +905,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Problem 4: Complex Delivery Options and Confusion — Delivery options were complex and unclear. Users couldn't see estimated delivery dates before checkout and were frustrated by unexpected shipping costs appearing late in the flow.",
+              "**Problem 4: Complex Delivery Options and Confusion** — Delivery options were complex and unclear. Users couldn't see estimated delivery dates before checkout and were frustrated by unexpected shipping costs appearing late in the flow.",
           },
           {
             type: "image",
@@ -928,17 +948,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Increase Conversion Rates — Streamline the checkout flow to reduce friction and drop-offs, converting more visitors into customers.",
+              "**Increase Conversion Rates** — Streamline the checkout flow to reduce friction and drop-offs, converting more visitors into customers.",
           },
           {
             type: "text",
             content:
-              "Decrease Cart Abandonment — Identify and eliminate pain points in the cart and checkout experience that cause users to leave before completing a purchase.",
+              "**Decrease Cart Abandonment** — Identify and eliminate pain points in the cart and checkout experience that cause users to leave before completing a purchase.",
           },
           {
             type: "text",
             content:
-              "Boost Customer Confidence — Build trust and reassurance throughout the checkout process with clear communication about shipping, returns, and payment security.",
+              "**Boost Customer Confidence** — Build trust and reassurance throughout the checkout process with clear communication about shipping, returns, and payment security.",
           },
         ],
       },
@@ -948,23 +968,28 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Quick & Easy Checkout — Users want to complete their purchase in as few steps as possible, without unnecessary obstacles or information requests.",
+              "**Quick & Easy Checkout** — Users want to complete their purchase in as few steps as possible, without unnecessary obstacles or information requests.",
           },
           {
             type: "text",
             content:
-              "Clear Pricing & Delivery Info — Users need transparency about total costs, taxes, shipping fees, and delivery timelines before committing to purchase.",
+              "**Clear Pricing & Delivery Info** — Users need transparency about total costs, taxes, shipping fees, and delivery timelines before committing to purchase.",
           },
           {
             type: "text",
             content:
-              "Flexible Shopping Experience — Users want the ability to review, modify, and confirm their cart contents easily without losing progress.",
+              "**Flexible Shopping Experience** — Users want the ability to review, modify, and confirm their cart contents easily without losing progress.",
           },
         ],
       },
       {
         heading: "New Cart Checkout User Flow",
         items: [
+          {
+            type: "text",
+            content:
+              "\uD83D\uDE80 New Proposed User Flow For Cart & Checkout Process",
+          },
           {
             type: "image",
             image: {
@@ -978,14 +1003,24 @@ export const caseStudies: CaseStudy[] = [
         heading: "Solution 1: Distraction-Free Cart Page",
         items: [
           {
-            type: "before-after",
-            before: {
-              src: "/images/case-studies/slc-checkout/Problem 1.jpg",
-              alt: "Cluttered cart page before redesign",
-            },
-            after: {
+            type: "image",
+            image: {
               src: "/images/case-studies/slc-checkout/Solution 1 Desktop.jpg",
               alt: "Distraction-free cart page after redesign",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Solution 1 Demo.gif",
+              alt: "Cart page redesign demo animation",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Solution 1 Mobile.jpg",
+              alt: "Cart page redesign mobile view",
             },
           },
           {
@@ -998,7 +1033,12 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "• Inline Cart Editing — Users can update quantities, remove items, or save for later directly in the cart without navigating away.\n\n• Persistent Order Summary — A sticky sidebar that shows real-time totals, estimated shipping, and tax calculations as users make changes.\n\n• Trust Signals — Security badges, return policy highlights, and customer service access placed at strategic decision points.\n\n• Clear CTA Hierarchy — Primary 'Proceed to Checkout' button is visually dominant, with secondary actions like 'Continue Shopping' clearly de-emphasized.",
+              "The new redesigned cart page strips away product recommendations and other detours, then layers a lightweight entry point for every type of shopper\u2014 quick sign-in, instant account creation, or one-step guest checkout\u2014all inside modal overlays that keep the cart visible in the background.",
+          },
+          {
+            type: "text",
+            content:
+              "**Why it\u2019s better**\n\n\u2022 **Clear primary CTA** \u2014 \u201cProceed to Checkout\u201d is the only dominant button, guiding attention straight to the next step.\n\n\u2022 **Users stay in \u201ccheckout mode\u201d** \u2014 With recommendations and promotional widgets gone, there\u2019s nothing tempting shoppers to wander off the page.\n\n\u2022 **Stay in context** \u2014 Sign-in, create-account, forgot-password, and guest-checkout panels open as modals; users never leave the cart or lose their place.\n\n\u2022 **Mobile-friendly** \u2014 Spacing and larger touch targets keep quantity edits or removals effortless, cutting friction for on-the-go shoppers.\n\n\u2022 **A single, Sticky Order Summary** surfaces all costs (subtotal, discounts, total) in a glance, eliminating fee-shock surprises later.",
           },
         ],
       },
@@ -1006,14 +1046,46 @@ export const caseStudies: CaseStudy[] = [
         heading: "Solution 2: Streamlined Address Entry & Inline Validation",
         items: [
           {
-            type: "before-after",
-            before: {
-              src: "/images/case-studies/slc-checkout/Problem 3.jpg",
-              alt: "Complex form fields before redesign",
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Solution 2- Streamlined Address Entry & Inline Validation.webp",
+              alt: "Streamlined address entry solution design",
             },
-            after: {
+          },
+          {
+            type: "text",
+            content:
+              "The legacy five-step funnel was collapsed into a lightning-fast, three-page flow\u2014Cart \u2192 Address \u2192 Delivery & Payment\u2014with live totals, inline error handling, and a sticky order summary that travels down the screen on both desktop and mobile.",
+          },
+          {
+            type: "text",
+            content:
+              "**Why it\u2019s better**",
+          },
+          {
+            type: "text",
+            content:
+              "\u2022 **-26 % abandonment proven:** GA4 shows checkout abandonment dropping from 73.10 % to 53.97 % within ten days of launch, far exceeding the \u20137.66 % lift seen in 2024\u2019s same-period sale.\n\n\u2022 **Live cost transparency:** Shipping, tax, and discount calculations update instantly, eliminating the late-stage fee shock that previously drove 32% of exits.\n\n\u2022 **Progress breadcrumb:** Clearing the \u201cCart \u203a Address \u203a Delivery \u203a Payment\u201d header reassures users how close they are to completing the process, reducing abandonment due to uncertainty.",
+          },
+          {
+            type: "image",
+            image: {
               src: "/images/case-studies/slc-checkout/Solution 3 Desktop.jpg",
-              alt: "Streamlined address entry after redesign",
+              alt: "Address entry solution desktop view",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Solution 2 Desktop.gif",
+              alt: "Address entry solution demo animation",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Solution 3 Mobile.jpg",
+              alt: "Address entry solution mobile view",
             },
           },
           {
@@ -1026,7 +1098,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "• Progressive Disclosure — Information is requested in logical stages, reducing cognitive load and making the form feel less intimidating.\n\n• Guest Checkout Default — No account required to purchase. Account creation is offered as an optional post-purchase step.\n\n• Smart Defaults — Saved addresses for returning users, automatic tax calculation display, and estimated delivery dates shown before checkout.\n\n• Inline Validation — Real-time field validation with clear error messages that tell users exactly how to fix the issue.",
+              "The new Shipping Address page consolidates all contact and address fields into one clean screen, adds real-time error feedback, and keeps a collapsible order summary visible, eliminating pinch-zoom, page reloads, and confusion between billing and shipping details.",
           },
         ],
       },
@@ -1034,14 +1106,24 @@ export const caseStudies: CaseStudy[] = [
         heading: "Solution 3: Simplified Delivery Method Selector",
         items: [
           {
-            type: "before-after",
-            before: {
-              src: "/images/case-studies/slc-checkout/Problem 4.webp",
-              alt: "Complex delivery options before redesign",
-            },
-            after: {
+            type: "image",
+            image: {
               src: "/images/case-studies/slc-checkout/Solution 4 Desktop.jpg",
-              alt: "Simplified delivery selector after redesign",
+              alt: "Simplified delivery selector redesign",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Solution 3 Desktop.gif",
+              alt: "Delivery method selector demo animation",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-checkout/Solution 4 Mobile.jpg",
+              alt: "Delivery selector mobile view",
             },
           },
           {
@@ -1054,7 +1136,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "• Simplified Selector — Delivery options are presented in a clear, visual card layout showing price, speed, and estimated delivery date at a glance.\n\n• Estimated Delivery Dates — Real-time delivery date calculations based on ZIP code and product availability, shown before the user commits to purchase.\n\n• Cost Transparency — Shipping costs, taxes, and total are displayed upfront with no surprise fees at the final step.",
+              "The new checkout step shows only two clearly-labeled delivery cards\u2014Curb-Side (free) and White-Glove (paid)\u2014with concise bullet summaries and an upfront price, while the sticky order summary stays visible on mobile for instant cost confirmation.",
+          },
+          {
+            type: "text",
+            content:
+              "**Why it\u2019s better**",
+          },
+          {
+            type: "text",
+            content:
+              "\u2022 **Each card uses plain-language bullet points** \u2014 \u201cRoom Placement,\u201d \u201cFull Assembly\u201d and a single, bold price, ending uncertainty about what\u2019s included.\n\n\u2022 **One-tap radio selection** \u2014 and an anchored \u201cContinue\u201d button streamline progress, cutting hesitation time.\n\n\u2022 **Mobile layout stacks the same cards with thumb-friendly radio buttons and keeps the help-contact block handy, reducing abandonment** \u2014 on phones where choice overload was greatest.\n\n\u2022 **Inline edit link for the Shipping Address allows quick corrections** \u2014 without back-tracking, preserving momentum.",
           },
         ],
       },
@@ -1064,17 +1156,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Handling the complexity of multi-page checkout flow while maintaining a seamless experience across devices was one of the biggest challenges. The solution required careful information architecture decisions — what information to show on each page, how to handle form state across pages, and how to provide clear feedback without overwhelming the user.",
+              "**Multi-page complexity** across devices was the biggest challenge. The solution required **careful information architecture** \u2014 deciding what to show on each page, how to handle form state, and how to provide clear feedback without overwhelming users.",
           },
           {
             type: "text",
             content:
-              "Balancing business requirements (account creation for marketing) with user needs (guest checkout) led to a compromise: guest checkout with optional post-purchase account creation. This single change removed the biggest barrier to purchase while still allowing SLC to capture user data after the transaction.",
+              "**Balancing business needs** (account creation for marketing) **with user needs** (guest checkout) led to a compromise: **guest checkout with optional post-purchase account creation.** This removed the biggest purchase barrier while still allowing SLC to capture user data.",
           },
           {
             type: "text",
             content:
-              "Ensuring responsive design consistency across devices meant designing mobile-first and progressively enhancing for desktop. Every component was tested at multiple breakpoints to guarantee a consistent experience.",
+              "**Responsive design consistency** meant designing **mobile-first** and progressively enhancing for desktop. Every component was tested at multiple breakpoints to guarantee a **consistent cross-device experience.**",
           },
         ],
       },
@@ -1122,12 +1214,12 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "This project taught me the power of removing friction. Every field removed, every step collapsed, every error message rewritten — each small change compounded into a dramatically better experience. I'm grateful to Saswata and the SLC team for trusting me to redesign such a critical part of their business.",
+              "This project taught me **the power of removing friction.** Every field removed, every step collapsed, every error message rewritten \u2014 **each small change compounded into a dramatically better experience.** I\u2019m grateful to Saswata and the SLC team for trusting me to redesign such a critical part of their business.",
           },
           {
             type: "text",
             content:
-              "Thank you for reading about my journey in redesigning the cart and checkout experience for Sierra Living Concepts. If you'd like to discuss e-commerce UX or checkout optimization, I'd love to connect.",
+              "Thank you for reading about my journey in redesigning the cart and checkout experience for Sierra Living Concepts. If you\u2019d like to discuss **e-commerce UX or checkout optimization, I\u2019d love to connect.**",
           },
         ],
       },
@@ -1155,35 +1247,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Sierra Living Concepts (SLC) is a U.S.-based luxury furniture retailer with a significant online presence. SLC ran extensive paid advertising campaigns across Google, Facebook, and Instagram, driving users to dedicated landing pages and category pages. However, the experience from ad click to browse-to-purchase was fragmented — landing pages had different visual styles, inconsistent information architecture, and no clear path to related categories.",
+              "Sierra Living Concepts (SLC) is a U.S.-based luxury furniture retailer with a significant online presence. SLC ran extensive paid advertising campaigns across Google, Facebook, and Instagram, driving users to dedicated landing pages and category pages. However, the experience from ad click to browse-to-purchase was fragmented \u2014 landing pages had different visual styles, inconsistent information architecture, and no clear path to related categories.",
           },
           {
             type: "text",
             content:
-              "As the Lead UI/UX Designer, I was the sole designer on this project, collaborating closely with Saswata S. SenGupta (Sr. Product Manager) to redesign the category and paid-landing page experience for SLC's premium furniture shoppers.",
+              "As the **Lead UI/UX Designer**, I was the sole designer on this project, collaborating closely with [Saswata S. SenGupta](https://www.linkedin.com/in/sss99/) (Sr. Product Manager) to redesign the category and paid-landing page experience for SLC\u2019s premium furniture shoppers.",
           },
         ],
       },
       {
-        heading: "My Role",
-        items: [
-          {
-            type: "text",
-            content:
-              "I led the end-to-end design process — from research and strategy through wireframing, prototyping, visual design, and usability testing. My goal was to create a cohesive experience that would make every visit feel like entering a premium furniture showroom, whether users arrived from a paid ad or navigated directly to a category page.",
-          },
-          {
-            type: "metrics",
-            metrics: [
-              { value: "6 weeks", label: "Design timeline" },
-              { value: "12+", label: "Unique ad campaigns" },
-              { value: "480k", label: "User sessions analyzed" },
-            ],
-          },
-        ],
-      },
-      {
-        heading: "Problem?",
+        heading: "Problems & Insights",
         items: [
           {
             type: "image",
@@ -1207,7 +1281,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "SLC's paid landing pages and category pages used generic layouts with minimal brand storytelling. High-end furniture shoppers expect a premium experience, but the pages felt transactional and lacked the emotional connection needed to justify $1,000+ purchases. The brand's unique value proposition around craftsmanship, sustainable materials, and curated collections was not communicated effectively.",
+              "**7 out of 10 users** could not describe the brand\u2019s unique qualities after browsing the old category pages \u2014 static, desktop-centric grids without narratives or value props. This weak brand connection led to **shorter dwell times** compared to competitors, resulting in **lower engagement and conversion potential.**",
           },
         ],
       },
@@ -1224,7 +1298,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Paid landing pages suffered from low engagement above the fold. Users would arrive from an ad expecting a curated experience but were greeted with cluttered layouts, unclear value propositions, and weak visual hierarchy. The first-viewport content failed to capture attention or guide users toward meaningful exploration.",
+              "**The old ad-landing templates were static grids** without persuasive copy or trust elements in the first viewport, causing users from paid campaigns to leave before exploring further. This **low first-impression impact** meant fewer scrolls and weaker add-to-cart rates, **reducing ROI on ad spend.**",
           },
         ],
       },
@@ -1241,22 +1315,9 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Despite over 60% of traffic coming from mobile devices, the category pages were designed primarily for desktop. Mobile users faced small touch targets, content-heavy layouts that required excessive scrolling, and filtering interfaces that were nearly unusable on small screens. This created a frustrating browsing experience that drove users away.",
+              "**Category & FID grids were designed for desktop spacing and scaling**, forcing mobile users to pinch, zoom, and scroll excessively to view products. **Mobile visitors \u2014 78% of total traffic** \u2014 experienced slower navigation and higher drop-off, **weakening the largest conversion channel.**",
           },
-          {
-            type: "quote",
-            quote:
-              "I tried to filter by 'Mid-Century Modern' on my phone and the dropdown covered half the screen. I couldn't see what was being filtered. I just gave up and left.",
-            author: "Mobile user, usability study",
-          },
-          {
-            type: "metrics",
-            metrics: [
-              { value: "63%", label: "Ad traffic bounce rate" },
-              { value: "2.1", label: "Avg pages per ad session" },
-              { value: "0.8%", label: "Ad-to-purchase conversion" },
-            ],
-          },
+
         ],
       },
       {
@@ -1265,17 +1326,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Increase Category Page Engagement — Deepen user engagement by improving content relevance and visual appeal, increasing time on page and product discovery.",
+              "**Increase Category Page Engagement** — Deepen user engagement by improving content relevance and visual appeal, increasing time on page and product discovery.",
           },
           {
             type: "text",
             content:
-              "Boost Paid Ad Conversion Rates — Improve conversion rates by creating a cohesive and compelling experience from ad click to purchase, reducing friction and drop-offs.",
+              "**Boost Paid Ad Conversion Rates** — Improve conversion rates by creating a cohesive and compelling experience from ad click to purchase, reducing friction and drop-offs.",
           },
           {
             type: "text",
             content:
-              "Strengthen Brand Positioning — Elevate the premium look and feel of all category and landing pages to differentiate SLC in the competitive luxury furniture market.",
+              "**Strengthen Brand Positioning** — Elevate the premium look and feel of all category and landing pages to differentiate SLC in the competitive luxury furniture market.",
           },
         ],
       },
@@ -1285,17 +1346,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Find the Perfect Piece Quickly — Browse and filter products efficiently to find furniture that matches their style, size, and budget requirements.",
+              "**Find the Perfect Piece Quickly** — Browse and filter products efficiently to find furniture that matches their style, size, and budget requirements.",
           },
           {
             type: "text",
             content:
-              "Make Confident Purchase Decisions — Access detailed product information, lifestyle imagery, and customer reviews to make informed decisions on high-value purchases.",
+              "**Make Confident Purchase Decisions** — Access detailed product information, lifestyle imagery, and customer reviews to make informed decisions on high-value purchases.",
           },
           {
             type: "text",
             content:
-              "Enjoy a Premium Browsing Experience — Experience a visually rich, emotionally engaging journey that feels worthy of a luxury furniture brand.",
+              "**Enjoy a Premium Browsing Experience** — Experience a visually rich, emotionally engaging journey that feels worthy of a luxury furniture brand.",
           },
         ],
       },
@@ -1310,15 +1371,37 @@ export const caseStudies: CaseStudy[] = [
             },
           },
           {
+            type: "gif",
+            gif: {
+              src: "/images/case-studies/slc-category/Solution 1 - GIF CS5.gif",
+              alt: "Solution 1 demo",
+            },
+          },
+          {
             type: "text",
             content:
-              "• Lifestyle Hero — The hero section was redesigned with full-bleed lifestyle imagery that tells a story about the SLC lifestyle — sophisticated, warm, and inviting. Headlines focus on the transformative power of great furniture rather than just product features.\n\n• USP Trust Bar — A persistent trust bar below the hero highlights SLC's key differentiators: Free White Glove Delivery, 100% Price Match, Easy 30-Day Returns, and Expert Design Consultation. This addresses purchase anxiety early in the browsing journey.",
+              "The new redesigned category pages now open with a bold, story-driven hero section and a prominent USP trust bar, replacing the static, text-light grids.",
+          },
+          {
+            type: "text",
+            content:
+              "**Why it\u2019s better**",
+          },
+          {
+            type: "text",
+            content:
+              "\u2022 **Lifestyle Hero** \u2014 The hero section was redesigned with full-bleed lifestyle imagery that tells a story about the SLC lifestyle \u2014 sophisticated, warm, and inviting. Headlines focus on the transformative power of great furniture rather than just product features.\n\n\u2022 **USP Trust Bar** \u2014 A persistent trust bar below the hero highlights SLC\u2019s key differentiators: Free White Glove Delivery, 100% Price Match, Easy 30-Day Returns, and Expert Design Consultation. This addresses purchase anxiety early in the browsing journey.",
           },
         ],
       },
       {
         heading: "Solution 2: First-View Optimized Paid-Landing Templates",
         items: [
+          {
+            type: "text",
+            content:
+              "\uD83D\uDE80 New Proposed User Task Flow Of Feature ID Page",
+          },
           {
             type: "image-grid",
             images: [
@@ -1332,17 +1415,46 @@ export const caseStudies: CaseStudy[] = [
                 alt: "Solution 2 Desktop view",
                 caption: "Desktop: First-view optimized landing template",
               },
-              {
-                src: "/images/case-studies/slc-category/Solution 2 Mobile.jpg",
-                alt: "Solution 2 Mobile view",
-                caption: "Mobile: Touch-friendly landing template",
-              },
             ],
+          },
+          {
+            type: "gif",
+            gif: {
+              src: "/images/case-studies/slc-category/Solution 2 - GIF CS5.gif",
+              alt: "Solution 2 demo",
+            },
+          },
+          {
+            type: "image",
+            image: {
+              src: "/images/case-studies/slc-category/Solution 2 Mobile.jpg",
+              alt: "Solution 2 Mobile view",
+              caption: "Mobile: Touch-friendly landing template",
+            },
+          },
+          {
+            type: "embed",
+            embed: {
+              url: "https://marvelapp.com/prototype/cja4hj7?emb=1&iosapp=false&frameless=false",
+              title: "Marvel prototype",
+              width: 453,
+              height: 864,
+            },
           },
           {
             type: "text",
             content:
-              "• Above-the-Fold Optimization — Every paid landing template was redesigned to deliver maximum impact within the first 3 seconds. Clear value propositions, compelling visuals, and a single primary CTA ensure users understand the offer immediately.\n\n• Consistent Brand Language — Templates maintain visual consistency across all campaigns while allowing for campaign-specific messaging and imagery. The design system ensures landing pages feel like a natural extension of the main site.\n\n• Mobile-First Approach — Templates are designed mobile-first with touch-friendly layouts, optimized image sizes, and streamlined content hierarchy that progressively enhances for desktop.",
+              "Paid landing pages now feature persuasive copy, trust elements, and a **Lead-Card module** within the first viewport, replacing static grids that offered no incentive to explore. The Lead-Card **auto-prefills SKU info** and connects users directly to an expert chat.",
+          },
+          {
+            type: "text",
+            content:
+              "**Why it\u2019s better**",
+          },
+          {
+            type: "text",
+            content:
+              "\u2022 **Immediate trust cues** and a strong first impression keep paid-ad visitors from bouncing before scrolling.\n\n\u2022 **Lead-Card drove 204 new leads in 90 days** \u2014 34% of total qualified leads post-launch.\n\n\u2022 **Add-to-Cart rate on ad-landing pages rose by 27%**, increasing ROI from paid campaigns.",
           },
         ],
       },
@@ -1357,9 +1469,28 @@ export const caseStudies: CaseStudy[] = [
             },
           },
           {
+            type: "embed",
+            embed: {
+              url: "https://marvelapp.com/prototype/7438h8f?emb=1&iosapp=false&frameless=false",
+              title: "Marvel prototype",
+              width: 453,
+              height: 864,
+            },
+          },
+          {
             type: "text",
             content:
-              "• Mobile-First Grid — The category page was rebuilt with a mobile-first grid system featuring larger product cards, optimized image ratios, and clear typography hierarchy that scales beautifully across devices.\n\n• Streamlined Filtering — A bottom-sheet filter panel replaces the traditional sidebar, making it easy for mobile users to narrow down products without leaving the browsing context.\n\n• Enhanced Product Cards — Each product card now shows key information at a glance: price, materials, dimensions, and customer rating, with clear add-to-cart and wishlist actions.",
+              "We replaced the old desktop-centric layout with a **mobile-first, filter-aware grid**. Product cards now auto-fit to screen size, with larger tap zones and optimized spacing for thumbs. Swatch previews and progressive disclosure make browsing smoother without pinch-to-zoom frustration.",
+          },
+          {
+            type: "text",
+            content:
+              "**Why it\u2019s better**",
+          },
+          {
+            type: "text",
+            content:
+              "\u2022 **Mobile users (78% of traffic) now navigate naturally without zooming**, ending 32% of rage clicks caused by small product cards.\n\n\u2022 **The adaptive design increased mobile category page dwell time by 21%** and cut bounce rates by 10% for this segment.\n\n\u2022 **Faster, thumb-friendly navigation** keeps the largest audience engaged, turning mobile into a stronger conversion channel.",
           },
         ],
       },
@@ -1369,17 +1500,17 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "One of the biggest challenges was creating a design system flexible enough to accommodate diverse ad campaigns while maintaining visual consistency. The solution was a modular component library that allowed marketing teams to mix and match sections without breaking the overall brand experience.",
+              "**Creating a flexible design system** for diverse ad campaigns while maintaining visual consistency. The solution was a **modular component library** that let marketing teams mix and match sections without breaking the brand experience.",
           },
           {
             type: "text",
             content:
-              "Balancing the need for rich storytelling content with fast page load times required careful optimization of image sizes and lazy loading strategies. Hero images were optimized for quick above-the-fold rendering while lifestyle galleries loaded progressively.",
+              "**Balancing rich storytelling with fast load times** required optimized image sizes and lazy loading. Hero images were optimized for above-the-fold rendering while lifestyle galleries loaded progressively.",
           },
           {
             type: "text",
             content:
-              "Getting buy-in from stakeholders across marketing, product, and engineering was another challenge. Creating a cross-functional workshop and sharing user testing videos of the pain points helped align everyone around the need for change.",
+              "**Getting stakeholder buy-in** across marketing, product, and engineering. A cross-functional workshop and user testing videos of pain points helped align everyone around the need for change.",
           },
         ],
       },
@@ -1389,15 +1520,7 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "The unified experience launched across SLC's top ad campaigns and category pages. Ad-to-category bounce rate dropped from 63% to 38%. Pages per session increased from 2.1 to 4.8, and ad-to-purchase conversion improved by 120%. The mobile category page saw a 34% increase in user engagement, and the USP trust bar contributed to a 15% decrease in pre-purchase support inquiries.",
-          },
-          {
-            type: "metrics",
-            metrics: [
-              { value: "-25pp", label: "Bounce rate reduction" },
-              { value: "4.8", label: "Avg pages per ad session" },
-              { value: "+120%", label: "Ad-to-purchase conversion" },
-            ],
+              "The redesigned category and paid landing pages resulted in significant improvements across all target metrics. We achieved a **34% increase in qualified leads**, a **9.6% decrease in bounce rate** (from 60.8% to 51.2%), a **24% increase in average session duration**, and a **27% increase in the Add-to-Cart rate** from ad-landing pages. All improvements were statistically significant (p &lt; 0.05).",
           },
         ],
       },
@@ -1407,32 +1530,32 @@ export const caseStudies: CaseStudy[] = [
           {
             type: "text",
             content:
-              "Personalized Category Experiences — Implement AI-driven personalization to show different category content based on user behavior, past purchases, and browsing history.",
+              "**Personalized Category Experiences** — Implement AI-driven personalization to show different category content based on user behavior, past purchases, and browsing history.",
           },
           {
             type: "text",
             content:
-              "A/B Testing Framework — Build a robust A/B testing framework to continuously optimize landing page variations and category page layouts for maximum conversion.",
+              "**A/B Testing Framework** — Build a robust A/B testing framework to continuously optimize landing page variations and category page layouts for maximum conversion.",
           },
           {
             type: "text",
             content:
-              "Cross-Sell Recommendations — Integrate smart cross-sell and upsell recommendations within the category browsing experience to increase average order value.",
+              "**Cross-Sell Recommendations** — Integrate smart cross-sell and upsell recommendations within the category browsing experience to increase average order value.",
           },
         ],
       },
       {
-        heading: "Signing Off with a Smile 😊",
+        heading: "Signing Off",
         items: [
           {
             type: "text",
             content:
-              "This project reinforced my belief in the power of cohesive design. Every touchpoint from ad to purchase is an opportunity to build trust and delight users. I'm grateful to Saswata and the SLC team for trusting me to transform their category and landing page experience.",
+              "This project reinforced my belief in **the power of cohesive design.** Every touchpoint from ad to purchase is an opportunity to build trust and delight users. I\u2019m grateful to Saswata and the SLC team for trusting me to transform their category and landing page experience.",
           },
           {
             type: "text",
             content:
-              "Thank you for reading about my journey in redesigning the category and paid-landing experience for Sierra Living Concepts. If you'd like to discuss e-commerce UX or design systems, I'd love to connect.",
+              "Thank you for reading about my journey in redesigning the category and paid-landing experience for Sierra Living Concepts. If you\u2019d like to discuss **e-commerce UX or design systems, I\u2019d love to connect.**",
           },
         ],
       },
