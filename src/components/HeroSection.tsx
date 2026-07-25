@@ -1,11 +1,10 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { site } from "@/data/site";
 import { BLUR_DATA_URL } from "@/lib/images";
-import { useMousePosition } from "@/hooks/useMousePosition";
 
 const tools = [
   "Figma", "Miro", "Photoshop", "Notion", "Framer",
@@ -33,20 +32,6 @@ export default function HeroSection() {
   const headline = "Designing products that people love to use.";
   const { scrollY } = useScroll();
   const cueOpacity = useTransform(scrollY, [0, 100], [1, 0]);
-  const mouse = useMousePosition();
-  const cx = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
-  const cy = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
-  const dx = mouse.x - cx;
-  const dy = mouse.y - cy;
-
-  const badgeDepth = [0.02, 0.04, 0.03, 0.05];
-
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const polaroidRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
@@ -79,65 +64,6 @@ export default function HeroSection() {
           }}
         />
       </div>
-
-      {/* Floating badges */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute top-[26%] left-16 hidden lg:block"
-      >
-        <motion.div
-          className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
-          style={{ x: mounted ? dx * badgeDepth[0] : 0, y: mounted ? dy * badgeDepth[0] : 0 }}
-        >
-          <span className="text-[#707072]">📍 Based in India</span>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute bottom-[30%] left-16 hidden lg:block"
-      >
-        <motion.div
-          className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
-          style={{ x: mounted ? dx * badgeDepth[1] : 0, y: mounted ? dy * badgeDepth[1] : 0 }}
-        >
-          <span className="font-medium text-[#111111]">💼 3 Years</span>
-          <span className="text-[#707072]">of Experience</span>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 1.0 }}
-        className="absolute top-[26%] right-16 hidden lg:block"
-      >
-        <motion.div
-          className="flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-[#f0f0f0] shadow-sm"
-          style={{ x: mounted ? dx * badgeDepth[2] : 0, y: mounted ? dy * badgeDepth[2] : 0 }}
-        >
-          <span className="text-[#707072]">🎓 10kdesigners Cohort</span>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-[30%] right-16 hidden lg:block"
-      >
-        <motion.div
-          className="flex items-center gap-1.5 text-xs bg-[#059669]/10 px-3 py-1.5 rounded-full border border-[#059669]/30 shadow-sm"
-          style={{ x: mounted ? dx * badgeDepth[3] : 0, y: mounted ? dy * badgeDepth[3] : 0 }}
-        >
-          <span className="w-2 h-2 rounded-full bg-[#059669]" />
-          <span className="font-medium text-[#059669]">Open for new roles and projects</span>
-        </motion.div>
-      </motion.div>
 
       <div className="max-w-6xl mx-auto px-6 w-full">
         <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center">
@@ -211,7 +137,7 @@ export default function HeroSection() {
               >
                 <div className="aspect-square w-full overflow-hidden rounded-sm bg-[#f5f5f5]">
                   <Image
-                    src="/images/avatar.jpg"
+                    src="/images/Jai Hero 1 Image Profile.png"
                     alt={site.name}
                     width={400}
                     height={400}
@@ -220,6 +146,68 @@ export default function HeroSection() {
                     blurDataURL={BLUR_DATA_URL}
                   />
                 </div>
+
+                {/* Post-it annotations */}
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 18, delay: 0.8 }}
+                  className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 z-10"
+                >
+                  <div className="bg-[#fbcfe8] rounded-sm shadow-md rotate-[-1.5deg] whitespace-nowrap relative">
+                    <div className="h-1 bg-[#f5a5c9] rounded-t-sm" />
+                    <div className="px-3 py-2 text-xs text-[#333333] flex items-center gap-1.5 relative">
+                      <span className="absolute -bottom-1 -right-1 w-1.5 h-1.5 rounded-full bg-[#ef4444] ring-1 ring-white shadow-sm" />
+                      💼 3 Years of Experience
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 18, delay: 0.9 }}
+                  className="absolute top-1/2 -left-3 sm:-left-4 -translate-y-1/2 z-10"
+                >
+                  <div className="bg-[#fef08a] rounded-sm shadow-md rotate-[1.5deg] whitespace-nowrap relative">
+                    <div className="h-1 bg-[#f5e15f] rounded-t-sm" />
+                    <div className="px-3 py-2 text-xs text-[#333333] flex items-center gap-1.5 relative">
+                      <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-[#ef4444] ring-1 ring-white shadow-sm" />
+                      📍 Based in India
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 18, delay: 1.0 }}
+                  className="absolute top-1/2 -right-3 sm:-right-4 -translate-y-1/2 z-10"
+                >
+                  <div className="bg-[#dbeafe] rounded-sm shadow-md rotate-[-1.5deg] whitespace-nowrap relative">
+                    <div className="h-1 bg-[#c5d9f0] rounded-t-sm" />
+                    <div className="px-3 py-2 text-xs text-[#333333] flex items-center gap-1.5 relative">
+                      <span className="absolute -top-1 -left-1 w-1.5 h-1.5 rounded-full bg-[#ef4444] ring-1 ring-white shadow-sm" />
+                      🎓 10kdesigners Cohort
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 18, delay: 1.1 }}
+                  className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 z-10"
+                >
+                  <div className="bg-[#dcfce7] rounded-sm shadow-md rotate-[1deg] whitespace-nowrap relative">
+                    <div className="h-1 bg-[#c4e8cc] rounded-t-sm" />
+                    <div className="px-3 py-2 text-xs text-[#059669] flex items-center gap-1.5 relative">
+                      <span className="absolute -top-1 -left-1 w-1.5 h-1.5 rounded-full bg-[#059669] ring-1 ring-white shadow-sm" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#059669]" />
+                      🟢 Open to new opportunities
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
