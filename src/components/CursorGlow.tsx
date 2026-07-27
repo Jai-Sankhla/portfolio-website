@@ -18,6 +18,7 @@ interface Confetto {
   wobbleSpeed: number;
   wobblePhase: number;
   wobbleAmount: number;
+  fadeOut?: number;
 }
 
 const COLORS = [
@@ -35,7 +36,7 @@ const MAX = 150;
 
 function drawConfetto(ctx: CanvasRenderingContext2D, c: Confetto) {
   const progress = c.life / c.maxLife;
-  const opacity = 1 - progress * progress;
+  const opacity = (1 - progress * progress) * (c.fadeOut ?? 1);
 
   ctx.save();
   ctx.translate(c.x, c.y);
@@ -56,7 +57,7 @@ export default function SparkleTrail() {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const confettiRef = useRef<Confetto[]>([]);
-  const mouseRef = useRef({ x: -100, y: -100, prevX: -100, prevY: -100 });
+  const mouseRef = useRef({ x: -100, y: -100, prevX: -100, prevY: -100, lastActiveTime: 0 });
   const rafRef = useRef(0);
 
   useEffect(() => {
@@ -80,6 +81,7 @@ export default function SparkleTrail() {
       m.prevY = m.y;
       m.x = e.clientX;
       m.y = e.clientY;
+      m.lastActiveTime = performance.now();
     };
 
     const handleClick = (e: MouseEvent) => {
@@ -113,14 +115,9 @@ export default function SparkleTrail() {
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("click", handleClick);
 
-    const spawn = () => {
-      const m = mouseRef.current;
-      const dx = m.x - m.prevX;
-      const dy = m.y - m.prevY;
-      const speed = Math.sqrt(dx * dx + dy * dy);
-
+    const spawn = (dx: number, dy: number, speed: number) => {
       if (speed < 0.5) return;
-
+      const m = mouseRef.current;
       const count = Math.min(Math.floor(speed / 2) + 1, 4);
       const angle = Math.atan2(dy, dx);
 
@@ -159,12 +156,27 @@ export default function SparkleTrail() {
       ctx!.clearRect(0, 0, canvas.width, canvas.height);
       frame++;
 
-      if (time - lastSpawn > 25) {
-        spawn();
+      const m = mouseRef.current;
+      const dx = m.x - m.prevX;
+      const dy = m.y - m.prevY;
+      m.prevX = m.x;
+      m.prevY = m.y;
+      const speed = Math.sqrt(dx * dx + dy * dy);
+      const timeSinceMove = time - m.lastActiveTime;
+
+      if (timeSinceMove < 200 && time - lastSpawn > 25) {
+        spawn(dx, dy, speed);
         lastSpawn = time;
       }
 
       const confetti = confettiRef.current;
+
+      if (timeSinceMove >= 200) {
+        for (let i = 0; i < confetti.length; i++) {
+          const c = confetti[i];
+          if (c.fadeOut === undefined) c.fadeOut = 1;
+        }
+      }
 
       for (let i = confetti.length - 1; i >= 0; i--) {
         const c = confetti[i];
@@ -178,6 +190,14 @@ export default function SparkleTrail() {
         c.rotation += c.rotationSpeed;
         c.x += c.vx;
         c.y += c.vy;
+
+        if (c.fadeOut !== undefined) {
+          c.fadeOut -= 0.008;
+          if (c.fadeOut <= 0) {
+            confetti.splice(i, 1);
+            continue;
+          }
+        }
 
         if (c.life >= c.maxLife) {
           confetti.splice(i, 1);
