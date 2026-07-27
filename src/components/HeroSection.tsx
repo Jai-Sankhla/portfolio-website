@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { site } from "@/data/site";
 import { BLUR_DATA_URL } from "@/lib/images";
@@ -34,6 +34,51 @@ export default function HeroSection() {
   const cueOpacity = useTransform(scrollY, [0, 100], [1, 0]);
   const polaroidRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const heatmapRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = heatmapRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const draw = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      ctx.clearRect(0, 0, w, h);
+
+      const g1 = ctx.createRadialGradient(w * 0.72, h * 0.4, 0, w * 0.72, h * 0.4, w * 0.35);
+      g1.addColorStop(0, "rgba(255,20,0,0.12)");
+      g1.addColorStop(0.25, "rgba(255,150,0,0.06)");
+      g1.addColorStop(0.5, "rgba(80,200,255,0.015)");
+      g1.addColorStop(1, "transparent");
+      ctx.fillStyle = g1;
+      ctx.fillRect(0, 0, w, h);
+
+      const g2 = ctx.createRadialGradient(w * 0.28, h * 0.38, 0, w * 0.28, h * 0.38, w * 0.22);
+      g2.addColorStop(0, "rgba(255,80,0,0.08)");
+      g2.addColorStop(0.3, "rgba(255,200,80,0.035)");
+      g2.addColorStop(0.55, "rgba(100,200,255,0.012)");
+      g2.addColorStop(1, "transparent");
+      ctx.fillStyle = g2;
+      ctx.fillRect(0, 0, w, h);
+
+      const g3 = ctx.createRadialGradient(w * 0.5, h * 0.5, 0, w * 0.5, h * 0.5, w * 0.65);
+      g3.addColorStop(0, "rgba(30,120,255,0.04)");
+      g3.addColorStop(1, "transparent");
+      ctx.fillStyle = g3;
+      ctx.fillRect(0, 0, w, h);
+    };
+
+    draw();
+    window.addEventListener("resize", draw);
+    return () => window.removeEventListener("resize", draw);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -54,15 +99,16 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen md:min-h-[80vh] flex items-center pt-20 md:pt-48 overflow-hidden">
-      {/* Dot grid background */}
+      {/* Dot grid background + eye-tracking heatmap */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
-          className="w-full h-full opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage: `radial-gradient(circle, #111111 1px, transparent 1px)`,
             backgroundSize: "36px 36px",
           }}
         />
+        <canvas ref={heatmapRef} className="absolute inset-0" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 w-full">
