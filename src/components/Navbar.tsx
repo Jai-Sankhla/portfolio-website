@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { site } from "@/data/site";
 
@@ -57,28 +57,27 @@ export default function Navbar() {
         className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 h-12 bg-white/90 backdrop-blur-lg rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] md:hidden flex items-center gap-1 px-3"
       >
         <div className="flex items-center gap-1">
-          <LayoutGroup>
-            {site.nav.map((link) => (
+          {site.nav.map((link) => {
+            const active = pathname === link.href;
+            return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`relative px-2.5 py-1.5 text-xs tracking-hover transition-colors ${
-                  pathname === link.href
+                  active
                     ? "text-white font-medium"
                     : "text-[#707072] hover:text-[#111111]"
                 }`}
               >
-                {pathname === link.href && (
-                  <motion.div
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full bg-[#1151ff]"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
+                <span
+                  className={`absolute inset-0 rounded-full bg-[#1151ff] transition-opacity duration-300 ${
+                    active ? "opacity-100" : "opacity-0"
+                  }`}
+                />
                 <span className="relative z-10">{link.label}</span>
               </Link>
-            ))}
-          </LayoutGroup>
+            );
+          })}
         </div>
       </motion.div>
 
@@ -99,28 +98,27 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-1.5">
-          <LayoutGroup>
-            {site.nav.map((link) => (
+          {site.nav.map((link) => {
+            const active = pathname === link.href;
+            return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`relative px-3 py-1.5 text-sm tracking-hover transition-colors ${
-                  pathname === link.href
+                  active
                     ? "text-white font-medium"
                     : "text-[#707072] hover:text-[#111111]"
                 }`}
               >
-                {pathname === link.href && (
-                  <motion.div
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full bg-[#1151ff]"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
+                <span
+                  className={`absolute inset-0 rounded-full bg-[#1151ff] transition-opacity duration-300 ${
+                    active ? "opacity-100" : "opacity-0"
+                  }`}
+                />
                 <span className="relative z-10">{link.label}</span>
               </Link>
-            ))}
-          </LayoutGroup>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-3">
