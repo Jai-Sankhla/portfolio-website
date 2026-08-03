@@ -70,8 +70,10 @@ export default function Navbar() {
                 }`}
               >
                 <span
-                  className={`absolute inset-0 rounded-full bg-[#1151ff] transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-                    active ? "opacity-100 scale-100" : "opacity-0 scale-75"
+                  className={`absolute inset-0 rounded-full bg-[#1151ff] transition-all duration-300 ${
+                    active
+                      ? "opacity-100 scale-100 animate-pill-pop shadow-[0_4px_16px_rgba(17,81,255,0.45)]"
+                      : "opacity-0 scale-75"
                   }`}
                 />
                 <span className="relative z-10">{link.label}</span>
@@ -111,8 +113,10 @@ export default function Navbar() {
                 }`}
               >
                 <span
-                  className={`absolute inset-0 rounded-full bg-[#1151ff] transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-                    active ? "opacity-100 scale-100" : "opacity-0 scale-75"
+                  className={`absolute inset-0 rounded-full bg-[#1151ff] transition-all duration-300 ${
+                    active
+                      ? "opacity-100 scale-100 animate-pill-pop shadow-[0_4px_16px_rgba(17,81,255,0.45)]"
+                      : "opacity-0 scale-75"
                   }`}
                 />
                 <span className="relative z-10">{link.label}</span>
